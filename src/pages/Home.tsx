@@ -1,10 +1,16 @@
-import { Button, Grid, Box, Container, Typography } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import Button from "../components/Button";
+import Page from "../components/Page";
 
 const Home = () => {
+  const navigate = useNavigate();
+
   return (
-    <div>
-      <h1 className="text-3xl font-bold underline text-center">Welcome!</h1>
-      <button className="bg-red-400">Start Test</button>
+    <div className="page">
+      <div className="h-full flex flex-col justify-center items-center">
+        <h1 className="text-3xl font-bold">Welcome!</h1>
+        <Button text="Start Test" handleClick={() => navigate("/quiz-landing")} />
+      </div>
     </div>
   );
 };

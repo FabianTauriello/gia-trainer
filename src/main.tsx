@@ -4,11 +4,16 @@ import "./index.css";
 
 import Home from "./pages/Home";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import QuizLanding from "./pages/QuizLanding";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Home />,
+  },
+  {
+    path: "/quiz-landing",
+    element: <QuizLanding />,
   },
 ]);
 
