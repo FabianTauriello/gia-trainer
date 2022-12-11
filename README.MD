@@ -1,7 +1,7 @@
 v1 stack:
 
 - React
-- Material UI
+- Tailwind
 - Express js
 - Redux / Redux Toolkit
 

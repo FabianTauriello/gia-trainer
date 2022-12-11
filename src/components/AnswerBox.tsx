@@ -1,7 +1,3 @@
-// type AnswerBoxProps = () => {
-
-// }
-
 const AnswerBox = ({}: {}) => {
   return <div></div>;
 };
