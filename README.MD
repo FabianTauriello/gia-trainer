@@ -10,7 +10,7 @@ v2 stack (gia-trainer):
 - React
 - Tailwind
 - Next JS
-- Reacy Query
+- React Query
 
 Quiz Sections:
 

@@ -13,3 +13,5 @@ const QuizSection = () => {
 };
 
 export default QuizSection;
+
+// when consuming data just add isSelected to the choice objects

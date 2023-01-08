@@ -1,0 +1,94 @@
+[
+  {
+    "section": "Reasoning",
+    "sectionNumber": 1,
+    "questions": [
+      {
+        "prompt": "Rebecca is louder than Kate",
+        "questionText": "Who is less loud?",
+        "choices": [
+          {
+            "text": "Rebecca",
+            "isCorrect": false
+          },
+          {
+            "text": "Kate",
+            "isCorrect": true
+          }
+        ]
+      },
+      {
+        "prompt": "Tracy has more money than Stephen",
+        "questionText": "Who is poorer?",
+        "choices": [
+          {
+            "text": "Tracy",
+            "isCorrect": false
+          },
+          {
+            "text": "Stephen",
+            "isCorrect": true
+          }
+        ]
+      },
+      {
+        "prompt": "Stewart is stronger than Joe",
+        "questionText": "Who is stronger?",
+        "choices": [
+          {
+            "text": "Stewart",
+            "isCorrect": true
+          },
+          {
+            "text": "Joe",
+            "isCorrect": false
+          }
+        ]
+      },
+      {
+        "prompt": "Joshua is not as flexible as Chris",
+        "questionText": "Who is less adaptable?",
+        "choices": [
+          {
+            "text": "Joshua",
+            "isCorrect": true
+          },
+          {
+            "text": "Chris",
+            "isCorrect": false
+          }
+        ]
+      },
+      {
+        "prompt": "Emma is not as talented as Tiffany",
+        "questionText": "Who is more unskilled?",
+        "choices": [
+          {
+            "text": "Emma",
+            "isCorrect": true
+          },
+          {
+            "text": "Tiffany",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "section": "Perceptual Speed",
+    "sectionNumber": 2
+  },
+  {
+    "section": "Number Speed and Accuracy",
+    "sectionNumber": 3
+  },
+  {
+    "section": "Word Meaning",
+    "sectionNumber": 4
+  },
+  {
+    "section": "Spatial Visualisation",
+    "sectionNumber": 5
+  }
+]
