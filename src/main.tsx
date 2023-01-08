@@ -4,7 +4,7 @@ import "./index.css";
 
 import Home from "./pages/Home";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import QuizLanding from "./pages/QuizLanding";
+import QuizSectionContainer from "./pages/QuizSectionContainer";
 
 const router = createBrowserRouter([
   {
@@ -12,8 +12,8 @@ const router = createBrowserRouter([
     element: <Home />,
   },
   {
-    path: "/quiz-landing",
-    element: <QuizLanding />,
+    path: "/:section",
+    element: <QuizSectionContainer />,
   },
 ]);
 

@@ -3,5 +3,18 @@
 @tailwind utilities;
 
 .page {
-  @apply h-screen bg-slate-900 text-slate-300;
+  @apply h-screen bg-space text-white;
+}
+
+.gutter-sm {
+  @apply my-2;
+}
+
+.gutter-lg {
+  @apply my-4;
+}
+
+p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
 }

@@ -1,6 +1,6 @@
 const Button: React.FC<{ text: string; handleClick: () => void }> = ({ text, handleClick }) => {
   return (
-    <button className="my-4 bg-slate-200 p-2 rounded text-slate-900" onClick={handleClick}>
+    <button className="bg-red p-3 rounded text-white hover:bg-opacity-80" onClick={handleClick}>
       {text}
     </button>
   );

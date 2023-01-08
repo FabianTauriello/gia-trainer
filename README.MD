@@ -1,11 +1,11 @@
-v1 stack:
+v1 stack (gia-practice):
 
 - React
 - Tailwind
 - Express js
 - Redux / Redux Toolkit
 
-v2 stack:
+v2 stack (gia-trainer):
 
 - React
 - Tailwind
