@@ -19,3 +19,5 @@ Quiz Sections:
 3. Number Speed and Accuracy
 4. Word Meaning
 5. Spatial Visualisation
+
+TODO rename pages folder to routes?

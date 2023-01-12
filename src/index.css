@@ -2,8 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
-.page {
-  @apply h-screen bg-space text-white;
+body {
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+}
+
+section {
+  border: solid 1px black;
+  background: red;
+}
+
+.intro-section {
+  padding-top: 100px;
+  padding-bottom: 7.75rem;
 }
 
 .gutter-sm {
@@ -12,9 +22,4 @@
 
 .gutter-lg {
   @apply my-4;
-}
-
-p {
-  margin-top: 0.5em;
-  margin-bottom: 0.5em;
 }
