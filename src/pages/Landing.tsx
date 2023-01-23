@@ -19,8 +19,8 @@ const Home = () => {
               GIA Practice is the perfect place to practice and compete against others in the GIA test. Hone your skills
               by competing against others or against by simply trying to improve your high score.
             </div>
-            <div>
-              <Btn1 text="Sign In" handleClick={() => {}} />
+            <div className="flex justify-center mt-6">
+              <Btn1 text="Sign In" handleClick={() => {}} customCss="mr-3" />
               <Btn1 text="Try Now" handleClick={() => {}} />
             </div>
           </section>
