@@ -23,3 +23,7 @@ section {
 .gutter-lg {
   @apply my-4;
 }
+
+.btn-icon {
+  margin-left: 8px;
+}

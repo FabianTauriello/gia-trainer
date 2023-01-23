@@ -10,6 +10,7 @@ module.exports = {
       opal: "#F15946",
       yellow: "#F9C22E",
       blue: "#53B3CB",
+      black: "#000000",
       white: "#FFFFFF",
     },
     extend: {},

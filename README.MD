@@ -4,6 +4,7 @@ v1 stack (gia-practice):
 - Tailwind
 - Express js
 - Redux / Redux Toolkit
+- Font Awesome for icons
 
 v2 stack (gia-trainer):
 

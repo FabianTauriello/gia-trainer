@@ -24,7 +24,7 @@ const Home = () => {
               <Btn1 text="Try Now" handleClick={() => {}} />
             </div>
           </section>
-          <section>{/* TODO description about the what the app is about/offers */}</section>
+          <section>{/* TODO description about the what the app is about/offers and maybe a bio about me */}</section>
         </main>
       </div>
     </>
