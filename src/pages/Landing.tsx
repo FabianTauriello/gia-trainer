@@ -1,31 +1,101 @@
 import { useNavigate } from "react-router-dom";
-import Btn1 from "../components/Btn1";
-import Button from "../components/Button";
 import Page from "../components/Page";
+import Btn1 from "../components/Btn1";
+import mySvg from "../assets/images/cv.svg";
 
 const Home = () => {
   const navigate = useNavigate();
 
   return (
     <>
-      <header>{/* TODO */}</header>
-      <div className="flex flex-col">
-        <main>
-          <section className="text-center intro-section text-white">
-            <h1 className="text-4xl font-extrabold mb-4 mr-4 ml-4">
-              Behold, your best chance to ace your next GIA test is right here.
-            </h1>
-            <div className="text-xl font-medium mr-2 ml-2">
-              GIA Practice is the perfect place to practice and compete against others in the GIA test. Hone your skills
-              by competing against others or against by simply trying to improve your high score.
-            </div>
-            <div className="flex justify-center mt-6">
-              <Btn1 text="Sign In" handleClick={() => {}} customCss="mr-3" />
-              <Btn1 text="Try Now" handleClick={() => {}} />
-            </div>
-          </section>
-          <section>{/* TODO description about the what the app is about/offers and maybe a bio about me */}</section>
-        </main>
+      <header style={{}}>{/* TODO */}</header>
+      <div className="wrapper">
+        <div style={{ border: "solid 1px black" }} className="bg">
+          <picture>
+            <img
+              style={{ backgroundImage: `url(${mySvg})` }}
+              width={2560}
+              height={2197}
+              src="/assets/images/bg-home-desktop"
+              alt="some alt text"
+            />
+          </picture>
+        </div>
+        <div className="flex flex-col">
+          <main>
+            <section className="text-center intro-section text-white">
+              <h1 className="text-4xl font-extrabold mb-4 mr-8 ml-8">
+                Behold, your best chance to ace your next GIA test is right here.
+              </h1>
+              <div className="text-xl font-medium mr-8 ml-8">
+                GIA Practice is the perfect place to practice and compete against others in the GIA test. Hone your
+                skills by competing against others or against by simply trying to improve your high score.
+              </div>
+              <div className="flex justify-center mt-6">
+                <Btn1 text="Sign In" handleClick={() => {}} customCss="mr-6 bg-green text-white" />
+                <Btn1 text="Try Now" handleClick={() => {}} customCss="bg-white text-black" />
+              </div>
+            </section>
+            <section>{/* TODO description about the what the app is about/offers and maybe a bio about me */}</section>
+          </main>
+        </div>
+        {/* TODO REMOVE */}
+        <div className="flex flex-col bg-white text-black" style={{}}>
+          <main>
+            <section style={{}} className="text-center intro-section text-white">
+              <h1 className="text-4xl font-extrabold mb-4 mr-4 ml-4">
+                Behold, your best chance to ace your next GIA test is right here.
+              </h1>
+              <div className="text-xl font-medium mr-2 ml-2">
+                GIA Practice is the perfect place to practice and compete against others in the GIA test. Hone your
+                skills by competing against others or against by simply trying to improve your high score.
+              </div>
+              <div className="flex justify-center mt-6">
+                <Btn1 text="Sign In" handleClick={() => {}} customCss="mr-3" />
+                <Btn1 text="Try Now" handleClick={() => {}} />
+              </div>
+            </section>
+            <section>{/* TODO description about the what the app is about/offers and maybe a bio about me */}</section>
+          </main>
+        </div>
+        {/* TODO REMOVE */}
+        <div className="flex flex-col">
+          <main>
+            <section className="text-center intro-section text-white">
+              <h1 className="text-4xl font-extrabold mb-4 mr-4 ml-4">
+                Behold, your best chance to ace your next GIA test is right here.
+              </h1>
+              <div className="text-xl font-medium mr-2 ml-2">
+                GIA Practice is the perfect place to practice and compete against others in the GIA test. Hone your
+                skills by competing against others or against by simply trying to improve your high score.
+              </div>
+              <div className="flex justify-center mt-6">
+                <Btn1 text="Sign In" handleClick={() => {}} customCss="mr-3" />
+                <Btn1 text="Try Now" handleClick={() => {}} />
+              </div>
+            </section>
+            <section>{/* TODO description about the what the app is about/offers and maybe a bio about me */}</section>
+          </main>
+        </div>
+        {/* TODO REMOVE */}
+        <div className="flex flex-col">
+          <main>
+            <section className="text-center intro-section text-white">
+              <h1 className="text-4xl font-extrabold mb-4 mr-4 ml-4">
+                Behold, your best chance to ace your next GIA test is right here.
+              </h1>
+              <div className="text-xl font-medium mr-2 ml-2">
+                GIA Practice is the perfect place to practice and compete against others in the GIA test. Hone your
+                skills by competing against others or against by simply trying to improve your high score.
+              </div>
+              <div className="flex justify-center mt-6">
+                <Btn1 text="Sign In" handleClick={() => {}} customCss="mr-3" />
+                <Btn1 text="Try Now" handleClick={() => {}} />
+              </div>
+            </section>
+            <section>{/* TODO description about the what the app is about/offers and maybe a bio about me */}</section>
+          </main>
+        </div>
       </div>
     </>
   );
