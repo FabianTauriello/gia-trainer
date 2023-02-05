@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 // TODO rename after
 const Btn1: React.FC<{
   type?: "primary" | "secondary";
@@ -8,10 +10,10 @@ const Btn1: React.FC<{
 }> = ({ type, text, handleClick, iconClasses, customCss = "" }) => {
   return (
     <div className={`hover:scale-105 transition-transform p-4 rounded-lg cursor-pointer font-bold ${customCss}`}>
-      <a>
+      <Link to={"/quiz"}>
         <span style={{}}>{text}</span>
         {iconClasses && <i className={iconClasses} />}
-      </a>
+      </Link>
     </div>
   );
 };

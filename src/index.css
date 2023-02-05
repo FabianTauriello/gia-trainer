@@ -56,27 +56,6 @@ section {
   background-color: #fafafc;
 }
 
-.ig {
-  -webkit-text-size-adjust: 100%;
-  -webkit-tap-highlight-color: transparent;
-  --swiper-theme-color: #007aff;
-  --full-viewport: 664px;
-  text-align: left;
-  color: #000;
-  font-family: Inter, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
-  font-weight: 400;
-  -webkit-font-smoothing: antialiased;
-  line-height: 1.75;
-  font-size: 16px;
-  aspect-ratio: auto 2560 / 2197;
-  box-sizing: inherit;
-  vertical-align: middle;
-  border-style: none;
-  max-width: 100%;
-  height: auto;
-  width: 100%;
-}
-
 .wrapper {
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: transparent;

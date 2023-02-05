@@ -1,10 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-
 import Landing from "./pages/Landing";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import QuizSectionContainer from "./pages/QuizSectionContainer";
+import QuizContainer from "./pages/QuizContainer";
 
 const router = createBrowserRouter([
   {
@@ -12,8 +11,12 @@ const router = createBrowserRouter([
     element: <Landing />,
   },
   {
+    path: "/quiz",
+    element: <QuizContainer />,
+  },
+  {
     path: "/:section",
-    element: <QuizSectionContainer />,
+    element: <QuizContainer />,
   },
 ]);
 
