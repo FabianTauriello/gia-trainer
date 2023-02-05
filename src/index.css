@@ -18,18 +18,6 @@ section {
   padding-bottom: 7.75rem;
 }
 
-.gutter-sm {
-  @apply my-2;
-}
-
-.gutter-lg {
-  @apply my-4;
-}
-
-.btn-icon {
-  margin-left: 8px;
-}
-
 .bg {
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: transparent;

@@ -7,10 +7,14 @@ import data from "temp/data.json";
 const QuizContainer = () => {
   const navigate = useNavigate();
 
-  const firstSection = data.sections[0];
-  const [currentSection, setCurrentSection] = useState<Section>(firstSection);
+  const [sectionIndex, setSectionIndex] = useState(0);
 
-  return <SectionContainer section={currentSection} />;
+  return (
+    <SectionContainer
+      section={data.sections[sectionIndex]}
+      handleFinishSection={() => setSectionIndex(prev => prev + 1)}
+    />
+  );
 };
 
 export default QuizContainer;
