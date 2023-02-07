@@ -10,4 +10,17 @@ export type Section = {
   number: number;
   description: string;
   note: string;
+  questions: Question[];
+};
+
+export type Question = {
+  prompt: string;
+  text: string;
+  choices: Choice[];
+};
+
+// TODO when consuming data just add isSelected to the choice objects
+export type Choice = {
+  text: string;
+  isCorrect: boolean;
 };

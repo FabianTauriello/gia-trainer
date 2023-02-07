@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Section } from "utils/Types";
 import CustomButton from "./CustomButton";
+import QuestionContainer from "./QuestionContainer";
 import SectionLanding from "./SectionLanding";
 
 const SectionContainer = ({ section, handleFinishSection }: { section: Section; handleFinishSection: () => void }) => {
@@ -10,7 +11,7 @@ const SectionContainer = ({ section, handleFinishSection }: { section: Section; 
     return <SectionLanding section={section} handleStartSection={() => setSectionHasStarted(true)} />;
   }
 
-  return <div></div>;
+  return <QuestionContainer section={section}></QuestionContainer>;
 };
 
 export default SectionContainer;

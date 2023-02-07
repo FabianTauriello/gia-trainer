@@ -10,13 +10,13 @@ const QuizContainer = () => {
   const [sectionIndex, setSectionIndex] = useState(0);
 
   return (
-    <SectionContainer
-      section={data.sections[sectionIndex]}
-      handleFinishSection={() => setSectionIndex(prev => prev + 1)}
-    />
+    <div className="">
+      <SectionContainer
+        section={data.sections[sectionIndex]}
+        handleFinishSection={() => setSectionIndex(prev => prev + 1)}
+      />
+    </div>
   );
 };
 
 export default QuizContainer;
-
-// when consuming data just add isSelected to the choice objects
