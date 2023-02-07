@@ -27,5 +27,5 @@ NOTES:
 
 TODOs:
 
-- rename pages folder to routes?
-- get it working with section 1 first
+[ ] rename pages folder to routes?
+[ ] get it working with section 1 first
