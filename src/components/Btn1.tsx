@@ -9,11 +9,12 @@ const Btn1: React.FC<{
   customCss?: string;
 }> = ({ type, text, handleClick, iconClasses, customCss = "" }) => {
   return (
-    <Link to={"/quiz"}>
-      <div className={`hover:scale-105 transition-transform p-4 rounded-lg cursor-pointer font-bold ${customCss}`}>
-        <span style={{}}>{text}</span>
-        {iconClasses && <i className={iconClasses} />}
-      </div>
+    <Link
+      to={"/quiz"}
+      className={`hover:scale-105 transition-transform p-4 rounded-lg cursor-pointer font-bold ${customCss}`}
+    >
+      <span>{text}</span>
+      {iconClasses && <i className={iconClasses} />}
     </Link>
   );
 };

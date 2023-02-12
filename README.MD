@@ -28,4 +28,7 @@ NOTES:
 TODOs:
 
 - [ ] rename pages folder to routes?
+- [ ] change data.json to hold questions only, and just render description, title etc as regular html?
 - [ ] get it working with section 1 first
+- [ ] add a warning modal/dialog when exiting a quiz (e.g. pressing the back button)
+- [ ] add preferences/settings section for toggling things like timer visibility and theme
