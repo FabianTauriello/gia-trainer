@@ -15,7 +15,7 @@ export type Section = {
 
 export type Question = {
   prompt: string;
-  text: string;
+  question: string;
   choices: Choice[];
 };
 

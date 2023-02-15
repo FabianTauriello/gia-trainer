@@ -8,7 +8,7 @@
       "questions": [
         {
           "prompt": "Rebecca is louder than Kate",
-          "text": "Who is less loud?",
+          "question": "Who is less loud?",
           "choices": [
             {
               "text": "Rebecca",
@@ -22,7 +22,7 @@
         },
         {
           "prompt": "Tracy has more money than Stephen",
-          "text": "Who is poorer?",
+          "question": "Who is poorer?",
           "choices": [
             {
               "text": "Tracy",
@@ -36,7 +36,7 @@
         },
         {
           "prompt": "Stewart is stronger than Joe",
-          "text": "Who is stronger?",
+          "question": "Who is stronger?",
           "choices": [
             {
               "text": "Stewart",
@@ -50,7 +50,7 @@
         },
         {
           "prompt": "Joshua is not as flexible as Chris",
-          "text": "Who is less adaptable?",
+          "question": "Who is less adaptable?",
           "choices": [
             {
               "text": "Joshua",
@@ -64,7 +64,7 @@
         },
         {
           "prompt": "Emma is not as talented as Tiffany",
-          "text": "Who is more unskilled?",
+          "question": "Who is more unskilled?",
           "choices": [
             {
               "text": "Emma",
