@@ -2,22 +2,33 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import Landing from "./pages/Landing";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from "react-router-dom";
 import QuizContainer from "./pages/QuizContainer";
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Landing />,
-  },
-  {
-    path: "/quiz",
-    element: <QuizContainer />,
-  },
-  {
-    path: "/:section",
-    element: <QuizContainer />,
-  },
-]);
+// object syntax to define routes
+// const router = createBrowserRouter([
+//   {
+//     path: "/",
+//     element: <Landing />,
+//   },
+//   {
+//     path: "/quiz",
+//     element: <QuizContainer />,
+//   },
+//   {
+//     path: "/:section",
+//     element: <QuizContainer />,
+//   },
+// ]);
+
+// JSX syntax to define routes
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <>
+      <Route path="/" element={<Landing />} />
+      <Route path="/quiz" element={<QuizContainer />} />
+    </>
+  )
+);
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(<RouterProvider router={router} />);
