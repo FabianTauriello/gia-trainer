@@ -20,8 +20,6 @@ const Timer = ({
   }, []);
 
   useEffect(() => {
-    console.log("seconds: ", seconds);
-
     if (seconds === 0) {
       clearInterval(intervalId);
       onCountdownComplete();
@@ -29,7 +27,7 @@ const Timer = ({
   }, [seconds]);
 
   return (
-    <div>
+    <div className="border">
       {minutes}:{seconds}
     </div>
   );

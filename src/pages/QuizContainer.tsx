@@ -1,22 +1,65 @@
-import SectionContainer from "components/SectionContainer";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Section } from "utils/Types";
 import data from "temp/data.json";
+import SectionIntroStatementType from "components/SectionIntroStatementType";
+import SectionImageType from "components/SectionImageType";
+import SectionChoicesOnlyType from "components/SectionChoicesOnlyType";
+import SectionLanding from "components/SectionLanding";
 
 const QuizContainer = () => {
   const navigate = useNavigate();
 
   const [sectionIndex, setSectionIndex] = useState(0);
+  const [sectionHasStarted, setSectionHasStarted] = useState(false);
 
+  const currentSection = data.sections[sectionIndex];
+
+  if (!sectionHasStarted) {
+    return <SectionLanding section={currentSection} handleStartSection={() => setSectionHasStarted(true)} />;
+  }
+
+  function handleFinishSection() {
+    setSectionHasStarted(false);
+
+    // don't increment index counter past number of sections
+    if (sectionIndex !== data.sections.length - 1) {
+      setSectionIndex(prev => prev + 1);
+    } else {
+      // TODO finished quiz
+      console.log("finished quiz");
+    }
+  }
+
+  //  Render different section types based on section number
   return (
-    <div className="">
-      <SectionContainer
-        section={data.sections[sectionIndex]}
-        handleFinishSection={() => setSectionIndex(prev => prev + 1)}
-      />
-    </div>
+    <>
+      <div>{sectionHasStarted.toString()}</div>
+      <div>{currentSection.title}</div>
+      {currentSection.number === 1 && (
+        <SectionIntroStatementType section={currentSection} handleFinishSection={handleFinishSection} />
+      )}
+      {currentSection.number === 2 ||
+        (currentSection.number === 5 && (
+          <SectionImageType section={currentSection} handleFinishSection={handleFinishSection} />
+        ))}
+      {currentSection.number === 3 ||
+        (currentSection.number === 4 && (
+          <SectionChoicesOnlyType section={currentSection} handleFinishSection={handleFinishSection} />
+        ))}
+    </>
   );
 };
 
 export default QuizContainer;
+
+// section has an array of questions
+// each question has:
+// - the question text
+// - the question prompt
+// - an array of choices
+
+// different types of sections:
+// - statement, then REPLACED by a question and multiple choices (section 1)
+// - picture and multiple choices (sections 2 and 5)
+// - choices only (after slight delay) (sections 3 and 4)

@@ -14,10 +14,27 @@ export type Section = {
 };
 
 export type Question = {
-  prompt: string;
-  question: string;
+  img?: string;
+  statement?: string;
+  question?: string;
   choices: Choice[];
 };
+
+// OR use different question types...
+// export type Q1 = {
+//   statement: string;
+//   question: string;
+//   choices: Choice[];
+// };
+
+// export type Q2 = {
+//   img: string;
+//   choices: Choice[];
+// };
+
+// export type Q3 = {
+//   choices: Choice[];
+// };
 
 // TODO when consuming data just add isSelected to the choice objects
 export type Choice = {

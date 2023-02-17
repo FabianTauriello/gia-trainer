@@ -32,3 +32,5 @@ TODOs:
 - [ ] get it working with section 1 first
 - [ ] add a warning modal/dialog when exiting a quiz (e.g. pressing the back button)
 - [ ] add preferences/settings section for toggling things like timer visibility and theme
+- [ ] add context around quiz component to minimise prop drilling and establish contextual quiz state or MAKE IT MORE COMPOSABLE!?
+- [ ] create a custom hook for incrementing question index?
