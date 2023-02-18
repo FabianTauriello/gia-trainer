@@ -17,6 +17,9 @@ module.exports = {
       green: "#00C6B7",
       cream: "#FFF7D6",
     },
+    fontFamily: {
+      inter: ["Inter"],
+    },
     extend: {},
   },
   plugins: [],

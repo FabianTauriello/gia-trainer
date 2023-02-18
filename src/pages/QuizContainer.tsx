@@ -42,7 +42,7 @@ function QuizContainer() {
       case 3:
         return <SectionChoicesOnlyType section={currentSection} handleFinishSection={handleFinishSection} />;
       default:
-        throw new Error(`Section index ${sectionIndex} should not be used.`);
+        throw new Error(`There is no section container for section index ${sectionIndex}.`);
     }
   }
 

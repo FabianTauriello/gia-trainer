@@ -2,8 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: "Inter", Arial, Helvetica, sans-serif;
+@layer base {
+  html {
+    font-family: "Inter", Proxima Nova, system-ui, sans-serif;
+    /* font-family: "Zeyada", Proxima Nova, system-ui, sans-serif; */
+  }
 }
 
 section {
@@ -25,7 +28,6 @@ section {
   --full-viewport: 664px;
   text-align: left;
   color: #000;
-  font-family: Inter, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
   line-height: 1.75;
@@ -51,7 +53,7 @@ section {
   --full-viewport: 664px;
   text-align: left;
   color: #000;
-  font-family: Inter, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  /* font-family: Inter, "Helvetica Neue", Arial, "Noto Sans", sans-serif; */
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
   line-height: 1.75;
