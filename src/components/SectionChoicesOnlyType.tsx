@@ -1,13 +1,13 @@
+import { Section } from "domain/Types";
 import { useState } from "react";
-import { Q1, Section } from "utils/Types";
 
-const SectionChoicesOnlyType = ({
+function SectionChoicesOnlyType({
   section,
   handleFinishSection,
 }: {
   section: Section;
   handleFinishSection: () => void;
-}) => {
+}) {
   const [questionIndex, setQuestionIndex] = useState(0);
 
   const currentQuestion = section.questions[questionIndex];
@@ -31,6 +31,6 @@ const SectionChoicesOnlyType = ({
       </div>
     </div>
   );
-};
+}
 
 export default SectionChoicesOnlyType;

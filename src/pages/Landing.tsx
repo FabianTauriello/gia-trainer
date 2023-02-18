@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import Btn1 from "components/Btn1";
 import mySvg from "assets/svgs/cv.svg";
 
-const Home = () => {
+function Home() {
   const navigate = useNavigate();
 
   return (
@@ -49,7 +49,7 @@ const Home = () => {
       </div>
     </>
   );
-};
+}
 
 export default Home;
 

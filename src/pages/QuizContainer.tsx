@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Section } from "utils/Types";
 import data from "temp/data.json";
 import SectionIntroStatementType from "components/SectionIntroStatementType";
 import SectionImageType from "components/SectionImageType";
 import SectionChoicesOnlyType from "components/SectionChoicesOnlyType";
 import SectionLanding from "components/SectionLanding";
 
-const QuizContainer = () => {
+function QuizContainer() {
   const navigate = useNavigate();
 
   const [sectionIndex, setSectionIndex] = useState(0);
@@ -49,7 +48,7 @@ const QuizContainer = () => {
         ))}
     </>
   );
-};
+}
 
 export default QuizContainer;
 

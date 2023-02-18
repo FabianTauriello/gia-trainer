@@ -1,7 +1,7 @@
-import { Section } from "utils/Types";
+import { Section } from "domain/Types";
 import CustomButton from "./CustomButton";
 
-const SectionLanding = ({ section, handleStartSection }: { section: Section; handleStartSection: () => void }) => {
+function SectionLanding({ section, handleStartSection }: { section: Section; handleStartSection: () => void }) {
   return (
     <div>
       <div className="py-8 px-8 bg-green">
@@ -16,6 +16,6 @@ const SectionLanding = ({ section, handleStartSection }: { section: Section; han
       <CustomButton text="Start Section" handleClick={handleStartSection} customCss="ml-8" />
     </div>
   );
-};
+}
 
 export default SectionLanding;

@@ -1,13 +1,13 @@
+import { Section } from "domain/Types";
 import { useState } from "react";
-import { Question, Section } from "utils/Types";
 
-const SectionIntroStatementType = ({
+function SectionIntroStatementType({
   section,
   handleFinishSection,
 }: {
   section: Section;
   handleFinishSection: () => void;
-}) => {
+}) {
   const [questionIndex, setQuestionIndex] = useState(0);
   const [showChoices, setShowChoices] = useState(false); // Toggle visibility of the answer choices
 
@@ -42,6 +42,6 @@ const SectionIntroStatementType = ({
       )}
     </div>
   );
-};
+}
 
 export default SectionIntroStatementType;

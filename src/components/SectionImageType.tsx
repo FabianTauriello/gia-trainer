@@ -1,7 +1,7 @@
+import { Section } from "domain/Types";
 import { useState } from "react";
-import { Section } from "utils/Types";
 
-const SectionImageType = ({ section, handleFinishSection }: { section: Section; handleFinishSection: () => void }) => {
+function SectionImageType({ section, handleFinishSection }: { section: Section; handleFinishSection: () => void }) {
   const [questionIndex, setQuestionIndex] = useState(0);
 
   const currentQuestion = section.questions[questionIndex];
@@ -26,6 +26,6 @@ const SectionImageType = ({ section, handleFinishSection }: { section: Section; 
       </div>
     </div>
   );
-};
+}
 
 export default SectionImageType;

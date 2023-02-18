@@ -1,13 +1,19 @@
 import { Link } from "react-router-dom";
 
 // TODO rename after
-const Btn1: React.FC<{
+function Btn1({
+  type,
+  text,
+  handleClick,
+  iconClasses,
+  customCss = "",
+}: {
   type?: "primary" | "secondary";
   text: string;
   handleClick: () => void;
   iconClasses?: string;
   customCss?: string;
-}> = ({ type, text, handleClick, iconClasses, customCss = "" }) => {
+}) {
   return (
     <Link
       to={"/quiz"}
@@ -17,6 +23,6 @@ const Btn1: React.FC<{
       {iconClasses && <i className={iconClasses} />}
     </Link>
   );
-};
+}
 
 export default Btn1;

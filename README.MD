@@ -34,3 +34,5 @@ TODOs:
 - [ ] add preferences/settings section for toggling things like timer visibility and theme
 - [ ] add context around quiz component to minimise prop drilling and establish contextual quiz state or MAKE IT MORE COMPOSABLE!?
 - [ ] create a custom hook for incrementing question index?
+- [ ] separate sections into completely different components so that I can just use static text for the description/intro to each section
+- [ ] don't forget about generics!
