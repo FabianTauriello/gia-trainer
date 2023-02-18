@@ -25,29 +25,28 @@ function QuizContainer() {
     if (sectionIndex !== data.sections.length - 1) {
       setSectionIndex(prev => prev + 1);
     } else {
-      // TODO finished quiz
+      // TODO finished quiz, show results page?
       console.log("finished quiz");
     }
   }
 
-  //  Render different section types based on section number
-  return (
-    <>
-      <div>{sectionHasStarted.toString()}</div>
-      <div>{currentSection.title}</div>
-      {currentSection.number === 1 && (
-        <SectionIntroStatementType section={currentSection} handleFinishSection={handleFinishSection} />
-      )}
-      {currentSection.number === 2 ||
-        (currentSection.number === 5 && (
-          <SectionImageType section={currentSection} handleFinishSection={handleFinishSection} />
-        ))}
-      {currentSection.number === 3 ||
-        (currentSection.number === 4 && (
-          <SectionChoicesOnlyType section={currentSection} handleFinishSection={handleFinishSection} />
-        ))}
-    </>
-  );
+  // Render different section types based on section number
+  function renderSection() {
+    switch (sectionIndex) {
+      case 0:
+        return <SectionIntroStatementType section={currentSection} handleFinishSection={handleFinishSection} />;
+      case 1:
+      case 4:
+        return <SectionImageType section={currentSection} handleFinishSection={handleFinishSection} />;
+      case 2:
+      case 3:
+        return <SectionChoicesOnlyType section={currentSection} handleFinishSection={handleFinishSection} />;
+      default:
+        throw new Error(`Section index ${sectionIndex} should not be used.`);
+    }
+  }
+
+  return renderSection();
 }
 
 export default QuizContainer;
