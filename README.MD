@@ -37,3 +37,5 @@ TODOs:
 - [ ] separate sections into completely different components so that I can just use static text for the description/intro to each section
 - [ ] don't forget about generics!
 - [ ] make sure elements are semantic
+- [ ] make sure there aren't any duplicates in the questions
+- [x] consider adding correctChoiceIndex to a question object to cut down on data (isCorrect will not be needed).

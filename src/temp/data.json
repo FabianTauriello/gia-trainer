@@ -9,86 +9,32 @@
         {
           "statement": "Rebecca is louder than Kate",
           "question": "Who is less loud?",
-          "choices": [
-            {
-              "text": "Rebecca",
-              "isCorrect": false
-            },
-            {
-              "text": "Kate",
-              "isCorrect": true
-            }
-          ]
+          "choices": ["Rebecca", "Kate"],
+          "correctChoiceIndex": 1
         },
         {
           "statement": "Tracy has more money than Stephen",
           "question": "Who is poorer?",
-          "choices": [
-            {
-              "text": "Tracy",
-              "isCorrect": false
-            },
-            {
-              "text": "Stephen",
-              "isCorrect": true
-            }
-          ]
+          "choices": ["Tracy", "Stephen"],
+          "correctChoiceIndex": 1
         },
         {
           "statement": "Stewart is stronger than Joe",
           "question": "Who is stronger?",
-          "choices": [
-            {
-              "text": "Stewart",
-              "isCorrect": true
-            },
-            {
-              "text": "Joe",
-              "isCorrect": false
-            }
-          ]
+          "choices": ["Stewart", "Joe"],
+          "correctChoiceIndex": 0
         },
         {
           "statement": "Joshua is not as flexible as Chris",
           "question": "Who is less adaptable?",
-          "choices": [
-            {
-              "text": "Joshua",
-              "isCorrect": true
-            },
-            {
-              "text": "Chris",
-              "isCorrect": false
-            }
-          ]
+          "choices": ["Joshua", "Chris"],
+          "correctChoiceIndex": 0
         },
         {
           "statement": "Bob is not as happy as Paul",
           "question": "Who is sadder?",
-          "choices": [
-            {
-              "text": "Bob",
-              "isCorrect": true
-            },
-            {
-              "text": "Paul",
-              "isCorrect": false
-            }
-          ]
-        },
-        {
-          "statement": "Rebecca is louder than Kate",
-          "question": "Who is less loud?",
-          "choices": [
-            {
-              "text": "Rebecca",
-              "isCorrect": false
-            },
-            {
-              "text": "Kate",
-              "isCorrect": true
-            }
-          ]
+          "choices": ["Bob", "Paul"],
+          "correctChoiceIndex": 0
         }
       ]
     },
@@ -105,28 +51,8 @@
             ["m", "R"],
             ["h", "H"]
           ],
-          "choices": [
-            {
-              "text": "0",
-              "isCorrect": false
-            },
-            {
-              "text": "1",
-              "isCorrect": false
-            },
-            {
-              "text": "2",
-              "isCorrect": false
-            },
-            {
-              "text": "3",
-              "isCorrect": true
-            },
-            {
-              "text": "4",
-              "isCorrect": false
-            }
-          ]
+          "choices": ["0", "1", "2", "3", "4"],
+          "correctChoiceIndex": 3
         }
       ]
     },
@@ -137,12 +63,20 @@
       "number": 3,
       "questions": [
         {
-          "choices": [
-            {
-              "text": "choice 1",
-              "isCorrect": false
-            }
-          ]
+          "choices": ["4", "2", "8"],
+          "correctChoiceIndex": 2
+        },
+        {
+          "choices": ["12", "3", "5"],
+          "correctChoiceIndex": 0
+        },
+        {
+          "choices": ["10", "7", "5"],
+          "correctChoiceIndex": 0
+        },
+        {
+          "choices": ["11", "13", "16"],
+          "correctChoiceIndex": 2
         }
       ]
     },
@@ -153,12 +87,16 @@
       "number": 4,
       "questions": [
         {
-          "choices": [
-            {
-              "text": "choice 1",
-              "isCorrect": false
-            }
-          ]
+          "choices": ["halt", "cold", "stop"],
+          "correctChoiceIndex": 1
+        },
+        {
+          "choices": ["up", "down", "street"],
+          "correctChoiceIndex": 2
+        },
+        {
+          "choices": ["below", "under", "letter"],
+          "correctChoiceIndex": 2
         }
       ]
     },
@@ -195,20 +133,8 @@
               }
             ]
           ],
-          "choices": [
-            {
-              "text": "0",
-              "isCorrect": false
-            },
-            {
-              "text": "1",
-              "isCorrect": true
-            },
-            {
-              "text": "2",
-              "isCorrect": false
-            }
-          ]
+          "choices": ["0", "1", "2"],
+          "correctChoiceIndex": 1
         }
       ]
     }

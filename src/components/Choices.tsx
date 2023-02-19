@@ -1,11 +1,9 @@
-import { Choice } from "domain/Types";
-
 function Choices({
   choices,
   handleAnswerClick,
   showChoices = true,
 }: {
-  choices: Choice[];
+  choices: string[];
   handleAnswerClick: () => void;
   showChoices?: boolean;
 }) {
@@ -18,7 +16,7 @@ function Choices({
           className="p-6 bg-green
          rounded-lg flex-1"
         >
-          <span className={`${showChoices ? "visible" : "invisible"}`}>{choice.text}</span>
+          <span className={`${showChoices ? "visible" : "invisible"}`}>{choice}</span>
         </button>
       ))}
     </div>

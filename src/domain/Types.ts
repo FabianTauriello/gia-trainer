@@ -12,7 +12,8 @@ export type Question = {
   letters?: Letter[][];
   statement?: string;
   question?: string;
-  choices: Choice[];
+  choices: string[];
+  correctChoiceIndex: number;
 };
 
 type Letter = {
@@ -36,9 +37,3 @@ type Letter = {
 // export type Q3 = {
 //   choices: Choice[];
 // };
-
-// TODO when consuming data just add isSelected to the choice objects
-export type Choice = {
-  text: string;
-  isCorrect: boolean;
-};
