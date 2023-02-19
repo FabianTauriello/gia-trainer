@@ -1,9 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import Landing from "./pages/Landing";
+import Landing from "./routes/Landing";
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from "react-router-dom";
-import QuizContainer from "./pages/QuizContainer";
+import QuizContainer from "./routes/QuizContainer";
 
 // object syntax to define routes
 // const router = createBrowserRouter([
