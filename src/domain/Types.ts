@@ -6,7 +6,7 @@ export type Section = {
   questions: Question[];
 };
 
-// TODO use generics here to support different sections?
+// TODO use generics here to support different sections or use more specific types?
 export type Question = {
   pairs?: string[][];
   letters?: Letter[][];

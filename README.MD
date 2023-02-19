@@ -36,3 +36,4 @@ TODOs:
 - [ ] create a custom hook for incrementing question index?
 - [ ] separate sections into completely different components so that I can just use static text for the description/intro to each section
 - [ ] don't forget about generics!
+- [ ] make sure elements are semantic

@@ -23,6 +23,16 @@ function SectionPerceptualSpeed({
 
   return (
     <div className="bg-primary h-screen flex flex-col justify-center align-middle">
+      <div className="flex justify-center mb-6 gap-5 text-center">
+        {currentQuestion.pairs?.map((pair, i) => {
+          return (
+            <div key={i} className="text-7xl text-cream">
+              <div className="mb-2">{pair[0]}</div>
+              <div className="mt-2">{pair[1]}</div>
+            </div>
+          );
+        })}
+      </div>
       <Choices choices={currentQuestion.choices} handleAnswerClick={handleAnswerClick} />
     </div>
   );
