@@ -39,11 +39,11 @@ function QuizContainer() {
         return <SectionReasoning section={currentSection} handleFinishSection={handleFinishSection} />;
       case 1:
         return <SectionPerceptualSpeed section={currentSection} handleFinishSection={handleFinishSection} />;
-      case 4:
-        return <SectionNumberSpeedAndAccuracy section={currentSection} handleFinishSection={handleFinishSection} />;
       case 2:
-        return <SectionWordMeaning section={currentSection} handleFinishSection={handleFinishSection} />;
+        return <SectionNumberSpeedAndAccuracy section={currentSection} handleFinishSection={handleFinishSection} />;
       case 3:
+        return <SectionWordMeaning section={currentSection} handleFinishSection={handleFinishSection} />;
+      case 4:
         return <SectionSpatialVisualisation section={currentSection} handleFinishSection={handleFinishSection} />;
       default:
         throw new Error(`There is no section container for section index ${sectionIndex}.`);
