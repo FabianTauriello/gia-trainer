@@ -1,4 +1,4 @@
-v1 stack (gia-practice):
+### v1 stack (gia-practice):
 
 - React
 - Tailwind
@@ -6,14 +6,14 @@ v1 stack (gia-practice):
 - Redux / Redux Toolkit
 - Font Awesome for icons
 
-v2 stack (gia-trainer):
+### v2 stack (gia-trainer):
 
 - React
 - Tailwind
 - Next JS
 - React Query
 
-Quiz Sections:
+### Quiz Sections:
 
 1. Reasoning
 2. Perceptual Speed
@@ -21,13 +21,13 @@ Quiz Sections:
 4. Word Meaning
 5. Spatial Visualisation
 
-NOTES:
+### Notes:
 
 - follow the 60-30-10 rule for using color palette. 60% of the view should be a dominant color, 30% should be the secondary color or texture and the last 10% should be an accent
 - don't forget about generics!
 - make sure elements are semantic
 
-TODOs:
+### TODOs:
 
 - [ ] rename pages folder to routes?
 - [ ] change data.json to hold questions only, and just render description, title etc as regular html?
