@@ -24,18 +24,17 @@ Quiz Sections:
 NOTES:
 
 - follow the 60-30-10 rule for using color palette. 60% of the view should be a dominant color, 30% should be the secondary color or texture and the last 10% should be an accent
+- don't forget about generics!
+- make sure elements are semantic
 
 TODOs:
 
 - [ ] rename pages folder to routes?
 - [ ] change data.json to hold questions only, and just render description, title etc as regular html?
-- [ ] get it working with section 1 first
+- [x] get it working with section 1 first
 - [ ] add a warning modal/dialog when exiting a quiz (e.g. pressing the back button)
 - [ ] add preferences/settings section for toggling things like timer visibility and theme
-- [ ] add context around quiz component to minimise prop drilling and establish contextual quiz state or MAKE IT MORE COMPOSABLE!?
 - [ ] create a custom hook for incrementing question index?
-- [ ] separate sections into completely different components so that I can just use static text for the description/intro to each section
-- [ ] don't forget about generics!
-- [ ] make sure elements are semantic
+- [x] separate sections into completely different components
 - [ ] make sure there aren't any duplicates in the questions
 - [x] consider adding correctChoiceIndex to a question object to cut down on data (isCorrect will not be needed).
