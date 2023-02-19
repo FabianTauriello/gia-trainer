@@ -112,7 +112,7 @@
               {
                 "char": "R",
                 "rot": 180,
-                "flip": true
+                "flip": false
               },
               {
                 "char": "R",
@@ -124,12 +124,12 @@
               {
                 "char": "R",
                 "rot": 90,
-                "flip": true
+                "flip": false
               },
               {
                 "char": "R",
-                "rot": 180,
-                "flip": true
+                "rot": -90,
+                "flip": false
               }
             ]
           ],
