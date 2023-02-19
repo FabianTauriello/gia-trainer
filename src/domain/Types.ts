@@ -6,11 +6,19 @@ export type Section = {
   questions: Question[];
 };
 
+// TODO use generics here to support different sections?
 export type Question = {
-  img?: string;
+  pairs?: string[][];
+  letters?: Letter[][];
   statement?: string;
   question?: string;
   choices: Choice[];
+};
+
+type Letter = {
+  char: string;
+  rot: number;
+  flip: boolean;
 };
 
 // OR use different question types...

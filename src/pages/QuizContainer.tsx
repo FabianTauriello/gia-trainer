@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import data from "temp/data.json";
-import SectionIntroStatementType from "components/SectionIntroStatementType";
-import SectionImageType from "components/SectionImageType";
-import SectionChoicesOnlyType from "components/SectionChoicesOnlyType";
+import SectionReasoning from "components/SectionReasoning";
+import SectionPerceptualSpeed from "components/SectionPerceptualSpeed";
 import SectionLanding from "components/SectionLanding";
+import SectionNumberSpeedAndAccuracy from "components/SectionNumberSpeedAndAccuracy";
+import SectionWordMeaning from "components/SectionWordMeaning";
+import SectionSpatialVisualisation from "components/SectionSpatialVisualisation";
 
 function QuizContainer() {
   const navigate = useNavigate();
@@ -34,13 +36,15 @@ function QuizContainer() {
   function renderSection() {
     switch (sectionIndex) {
       case 0:
-        return <SectionIntroStatementType section={currentSection} handleFinishSection={handleFinishSection} />;
+        return <SectionReasoning section={currentSection} handleFinishSection={handleFinishSection} />;
       case 1:
+        return <SectionPerceptualSpeed section={currentSection} handleFinishSection={handleFinishSection} />;
       case 4:
-        return <SectionImageType section={currentSection} handleFinishSection={handleFinishSection} />;
+        return <SectionNumberSpeedAndAccuracy section={currentSection} handleFinishSection={handleFinishSection} />;
       case 2:
+        return <SectionWordMeaning section={currentSection} handleFinishSection={handleFinishSection} />;
       case 3:
-        return <SectionChoicesOnlyType section={currentSection} handleFinishSection={handleFinishSection} />;
+        return <SectionSpatialVisualisation section={currentSection} handleFinishSection={handleFinishSection} />;
       default:
         throw new Error(`There is no section container for section index ${sectionIndex}.`);
     }

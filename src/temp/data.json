@@ -63,16 +63,30 @@
           ]
         },
         {
-          "statement": "Emma is not as talented as Tiffany",
-          "question": "Who is more unskilled?",
+          "statement": "Bob is not as happy as Paul",
+          "question": "Who is sadder?",
           "choices": [
             {
-              "text": "Emma",
+              "text": "Bob",
               "isCorrect": true
             },
             {
-              "text": "Tiffany",
+              "text": "Paul",
               "isCorrect": false
+            }
+          ]
+        },
+        {
+          "statement": "Rebecca is louder than Kate",
+          "question": "Who is less loud?",
+          "choices": [
+            {
+              "text": "Rebecca",
+              "isCorrect": false
+            },
+            {
+              "text": "Kate",
+              "isCorrect": true
             }
           ]
         }
@@ -85,10 +99,31 @@
       "number": 2,
       "questions": [
         {
-          "img": "",
+          "pairs": [
+            ["f", "F"],
+            ["d", "D"],
+            ["m", "R"],
+            ["h", "H"]
+          ],
           "choices": [
             {
-              "text": "choice 1",
+              "text": "0",
+              "isCorrect": false
+            },
+            {
+              "text": "1",
+              "isCorrect": false
+            },
+            {
+              "text": "2",
+              "isCorrect": false
+            },
+            {
+              "text": "3",
+              "isCorrect": true
+            },
+            {
+              "text": "4",
               "isCorrect": false
             }
           ]
@@ -134,10 +169,43 @@
       "number": 5,
       "questions": [
         {
-          "img": "",
+          "letters": [
+            [
+              {
+                "char": "R",
+                "rot": 180,
+                "flip": true
+              },
+              {
+                "char": "R",
+                "rot": -90,
+                "flip": true
+              }
+            ],
+            [
+              {
+                "char": "R",
+                "rot": 90,
+                "flip": true
+              },
+              {
+                "char": "R",
+                "rot": 180,
+                "flip": true
+              }
+            ]
+          ],
           "choices": [
             {
-              "text": "choice 1",
+              "text": "0",
+              "isCorrect": false
+            },
+            {
+              "text": "1",
+              "isCorrect": true
+            },
+            {
+              "text": "2",
               "isCorrect": false
             }
           ]

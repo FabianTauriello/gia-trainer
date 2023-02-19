@@ -1,7 +1,8 @@
 import { Section } from "domain/Types";
 import { useState } from "react";
+import Choices from "./Choices";
 
-function SectionChoicesOnlyType({
+function SectionSpatialVisualisation({
   section,
   handleFinishSection,
 }: {
@@ -21,16 +22,10 @@ function SectionChoicesOnlyType({
   }
 
   return (
-    <div className="bg-red h-screen border border-dotted">
-      <div>
-        {currentQuestion.choices.map((choice, i) => (
-          <button key={i} onClick={handleAnswerClick} className="p-6 border">
-            {choice.text}
-          </button>
-        ))}
-      </div>
+    <div className="bg-primary h-screen flex flex-col justify-center align-middle">
+      <Choices choices={currentQuestion.choices} handleAnswerClick={handleAnswerClick} />
     </div>
   );
 }
 
-export default SectionChoicesOnlyType;
+export default SectionSpatialVisualisation;
