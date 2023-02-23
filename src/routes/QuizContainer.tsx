@@ -32,7 +32,7 @@ function QuizContainer() {
     }
   }
 
-  // Render different section types based on section number
+  // Render different section types based on section index
   function renderSection() {
     switch (sectionIndex) {
       case 0:

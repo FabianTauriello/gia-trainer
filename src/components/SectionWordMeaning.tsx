@@ -1,6 +1,7 @@
 import { Section } from "domain/Types";
 import { useState } from "react";
 import Choices from "./Choices";
+import SectionContainer from "./SectionContainer";
 
 function SectionWordMeaning({ section, handleFinishSection }: { section: Section; handleFinishSection: () => void }) {
   const [questionIndex, setQuestionIndex] = useState(0);
@@ -16,9 +17,9 @@ function SectionWordMeaning({ section, handleFinishSection }: { section: Section
   }
 
   return (
-    <div className="bg-primary h-screen flex flex-col justify-center align-middle">
+    <SectionContainer>
       <Choices choices={currentQuestion.choices} handleAnswerClick={handleAnswerClick} />
-    </div>
+    </SectionContainer>
   );
 }
 

@@ -1,6 +1,7 @@
 import { Section } from "domain/Types";
 import { useState } from "react";
 import Choices from "./Choices";
+import SectionContainer from "./SectionContainer";
 
 function SectionNumberSpeedAndAccuracy({
   section,
@@ -22,9 +23,9 @@ function SectionNumberSpeedAndAccuracy({
   }
 
   return (
-    <div className="bg-primary h-screen flex flex-col justify-center align-middle">
+    <SectionContainer>
       <Choices choices={currentQuestion.choices} handleAnswerClick={handleAnswerClick} />
-    </div>
+    </SectionContainer>
   );
 }
 

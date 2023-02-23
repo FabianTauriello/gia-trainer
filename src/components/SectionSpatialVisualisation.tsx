@@ -1,6 +1,7 @@
 import { Section } from "domain/Types";
 import { useState } from "react";
 import Choices from "./Choices";
+import SectionContainer from "./SectionContainer";
 
 function SectionSpatialVisualisation({
   section,
@@ -22,7 +23,7 @@ function SectionSpatialVisualisation({
   }
 
   return (
-    <div className="bg-primary h-screen flex flex-col justify-center align-middle">
+    <SectionContainer>
       <div className="flex justify-center mb-6 gap-5 text-center">
         {currentQuestion.letters?.map((letter, i) => {
           const firstLetter = letter[0];
@@ -49,7 +50,7 @@ function SectionSpatialVisualisation({
         })}
       </div>
       <Choices choices={currentQuestion.choices} handleAnswerClick={handleAnswerClick} />
-    </div>
+    </SectionContainer>
   );
 }
 

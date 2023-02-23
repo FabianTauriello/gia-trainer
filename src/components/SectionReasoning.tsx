@@ -1,6 +1,7 @@
 import { Section } from "domain/Types";
 import { useState } from "react";
 import Choices from "./Choices";
+import SectionContainer from "./SectionContainer";
 
 function SectionIntroStatementType({
   section,
@@ -30,15 +31,12 @@ function SectionIntroStatementType({
   }
 
   return (
-    <div
-      className="bg-primary h-screen flex flex-col justify-center align-middle"
-      onClick={handleSectionContainerClick}
-    >
+    <SectionContainer onClick={handleSectionContainerClick}>
       <div className="bg-cream text-black mx-14 p-10 rounded-lg text-lg text-center mb-6">
         {showChoices ? currentQuestion.question : currentQuestion.statement}
       </div>
       {<Choices choices={currentQuestion.choices} handleAnswerClick={handleAnswerClick} showChoices={showChoices} />}
-    </div>
+    </SectionContainer>
   );
 }
 
