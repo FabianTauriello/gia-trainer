@@ -4,6 +4,7 @@ import "./index.css";
 import Landing from "./routes/Landing";
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from "react-router-dom";
 import QuizContainer from "./routes/QuizContainer";
+import QuizComplete from "routes/QuizComplete";
 
 // object syntax to define routes
 // const router = createBrowserRouter([
@@ -27,6 +28,7 @@ const router = createBrowserRouter(
     <>
       <Route path="/" element={<Landing />} />
       <Route path="/quiz" element={<QuizContainer />} />
+      <Route path="/quiz-complete" element={<QuizComplete />} />
     </>
   )
 );

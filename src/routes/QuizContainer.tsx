@@ -29,6 +29,7 @@ function QuizContainer() {
     } else {
       // TODO finished quiz, show results page?
       console.log("finished quiz");
+      navigate("/quiz-complete");
     }
   }
 
