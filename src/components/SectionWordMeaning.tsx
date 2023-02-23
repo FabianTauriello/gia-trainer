@@ -3,7 +3,13 @@ import { useState } from "react";
 import Choices from "./Choices";
 import SectionContainer from "./SectionContainer";
 
-function SectionWordMeaning({ section, handleFinishSection }: { section: Section; handleFinishSection: () => void }) {
+function SectionWordMeaning({
+  section,
+  handleFinishSection,
+}: {
+  section: Section;
+  handleFinishSection: (score: number) => void;
+}) {
   const [questionIndex, setQuestionIndex] = useState(0);
 
   const currentQuestion = section.questions[questionIndex];
@@ -12,7 +18,7 @@ function SectionWordMeaning({ section, handleFinishSection }: { section: Section
     if (questionIndex !== section.questions.length - 1) {
       setQuestionIndex(prev => prev + 1);
     } else {
-      handleFinishSection();
+      handleFinishSection(0);
     }
   }
 

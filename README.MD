@@ -11,6 +11,7 @@
 - React
 - Tailwind
 - Next JS
+- TRPC
 - React Query
 
 ### Quiz Sections:
@@ -37,4 +38,5 @@
 - [ ] create a custom hook for incrementing question index?
 - [x] separate sections into completely different components
 - [ ] make sure there aren't any duplicates in the questions
+- [ ] consolidate and decide on button types (fix Btn1, CustomButton etc).
 - [x] consider adding correctChoiceIndex to a question object to cut down on data (isCorrect will not be needed).

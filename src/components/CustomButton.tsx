@@ -1,6 +1,9 @@
 function CustomButton({ text, handleClick, customCss }: { text: string; handleClick: () => void; customCss?: string }) {
   return (
-    <button className={`p-4 rounded-lg cursor-pointer bg-primary text-white ${customCss}`} onClick={handleClick}>
+    <button
+      className={`p-4 rounded-lg cursor-pointer bg-primary text-white select-none ${customCss}`}
+      onClick={handleClick}
+    >
       {text}
     </button>
   );

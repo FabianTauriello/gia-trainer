@@ -8,7 +8,7 @@ function SectionSpatialVisualisation({
   handleFinishSection,
 }: {
   section: Section;
-  handleFinishSection: () => void;
+  handleFinishSection: (score: number) => void;
 }) {
   const [questionIndex, setQuestionIndex] = useState(0);
 
@@ -18,7 +18,7 @@ function SectionSpatialVisualisation({
     if (questionIndex !== section.questions.length - 1) {
       setQuestionIndex(prev => prev + 1);
     } else {
-      handleFinishSection();
+      handleFinishSection(0);
     }
   }
 

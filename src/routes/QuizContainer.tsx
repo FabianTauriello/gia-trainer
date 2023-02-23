@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import data from "temp/data.json";
 import SectionReasoning from "components/SectionReasoning";
@@ -12,24 +12,27 @@ function QuizContainer() {
   const navigate = useNavigate();
 
   const [sectionIndex, setSectionIndex] = useState(0);
-  const [sectionHasStarted, setSectionHasStarted] = useState(false);
+  const [showSectionLanding, setShowSectionLanding] = useState(true);
+
+  // Use useRef here because I don't need to re-render component as score is updated
+  const score = useRef(0);
 
   const currentSection = data.sections[sectionIndex];
 
-  if (!sectionHasStarted) {
-    return <SectionLanding section={currentSection} handleStartSection={() => setSectionHasStarted(true)} />;
+  if (showSectionLanding) {
+    return <SectionLanding section={currentSection} handleStartSection={() => setShowSectionLanding(false)} />;
   }
 
-  function handleFinishSection() {
-    setSectionHasStarted(false);
+  function handleFinishSection(sectionScore: number) {
+    score.current = score.current + 1;
+    setShowSectionLanding(true);
 
     // don't increment index counter past number of sections
     if (sectionIndex !== data.sections.length - 1) {
       setSectionIndex(prev => prev + 1);
     } else {
-      // TODO finished quiz, show results page?
       console.log("finished quiz");
-      navigate("/quiz-complete");
+      navigate(`/quiz-complete`);
     }
   }
 
@@ -37,15 +40,29 @@ function QuizContainer() {
   function renderSection() {
     switch (sectionIndex) {
       case 0:
-        return <SectionReasoning section={currentSection} handleFinishSection={handleFinishSection} />;
+        return <SectionReasoning section={currentSection} handleFinishSection={score => handleFinishSection(score)} />;
       case 1:
-        return <SectionPerceptualSpeed section={currentSection} handleFinishSection={handleFinishSection} />;
+        return (
+          <SectionPerceptualSpeed section={currentSection} handleFinishSection={score => handleFinishSection(score)} />
+        );
       case 2:
-        return <SectionNumberSpeedAndAccuracy section={currentSection} handleFinishSection={handleFinishSection} />;
+        return (
+          <SectionNumberSpeedAndAccuracy
+            section={currentSection}
+            handleFinishSection={score => handleFinishSection(score)}
+          />
+        );
       case 3:
-        return <SectionWordMeaning section={currentSection} handleFinishSection={handleFinishSection} />;
+        return (
+          <SectionWordMeaning section={currentSection} handleFinishSection={score => handleFinishSection(score)} />
+        );
       case 4:
-        return <SectionSpatialVisualisation section={currentSection} handleFinishSection={handleFinishSection} />;
+        return (
+          <SectionSpatialVisualisation
+            section={currentSection}
+            handleFinishSection={score => handleFinishSection(score)}
+          />
+        );
       default:
         throw new Error(`There is no section container for section index ${sectionIndex}.`);
     }

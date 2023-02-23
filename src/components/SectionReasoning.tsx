@@ -8,7 +8,7 @@ function SectionIntroStatementType({
   handleFinishSection,
 }: {
   section: Section;
-  handleFinishSection: () => void;
+  handleFinishSection: (score: number) => void;
 }) {
   const [questionIndex, setQuestionIndex] = useState(0);
   const [showChoices, setShowChoices] = useState(false); // Toggle visibility of the answer choices
@@ -20,7 +20,7 @@ function SectionIntroStatementType({
       setQuestionIndex(prev => prev + 1);
       setShowChoices(false);
     } else {
-      handleFinishSection();
+      handleFinishSection(0);
     }
   }
 

@@ -17,7 +17,7 @@ function Btn1({
   return (
     <Link
       to={"/quiz"}
-      className={`hover:scale-105 transition-transform p-4 rounded-lg cursor-pointer font-bold ${customCss}`}
+      className={`hover:scale-105 transition-transform p-4 rounded-lg cursor-pointer font-bold select-none ${customCss}`}
     >
       <span>{text}</span>
       {iconClasses && <i className={iconClasses} />}
