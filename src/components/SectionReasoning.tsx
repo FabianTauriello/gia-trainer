@@ -1,5 +1,6 @@
 import { Section } from "domain/Types";
-import { useState } from "react";
+import useSection from "hooks/useSection";
+import { useEffect, useState } from "react";
 import Choices from "./Choices";
 import SectionContainer from "./SectionContainer";
 
@@ -10,32 +11,27 @@ function SectionIntroStatementType({
   section: Section;
   handleFinishSection: (score: number) => void;
 }) {
-  const [questionIndex, setQuestionIndex] = useState(0);
-  const [showChoices, setShowChoices] = useState(false); // Toggle visibility of the answer choices
+  const [hideChoices, setHideChoices] = useState(true); // Toggle visibility of the answer choices
+  const [questionIndex, handleAnswerClick] = useSection(section.questions.length, handleFinishSection, () =>
+    setHideChoices(true)
+  );
 
   const currentQuestion = section.questions[questionIndex];
 
-  function handleAnswerClick() {
-    if (questionIndex !== section.questions.length - 1) {
-      setQuestionIndex(prev => prev + 1);
-      setShowChoices(false);
-    } else {
-      handleFinishSection(0);
-    }
-  }
-
-  function handleSectionContainerClick() {
-    if (!showChoices) {
-      setShowChoices(true);
+  function handleSectionContainerClick(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
+    e.stopPropagation();
+    console.log("section container clicked");
+    if (hideChoices) {
+      setHideChoices(false);
     }
   }
 
   return (
-    <SectionContainer onClick={handleSectionContainerClick}>
+    <SectionContainer onClickCapture={e => (hideChoices ? handleSectionContainerClick(e) : undefined)}>
       <div className="bg-cream text-black mx-14 p-10 rounded-lg text-lg text-center mb-6">
-        {showChoices ? currentQuestion.question : currentQuestion.statement}
+        {hideChoices ? currentQuestion.statement : currentQuestion.question}
       </div>
-      {<Choices choices={currentQuestion.choices} handleAnswerClick={handleAnswerClick} showChoices={showChoices} />}
+      {<Choices choices={currentQuestion.choices} handleAnswerClick={handleAnswerClick} hideChoices={hideChoices} />}
     </SectionContainer>
   );
 }

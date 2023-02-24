@@ -13,6 +13,7 @@
 - Next JS
 - TRPC
 - React Query
+- Testing library (e.g. Jest, Cypress)?
 
 ### Quiz Sections:
 

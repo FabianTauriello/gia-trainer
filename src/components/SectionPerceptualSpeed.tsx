@@ -1,4 +1,5 @@
 import { Section } from "domain/Types";
+import useSection from "hooks/useSection";
 import { useState } from "react";
 import Choices from "./Choices";
 import SectionContainer from "./SectionContainer";
@@ -10,17 +11,8 @@ function SectionPerceptualSpeed({
   section: Section;
   handleFinishSection: (score: number) => void;
 }) {
-  const [questionIndex, setQuestionIndex] = useState(0);
-
+  const [questionIndex, handleAnswerClick] = useSection(section.questions.length, handleFinishSection);
   const currentQuestion = section.questions[questionIndex];
-
-  function handleAnswerClick() {
-    if (questionIndex !== section.questions.length - 1) {
-      setQuestionIndex(prev => prev + 1);
-    } else {
-      handleFinishSection(0);
-    }
-  }
 
   return (
     <SectionContainer>
