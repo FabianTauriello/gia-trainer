@@ -11,12 +11,15 @@ function SectionNumberSpeedAndAccuracy({
   section: Section;
   handleFinishSection: (score: number) => void;
 }) {
-  const [questionIndex, handleAnswerClick] = useSection(section.questions.length, handleFinishSection);
-  const currentQuestion = section.questions[questionIndex];
+  const [currentQuestion, handleAnswerClick] = useSection(section.questions, handleFinishSection);
 
   return (
     <SectionContainer>
-      <Choices choices={currentQuestion.choices} handleAnswerClick={handleAnswerClick} />
+      <Choices
+        correctChoice={currentQuestion.correctChoiceIndex}
+        choices={currentQuestion.choices}
+        handleAnswerClick={handleAnswerClick}
+      />
     </SectionContainer>
   );
 }

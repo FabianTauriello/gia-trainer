@@ -1,6 +1,5 @@
 import { Section } from "domain/Types";
 import useSection from "hooks/useSection";
-import { useState } from "react";
 import Choices from "./Choices";
 import SectionContainer from "./SectionContainer";
 
@@ -11,12 +10,15 @@ function SectionWordMeaning({
   section: Section;
   handleFinishSection: (score: number) => void;
 }) {
-  const [questionIndex, handleAnswerClick] = useSection(section.questions.length, handleFinishSection);
-  const currentQuestion = section.questions[questionIndex];
+  const [currentQuestion, handleAnswerClick] = useSection(section.questions, handleFinishSection);
 
   return (
     <SectionContainer>
-      <Choices choices={currentQuestion.choices} handleAnswerClick={handleAnswerClick} />
+      <Choices
+        correctChoice={currentQuestion.correctChoiceIndex}
+        choices={currentQuestion.choices}
+        handleAnswerClick={handleAnswerClick}
+      />
     </SectionContainer>
   );
 }

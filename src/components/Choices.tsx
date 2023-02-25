@@ -1,20 +1,24 @@
 function Choices({
+  // TODO for testing only, remove later!!!
+  correctChoice,
   choices,
   handleAnswerClick,
   hideChoices = false,
 }: {
+  correctChoice: number;
   choices: string[];
-  handleAnswerClick: () => void;
+  handleAnswerClick: (choiceIndexSelected: number) => void;
   hideChoices?: boolean;
 }) {
   return (
     <div className="flex justify-center gap-3 mx-20">
       {choices.map((choice, i) => (
-        // TODO might be better to include handleAnswerClick handler here
         <button
           key={i}
-          onClick={handleAnswerClick}
-          className={`p-6 bg-green rounded-lg flex-1 ${hideChoices ? "cursor-default" : "cursor-pointer"}`}
+          onClick={() => handleAnswerClick(i)}
+          className={`p-6 bg-green rounded-lg flex-1 ${hideChoices ? "cursor-default" : "cursor-pointer"} ${
+            correctChoice === i ? "border-4 border-white" : ""
+          }`}
         >
           <span className={`${hideChoices ? "invisible" : "visible"}`}>{choice}</span>
         </button>

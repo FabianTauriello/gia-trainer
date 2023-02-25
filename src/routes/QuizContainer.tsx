@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import data from "temp/data.json";
 import SectionReasoning from "components/SectionReasoning";
@@ -15,7 +15,7 @@ function QuizContainer() {
   const [showSectionLanding, setShowSectionLanding] = useState(true);
 
   // Use useRef here because I don't need to re-render component as score is updated
-  const score = useRef(0);
+  const quizScore = useRef(0);
 
   const currentSection = data.sections[sectionIndex];
 
@@ -24,11 +24,13 @@ function QuizContainer() {
   }
 
   function handleFinishSection(sectionScore: number) {
-    score.current = score.current + 1;
-    setShowSectionLanding(true);
+    console.log("section finished with score: ", sectionScore);
+
+    quizScore.current += sectionScore;
 
     // don't increment index counter past number of sections
     if (sectionIndex !== data.sections.length - 1) {
+      setShowSectionLanding(true);
       setSectionIndex(prev => prev + 1);
     } else {
       console.log("finished quiz");

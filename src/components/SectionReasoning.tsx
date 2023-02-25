@@ -12,11 +12,9 @@ function SectionIntroStatementType({
   handleFinishSection: (score: number) => void;
 }) {
   const [hideChoices, setHideChoices] = useState(true); // Toggle visibility of the answer choices
-  const [questionIndex, handleAnswerClick] = useSection(section.questions.length, handleFinishSection, () =>
+  const [currentQuestion, handleAnswerClick] = useSection(section.questions, handleFinishSection, () =>
     setHideChoices(true)
   );
-
-  const currentQuestion = section.questions[questionIndex];
 
   function handleSectionContainerClick(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
     e.stopPropagation();
@@ -31,7 +29,14 @@ function SectionIntroStatementType({
       <div className="bg-cream text-black mx-14 p-10 rounded-lg text-lg text-center mb-6">
         {hideChoices ? currentQuestion.statement : currentQuestion.question}
       </div>
-      {<Choices choices={currentQuestion.choices} handleAnswerClick={handleAnswerClick} hideChoices={hideChoices} />}
+      {
+        <Choices
+          correctChoice={currentQuestion.correctChoiceIndex}
+          choices={currentQuestion.choices}
+          handleAnswerClick={handleAnswerClick}
+          hideChoices={hideChoices}
+        />
+      }
     </SectionContainer>
   );
 }
