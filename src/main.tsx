@@ -6,13 +6,15 @@ import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } 
 import QuizContainer from "./routes/QuizContainer";
 import QuizComplete from "routes/QuizComplete";
 import { Provider } from "react-redux";
-import { store } from "domain/store";
+import { store } from "domain/Store";
+import Counter from "routes/Counter";
 
 // JSX syntax to define routes
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
       <Route path="/" element={<Landing />} />
+      <Route path="/counter" element={<Counter />} />
       <Route path="/quiz" element={<QuizContainer />} />
       <Route path="/quiz-complete" element={<QuizComplete />} />
     </>

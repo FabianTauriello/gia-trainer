@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Btn1 from "components/Btn1";
 import mySvg from "assets/svgs/cv.svg";
 
@@ -7,6 +7,10 @@ function Home() {
 
   return (
     <>
+      {/* remove later */}
+      <div style={{ position: "fixed", top: 5, right: 5, color: "white", backgroundColor: "red", zIndex: 100 }}>
+        <Link to={"/counter"}>Counter</Link>
+      </div>
       <header style={{}}>{/* TODO */}</header>
       <div className="wrapper">
         <div style={{ border: "solid 1px black" }} className="bg">
