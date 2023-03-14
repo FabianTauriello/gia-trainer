@@ -1,6 +1,6 @@
 import { Section } from "domain/Types";
-import useSection from "hooks/useSection";
 import { useState } from "react";
+import useSection from "hooks/useSection";
 import Choices from "./Choices";
 import SectionContainer from "./SectionContainer";
 
@@ -18,7 +18,6 @@ function SectionIntroStatementType({
 
   function handleSectionContainerClick(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
     e.stopPropagation();
-    console.log("section container clicked");
     if (hideChoices) {
       setHideChoices(false);
     }

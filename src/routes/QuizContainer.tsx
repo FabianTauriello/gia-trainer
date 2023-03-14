@@ -1,12 +1,13 @@
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import data from "temp/questions.json";
 import SectionReasoning from "components/SectionReasoning";
 import SectionPerceptualSpeed from "components/SectionPerceptualSpeed";
 import SectionLanding from "components/SectionLanding";
 import SectionNumberSpeedAndAccuracy from "components/SectionNumberSpeedAndAccuracy";
 import SectionWordMeaning from "components/SectionWordMeaning";
 import SectionSpatialVisualisation from "components/SectionSpatialVisualisation";
+import { useAppDispatch, useAppSelector } from "hooks/useAppSelector";
+import { calculateTotalScore, incrementSectionScore } from "domain/slices/quizAttemptSlice";
 
 function QuizContainer() {
   const navigate = useNavigate();
@@ -14,26 +15,21 @@ function QuizContainer() {
   const [sectionIndex, setSectionIndex] = useState(0);
   const [showSectionLanding, setShowSectionLanding] = useState(true);
 
-  // Use useRef here because I don't need to re-render component as score is updated
-  const quizScore = useRef(0);
+  const sections = useAppSelector(state => state.quizAttempt.sections);
+  const dispatch = useAppDispatch();
 
-  const currentSection = data.sections[sectionIndex];
-
-  if (showSectionLanding) {
-    return <SectionLanding section={currentSection} handleStartSection={() => setShowSectionLanding(false)} />;
-  }
+  const currentSection = sections[sectionIndex];
 
   function handleFinishSection(sectionScore: number) {
-    console.log("section finished with score: ", sectionScore);
-
-    quizScore.current += sectionScore;
+    dispatch(incrementSectionScore({ sectionIndex: sectionIndex, score: sectionScore }));
 
     // don't increment index counter past number of sections
-    if (sectionIndex !== data.sections.length - 1) {
+    if (sectionIndex !== sections.length - 1) {
       setShowSectionLanding(true);
       setSectionIndex(prev => prev + 1);
     } else {
-      console.log("finished quiz");
+      // finished quiz
+      dispatch(calculateTotalScore());
       navigate(`/quiz-complete`);
     }
   }
@@ -68,6 +64,10 @@ function QuizContainer() {
       default:
         throw new Error(`There is no section container for section index ${sectionIndex}.`);
     }
+  }
+
+  if (showSectionLanding) {
+    return <SectionLanding section={currentSection} handleStartSection={() => setShowSectionLanding(false)} />;
   }
 
   return renderSection();

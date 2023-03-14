@@ -34,6 +34,7 @@
 ### TODOs:
 
 - [x] rename pages folder to routes?
+- [ ] pull quiz data from server at beginning of quiz
 - [ ] change data.json to hold questions only, and just render description, title etc as regular html?
 - [x] get it working with section 1 first
 - [ ] add a warning modal/dialog when exiting a quiz (e.g. pressing the back button)

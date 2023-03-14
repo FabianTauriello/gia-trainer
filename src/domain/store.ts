@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import counterReducer from "domain/slices/counterSlice";
+import quizAttemptReducer from "domain/slices/quizAttemptSlice";
 
 export const store = configureStore({
   reducer: {
     counter: counterReducer,
+    quizAttempt: quizAttemptReducer,
   },
 });
 

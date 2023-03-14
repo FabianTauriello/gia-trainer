@@ -2,7 +2,6 @@ import { Question } from "domain/Types";
 import { useRef } from "react";
 import { useReducer, useState } from "react";
 
-// custom hook to increment question counter
 function useSection(
   questions: Question[],
   handleFinishSection: (score: number) => void,
@@ -13,7 +12,6 @@ function useSection(
   const sectionScore = useRef(0);
 
   function handleAnswerClick(choiceIndexSelected: number) {
-    console.log("answer clicked, choice ", choiceIndexSelected);
     if (currentQuestion.correctChoiceIndex === choiceIndexSelected) sectionScore.current += 1;
 
     if (questionIndex !== questions.length - 1) {
