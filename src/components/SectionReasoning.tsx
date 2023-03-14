@@ -1,6 +1,6 @@
 import { Section } from "domain/Types";
 import useSection from "hooks/useSection";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Choices from "./Choices";
 import SectionContainer from "./SectionContainer";
 

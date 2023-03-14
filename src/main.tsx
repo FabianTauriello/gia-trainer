@@ -5,22 +5,8 @@ import Landing from "./routes/Landing";
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from "react-router-dom";
 import QuizContainer from "./routes/QuizContainer";
 import QuizComplete from "routes/QuizComplete";
-
-// object syntax to define routes
-// const router = createBrowserRouter([
-//   {
-//     path: "/",
-//     element: <Landing />,
-//   },
-//   {
-//     path: "/quiz",
-//     element: <QuizContainer />,
-//   },
-//   {
-//     path: "/:section",
-//     element: <QuizContainer />,
-//   },
-// ]);
+import { Provider } from "react-redux";
+import { store } from "domain/store";
 
 // JSX syntax to define routes
 const router = createBrowserRouter(
@@ -33,4 +19,8 @@ const router = createBrowserRouter(
   )
 );
 
-ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(<RouterProvider router={router} />);
+ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
+  <Provider store={store}>
+    <RouterProvider router={router} />
+  </Provider>
+);

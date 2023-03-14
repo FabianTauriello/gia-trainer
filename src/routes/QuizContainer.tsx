@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import data from "temp/data.json";
+import data from "temp/questions.json";
 import SectionReasoning from "components/SectionReasoning";
 import SectionPerceptualSpeed from "components/SectionPerceptualSpeed";
 import SectionLanding from "components/SectionLanding";
