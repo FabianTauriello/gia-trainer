@@ -34,6 +34,9 @@
 ### TODOs:
 
 - [x] rename pages folder to routes?
+- [ ] add sign-in and user authentication
+- [ ] make use of the timer
+- [ ] complete the quiz complete pages
 - [ ] pull quiz data from server at beginning of quiz - use RTK Query
 - [x] change data.json to hold questions only, and just render description, title etc as regular html?
 - [x] get it working with section 1 first
