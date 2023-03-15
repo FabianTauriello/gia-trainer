@@ -1,8 +1,6 @@
 export type Section = {
   title: string;
   number: number;
-  description: string;
-  note: string;
   questions: Question[];
 };
 

@@ -36,25 +36,25 @@ function QuizContainer() {
 
   // Render different section types based on section index
   function renderSection() {
-    switch (sectionIndex) {
-      case 0:
-        return <SectionReasoning section={currentSection} handleFinishSection={score => handleFinishSection(score)} />;
+    switch (currentSection.number) {
       case 1:
+        return <SectionReasoning section={currentSection} handleFinishSection={score => handleFinishSection(score)} />;
+      case 2:
         return (
           <SectionPerceptualSpeed section={currentSection} handleFinishSection={score => handleFinishSection(score)} />
         );
-      case 2:
+      case 3:
         return (
           <SectionNumberSpeedAndAccuracy
             section={currentSection}
             handleFinishSection={score => handleFinishSection(score)}
           />
         );
-      case 3:
+      case 4:
         return (
           <SectionWordMeaning section={currentSection} handleFinishSection={score => handleFinishSection(score)} />
         );
-      case 4:
+      case 5:
         return (
           <SectionSpatialVisualisation
             section={currentSection}
@@ -62,7 +62,7 @@ function QuizContainer() {
           />
         );
       default:
-        throw new Error(`There is no section container for section index ${sectionIndex}.`);
+        throw new Error(`There is no section container for section ${currentSection.number}.`);
     }
   }
 
