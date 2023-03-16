@@ -1,4 +1,5 @@
 import { Section } from "domain/Types";
+import { Link } from "react-router-dom";
 import CustomButton from "./CustomButton";
 
 function SectionLanding({ section, handleStartSection }: { section: Section; handleStartSection: () => void }) {

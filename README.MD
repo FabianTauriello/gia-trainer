@@ -30,6 +30,7 @@
 - follow the 60-30-10 rule for using color palette. 60% of the view should be a dominant color, 30% should be the secondary color or texture and the last 10% should be an accent
 - don't forget about generics!
 - make sure elements are semantic
+- review for duplicate questions
 
 ### TODOs:
 
