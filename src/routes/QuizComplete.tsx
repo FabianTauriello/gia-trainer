@@ -1,9 +1,9 @@
 import { useAppSelector } from "hooks/useAppSelector";
 import { FaCheck } from "react-icons/fa";
-import { useParams } from "react-router-dom";
 
 function QuizComplete() {
   const quizAttempt = useAppSelector(state => state.quizAttempt);
+  let questionNumber = 0;
 
   return (
     <div>
@@ -12,15 +12,12 @@ function QuizComplete() {
         <div key={index}>
           <h1>{section.title}</h1>
           <h3>section score: {section.score}</h3>
-          {section.questions.map((question, i) => {
-            let previousQuestionsLength = 0;
-            quizAttempt.sections
-              .slice(0, index)
-              .forEach(section => (previousQuestionsLength += section.questions.length));
+          {section.questions.map((q, i) => {
+            questionNumber++;
             return (
               <div key={i} className="bg-cream w-8 border inline-flex flex-col items-center">
                 <FaCheck color="green" />
-                {i + 1 + previousQuestionsLength}
+                {questionNumber}
               </div>
             );
           })}
