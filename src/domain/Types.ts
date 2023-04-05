@@ -12,6 +12,7 @@ export type Question = {
   question?: string;
   choices: string[];
   correctChoiceIndex: number;
+  selectedChoiceIndex: number; // use this here and give each question a default value of -1?
 };
 
 type Letter = {

@@ -20,7 +20,7 @@ export const quizAttemptSlice = createSlice({
   initialState,
   reducers: {
     // called at beginning of quiz, intializing each section with a score of zero
-    setQuestions: (state, action: PayloadAction<Section[]>) => {
+    setSections: (state, action: PayloadAction<Section[]>) => {
       state.sections = action.payload.map(sec => ({ ...sec, score: 0 }));
     },
     // called at end of each section
@@ -34,7 +34,7 @@ export const quizAttemptSlice = createSlice({
   },
 });
 
-export const { setQuestions, incrementSectionScore, calculateTotalScore } = quizAttemptSlice.actions;
+export const { setSections, incrementSectionScore, calculateTotalScore } = quizAttemptSlice.actions;
 
 // Other code such as selectors can use the imported `RootState` type
 export const selectCount = (state: RootState) => state.counter.value;

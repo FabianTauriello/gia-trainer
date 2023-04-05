@@ -36,9 +36,10 @@
 
 - [x] rename pages folder to routes?
 - [ ] add sign-in and user authentication
+- [ ] determine how selected choices will be recorded for questions - selectedChoiceIndex prop in Question type?
 - [ ] make use of the timer
 - [ ] complete the quiz complete pages
-- [ ] pull quiz data from server at beginning of quiz - use RTK Query
+- [x] pull quiz data from server at beginning of quiz - use RTK Query
 - [x] change data.json to hold questions only, and just render description, title etc as regular html?
 - [x] get it working with section 1 first
 - [ ] add a warning modal/dialog when exiting a quiz (e.g. pressing the back button)
