@@ -1,7 +1,11 @@
 import { useAppSelector } from "hooks/useAppSelector";
 import { FaCheck } from "react-icons/fa";
+import { useParams } from "react-router-dom";
 
-function QuizComplete() {
+// This component must display quiz scores for users who are not logged in, and users HAVE logged in and just want to review their old quiz attempts
+function QuizReview() {
+  const params = useParams<{ id: string }>();
+
   const quizAttempt = useAppSelector(state => state.quizAttempt);
   let questionNumber = 0;
 
@@ -27,4 +31,4 @@ function QuizComplete() {
   );
 }
 
-export default QuizComplete;
+export default QuizReview;

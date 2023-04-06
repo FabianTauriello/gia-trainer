@@ -35,6 +35,8 @@
 ### TODOs:
 
 - [x] rename pages folder to routes?
+- [ ] add dashboard page for logged in users
+- [ ] add ability to review previous quiz attempts? (e.g. /quiz-review/id)
 - [ ] add sign-in and user authentication
 - [ ] determine how selected choices will be recorded for questions - selectedChoiceIndex prop in Question type?
 - [ ] make use of the timer
@@ -49,6 +51,6 @@
 - [ ] consolidate and decide on button types (fix Btn1, CustomButton etc).
 - [x] consider adding correctChoiceIndex to a question object to cut down on data (isCorrect will not be needed).
 
-Redux logic:
+The magic of Redux:
 
-![redux logic animation](https://d33wubrfki0l68.cloudfront.net/01cc198232551a7e180f4e9e327b5ab22d9d14e7/b33f4/assets/images/reduxdataflowdiagram-49fa8c3968371d9ef6f2a1486bd40a26.gif)
+![redux magic animation](https://d33wubrfki0l68.cloudfront.net/01cc198232551a7e180f4e9e327b5ab22d9d14e7/b33f4/assets/images/reduxdataflowdiagram-49fa8c3968371d9ef6f2a1486bd40a26.gif)

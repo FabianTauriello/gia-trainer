@@ -4,7 +4,7 @@ import "./index.css";
 import Landing from "./routes/Landing";
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from "react-router-dom";
 import QuizContainer from "./routes/QuizContainer";
-import QuizComplete from "routes/QuizComplete";
+import QuizReview from "routes/QuizReview";
 import { Provider } from "react-redux";
 import { store } from "domain/Store";
 import Counter from "routes/Counter";
@@ -16,7 +16,7 @@ const router = createBrowserRouter(
       <Route path="/" element={<Landing />} />
       <Route path="/counter" element={<Counter />} />
       <Route path="/quiz" element={<QuizContainer />} />
-      <Route path="/quiz-complete" element={<QuizComplete />} />
+      <Route path="/quiz/review/:id" element={<QuizReview />} />
     </>
   )
 );

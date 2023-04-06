@@ -1,6 +1,6 @@
 import { Section } from "domain/Types";
 import { useState } from "react";
-import { useAppDispatch, useAppSelector } from "hooks/useAppSelector";
+import { useAppDispatch } from "hooks/useAppSelector";
 import { useNavigate } from "react-router-dom";
 import { calculateTotalScore, incrementSectionScore } from "domain/slices/quizAttemptSlice";
 import SectionReasoning from "components/SectionReasoning";
@@ -29,7 +29,9 @@ const Quiz = ({ sections }: { sections: Section[] }) => {
     } else {
       // finished quiz
       dispatch(calculateTotalScore());
-      navigate(`/quiz-complete`);
+      // TODO check if logged in and pass attempt id if true
+      const loggedIn = false;
+      navigate(`/quiz/review/${loggedIn ? "someID" : "visitor-attempt"}`);
     }
   }
 

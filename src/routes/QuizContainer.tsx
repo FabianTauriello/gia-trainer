@@ -6,7 +6,6 @@ import { useGetQuizSectionsQuery, useGetTestDataQuery } from "domain/slices/apis
 import Quiz from "components/Quiz";
 
 function QuizContainer() {
-  const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
   const { data: sections, isLoading, isSuccess, isError, error } = useGetQuizSectionsQuery();
