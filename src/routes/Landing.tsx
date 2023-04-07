@@ -1,10 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "hooks/useAppSelector";
-import { setQuestions } from "domain/slices/quizAttemptSlice";
 import { useEffect } from "react";
 import Btn1 from "components/Btn1";
 import mySvg from "assets/svgs/cv.svg";
-import data from "temp/questions.json";
 import { Section } from "domain/Types";
 
 function Home() {

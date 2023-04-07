@@ -16,7 +16,7 @@ function Btn1({
 }) {
   return (
     <Link
-      to={"/quiz"}
+      to={"/quiz/visitor"}
       className={`hover:scale-105 transition-transform p-4 rounded-lg cursor-pointer font-bold select-none ${customCss}`}
     >
       <span>{text}</span>

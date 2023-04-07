@@ -1,13 +1,21 @@
+import { QuizAttempt } from "domain/Types";
 import { useAppSelector } from "hooks/useAppSelector";
 import { FaCheck } from "react-icons/fa";
 import { useParams } from "react-router-dom";
 
 // This component must display quiz scores for users who are not logged in, and users HAVE logged in and just want to review their old quiz attempts
 function QuizReview() {
-  const params = useParams<{ id: string }>();
+  const params = useParams<{ quizId: string }>();
+  const userStatus = useAppSelector(state => state.userStatus);
 
-  const quizAttempt = useAppSelector(state => state.quizAttempt);
+  const attempts = useAppSelector(state => state.quizAttempts.attempts);
+  const quizAttempt = getQuizAttemptById(attempts, params.quizId!);
   let questionNumber = 0;
+
+  function getQuizAttemptById(attempts: QuizAttempt[], id: string) {
+    const i = attempts.findIndex(attempts => attempts.id === id);
+    return attempts[i];
+  }
 
   return (
     <div>

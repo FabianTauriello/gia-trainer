@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useAppDispatch } from "hooks/useAppSelector";
-import { setSections } from "domain/slices/quizAttemptSlice";
+import { addNewQuizAttempt } from "domain/slices/quizAttemptsSlice";
 import { useGetQuizSectionsQuery } from "domain/slices/apislice";
 import Quiz from "components/Quiz";
 
@@ -11,7 +11,7 @@ function QuizContainer() {
 
   useEffect(() => {
     if (sections) {
-      dispatch(setSections(sections));
+      dispatch(addNewQuizAttempt(sections));
     }
   }, [isLoading]);
 

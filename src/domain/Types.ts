@@ -25,6 +25,14 @@ type Letter = {
   flip: boolean;
 };
 
+export type ScoredSection = Section & { score: number };
+
+export type QuizAttempt = {
+  id: string;
+  sections: ScoredSection[];
+  totalScore: number;
+};
+
 // OR use different question types...
 // export type Q1 = {
 //   statement: string;

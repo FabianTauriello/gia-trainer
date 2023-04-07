@@ -16,11 +16,11 @@ const router = createBrowserRouter(
       <Route path="/" element={<Landing />} />
       <Route path="/counter" element={<Counter />} />
       {/* Private user routes */}
-      {/* <Route path="/dashboard/quiz" element={<QuizContainer />} /> */}
-      {/* <Route path="/dashboard/quiz/review/:id" element={<QuizReview />} /> */}
-      {/* Public visitor routes */}
-      <Route path="/quiz" element={<QuizContainer />} />
-      <Route path="/quiz/review" element={<QuizReview />} />
+      {/* <Route path="/dashboard/quiz/:quizId" element={<QuizContainer />} /> */}
+      {/* <Route path="/dashboard/quiz/:quizId/review" element={<QuizReview />} /> */}
+      {/* Public visitor routes. 'quizId' should be 'visitor' here */}
+      <Route path="/quiz/:quizId" element={<QuizContainer />} />
+      <Route path="/quiz/:quizId/review" element={<QuizReview />} />
     </>
   )
 );

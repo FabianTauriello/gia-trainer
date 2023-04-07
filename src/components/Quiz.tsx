@@ -1,8 +1,8 @@
 import { Section } from "domain/Types";
 import { useState } from "react";
 import { useAppDispatch } from "hooks/useAppSelector";
-import { useNavigate } from "react-router-dom";
-import { calculateTotalScore, incrementSectionScore } from "domain/slices/quizAttemptSlice";
+import { useNavigate, useParams } from "react-router-dom";
+import { setSectionScore, calculateTotalScoreForAttempt } from "domain/slices/quizAttemptsSlice";
 import SectionReasoning from "components/SectionReasoning";
 import SectionPerceptualSpeed from "components/SectionPerceptualSpeed";
 import SectionLanding from "components/SectionLanding";
@@ -11,6 +11,7 @@ import SectionWordMeaning from "components/SectionWordMeaning";
 import SectionSpatialVisualisation from "components/SectionSpatialVisualisation";
 
 const Quiz = ({ sections }: { sections: Section[] }) => {
+  const params = useParams<{ quizId: string }>();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
@@ -20,18 +21,18 @@ const Quiz = ({ sections }: { sections: Section[] }) => {
   const currentSection = sections[sectionIndex];
 
   function handleFinishSection(sectionScore: number) {
-    dispatch(incrementSectionScore({ sectionIndex: sectionIndex, score: sectionScore }));
+    dispatch(setSectionScore({ quizId: params.quizId!, sectionIndex: sectionIndex, score: sectionScore }));
 
     // don't increment index counter past number of sections
     if (sectionIndex !== sections!.length - 1) {
       setShowSectionLanding(true);
       setSectionIndex(prev => prev + 1);
     } else {
-      // finished quiz
-      dispatch(calculateTotalScore());
+      // Quiz attempt is finished. Calculate total score and navigate to review page
+      dispatch(calculateTotalScoreForAttempt({ quizId: params.quizId! }));
       // TODO check if logged in and pass attempt id if true
       const loggedIn = false;
-      navigate(loggedIn ? `dashboard/quiz/review/someID` : `/quiz/review`);
+      navigate(loggedIn ? `dashboard/quiz/someId/review` : `/quiz/visitor/review`);
     }
   }
 

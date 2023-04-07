@@ -1,12 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { apiSlice } from "domain/slices/apislice";
 import counterReducer from "domain/slices/counterSlice";
-import quizAttemptReducer from "domain/slices/quizAttemptSlice";
+import quizAttemptReducer from "domain/slices/quizAttemptsSlice";
+import userStatusReducer from "domain/slices/userStatusSlice";
 
 export const store = configureStore({
   reducer: {
     counter: counterReducer,
-    quizAttempt: quizAttemptReducer,
+    quizAttempts: quizAttemptReducer,
+    userStatus: userStatusReducer,
     [apiSlice.reducerPath]: apiSlice.reducer,
   },
   // This middleware manages cache lifetimes and expiration.
