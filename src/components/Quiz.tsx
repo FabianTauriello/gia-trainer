@@ -31,7 +31,7 @@ const Quiz = ({ sections }: { sections: Section[] }) => {
       dispatch(calculateTotalScore());
       // TODO check if logged in and pass attempt id if true
       const loggedIn = false;
-      navigate(`/quiz/review/${loggedIn ? "someID" : "visitor-attempt"}`);
+      navigate(loggedIn ? `dashboard/quiz/review/someID` : `/quiz/review`);
     }
   }
 

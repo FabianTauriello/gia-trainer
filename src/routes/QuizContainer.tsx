@@ -1,8 +1,7 @@
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "hooks/useAppSelector";
-import { calculateTotalScore, incrementSectionScore, setSections } from "domain/slices/quizAttemptSlice";
-import { useGetQuizSectionsQuery, useGetTestDataQuery } from "domain/slices/apislice";
+import { useEffect } from "react";
+import { useAppDispatch } from "hooks/useAppSelector";
+import { setSections } from "domain/slices/quizAttemptSlice";
+import { useGetQuizSectionsQuery } from "domain/slices/apislice";
 import Quiz from "components/Quiz";
 
 function QuizContainer() {

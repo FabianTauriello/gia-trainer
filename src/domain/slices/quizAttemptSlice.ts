@@ -4,11 +4,10 @@ import { Section } from "domain/Types";
 
 type ScoredSection = Section & { score: number };
 
-// move to Types.ts?
-interface QuizAttemptState {
+type QuizAttemptState = {
   sections: ScoredSection[];
   totalScore: number;
-}
+};
 
 const initialState: QuizAttemptState = {
   sections: [],
@@ -36,7 +35,6 @@ export const quizAttemptSlice = createSlice({
 
 export const { setSections, incrementSectionScore, calculateTotalScore } = quizAttemptSlice.actions;
 
-// Other code such as selectors can use the imported `RootState` type
 export const selectCount = (state: RootState) => state.counter.value;
 
 export default quizAttemptSlice.reducer;

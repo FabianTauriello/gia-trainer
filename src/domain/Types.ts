@@ -15,6 +15,10 @@ export type Question = {
   selectedChoiceIndex: number; // use this here and give each question a default value of -1?
 };
 
+export type User = {
+  name: string;
+};
+
 type Letter = {
   char: string;
   rot: number;

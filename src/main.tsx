@@ -15,8 +15,12 @@ const router = createBrowserRouter(
     <>
       <Route path="/" element={<Landing />} />
       <Route path="/counter" element={<Counter />} />
+      {/* Private user routes */}
+      {/* <Route path="/dashboard/quiz" element={<QuizContainer />} /> */}
+      {/* <Route path="/dashboard/quiz/review/:id" element={<QuizReview />} /> */}
+      {/* Public visitor routes */}
       <Route path="/quiz" element={<QuizContainer />} />
-      <Route path="/quiz/review/:id" element={<QuizReview />} />
+      <Route path="/quiz/review" element={<QuizReview />} />
     </>
   )
 );
