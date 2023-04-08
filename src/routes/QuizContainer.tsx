@@ -10,14 +10,10 @@ function QuizContainer() {
   const { data: sections, isLoading, isSuccess, isError, error } = useGetQuizSectionsQuery();
 
   useEffect(() => {
-    if (sections) {
-      dispatch(addNewQuizAttempt(sections));
-    }
+    if (sections) dispatch(addNewQuizAttempt({ quizId: "visitor", sections: sections }));
   }, [isLoading]);
 
-  if (isLoading) {
-    return <div>loading</div>;
-  }
+  if (isLoading) return <div>loading</div>;
 
   return <Quiz sections={sections!} />;
 }

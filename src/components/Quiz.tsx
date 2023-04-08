@@ -10,7 +10,7 @@ import SectionNumberSpeedAndAccuracy from "components/SectionNumberSpeedAndAccur
 import SectionWordMeaning from "components/SectionWordMeaning";
 import SectionSpatialVisualisation from "components/SectionSpatialVisualisation";
 
-const Quiz = ({ sections }: { sections: Section[] }) => {
+function Quiz({ sections }: { sections: Section[] }) {
   const params = useParams<{ quizId: string }>();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
@@ -73,6 +73,6 @@ const Quiz = ({ sections }: { sections: Section[] }) => {
   }
 
   return renderSection();
-};
+}
 
 export default Quiz;

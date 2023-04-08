@@ -5,7 +5,7 @@ import Btn1 from "components/Btn1";
 import mySvg from "assets/svgs/cv.svg";
 import { Section } from "domain/Types";
 
-function Home() {
+function Landing() {
   const navigate = useNavigate();
 
   const dispatch = useAppDispatch();
@@ -60,7 +60,7 @@ function Home() {
   );
 }
 
-export default Home;
+export default Landing;
 
 {
   /* <div className="h-full flex flex-col justify-center p-6 md:w-2/4 m-auto">

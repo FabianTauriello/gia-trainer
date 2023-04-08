@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "domain/Store";
 import { User } from "domain/Types";
 
+// TODO Change this slice to 'auth'
 type UserStatusState = {
   user: User | null;
 };
