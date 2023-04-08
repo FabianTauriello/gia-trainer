@@ -17,7 +17,7 @@ export const quizAttemptsSlice = createSlice({
   reducers: {
     // Called at beginning of a quiz, intializing section scores and total score to zero
     addNewQuizAttempt: (state, action: PayloadAction<{ quizId: string; sections: Section[] }>) => {
-      if (state.attempts.find((a) => a.id === action.payload.quizId)) return;
+      if (state.attempts.find((a) => a.id === action.payload.quizId)) return; // TODO consider resetting existing quiz attempt instead of just returning here
       const newQuizAttempt = {
         id: action.payload.quizId,
         sections: action.payload.sections.map((sec) => ({ ...sec, score: 0 })),

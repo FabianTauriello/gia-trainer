@@ -2,7 +2,7 @@ import { QuizAttempt } from "domain/Types";
 import { useAppSelector } from "hooks/useAppSelector";
 import { useEffect } from "react";
 import { FaCheck } from "react-icons/fa";
-import { useNavigate, useParams, redirect } from "react-router-dom";
+import { useNavigate, useParams, redirect, Link } from "react-router-dom";
 
 // This component must display quiz scores for users who are not logged in, and users HAVE logged in and just want to review their old quiz attempts
 function QuizReview() {

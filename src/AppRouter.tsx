@@ -9,7 +9,6 @@ import QuizReview from "routes/QuizReview";
 
 function AppRouter() {
   const quizAttempts = useAppSelector((state) => state.quizAttempts);
-  // const existingAttempt = quizAttempts.attempts.length;
 
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -21,9 +20,7 @@ function AppRouter() {
         {/* <Route path="/dashboard/quiz/:quizId/review" element={<QuizReview />} /> */}
         {/* Public visitor routes. 'quizId' should be 'visitor' here */}
         <Route path="/quiz/:quizId" element={<QuizContainer />} />
-        {/* TODO check if there is a quiz attempt before showing quiz review */}
         <Route path="/quiz/:quizId/review" element={quizAttempts.attempts.length ? <QuizReview /> : <Navigate to="/quiz/visitor" />} />
-        {/* <Route path="/quiz/:quizId/review" element={<QuizReview />} /> */}
       </>
     )
   );
