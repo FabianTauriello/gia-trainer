@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import Btn1 from "components/Btn1";
 import mySvg from "assets/svgs/cv.svg";
 import { Section } from "domain/Types";
+import { Button } from "flowbite-react";
 
 function Landing() {
   const navigate = useNavigate();
@@ -12,7 +13,7 @@ function Landing() {
 
   return (
     <>
-      {/* remove later */}
+      {/* TODO remove later */}
       <div style={{ position: "fixed", top: 5, right: 5, color: "white", backgroundColor: "red", zIndex: 100 }}>
         <Link to={"/counter"}>Counter</Link>
       </div>
@@ -34,8 +35,8 @@ function Landing() {
             <section className="text-center intro-section text-white">
               <h1 className="text-5xl font-extrabold mb-4 mr-8 ml-8">Prepare to ace your next GIA test now</h1>
               <div className="text-2xl font-medium mr-8 ml-8">
-                Practice and compete against others in the GIA test. Hone your skills by competing against others or
-                trying to beat your high score.
+                Practice and compete against others in the GIA test. Hone your skills by competing against others or trying to beat
+                your high score.
               </div>
               <div className="flex justify-center mt-6">
                 <Btn1 text="Sign In" handleClick={() => {}} customCss="mr-6 bg-green text-white" />

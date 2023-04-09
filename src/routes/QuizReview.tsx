@@ -21,6 +21,7 @@ function QuizReview() {
 
   return (
     <div>
+      <button data-modal-target="def"></button>
       <h1>Total Score: {quizAttempt.totalScore}</h1>
       {quizAttempt.sections.map((section, index) => (
         <div key={index}>

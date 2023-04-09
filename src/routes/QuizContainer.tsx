@@ -7,6 +7,7 @@ import Quiz from "components/Quiz";
 function QuizContainer() {
   const dispatch = useAppDispatch();
 
+  // TODO handle error here
   const { data: sections, isLoading, isSuccess, isError, error } = useGetQuizSectionsQuery();
 
   useEffect(() => {
@@ -14,6 +15,8 @@ function QuizContainer() {
   }, [isLoading]);
 
   if (isLoading) return <div>loading</div>;
+
+  if (isError) return <div>error retrieving latest quiz questions</div>;
 
   return <Quiz sections={sections!} />;
 }

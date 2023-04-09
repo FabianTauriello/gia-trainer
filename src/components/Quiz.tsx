@@ -10,6 +10,7 @@ import SectionNumberSpeedAndAccuracy from "components/SectionNumberSpeedAndAccur
 import SectionWordMeaning from "components/SectionWordMeaning";
 import SectionSpatialVisualisation from "components/SectionSpatialVisualisation";
 
+// TODO consider using appselector to get quiz sections insread of passing through as an argument
 function Quiz({ sections }: { sections: Section[] }) {
   const params = useParams<{ quizId: string }>();
   const navigate = useNavigate();
@@ -26,7 +27,7 @@ function Quiz({ sections }: { sections: Section[] }) {
     // don't increment index counter past number of sections
     if (sectionIndex !== sections!.length - 1) {
       setShowSectionLanding(true);
-      setSectionIndex(prev => prev + 1);
+      setSectionIndex((prev) => prev + 1);
     } else {
       // Quiz attempt is finished. Calculate total score and navigate to review page
       dispatch(calculateTotalScoreForAttempt({ quizId: params.quizId! }));
@@ -40,29 +41,15 @@ function Quiz({ sections }: { sections: Section[] }) {
   function renderSection() {
     switch (currentSection.number) {
       case 1:
-        return <SectionReasoning section={currentSection} handleFinishSection={score => handleFinishSection(score)} />;
+        return <SectionReasoning section={currentSection} handleFinishSection={(score) => handleFinishSection(score)} />;
       case 2:
-        return (
-          <SectionPerceptualSpeed section={currentSection} handleFinishSection={score => handleFinishSection(score)} />
-        );
+        return <SectionPerceptualSpeed section={currentSection} handleFinishSection={(score) => handleFinishSection(score)} />;
       case 3:
-        return (
-          <SectionNumberSpeedAndAccuracy
-            section={currentSection}
-            handleFinishSection={score => handleFinishSection(score)}
-          />
-        );
+        return <SectionNumberSpeedAndAccuracy section={currentSection} handleFinishSection={(score) => handleFinishSection(score)} />;
       case 4:
-        return (
-          <SectionWordMeaning section={currentSection} handleFinishSection={score => handleFinishSection(score)} />
-        );
+        return <SectionWordMeaning section={currentSection} handleFinishSection={(score) => handleFinishSection(score)} />;
       case 5:
-        return (
-          <SectionSpatialVisualisation
-            section={currentSection}
-            handleFinishSection={score => handleFinishSection(score)}
-          />
-        );
+        return <SectionSpatialVisualisation section={currentSection} handleFinishSection={(score) => handleFinishSection(score)} />;
       default:
         throw new Error(`There is no section container for section ${currentSection.number}.`);
     }
