@@ -4,7 +4,6 @@ import { useEffect } from "react";
 import Btn1 from "components/Btn1";
 import mySvg from "assets/svgs/cv.svg";
 import { Section } from "domain/Types";
-import { Button } from "flowbite-react";
 
 function Landing() {
   const navigate = useNavigate();
@@ -39,7 +38,7 @@ function Landing() {
                 your high score.
               </div>
               <div className="flex justify-center mt-6">
-                <Btn1 text="Sign In" handleClick={() => {}} customCss="mr-6 bg-green text-white" />
+                <Btn1 text="Sign In" handleClick={() => {}} customCss="mr-6 bg-secondary text-white" />
                 <Btn1 text="Try Now" handleClick={() => {}} customCss="bg-white text-black" />
               </div>
             </section>

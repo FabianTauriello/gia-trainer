@@ -1,6 +1,7 @@
+import QuestionModal from "components/QuestionModal";
 import { QuizAttempt } from "domain/Types";
 import { useAppSelector } from "hooks/useAppSelector";
-import { useEffect } from "react";
+import { useState } from "react";
 import { FaCheck } from "react-icons/fa";
 import { useNavigate, useParams, redirect, Link } from "react-router-dom";
 
@@ -8,8 +9,8 @@ import { useNavigate, useParams, redirect, Link } from "react-router-dom";
 function QuizReview() {
   const params = useParams<{ quizId: string }>();
   const navigate = useNavigate();
+  const [showModal, setShowModal] = useState(false);
   const userStatus = useAppSelector((state) => state.userStatus);
-
   const attempts = useAppSelector((state) => state.quizAttempts.attempts);
   const quizAttempt = getQuizAttemptById(attempts, params.quizId!);
   let questionNumber = 0;
@@ -21,7 +22,6 @@ function QuizReview() {
 
   return (
     <div>
-      <button data-modal-target="def"></button>
       <h1>Total Score: {quizAttempt.totalScore}</h1>
       {quizAttempt.sections.map((section, index) => (
         <div key={index}>
@@ -30,7 +30,7 @@ function QuizReview() {
           {section.questions.map((q, i) => {
             questionNumber++;
             return (
-              <div key={i} className="bg-cream w-8 border inline-flex flex-col items-center">
+              <div key={i} onClick={() => setShowModal(true)} className="bg-cream w-8 border inline-flex flex-col items-center">
                 <FaCheck color="green" />
                 {questionNumber}
               </div>
@@ -38,6 +38,7 @@ function QuizReview() {
           })}
         </div>
       ))}
+      <QuestionModal show={showModal} onClose={() => setShowModal(false)} />
     </div>
   );
 }

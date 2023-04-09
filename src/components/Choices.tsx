@@ -16,7 +16,7 @@ function Choices({
         <button
           key={i}
           onClick={() => handleAnswerClick(i)}
-          className={`p-6 bg-green rounded-lg flex-1 ${hideChoices ? "cursor-default" : "cursor-pointer"} ${
+          className={`p-6 bg-secondary rounded-lg flex-1 ${hideChoices ? "cursor-default" : "cursor-pointer"} ${
             correctChoice === i ? "border-4 border-white" : ""
           }`}
         >
