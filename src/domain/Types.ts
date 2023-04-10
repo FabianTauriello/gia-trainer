@@ -6,6 +6,7 @@ export type Section = {
 
 // TODO use generics here to support different sections or use more specific types?
 export type Question = {
+  number?: number;
   pairs?: string[][];
   letters?: Letter[][];
   statement?: string;
@@ -20,7 +21,7 @@ export type User = {
 };
 
 export type ModalDetails = {
-  section: Section | null;
+  section: Section;
   questionNumber: number;
   show: boolean;
 };
