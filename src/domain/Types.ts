@@ -19,6 +19,12 @@ export type User = {
   name: string;
 };
 
+export type ModalDetails = {
+  section: Section | null;
+  questionNumber: number;
+  show: boolean;
+};
+
 type Letter = {
   char: string;
   rot: number;

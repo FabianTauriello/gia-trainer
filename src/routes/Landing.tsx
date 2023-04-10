@@ -83,6 +83,6 @@ export default Landing;
         <div className="gutter-sm" />
         <p>Tap the button below to start your training.</p>
         <div className="gutter-lg" />
-        <Button text="Let's Go!" handleClick={() => navigate(`/section-${1}-reasoning`)} />
+        <Button type="button" text="Let's Go!" handleClick={() => navigate(`/section-${1}-reasoning`)} />
       </div> */
 }

@@ -15,6 +15,7 @@ function Choices({
       {choices.map((choice, i) => (
         <button
           key={i}
+          type="button"
           onClick={() => handleAnswerClick(i)}
           className={`p-6 bg-secondary rounded-lg flex-1 ${hideChoices ? "cursor-default" : "cursor-pointer"} ${
             correctChoice === i ? "border-4 border-white" : ""
