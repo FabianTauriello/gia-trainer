@@ -1,6 +1,7 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { Section } from "domain/Types";
 import { Fragment } from "react";
+import CustomButton from "./CustomButton";
 
 function QuestionModal({
   section,
@@ -47,14 +48,9 @@ function QuestionModal({
                   <p className="text-sm text-gray-500">view question answer here</p>
                 </div>
 
-                <div className="mt-4">
-                  <button
-                    type="button"
-                    className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                    onClick={onClose}
-                  >
-                    Got it, thanks!
-                  </button>
+                <div className="mt-4 flex justify-between">
+                  <CustomButton text="Previous" handleClick={onClose} />
+                  <CustomButton text="Next" handleClick={onClose} />
                 </div>
               </Dialog.Panel>
             </Transition.Child>

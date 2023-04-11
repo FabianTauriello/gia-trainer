@@ -1,13 +1,15 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "domain/Store";
 import { QuizAttempt, Section } from "domain/Types";
+import { testAttempt } from "temp/testData";
 
 type QuizAttemptsState = {
   attempts: QuizAttempt[];
 };
 
 const initialState: QuizAttemptsState = {
-  attempts: [],
+  // TODO make sure to empty this array when you're happy with the review screen
+  attempts: [testAttempt],
 };
 
 // Holds/manages all quiz attempts for current user
