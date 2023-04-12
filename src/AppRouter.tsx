@@ -8,7 +8,7 @@ import Counter from "routes/Counter";
 import QuizReview from "routes/QuizReview";
 
 function AppRouter() {
-  const quizAttempts = useAppSelector((state) => state.quizAttempts);
+  const quiz = useAppSelector((state) => state.quiz);
 
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -20,7 +20,7 @@ function AppRouter() {
         {/* <Route path="/dashboard/quiz/:quizId/review" element={<QuizReview />} /> */}
         {/* Public visitor routes. 'quizId' should be 'visitor' here */}
         <Route path="/quiz/:quizId" element={<QuizContainer />} />
-        <Route path="/quiz/:quizId/review" element={quizAttempts.attempts.length ? <QuizReview /> : <Navigate to="/quiz/visitor" />} />
+        <Route path="/quiz/:quizId/review" element={quiz.attempts.length ? <QuizReview /> : <Navigate to="/quiz/visitor" />} />
       </>
     )
   );

@@ -1,8 +1,11 @@
 import QuestionModal from "components/QuestionModal";
 import { ModalDetails, Question, QuizAttempt, ScoredSection, Section } from "domain/Types";
+import { toggleReviewStatus } from "domain/slices/quizSlice";
+import { useAppDispatch } from "hooks/useAppSelector";
 import { useAppSelector } from "hooks/useAppSelector";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaCheck } from "react-icons/fa";
+import { useDispatch } from "react-redux";
 import { useNavigate, useParams, redirect, Link } from "react-router-dom";
 import { testAttempt } from "temp/testData";
 
@@ -11,11 +14,22 @@ function QuizReview() {
   const params = useParams<{ quizId: string }>();
   const navigate = useNavigate();
 
-  const attempts = useAppSelector((state) => state.quizAttempts.attempts);
-  const quizAttempt = getQuizAttemptById(attempts, params.quizId!);
+  const dispatch = useAppDispatch();
+  const quiz = useAppSelector((state) => state.quiz);
+  const quizAttempt = getQuizAttemptById(quiz.attempts, params.quizId!);
   const sections = addQuestionNumbersToSections();
 
   const [modalDetails, setModalDetails] = useState<ModalDetails>({ section: quizAttempt.sections[0], questionNumber: 1, show: false });
+
+  useEffect(() => {
+    // should switch review status to true
+    dispatch(toggleReviewStatus());
+
+    return () => {
+      // should switch review status to false
+      dispatch(toggleReviewStatus());
+    };
+  }, []);
 
   // adds question numbers to sections so that it is known what the position of a specific question is
   function addQuestionNumbersToSections() {
@@ -42,6 +56,7 @@ function QuizReview() {
 
   return (
     <div>
+      <div>quiz in review? {`${quiz.reviewing}`}</div>
       <h1>Total Score: {quizAttempt.totalScore}</h1>
       {sections.map((section, index) => (
         <div key={index}>

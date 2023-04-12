@@ -2,6 +2,7 @@ import { Dialog, Transition } from "@headlessui/react";
 import { Section } from "domain/Types";
 import { Fragment } from "react";
 import CustomButton from "./CustomButton";
+import SectionReasoning from "components/SectionReasoning";
 
 function QuestionModal({
   section,
@@ -47,6 +48,8 @@ function QuestionModal({
                 <div className="mt-2">
                   <p className="text-sm text-gray-500">view question answer here</p>
                 </div>
+
+                <SectionReasoning section={section} handleFinishSection={() => {}} />
 
                 <div className="mt-4 flex justify-between">
                   <CustomButton text="Previous" handleClick={onClose} />

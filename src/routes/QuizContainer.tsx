@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useAppDispatch } from "hooks/useAppSelector";
-import { addNewQuizAttempt } from "domain/slices/quizAttemptsSlice";
+import { addNewQuizAttempt } from "domain/slices/quizSlice";
 import { useGetQuizSectionsQuery } from "domain/slices/apislice";
 import Quiz from "components/Quiz";
 

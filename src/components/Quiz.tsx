@@ -1,20 +1,22 @@
-import { Section } from "domain/Types";
 import { useState } from "react";
-import { useAppDispatch } from "hooks/useAppSelector";
+import { Section } from "domain/Types";
+import { useAppDispatch, useAppSelector } from "hooks/useAppSelector";
 import { useNavigate, useParams } from "react-router-dom";
-import { setSectionScore, calculateTotalScoreForAttempt } from "domain/slices/quizAttemptsSlice";
-import SectionReasoning from "components/SectionReasoning";
-import SectionPerceptualSpeed from "components/SectionPerceptualSpeed";
-import SectionLanding from "components/SectionLanding";
+import { setSectionScore, calculateTotalScoreForAttempt } from "domain/slices/quizSlice";
 import SectionNumberSpeedAndAccuracy from "components/SectionNumberSpeedAndAccuracy";
-import SectionWordMeaning from "components/SectionWordMeaning";
 import SectionSpatialVisualisation from "components/SectionSpatialVisualisation";
+import SectionPerceptualSpeed from "components/SectionPerceptualSpeed";
+import SectionWordMeaning from "components/SectionWordMeaning";
+import SectionReasoning from "components/SectionReasoning";
+import SectionLanding from "components/SectionLanding";
 
 // TODO consider using appselector to get quiz sections insread of passing through as an argument
 function Quiz({ sections }: { sections: Section[] }) {
   const params = useParams<{ quizId: string }>();
   const navigate = useNavigate();
+
   const dispatch = useAppDispatch();
+  const quiz = useAppSelector((state) => state.quiz);
 
   const [showSectionLanding, setShowSectionLanding] = useState(true);
   const [sectionIndex, setSectionIndex] = useState(0);

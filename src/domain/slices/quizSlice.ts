@@ -3,20 +3,26 @@ import { RootState } from "domain/Store";
 import { QuizAttempt, Section } from "domain/Types";
 import { testAttempt } from "temp/testData";
 
-type QuizAttemptsState = {
+type QuizState = {
+  reviewing: boolean;
   attempts: QuizAttempt[];
 };
 
-const initialState: QuizAttemptsState = {
+const initialState: QuizState = {
+  reviewing: false,
   // TODO make sure to empty this array when you're happy with the review screen
   attempts: [testAttempt],
 };
 
 // Holds/manages all quiz attempts for current user
-export const quizAttemptsSlice = createSlice({
-  name: "quizAttempts",
+export const quizSlice = createSlice({
+  name: "quiz",
   initialState,
   reducers: {
+    // Toggles to true when review page mounts, and false when it unmounts
+    toggleReviewStatus: (state) => {
+      state.reviewing = !state.reviewing;
+    },
     // Called at beginning of a quiz, intializing section scores and total score to zero
     addNewQuizAttempt: (state, action: PayloadAction<{ quizId: string; sections: Section[] }>) => {
       if (state.attempts.find((a) => a.id === action.payload.quizId)) return; // TODO consider resetting existing quiz attempt instead of just returning here
@@ -42,8 +48,8 @@ export const quizAttemptsSlice = createSlice({
   },
 });
 
-export const { addNewQuizAttempt, setSectionScore, calculateTotalScoreForAttempt } = quizAttemptsSlice.actions;
+export const { toggleReviewStatus, addNewQuizAttempt, setSectionScore, calculateTotalScoreForAttempt } = quizSlice.actions;
 
 export const selectCount = (state: RootState) => state.counter.value;
 
-export default quizAttemptsSlice.reducer;
+export default quizSlice.reducer;

@@ -31,10 +31,12 @@
 - don't forget about generics!
 - make sure elements are semantic
 - review for duplicate questions
+- follow this style guide: https://redux.js.org/style-guide/
 
 ### TODOs:
 
 - [x] rename pages folder to routes?
+- [ ] add confetti gun animation for when a user gets a new pb
 - [ ] add dashboard page for logged in users
 - [ ] add ability to review previous quiz attempts? (e.g. /quiz-review/id)
 - [ ] add sign-in and user authentication
