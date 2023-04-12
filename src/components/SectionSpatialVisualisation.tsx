@@ -7,11 +7,13 @@ import SectionContainer from "./SectionContainer";
 function SectionSpatialVisualisation({
   section,
   handleFinishSection,
+  startingQuestionIndex = 0,
 }: {
   section: Section;
   handleFinishSection: (score: number) => void;
+  startingQuestionIndex?: number;
 }) {
-  const [currentQuestion, handleAnswerClick] = useSection(section.questions, handleFinishSection);
+  const [currentQuestion, handleAnswerClick] = useSection(section.questions, startingQuestionIndex, handleFinishSection);
 
   return (
     <SectionContainer>

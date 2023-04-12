@@ -4,12 +4,12 @@ import { QuizAttempt, Section } from "domain/Types";
 import { testAttempt } from "temp/testData";
 
 type QuizState = {
-  reviewing: boolean;
+  inReview: boolean; // TODO 'reviewing' instead of 'inReview'?
   attempts: QuizAttempt[];
 };
 
 const initialState: QuizState = {
-  reviewing: false,
+  inReview: false,
   // TODO make sure to empty this array when you're happy with the review screen
   attempts: [testAttempt],
 };
@@ -21,7 +21,7 @@ export const quizSlice = createSlice({
   reducers: {
     // Toggles to true when review page mounts, and false when it unmounts
     toggleReviewStatus: (state) => {
-      state.reviewing = !state.reviewing;
+      state.inReview = !state.inReview;
     },
     // Called at beginning of a quiz, intializing section scores and total score to zero
     addNewQuizAttempt: (state, action: PayloadAction<{ quizId: string; sections: Section[] }>) => {

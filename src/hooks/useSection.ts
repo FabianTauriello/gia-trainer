@@ -4,10 +4,11 @@ import { useReducer, useState } from "react";
 
 function useSection(
   questions: Question[],
+  startingQuestionIndex: number,
   handleFinishSection: (score: number) => void,
   extraFunctionality?: () => void
 ) {
-  const [questionIndex, setQuestionIndex] = useState(0);
+  const [questionIndex, setQuestionIndex] = useState(startingQuestionIndex);
   const currentQuestion = questions[questionIndex];
   const sectionScore = useRef(0);
 
@@ -15,7 +16,7 @@ function useSection(
     if (currentQuestion.correctChoiceIndex === choiceIndexSelected) sectionScore.current += 1;
 
     if (questionIndex !== questions.length - 1) {
-      setQuestionIndex(prev => prev + 1);
+      setQuestionIndex((prev) => prev + 1);
       if (extraFunctionality) extraFunctionality();
     } else {
       handleFinishSection(sectionScore.current);

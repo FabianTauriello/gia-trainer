@@ -56,7 +56,7 @@ function QuizReview() {
 
   return (
     <div>
-      <div>quiz in review? {`${quiz.reviewing}`}</div>
+      <div>quiz in review? {`${quiz.inReview}`}</div>
       <h1>Total Score: {quizAttempt.totalScore}</h1>
       {sections.map((section, index) => (
         <div key={index}>
