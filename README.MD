@@ -34,6 +34,11 @@
 - 'wrapper' components wrap logic around its children. 'containers' simply render its children and contain minimal logic - they are primarily used to prevent code/styling duplication.
 - follow this style guide: https://redux.js.org/style-guide/
 
+### Git branch naming convention:
+
+- feature/ new feature I'm adding or expaning
+- bug/ fix for a bug
+
 ### TODOs:
 
 - [x] rename pages folder to routes?
