@@ -31,6 +31,7 @@
 - don't forget about generics!
 - make sure elements are semantic
 - review for duplicate questions
+- 'wrapper' components wrap logic around its children. 'containers' simply render its children and contain minimal logic - they are primarily used to prevent code/styling duplication.
 - follow this style guide: https://redux.js.org/style-guide/
 
 ### TODOs:

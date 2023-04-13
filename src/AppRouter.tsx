@@ -3,7 +3,7 @@ import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider, N
 import Landing from "./routes/Landing";
 import { store } from "domain/Store";
 import { Provider } from "react-redux";
-import QuizContainer from "routes/QuizContainer";
+import QuizWrapper from "routes/QuizWrapper";
 import Counter from "routes/Counter";
 import QuizReview from "routes/QuizReview";
 
@@ -16,10 +16,10 @@ function AppRouter() {
         <Route path="/" element={<Landing />} />
         <Route path="/counter" element={<Counter />} />
         {/* Private user routes */}
-        {/* <Route path="/dashboard/quiz/:quizId" element={<QuizContainer />} /> */}
+        {/* <Route path="/dashboard/quiz/:quizId" element={<QuizWrapper />} /> */}
         {/* <Route path="/dashboard/quiz/:quizId/review" element={<QuizReview />} /> */}
         {/* Public visitor routes. 'quizId' should be 'visitor' here */}
-        <Route path="/quiz/:quizId" element={<QuizContainer />} />
+        <Route path="/quiz/:quizId" element={<QuizWrapper />} />
         <Route path="/quiz/:quizId/review" element={quiz.attempts.length ? <QuizReview /> : <Navigate to="/quiz/visitor" />} />
       </>
     )

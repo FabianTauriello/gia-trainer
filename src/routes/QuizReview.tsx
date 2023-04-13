@@ -80,6 +80,11 @@ function QuizReview() {
         section={modalDetails.section}
         questionNumber={modalDetails.questionNumber}
         show={modalDetails.show}
+        handlePrev={() => {
+          console.log("prev");
+          setModalDetails((prev) => ({ ...prev, questionNumber: prev.questionNumber - 1 }));
+        }}
+        handleNext={() => setModalDetails((prev) => ({ ...prev, questionNumber: prev.questionNumber + 1 }))}
         onClose={() => setModalDetails((prev) => ({ ...prev, show: false }))}
       />
     </div>

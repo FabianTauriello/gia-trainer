@@ -8,13 +8,18 @@ function QuestionModal({
   section,
   questionNumber,
   show,
+  handlePrev,
+  handleNext,
   onClose,
 }: {
   section: Section;
   questionNumber: number;
   show: boolean;
+  handlePrev: () => void;
+  handleNext: () => void;
   onClose: () => void;
 }) {
+  console.log("rendering modal");
   return (
     <Transition appear show={show} as={Fragment}>
       <Dialog as="div" className="relative z-10" onClose={onClose}>
@@ -52,8 +57,9 @@ function QuestionModal({
                 <SectionReasoning section={section} handleFinishSection={() => {}} startingQuestionIndex={questionNumber - 1} />
 
                 <div className="mt-4 flex justify-between">
-                  <CustomButton text="Previous" handleClick={onClose} />
-                  <CustomButton text="Next" handleClick={onClose} />
+                  {/* TODO make this a swiper? */}
+                  <CustomButton text="Previous" handleClick={handlePrev} />
+                  <CustomButton text="Next" handleClick={handleNext} />
                 </div>
               </Dialog.Panel>
             </Transition.Child>

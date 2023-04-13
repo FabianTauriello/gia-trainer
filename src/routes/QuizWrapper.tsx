@@ -4,7 +4,7 @@ import { addNewQuizAttempt } from "domain/slices/quizSlice";
 import { useGetQuizSectionsQuery } from "domain/slices/apislice";
 import Quiz from "components/Quiz";
 
-function QuizContainer() {
+function QuizWrapper() {
   const dispatch = useAppDispatch();
 
   // TODO handle error here
@@ -21,4 +21,4 @@ function QuizContainer() {
   return <Quiz sections={sections!} />;
 }
 
-export default QuizContainer;
+export default QuizWrapper;
