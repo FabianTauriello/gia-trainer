@@ -42,6 +42,7 @@
 ### TODOs:
 
 - [x] rename pages folder to routes?
+- [ ] consider extracting quiz attempt logic into quizSlice to track current section, current question, and score etc.
 - [ ] add confetti gun animation for when a user gets a new pb
 - [ ] add dashboard page for logged in users
 - [ ] add ability to review previous quiz attempts? (e.g. /quiz-review/id)
