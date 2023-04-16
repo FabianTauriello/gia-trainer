@@ -34,7 +34,7 @@ export const quizSlice = createSlice({
       state.attempts.push(newQuizAttempt);
     },
     // Called at end of each section
-    setSectionScore: (state, action: PayloadAction<{ quizId: string; sectionIndex: number; score: number }>) => {
+    setSectionScoreForQuizAttempt: (state, action: PayloadAction<{ quizId: string; sectionIndex: number; score: number }>) => {
       const index = state.attempts.findIndex((a) => a.id === action.payload.quizId)!;
       state.attempts[index].sections[action.payload.sectionIndex].score = action.payload.score;
     },
@@ -48,7 +48,8 @@ export const quizSlice = createSlice({
   },
 });
 
-export const { toggleReviewStatus, addNewQuizAttempt, setSectionScore, calculateTotalScoreForAttempt } = quizSlice.actions;
+export const { toggleReviewStatus, addNewQuizAttempt, setSectionScoreForQuizAttempt, calculateTotalScoreForAttempt } =
+  quizSlice.actions;
 
 export const selectCount = (state: RootState) => state.counter.value;
 

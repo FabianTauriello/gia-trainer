@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Section } from "domain/Types";
 import { useAppDispatch, useAppSelector } from "hooks/useAppSelector";
 import { useNavigate, useParams } from "react-router-dom";
-import { setSectionScore, calculateTotalScoreForAttempt } from "domain/slices/quizSlice";
+import { setSectionScoreForQuizAttempt, calculateTotalScoreForAttempt } from "domain/slices/quizSlice";
 import SectionNumberSpeedAndAccuracy from "components/SectionNumberSpeedAndAccuracy";
 import SectionSpatialVisualisation from "components/SectionSpatialVisualisation";
 import SectionPerceptualSpeed from "components/SectionPerceptualSpeed";
@@ -24,7 +24,7 @@ function Quiz({ sections }: { sections: Section[] }) {
   const currentSection = sections[sectionIndex];
 
   function handleFinishSection(sectionScore: number) {
-    dispatch(setSectionScore({ quizId: params.quizId!, sectionIndex: sectionIndex, score: sectionScore }));
+    dispatch(setSectionScoreForQuizAttempt({ quizId: params.quizId!, sectionIndex: sectionIndex, score: sectionScore }));
 
     // don't increment index counter past number of sections
     if (sectionIndex !== sections!.length - 1) {

@@ -1,6 +1,6 @@
 export type Section = {
   title: string;
-  number: number;
+  number: number; // TODO need this?
   questions: Question[];
 };
 
