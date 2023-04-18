@@ -1,4 +1,4 @@
-function CustomButton({ text, handleClick, customCss }: { text: string; handleClick: () => void; customCss?: string }) {
+function Btn3({ text, handleClick, customCss }: { text: string; handleClick: () => void; customCss?: string }) {
   return (
     <button
       type="button"
@@ -10,4 +10,4 @@ function CustomButton({ text, handleClick, customCss }: { text: string; handleCl
   );
 }
 
-export default CustomButton;
+export default Btn3;

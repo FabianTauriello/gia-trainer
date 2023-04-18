@@ -1,24 +1,29 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useAppDispatch } from "hooks/useAppSelector";
-import { addNewQuizAttempt } from "domain/slices/quizSlice";
-import { useGetQuizSectionsQuery } from "domain/slices/apislice";
+import { setActiveAttempt } from "domain/slices/quizSlice";
+import { useGetQuizQuestionsQuery } from "domain/slices/apislice";
 import Quiz from "components/Quiz";
 
 function QuizWrapper() {
   const dispatch = useAppDispatch();
 
-  // TODO handle error here
-  const { data: sections, isLoading, isSuccess, isError, error } = useGetQuizSectionsQuery();
+  // TODO handle error here or use lazy hook version
+  const { data: questions, isSuccess, isError, error } = useGetQuizQuestionsQuery();
+
+  const [initializingQuizAttempt, setInitializingQuizAttempt] = useState(true);
 
   useEffect(() => {
-    if (sections) dispatch(addNewQuizAttempt({ quizId: "visitor", sections: sections }));
-  }, [isLoading]);
+    if (questions?.length) {
+      dispatch(setActiveAttempt({ questions }));
+      setInitializingQuizAttempt(false);
+    }
+  }, [questions]);
 
-  if (isLoading) return <div>loading</div>;
+  if (initializingQuizAttempt) return <div>loading...</div>;
 
   if (isError) return <div>error retrieving latest quiz questions</div>;
 
-  return <Quiz sections={sections!} />;
+  return <Quiz />;
 }
 
 export default QuizWrapper;

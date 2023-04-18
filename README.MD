@@ -41,6 +41,8 @@
 
 ### TODOs:
 
+- [ ] implement and build a library to share a single source of declared data types between frontend and backend (yay for type safety!)
+- [ ] rename project to gia-trainer
 - [x] rename pages folder to routes?
 - [ ] consider extracting quiz attempt logic into quizSlice to track current section, current question, and score etc.
 - [ ] add confetti gun animation for when a user gets a new pb

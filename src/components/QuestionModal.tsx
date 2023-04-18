@@ -1,8 +1,8 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { Section } from "domain/Types";
 import { Fragment } from "react";
-import CustomButton from "./CustomButton";
-import SectionReasoning from "components/SectionReasoning";
+import Btn3 from "./Btn3";
+import QuestionReasoning from "components/QuestionReasoning";
 
 function QuestionModal({
   section,
@@ -54,12 +54,12 @@ function QuestionModal({
                   <p className="text-sm text-gray-500">view question answer here</p>
                 </div>
 
-                <SectionReasoning section={section} handleFinishSection={() => {}} startingQuestionIndex={questionNumber - 1} />
+                <QuestionReasoning section={section} handleFinishSection={() => {}} startingQuestionIndex={questionNumber - 1} />
 
                 <div className="mt-4 flex justify-between">
                   {/* TODO make this a swiper? */}
-                  <CustomButton text="Previous" handleClick={handlePrev} />
-                  <CustomButton text="Next" handleClick={handleNext} />
+                  <Btn3 text="Previous" handleClick={handlePrev} />
+                  <Btn3 text="Next" handleClick={handleNext} />
                 </div>
               </Dialog.Panel>
             </Transition.Child>

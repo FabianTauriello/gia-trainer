@@ -1,7 +1,7 @@
 import { Section } from "domain/Types";
 import useSection from "hooks/useSection";
 import Choices from "./Choices";
-import SectionContainer from "./SectionContainer";
+import SectionContainer from "./QuestionContainer";
 
 function SectionWordMeaning({
   section,

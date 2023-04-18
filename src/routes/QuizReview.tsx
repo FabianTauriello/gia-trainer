@@ -19,44 +19,44 @@ function QuizReview() {
   const quizAttempt = getQuizAttemptById(quiz.attempts, params.quizId!);
   const sections = addQuestionNumbersToSections();
 
-  const [modalDetails, setModalDetails] = useState<ModalDetails>({ section: quizAttempt.sections[0], questionNumber: 1, show: false });
+  // const [modalDetails, setModalDetails] = useState<ModalDetails>({ section: quizAttempt.sections[0], questionNumber: 1, show: false });
 
-  useEffect(() => {
-    // should switch review status to true
-    dispatch(toggleReviewStatus());
+  // useEffect(() => {
+  //   // should switch review status to true
+  //   dispatch(toggleReviewStatus());
 
-    return () => {
-      // should switch review status to false
-      dispatch(toggleReviewStatus());
-    };
-  }, []);
+  //   return () => {
+  //     // should switch review status to false
+  //     dispatch(toggleReviewStatus());
+  //   };
+  // }, []);
 
   // adds question numbers to sections so that it is known what the position of a specific question is
-  function addQuestionNumbersToSections() {
-    const result: ScoredSection[] = [];
-    let num = 1;
-    quizAttempt.sections.forEach((s) => {
-      const newSection = { ...s };
-      const newQuestions: Question[] = [];
-      newSection.questions.forEach((q) => {
-        newQuestions.push({ number: num, ...q });
-        num++;
-      });
-      newSection.questions = newQuestions;
-      result.push(newSection);
-    });
+  // function addQuestionNumbersToSections() {
+  //   const result: ScoredSection[] = [];
+  //   let num = 1;
+  //   quizAttempt.sections.forEach((s) => {
+  //     const newSection = { ...s };
+  //     const newQuestions: Question[] = [];
+  //     newSection.questions.forEach((q) => {
+  //       newQuestions.push({ number: num, ...q });
+  //       num++;
+  //     });
+  //     newSection.questions = newQuestions;
+  //     result.push(newSection);
+  //   });
 
-    return result;
-  }
+  //   return result;
+  // }
 
-  function getQuizAttemptById(attempts: QuizAttempt[], id: string) {
-    const i = attempts.findIndex((attempts) => attempts.id === id);
-    return attempts[i];
-  }
+  // function getQuizAttemptById(attempts: QuizAttempt[], id: string) {
+  //   const i = attempts.findIndex((attempts) => attempts.id === id);
+  //   return attempts[i];
+  // }
 
   return (
     <div>
-      <div>quiz in review? {`${quiz.inReview}`}</div>
+      {/* <div>quiz in review? {`${quiz.inReview}`}</div>
       <h1>Total Score: {quizAttempt.totalScore}</h1>
       {sections.map((section, index) => (
         <div key={index}>
@@ -86,7 +86,7 @@ function QuizReview() {
         }}
         handleNext={() => setModalDetails((prev) => ({ ...prev, questionNumber: prev.questionNumber + 1 }))}
         onClose={() => setModalDetails((prev) => ({ ...prev, show: false }))}
-      />
+      /> */}
     </div>
   );
 }

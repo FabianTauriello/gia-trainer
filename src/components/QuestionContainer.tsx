@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 
-function SectionContainer({
+function QuestionContainer({
   onClickCapture,
   children,
 }: {
@@ -14,4 +14,4 @@ function SectionContainer({
   );
 }
 
-export default SectionContainer;
+export default QuestionContainer;

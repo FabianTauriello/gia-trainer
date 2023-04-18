@@ -1,11 +1,19 @@
-import { Section } from "domain/Types";
 import { Link } from "react-router-dom";
-import CustomButton from "./CustomButton";
+import Btn3 from "./Btn3";
+import { Question } from "domain/Types";
 
-function SectionLanding({ section, handleStartSection }: { section: Section; handleStartSection: () => void }) {
+function SectionSummary({
+  handleStartSection,
+  question,
+  sectionNumber,
+}: {
+  handleStartSection: () => void;
+  question: Question;
+  sectionNumber: number;
+}) {
   function getSectionDescription() {
-    switch (section.number) {
-      case 1:
+    switch (question.section) {
+      case "Reasoning":
         return (
           <p>
             The Reasoning section of the GIA test measures your ability to make inferences and draw logical conclusions, as well as
@@ -14,7 +22,7 @@ function SectionLanding({ section, handleStartSection }: { section: Section; han
             will then be replaced with a question.
           </p>
         );
-      case 2:
+      case "Perceptual Speed":
         return (
           <>
             <p>
@@ -24,7 +32,7 @@ function SectionLanding({ section, handleStartSection }: { section: Section; han
             <p>Letters are considered pairs only when they are one on top of the other.</p>
           </>
         );
-      case 3:
+      case "Number Speed and Accuracy":
         return (
           <p>
             The Number Speed and Accuracy GIA test section assesses your ability to perform simple numerical tasks quickly and
@@ -33,14 +41,14 @@ function SectionLanding({ section, handleStartSection }: { section: Section; han
             median.
           </p>
         );
-      case 4:
+      case "Word Meaning":
         return (
           <p>
             The Word Meaning test section requires you to identify words that have a similar meaning or are related in some way. In
             each question, you will be given three words, two of which have something in common. Choose the odd one out.
           </p>
         );
-      case 5:
+      case "Spatial Visualisation":
         return (
           <>
             <p>
@@ -51,7 +59,7 @@ function SectionLanding({ section, handleStartSection }: { section: Section; han
           </>
         );
       default:
-        throw new Error(`There is no description for section ${section.number}.`);
+        throw new Error(`There is no description for section ${question.section}.`);
     }
   }
 
@@ -59,13 +67,13 @@ function SectionLanding({ section, handleStartSection }: { section: Section; han
     <div>
       <div className="py-8 px-8 bg-secondary">
         <h1 className="text-4xl font-extrabold">
-          Section {section.number}: {section.title}
+          Section {sectionNumber}: {question.section}
         </h1>
       </div>
       <div className="py-8 px-8">{getSectionDescription()}</div>
-      <CustomButton text="Start Section" handleClick={handleStartSection} customCss="ml-8" />
+      <Btn3 text="Start Section" handleClick={handleStartSection} customCss="ml-8" />
     </div>
   );
 }
 
-export default SectionLanding;
+export default SectionSummary;

@@ -2,7 +2,7 @@ import { Section } from "domain/Types";
 import useSection from "hooks/useSection";
 import { useState } from "react";
 import Choices from "./Choices";
-import SectionContainer from "./SectionContainer";
+import SectionContainer from "./QuestionContainer";
 
 function SectionPerceptualSpeed({
   section,

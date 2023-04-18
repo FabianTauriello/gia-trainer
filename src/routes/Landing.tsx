@@ -1,14 +1,12 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "hooks/useAppSelector";
-import { useEffect } from "react";
 import Btn1 from "components/Btn1";
 import mySvg from "assets/svgs/cv.svg";
-import { Section } from "domain/Types";
+import Btn2 from "components/Btn2";
+import { useGetQuizQuestionsQuery } from "domain/slices/apislice";
 
 function Landing() {
   const navigate = useNavigate();
-
-  const dispatch = useAppDispatch();
 
   return (
     <>
