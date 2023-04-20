@@ -1,19 +1,11 @@
-import { Section } from "domain/Types";
 import useSection from "hooks/useSection";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Choices from "./Choices";
 import SectionContainer from "./QuestionContainer";
+import { QuizContext } from "domain/QuizContextProvider";
 
-function SectionSpatialVisualisation({
-  section,
-  handleFinishSection,
-  startingQuestionIndex = 0,
-}: {
-  section: Section;
-  handleFinishSection: (score: number) => void;
-  startingQuestionIndex?: number;
-}) {
-  const [currentQuestion, handleAnswerClick] = useSection(section.questions, startingQuestionIndex, handleFinishSection);
+function QuestionSpatialVisualisation({}: {}) {
+  const { currentQuestion, quizContext, setQuizContext, inReview } = useContext(QuizContext);
 
   return (
     <SectionContainer>
@@ -42,13 +34,9 @@ function SectionSpatialVisualisation({
           );
         })}
       </div>
-      <Choices
-        correctChoice={currentQuestion.correctChoiceIndex}
-        choices={currentQuestion.choices}
-        handleAnswerClick={handleAnswerClick}
-      />
+      <Choices />
     </SectionContainer>
   );
 }
 
-export default SectionSpatialVisualisation;
+export default QuestionSpatialVisualisation;

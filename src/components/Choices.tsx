@@ -1,31 +1,34 @@
+import { current } from "@reduxjs/toolkit";
+import { QuizContext } from "domain/QuizContextProvider";
 import { useAppSelector } from "hooks/useAppSelector";
+import { useContext } from "react";
 
 function Choices({
-  // TODO for testing only, remove later!!!
-  correctChoice,
-  choices,
-  handleAnswerClick,
   hideChoices = false,
+  customAnswerHandler,
 }: {
-  correctChoice: number;
-  choices: string[];
-  handleAnswerClick: (choiceIndexSelected: number) => void;
   hideChoices?: boolean;
+  customAnswerHandler?: (num: number) => void;
 }) {
-  const quiz = useAppSelector((state) => state.quiz);
+  const { currentQuestion, quizContext, setQuizContext, inReview } = useContext(QuizContext);
+
+  function handleAnswerClick(num: number) {
+    setQuizContext((prev) => ({ ...prev, questionIndex: prev.questionIndex + 1 }));
+  }
 
   return (
     <div className="flex justify-center gap-3 mx-20">
-      {choices.map((choice, i) => (
+      {currentQuestion.choices.map((choice, i) => (
         <button
           key={i}
           type="button"
-          onClick={quiz.activeAttempt ? undefined : () => handleAnswerClick(i)}
-          className={`outline-none p-6 bg-secondary rounded-lg flex-1 ${
-            hideChoices || quiz.activeAttempt ? "cursor-default" : "cursor-pointer"
-          } ${correctChoice === i ? "border-4 border-white" : ""}`}
+          onClick={customAnswerHandler ? () => customAnswerHandler(i) : () => handleAnswerClick(i)}
+          className={`outline-none p-6 bg-secondary rounded-lg flex-1 ${!hideChoices ? "cursor-pointer" : "cursor-default"} ${
+            // TODO for testing only, remove later!!!
+            currentQuestion.correctChoiceIndex === i ? "border-4 border-white" : ""
+          }`}
         >
-          <span className={`${hideChoices && !quiz.activeAttempt ? "invisible" : "visible"}`}>{choice}</span>
+          <span className={`${!hideChoices ? "visible" : "invisible"}`}>{choice}</span>
         </button>
       ))}
     </div>

@@ -1,6 +1,5 @@
 import QuestionModal from "components/QuestionModal";
-import { ModalDetails, Question, QuizAttempt, ScoredSection, Section } from "domain/Types";
-import { toggleReviewStatus } from "domain/slices/quizSlice";
+import { ModalDetails, Question, QuizAttempt } from "domain/Types";
 import { useAppDispatch } from "hooks/useAppSelector";
 import { useAppSelector } from "hooks/useAppSelector";
 import { useEffect, useState } from "react";

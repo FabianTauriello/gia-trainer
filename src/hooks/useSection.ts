@@ -2,6 +2,7 @@ import { Question } from "domain/Types";
 import { useRef } from "react";
 import { useReducer, useState } from "react";
 
+// TODO delete this?
 function useSection(
   questions: Question[],
   startingQuestionIndex: number,

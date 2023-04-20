@@ -1,17 +1,15 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "domain/Store";
-import { Question, QuizAttempt } from "domain/Types";
+import { ActiveQuizAttempt, Question, QuizAttempt } from "domain/Types";
 import { testAttempt } from "temp/testData";
 
 type QuizState = {
   attempts: QuizAttempt[];
-  activeAttempt: QuizAttempt | null;
 };
 
 const initialState: QuizState = {
   // TODO make sure to empty this array when you're happy with the review screen
-  attempts: [testAttempt],
-  activeAttempt: null,
+  attempts: [],
 };
 
 // Holds/manages all quiz attempts for current user
@@ -19,13 +17,6 @@ export const quizSlice = createSlice({
   name: "quiz",
   initialState,
   reducers: {
-    setActiveAttempt: (state, action: PayloadAction<{ questions: Question[] }>) => {
-      state.activeAttempt = {
-        id: "",
-        questions: action.payload.questions,
-        totalScore: 0,
-      };
-    },
     // addNewQuizAttempt: (state, action: PayloadAction<{ quizId: string; sections: Section[] }>) => {
     //   if (state.attempts.find((a) => a.id === action.payload.quizId)) return; // TODO consider resetting existing quiz attempt instead of just returning here
     //   const newQuizAttempt = {
@@ -50,7 +41,7 @@ export const quizSlice = createSlice({
   },
 });
 
-export const { setActiveAttempt } = quizSlice.actions;
+export const {} = quizSlice.actions;
 
 export const selectCount = (state: RootState) => state.counter.value;
 

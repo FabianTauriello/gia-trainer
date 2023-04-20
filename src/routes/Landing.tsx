@@ -30,7 +30,7 @@ function Landing() {
         <div className="flex flex-col">
           <main>
             <section className="text-center intro-section text-white">
-              <h1 className="text-5xl font-extrabold mb-4 mr-8 ml-8">Prepare to ace your next GIA test now</h1>
+              <h1 className="text-5xl font-extrabold mb-4 mr-8 ml-8">Prepare to ace your next GIA test</h1>
               <div className="text-2xl font-medium mr-8 ml-8">
                 Practice and compete against others in the GIA test. Hone your skills by competing against others or trying to beat
                 your high score.

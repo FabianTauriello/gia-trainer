@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import Landing from "./routes/Landing";
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider, Navigate } from "react-router-dom";
-import QuizContainer from "./routes/QuizWrapper";
+import QuizContainer from "./routes/QuizAttemptWrapper";
 import QuizReview from "routes/QuizReview";
 import { Provider } from "react-redux";
 import { store } from "domain/Store";

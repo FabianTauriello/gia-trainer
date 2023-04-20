@@ -3,6 +3,8 @@ import { Section } from "domain/Types";
 import { Fragment } from "react";
 import Btn3 from "./Btn3";
 import QuestionReasoning from "components/QuestionReasoning";
+import QuizContextProvider from "domain/QuizContextProvider";
+import QuizController from "./QuizController";
 
 function QuestionModal({
   section,
@@ -54,7 +56,9 @@ function QuestionModal({
                   <p className="text-sm text-gray-500">view question answer here</p>
                 </div>
 
-                <QuestionReasoning section={section} handleFinishSection={() => {}} startingQuestionIndex={questionNumber - 1} />
+                <QuizContextProvider questions={[]} startingQuestionIndex={2} inReview>
+                  <QuizController />
+                </QuizContextProvider>
 
                 <div className="mt-4 flex justify-between">
                   {/* TODO make this a swiper? */}

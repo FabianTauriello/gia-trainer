@@ -1,12 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useAppSelector } from "hooks/useAppSelector";
-import useSection from "hooks/useSection";
 import Choices from "./Choices";
 import QuestionContainer from "./QuestionContainer";
 import { Question } from "domain/Types";
+import { QuizContext } from "domain/QuizContextProvider";
 
-function QuestionReasoning({ question, handleAnswerClick }: { question: Question; handleAnswerClick: (score: number) => void }) {
-  const quiz = useAppSelector((state) => state.quiz);
+function QuestionReasoning({}: {}) {
+  const { currentQuestion, quizContext, setQuizContext, inReview } = useContext(QuizContext);
 
   const [hideChoices, setHideChoices] = useState(true); // Toggle visibility of the answer choices
 
@@ -17,29 +17,29 @@ function QuestionReasoning({ question, handleAnswerClick }: { question: Question
     }
   }
 
+  function handleAnswerClick(num: number) {
+    if (inReview) return;
+
+    setQuizContext((prev) => ({ ...prev, questionIndex: prev.questionIndex + 1 }));
+    setHideChoices(true);
+  }
+
   function getTextToDisplay() {
-    if (!quiz.activeAttempt)
+    if (inReview)
       return (
         <>
-          <span className="block">{question.statement}</span>
-          <span className="block">{question.question}</span>
+          <span className="block">{currentQuestion.statement}</span>
+          <span className="block">{currentQuestion.question}</span>
         </>
       );
 
-    return <span>{hideChoices ? question.statement : question.question}</span>;
+    return <span>{hideChoices ? currentQuestion.statement : currentQuestion.question}</span>;
   }
 
   return (
     <QuestionContainer onClickCapture={(e) => (hideChoices ? handleSectionContainerClick(e) : undefined)}>
       <div className="bg-cream text-black mx-14 p-10 rounded-lg text-lg text-center mb-6">{getTextToDisplay()}</div>
-      {
-        <Choices
-          correctChoice={question.correctChoiceIndex}
-          choices={question.choices}
-          handleAnswerClick={handleAnswerClick}
-          hideChoices={hideChoices}
-        />
-      }
+      {<Choices hideChoices={hideChoices} customAnswerHandler={(i) => handleAnswerClick(i)} />}
     </QuestionContainer>
   );
 }

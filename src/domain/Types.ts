@@ -4,6 +4,8 @@
 //   questions: Question[];
 // };
 
+import { Dispatch } from "react";
+
 // TODO use generics here to support different sections or use more specific types?
 export type Question = {
   number: number;
@@ -39,6 +41,23 @@ export type QuizAttempt = {
   id: string;
   questions: Question[];
   totalScore: number;
+};
+
+export type QuizContextType = {
+  quizContext: QuizContextData;
+  setQuizContext: Dispatch<React.SetStateAction<QuizContextData>>;
+  currentQuestion: Question;
+  inReview: boolean;
+};
+
+export type QuizContextData = {
+  questionIndex: number;
+  sectionsStarted: string[];
+};
+
+export type ActiveQuizAttempt = QuizAttempt & {
+  currentQuestionIndex: number;
+  currentSectionNumber: number;
 };
 
 // OR use different question types...

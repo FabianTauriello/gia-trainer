@@ -1,18 +1,14 @@
 import { Link } from "react-router-dom";
 import Btn3 from "./Btn3";
 import { Question } from "domain/Types";
+import { useContext } from "react";
+import { QuizContext } from "domain/QuizContextProvider";
 
-function SectionSummary({
-  handleStartSection,
-  question,
-  sectionNumber,
-}: {
-  handleStartSection: () => void;
-  question: Question;
-  sectionNumber: number;
-}) {
+function SectionIntro({}: {}) {
+  const { currentQuestion, quizContext, setQuizContext } = useContext(QuizContext);
+
   function getSectionDescription() {
-    switch (question.section) {
+    switch (currentQuestion.section) {
       case "Reasoning":
         return (
           <p>
@@ -59,15 +55,19 @@ function SectionSummary({
           </>
         );
       default:
-        throw new Error(`There is no description for section ${question.section}.`);
+        throw new Error(`There is no description for section ${currentQuestion.section}.`);
     }
+  }
+
+  function handleStartSection() {
+    setQuizContext((prev) => ({ ...prev, sectionsStarted: [...prev.sectionsStarted, currentQuestion.section] }));
   }
 
   return (
     <div>
       <div className="py-8 px-8 bg-secondary">
         <h1 className="text-4xl font-extrabold">
-          Section {sectionNumber}: {question.section}
+          Section {quizContext.sectionsStarted.length + 1}: {currentQuestion.section}
         </h1>
       </div>
       <div className="py-8 px-8">{getSectionDescription()}</div>
@@ -76,4 +76,4 @@ function SectionSummary({
   );
 }
 
-export default SectionSummary;
+export default SectionIntro;
