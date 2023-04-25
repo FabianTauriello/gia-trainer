@@ -2,9 +2,9 @@ import { useContext, useEffect, useState } from "react";
 import { useAppDispatch } from "hooks/useAppSelector";
 import {} from "domain/slices/quizSlice";
 import { useGetQuizQuestionsQuery } from "domain/slices/apislice";
-import Quiz from "components/QuizController";
+import Quiz from "components/QuestionController";
 import QuizContextProvider, { QuizContext } from "domain/QuizContextProvider";
-import QuizController from "components/QuizController";
+import QuizController from "components/QuestionController";
 
 function QuizAttemptWrapper() {
   const dispatch = useAppDispatch();
@@ -27,7 +27,7 @@ function QuizAttemptWrapper() {
   if (isError) return <div>error retrieving latest quiz questions</div>;
 
   return (
-    <QuizContextProvider questions={questions!}>
+    <QuizContextProvider allQuestions={questions!}>
       <QuizController />
     </QuizContextProvider>
   );

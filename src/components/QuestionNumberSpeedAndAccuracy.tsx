@@ -1,13 +1,13 @@
 import useSection from "hooks/useSection";
 import { useState } from "react";
 import Choices from "./Choices";
-import SectionContainer from "./QuestionContainer";
+import QuestionContainer from "./QuestionContainer";
 
 function QuestionNumberSpeedAndAccuracy({}: {}) {
   return (
-    <SectionContainer>
+    <QuestionContainer>
       <Choices />
-    </SectionContainer>
+    </QuestionContainer>
   );
 }
 

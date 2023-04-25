@@ -1,14 +1,13 @@
-import useSection from "hooks/useSection";
 import { useContext, useState } from "react";
 import Choices from "./Choices";
-import SectionContainer from "./QuestionContainer";
+import QuestionContainer from "./QuestionContainer";
 import { QuizContext } from "domain/QuizContextProvider";
 
 function QuestionSpatialVisualisation({}: {}) {
   const { currentQuestion, quizContext, setQuizContext, inReview } = useContext(QuizContext);
 
   return (
-    <SectionContainer>
+    <QuestionContainer>
       <div className="flex justify-center mb-6 gap-5 text-center">
         {currentQuestion.letters?.map((letter, i) => {
           const firstLetter = letter[0];
@@ -35,7 +34,7 @@ function QuestionSpatialVisualisation({}: {}) {
         })}
       </div>
       <Choices />
-    </SectionContainer>
+    </QuestionContainer>
   );
 }
 

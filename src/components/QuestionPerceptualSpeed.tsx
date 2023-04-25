@@ -1,6 +1,6 @@
 import { Question } from "domain/Types";
 import Choices from "./Choices";
-import SectionContainer from "./QuestionContainer";
+import QuestionContainer from "./QuestionContainer";
 import { useContext } from "react";
 import { QuizContext } from "domain/QuizContextProvider";
 
@@ -8,7 +8,7 @@ function QuestionPerceptualSpeed({}: {}) {
   const { currentQuestion, quizContext, setQuizContext, inReview } = useContext(QuizContext);
 
   return (
-    <SectionContainer>
+    <QuestionContainer>
       <div className="flex justify-center mb-6 gap-5 text-center">
         {currentQuestion.pairs?.map((pair, i) => {
           return (
@@ -20,7 +20,7 @@ function QuestionPerceptualSpeed({}: {}) {
         })}
       </div>
       <Choices />
-    </SectionContainer>
+    </QuestionContainer>
   );
 }
 

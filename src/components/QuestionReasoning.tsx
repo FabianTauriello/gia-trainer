@@ -1,12 +1,13 @@
 import { useContext, useState } from "react";
-import { useAppSelector } from "hooks/useAppSelector";
+import { QuizContext } from "domain/QuizContextProvider";
+import { useNavigate } from "react-router-dom";
 import Choices from "./Choices";
 import QuestionContainer from "./QuestionContainer";
-import { Question } from "domain/Types";
-import { QuizContext } from "domain/QuizContextProvider";
 
 function QuestionReasoning({}: {}) {
-  const { currentQuestion, quizContext, setQuizContext, inReview } = useContext(QuizContext);
+  const navigate = useNavigate();
+
+  const { currentQuestion, quizContext, setQuizContext, inReview, allQuestions } = useContext(QuizContext);
 
   const [hideChoices, setHideChoices] = useState(true); // Toggle visibility of the answer choices
 

@@ -1,3 +1,6 @@
+import { useSwiper } from "swiper/react";
+import SwiperCore from "swiper";
+
 function Btn3({ text, handleClick, customCss }: { text: string; handleClick: () => void; customCss?: string }) {
   return (
     <button

@@ -1,12 +1,12 @@
 import useSection from "hooks/useSection";
 import Choices from "./Choices";
-import SectionContainer from "./QuestionContainer";
+import QuestionContainer from "./QuestionContainer";
 
 function QuestionWordMeaning({}: {}) {
   return (
-    <SectionContainer>
+    <QuestionContainer>
       <Choices />
-    </SectionContainer>
+    </QuestionContainer>
   );
 }
 

@@ -1,8 +1,7 @@
-// export type Section = {
-//   title: string;
-//   number: number; // TODO need this?
-//   questions: Question[];
-// };
+export type Section = {
+  title: string;
+  questions: Question[];
+};
 
 import { Dispatch } from "react";
 
@@ -24,8 +23,7 @@ export type User = {
 };
 
 export type ModalDetails = {
-  // section: Section;
-  questionNumber: number;
+  chosenQuestionIndex: number;
   show: boolean;
 };
 
@@ -34,8 +32,6 @@ type Letter = {
   rot: number;
   flip: boolean;
 };
-
-// export type ScoredSection = Section & { score: number };
 
 export type QuizAttempt = {
   id: string;
@@ -48,6 +44,7 @@ export type QuizContextType = {
   setQuizContext: Dispatch<React.SetStateAction<QuizContextData>>;
   currentQuestion: Question;
   inReview: boolean;
+  allQuestions: Question[];
 };
 
 export type QuizContextData = {

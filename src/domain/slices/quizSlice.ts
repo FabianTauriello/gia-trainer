@@ -9,7 +9,7 @@ type QuizState = {
 
 const initialState: QuizState = {
   // TODO make sure to empty this array when you're happy with the review screen
-  attempts: [],
+  attempts: [testAttempt],
 };
 
 // Holds/manages all quiz attempts for current user
