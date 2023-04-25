@@ -1,4 +1,4 @@
-### v1 stack and functionality (gia-practice):
+### v1 stack and functionality:
 
 - React
 - Tailwind
@@ -7,7 +7,7 @@
 - RTK Query for data fetching and cache management
 - Font Awesome for icons
 
-### v2 stack and functionality (gia-trainer):
+### v2 stack and functionality:
 
 - React
 - Tailwind
