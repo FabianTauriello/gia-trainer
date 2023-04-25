@@ -5,6 +5,7 @@ import { useAppSelector } from "hooks/useAppSelector";
 import { useState } from "react";
 import { FaCheck } from "react-icons/fa";
 import { useNavigate, useParams } from "react-router-dom";
+import { Utils } from "utils/Utils";
 
 // This component must display quiz scores for users who are not logged in, and users HAVE logged in and just want to review their old quiz attempts
 export function QuizReview() {
@@ -13,7 +14,7 @@ export function QuizReview() {
 
   const dispatch = useAppDispatch();
   const quiz = useAppSelector((state) => state.quiz);
-  const quizAttempt = getQuizAttemptById(quiz.attempts, params.quizId!);
+  const quizAttempt = Utils.getQuizAttemptById(quiz.attempts, params.quizId!);
   const sections = splitQuestionsIntoSections();
 
   const [modalDetails, setModalDetails] = useState<ModalDetails>({ chosenQuestionIndex: 0, show: false });
@@ -30,11 +31,6 @@ export function QuizReview() {
     });
 
     return sections;
-  }
-
-  function getQuizAttemptById(attempts: QuizAttempt[], id: string) {
-    const i = attempts.findIndex((attempts) => attempts.id === id);
-    return attempts[i];
   }
 
   return (
@@ -60,7 +56,6 @@ export function QuizReview() {
       ))}
       <QuestionModal
         questionIndex={modalDetails.chosenQuestionIndex}
-        allQuestions={quizAttempt.questions}
         show={modalDetails.show}
         onClose={() => setModalDetails((prev) => ({ ...prev, show: false }))}
       />

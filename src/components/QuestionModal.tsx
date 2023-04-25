@@ -1,33 +1,34 @@
 import { Dialog, Transition } from "@headlessui/react";
-import { Question, Section } from "domain/Types";
 import { Fragment, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Btn3 } from "./Btn3";
 import QuizContextProvider from "domain/QuizContextProvider";
 import { QuestionController } from "./QuestionController";
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from "swiper";
+import { Utils } from "utils/Utils";
+import { useAppSelector } from "hooks/useAppSelector";
 
 import "swiper/css";
 import "swiper/css/navigation";
-import "swiper/css/pagination";
-import "swiper/css/scrollbar";
+import { useParams } from "react-router-dom";
+// import "swiper/css/pagination";
+// import "swiper/css/scrollbar";
 
-export function QuestionModal({
-  questionIndex,
-  allQuestions,
-  show,
-  onClose,
-}: {
-  questionIndex: number;
-  allQuestions: Question[];
-  show: boolean;
-  onClose: () => void;
-}) {
+export function QuestionModal({ questionIndex, show, onClose }: { questionIndex: number; show: boolean; onClose: () => void }) {
+  console.log("rendering modal");
+  const params = useParams<{ quizId: string }>();
+
+  const quiz = useAppSelector((state) => state.quiz);
+  const quizAttempt = Utils.getQuizAttemptById(quiz.attempts, params.quizId!);
+
   const [swiper, setSwiper] = useState<SwiperCore | null>(null);
+  const [activeIndex, setActiveIndex] = useState(questionIndex);
+
+  const activeQuestion = quizAttempt.questions[activeIndex];
 
   return (
     <Transition appear show={show} as={Fragment}>
-      <Dialog as="div" className="relative z-10" onClose={onClose}>
+      <Dialog as="div" className="relative" onClose={onClose}>
         <Transition.Child
           as={Fragment}
           enter="ease-out duration-300"
@@ -51,27 +52,27 @@ export function QuestionModal({
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <Dialog.Panel className="w-full transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
-                <Dialog.Title as="h3" className="text-lg font-medium leading-6 text-gray-900">
-                  {"question.section"} : {`question ${questionIndex + 1}`}
+              <Dialog.Panel className="md:w-4/5 transform overflow-hidden rounded-xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+                <Dialog.Title as="h3" className="mb-2 text-lg font-medium leading-6 text-gray-900 flex justify-center">
+                  {`Question ${activeIndex + 1}`}
                 </Dialog.Title>
-                <div className="mt-2">
-                  <p className="text-sm text-gray-500">view question answer here</p>
-                </div>
                 <Swiper
                   // spaceBetween={50}
-                  // style={{ height: "200px" }}
+                  style={{ height: "600px" }}
                   modules={[Navigation]}
                   navigation={{ nextEl: ".next", prevEl: ".prev" }}
                   // slidesPerView={1}
                   initialSlide={questionIndex}
                   // onActiveIndexChange={}
-                  // onSlideChange={() => console.log("slide change")}
+                  onSlideChange={(swiper) => {
+                    console.log("slide change");
+                    setActiveIndex(swiper.activeIndex);
+                  }}
                   onSwiper={setSwiper}
                 >
-                  {allQuestions.map((q, i) => (
+                  {quizAttempt.questions.map((q, i) => (
                     <SwiperSlide key={i}>
-                      <QuizContextProvider allQuestions={allQuestions} startingQuestionIndex={i} inReview={true}>
+                      <QuizContextProvider allQuestions={quizAttempt.questions} startingQuestionIndex={i} inReview={true}>
                         <QuestionController />
                       </QuizContextProvider>
                     </SwiperSlide>
@@ -79,6 +80,7 @@ export function QuestionModal({
                 </Swiper>
                 <div className="mt-4 flex justify-between">
                   <Btn3 customCss="prev" text="Previous" handleClick={() => swiper?.slidePrev()} />
+                  <span className="flex flex-col justify-center">{`Section: ${activeQuestion.section}`}</span>
                   <Btn3 customCss="next" text="Next" handleClick={() => swiper?.slideNext()} />
                 </div>
               </Dialog.Panel>

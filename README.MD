@@ -45,13 +45,13 @@
 - [x] rename project to gia-trainer
 - [x] change components to use named export instead of default
 - [x] rename pages folder to routes?
+- [ ] rename section references to "category"?
 - [ ] add confetti gun animation for when a user gets a new pb
 - [ ] add dashboard page for logged in users
 - [ ] add ability to review previous quiz attempts? (e.g. /quiz-review/id)
 - [ ] add sign-in and user authentication
 - [ ] determine how selected choices will be recorded for questions - selectedChoiceIndex prop in Question type?
 - [ ] make use of the timer
-- [ ] complete the quiz complete pages
 - [x] pull quiz data from server at beginning of quiz - use RTK Query
 - [x] change data.json to hold questions only, and just render description, title etc as regular html?
 - [x] get it working with section 1 first

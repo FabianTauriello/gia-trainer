@@ -33,9 +33,9 @@ export function Choices({
           key={i}
           type="button"
           onClick={customAnswerHandler ? () => customAnswerHandler(i) : () => handleAnswerClick(i)}
-          className={`outline-none p-6 bg-secondary rounded-lg flex-1 ${!hideChoices ? "cursor-pointer" : "cursor-default"} ${
-            currentQuestion.correctChoiceIndex === i ? "border-4 border-white" : ""
-          }`}
+          className={`outline-none p-6 bg-secondary rounded-lg flex-1 ${
+            !hideChoices && !inReview ? "cursor-pointer" : "cursor-default"
+          } ${currentQuestion.correctChoiceIndex === i ? "border-4 border-white" : ""}`}
         >
           <span className={`${!hideChoices || inReview ? "visible" : "invisible"}`}>{choice}</span>
         </button>
