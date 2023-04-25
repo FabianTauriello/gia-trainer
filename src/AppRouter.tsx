@@ -1,13 +1,11 @@
 import { useAppSelector } from "hooks/useAppSelector";
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider, Navigate } from "react-router-dom";
-import Landing from "./routes/Landing";
-import { store } from "domain/Store";
-import { Provider } from "react-redux";
-import QuizAttemptWrapper from "routes/QuizAttemptWrapper";
-import Counter from "routes/Counter";
-import QuizReview from "routes/QuizReview";
+import { Landing } from "./routes/Landing";
+import { QuizAttemptWrapper } from "routes/QuizAttemptWrapper";
+import { Counter } from "routes/Counter";
+import { QuizReview } from "routes/QuizReview";
 
-function AppRouter() {
+export function AppRouter() {
   const quiz = useAppSelector((state) => state.quiz);
 
   const router = createBrowserRouter(
@@ -27,5 +25,3 @@ function AppRouter() {
 
   return <RouterProvider router={router} />;
 }
-
-export default AppRouter;

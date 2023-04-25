@@ -1,10 +1,10 @@
 import { useContext, useState } from "react";
 import { QuizContext } from "domain/QuizContextProvider";
 import { useNavigate } from "react-router-dom";
-import Choices from "./Choices";
-import QuestionContainer from "./QuestionContainer";
+import { Choices } from "./Choices";
+import { QuestionContainer } from "./QuestionContainer";
 
-function QuestionReasoning({}: {}) {
+export function QuestionReasoning({}: {}) {
   const navigate = useNavigate();
 
   const { currentQuestion, quizContext, setQuizContext, inReview, allQuestions } = useContext(QuizContext);
@@ -44,5 +44,3 @@ function QuestionReasoning({}: {}) {
     </QuestionContainer>
   );
 }
-
-export default QuestionReasoning;

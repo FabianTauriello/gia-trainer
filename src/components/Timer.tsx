@@ -1,13 +1,13 @@
 import { useEffect, useMemo, useState } from "react";
 
-function Timer({ initialSeconds, onCountdownComplete }: { initialSeconds: number; onCountdownComplete: () => void }) {
+export function Timer({ initialSeconds, onCountdownComplete }: { initialSeconds: number; onCountdownComplete: () => void }) {
   const [seconds, setSeconds] = useState(initialSeconds);
 
   const minutes = Math.floor(seconds / 60);
 
   const intervalId = useMemo(() => {
     return setInterval(() => {
-      setSeconds(prev => {
+      setSeconds((prev) => {
         return prev - 1;
       });
     }, 1000);
@@ -26,5 +26,3 @@ function Timer({ initialSeconds, onCountdownComplete }: { initialSeconds: number
     </div>
   );
 }
-
-export default Timer;

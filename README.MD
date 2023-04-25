@@ -43,7 +43,7 @@
 
 - [ ] implement and build a library to share a single source of declared data types between frontend and backend (yay for type safety!)
 - [x] rename project to gia-trainer
-- [ ] change components to use named export instead of default
+- [x] change components to use named export instead of default
 - [x] rename pages folder to routes?
 - [ ] add confetti gun animation for when a user gets a new pb
 - [ ] add dashboard page for logged in users

@@ -4,7 +4,7 @@ import { useAppSelector } from "hooks/useAppSelector";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
-function Choices({
+export function Choices({
   hideChoices = false,
   customAnswerHandler,
 }: {
@@ -43,5 +43,3 @@ function Choices({
     </div>
   );
 }
-
-export default Choices;

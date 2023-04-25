@@ -1,11 +1,11 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "hooks/useAppSelector";
-import Btn1 from "components/Btn1";
+import { Btn1 } from "components/Btn1";
 import mySvg from "assets/svgs/cv.svg";
 import Btn2 from "components/Btn2";
 import { useGetQuizQuestionsQuery } from "domain/slices/apislice";
 
-function Landing() {
+export function Landing() {
   const navigate = useNavigate();
 
   return (
@@ -57,8 +57,6 @@ function Landing() {
     </>
   );
 }
-
-export default Landing;
 
 {
   /* <div className="h-full flex flex-col justify-center p-6 md:w-2/4 m-auto">

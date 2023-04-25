@@ -1,7 +1,7 @@
 import { useSwiper } from "swiper/react";
 import SwiperCore from "swiper";
 
-function Btn3({ text, handleClick, customCss }: { text: string; handleClick: () => void; customCss?: string }) {
+export function Btn3({ text, handleClick, customCss }: { text: string; handleClick: () => void; customCss?: string }) {
   return (
     <button
       type="button"
@@ -12,5 +12,3 @@ function Btn3({ text, handleClick, customCss }: { text: string; handleClick: () 
     </button>
   );
 }
-
-export default Btn3;

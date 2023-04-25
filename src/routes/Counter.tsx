@@ -2,7 +2,7 @@ import { decrement, increment, incrementByAmount } from "domain/slices/counterSl
 import { useAppDispatch, useAppSelector } from "hooks/useAppSelector";
 import { useRef } from "react";
 
-function Counter() {
+export function Counter() {
   const inputRef = useRef<HTMLInputElement>(null);
 
   // The `state` arg is correctly typed as `RootState` already
@@ -33,5 +33,3 @@ function Counter() {
     </div>
   );
 }
-
-export default Counter;

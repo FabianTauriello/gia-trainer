@@ -1,12 +1,10 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useAppDispatch } from "hooks/useAppSelector";
-import {} from "domain/slices/quizSlice";
 import { useGetQuizQuestionsQuery } from "domain/slices/apislice";
-import Quiz from "components/QuestionController";
+import { QuestionController } from "components/QuestionController";
 import QuizContextProvider, { QuizContext } from "domain/QuizContextProvider";
-import QuizController from "components/QuestionController";
 
-function QuizAttemptWrapper() {
+export function QuizAttemptWrapper() {
   const dispatch = useAppDispatch();
 
   // TODO handle error here and maybe use lazy hook version
@@ -28,9 +26,7 @@ function QuizAttemptWrapper() {
 
   return (
     <QuizContextProvider allQuestions={questions!}>
-      <QuizController />
+      <QuestionController />
     </QuizContextProvider>
   );
 }
-
-export default QuizAttemptWrapper;

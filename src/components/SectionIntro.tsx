@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
-import Btn3 from "./Btn3";
+import { Btn3 } from "./Btn3";
 import { Question } from "domain/Types";
 import { useContext } from "react";
 import { QuizContext } from "domain/QuizContextProvider";
 
-function SectionIntro({}: {}) {
+export function SectionIntro({}: {}) {
   const { currentQuestion, quizContext, setQuizContext } = useContext(QuizContext);
 
   function getSectionDescription() {
@@ -75,5 +75,3 @@ function SectionIntro({}: {}) {
     </div>
   );
 }
-
-export default SectionIntro;

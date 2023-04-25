@@ -2,9 +2,9 @@ import { Dialog, Transition } from "@headlessui/react";
 import { Question, Section } from "domain/Types";
 import { Fragment, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import Btn3 from "./Btn3";
+import { Btn3 } from "./Btn3";
 import QuizContextProvider from "domain/QuizContextProvider";
-import QuestionController from "./QuestionController";
+import { QuestionController } from "./QuestionController";
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from "swiper";
 
 import "swiper/css";
@@ -12,7 +12,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 
-function QuestionModal({
+export function QuestionModal({
   questionIndex,
   allQuestions,
   show,
@@ -89,5 +89,3 @@ function QuestionModal({
     </Transition>
   );
 }
-
-export default QuestionModal;

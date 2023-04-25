@@ -1,9 +1,9 @@
 import { useContext, useState } from "react";
-import Choices from "./Choices";
-import QuestionContainer from "./QuestionContainer";
+import { Choices } from "./Choices";
+import { QuestionContainer } from "./QuestionContainer";
 import { QuizContext } from "domain/QuizContextProvider";
 
-function QuestionSpatialVisualisation({}: {}) {
+export function QuestionSpatialVisualisation({}: {}) {
   const { currentQuestion, quizContext, setQuizContext, inReview } = useContext(QuizContext);
 
   return (
@@ -37,5 +37,3 @@ function QuestionSpatialVisualisation({}: {}) {
     </QuestionContainer>
   );
 }
-
-export default QuestionSpatialVisualisation;

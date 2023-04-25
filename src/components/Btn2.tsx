@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 
 // like Btn1 but it renders children - good for spinners/async logic
-function Btn2({ children, handleClick, customCss }: { children: ReactNode; handleClick: () => void; customCss: string }) {
+export function Btn2({ children, handleClick, customCss }: { children: ReactNode; handleClick: () => void; customCss: string }) {
   return (
     <button
       type="button"
@@ -11,5 +11,3 @@ function Btn2({ children, handleClick, customCss }: { children: ReactNode; handl
     </button>
   );
 }
-
-export default Btn2;

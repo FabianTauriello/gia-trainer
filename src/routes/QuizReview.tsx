@@ -1,4 +1,4 @@
-import QuestionModal from "components/QuestionModal";
+import { QuestionModal } from "components/QuestionModal";
 import { ModalDetails, QuizAttempt, Section } from "domain/Types";
 import { useAppDispatch } from "hooks/useAppSelector";
 import { useAppSelector } from "hooks/useAppSelector";
@@ -7,7 +7,7 @@ import { FaCheck } from "react-icons/fa";
 import { useNavigate, useParams } from "react-router-dom";
 
 // This component must display quiz scores for users who are not logged in, and users HAVE logged in and just want to review their old quiz attempts
-function QuizReview() {
+export function QuizReview() {
   const params = useParams<{ quizId: string }>();
   const navigate = useNavigate();
 
@@ -67,5 +67,3 @@ function QuizReview() {
     </div>
   );
 }
-
-export default QuizReview;

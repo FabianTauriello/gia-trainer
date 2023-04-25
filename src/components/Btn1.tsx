@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 // TODO rename after
-function Btn1({
+export function Btn1({
   type,
   text,
   handleClick,
@@ -24,5 +24,3 @@ function Btn1({
     </Link>
   );
 }
-
-export default Btn1;
