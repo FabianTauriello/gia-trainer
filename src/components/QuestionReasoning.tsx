@@ -7,9 +7,7 @@ import { QuestionContainer } from "./QuestionContainer";
 export function QuestionReasoning({}: {}) {
   const navigate = useNavigate();
 
-  const { currentQuestion, setQuestionIndex, inReview } = useContext(QuizContext);
-
-  const [hideChoices, setHideChoices] = useState(true); // Toggle visibility of the answer choices
+  const { currentQuestion, setQuestionIndex, inReview, hideChoices, setHideChoices } = useContext(QuizContext);
 
   function handleCategoryContainerClick(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
     e.stopPropagation();
@@ -18,12 +16,12 @@ export function QuestionReasoning({}: {}) {
     }
   }
 
-  function handleAnswerClick(num: number) {
-    if (inReview) return;
+  // function handleAnswerClick(num: number) {
+  //   if (inReview) return;
 
-    setHideChoices(true);
-    setQuestionIndex((prev) => prev + 1);
-  }
+  //   setHideChoices(true);
+  //   setQuestionIndex((prev) => prev + 1);
+  // }
 
   function getTextToDisplay() {
     if (inReview)
@@ -40,7 +38,7 @@ export function QuestionReasoning({}: {}) {
   return (
     <QuestionContainer onClickCapture={(e) => (hideChoices ? handleCategoryContainerClick(e) : undefined)}>
       <div className="bg-cream text-black mx-14 p-10 rounded-lg text-lg text-center mb-6">{getTextToDisplay()}</div>
-      {<Choices hideChoices={hideChoices} customAnswerHandler={(i) => handleAnswerClick(i)} />}
+      {<Choices />}
     </QuestionContainer>
   );
 }

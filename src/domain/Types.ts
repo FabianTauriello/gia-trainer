@@ -8,7 +8,7 @@ import { Dispatch } from "react";
 // TODO use generics here to support different categories or use more specific types?
 export type Question = {
   number: number;
-  category: string;
+  category: CategoryTitle;
   pairs?: string[][];
   letters?: Letter[][];
   statement?: string;
@@ -17,6 +17,8 @@ export type Question = {
   correctChoiceIndex: number;
   selectedChoiceIndex: number; // extract into AnsweredQuestion?? // use this here and give each question a default value of -1?
 };
+
+export type CategoryTitle = "Reasoning" | "Perceptual Speed" | "Number Speed and Accuracy" | "Word Meaning" | "Spatial Visualisation";
 
 export type User = {
   name: string;
@@ -47,6 +49,9 @@ export type QuizContextType = {
   currentQuestion: Question;
   inReview: boolean;
   allQuestions: Question[];
+  hideChoices: boolean;
+  setHideChoices: Dispatch<React.SetStateAction<boolean>>;
+  updateAttempt: (selectedChoiceIndex: number, isCorrect: boolean) => void;
 };
 
 export type ActiveQuizAttempt = QuizAttempt & {

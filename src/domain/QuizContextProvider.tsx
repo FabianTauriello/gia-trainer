@@ -1,6 +1,8 @@
 import { ReactNode, createContext, useEffect, useMemo, useState } from "react";
 import { Question, QuizAttempt, QuizContextType } from "./Types";
 import { useNavigate } from "react-router-dom";
+import { useAppDispatch } from "hooks/useAppSelector";
+import { addNewQuizAttempt } from "./slices/quizSlice";
 
 export const QuizContext = createContext({} as QuizContextType);
 
@@ -16,8 +18,13 @@ function QuizContextProvider({
   startingQuestionIndex?: number;
   inReview?: boolean;
 }) {
+  const dispatch = useAppDispatch();
+
   const [questionIndex, setQuestionIndex] = useState<number>(startingQuestionIndex);
   const [categoriesStarted, setCategoriesStarted] = useState<string[]>([]);
+  const [hideChoices, setHideChoices] = useState(true); // Toggle visibility of the answer choices (for reasoning cat only)
+
+  const currentQuestion = allQuestions[questionIndex];
 
   // const attempt: QuizAttempt = useMemo(() => {
   //   return {
@@ -27,11 +34,21 @@ function QuizContextProvider({
   //   };
   // }, []);
 
-  const currentQuestion = allQuestions[questionIndex];
+  useEffect(() => {
+    dispatch(
+      addNewQuizAttempt({
+        id: "visitor",
+        questions: allQuestions,
+      })
+    );
+  }, []);
 
-  // function addAttemeptToQuizSlice() => {
-
-  // }
+  function updateAttempt(selectedChoiceIndex: number, isCorrect: boolean) {
+    // console.log("updating attempt - before: ", attempt);
+    // attempt.questions[questionIndex].selectedChoiceIndex = selectedChoiceIndex;
+    // attempt.totalScore += isCorrect ? 1 : 0;
+    // console.log("finished updating attempt - after: ", attempt);
+  }
 
   const value = {
     questionIndex,
@@ -41,6 +58,9 @@ function QuizContextProvider({
     currentQuestion,
     inReview,
     allQuestions,
+    hideChoices,
+    setHideChoices,
+    updateAttempt,
   };
 
   return <QuizContext.Provider value={value}>{children}</QuizContext.Provider>;

@@ -10,6 +10,7 @@ type QuizState = {
 const initialState: QuizState = {
   // TODO make sure to empty this array when you're happy with the review screen
   attempts: [testAttempt],
+  // attempts: [],
 };
 
 // Holds/manages all quiz attempts for current user
@@ -17,15 +18,23 @@ export const quizSlice = createSlice({
   name: "quiz",
   initialState,
   reducers: {
-    // addNewQuizAttempt: (state, action: PayloadAction<{ quizId: string; sections: Section[] }>) => {
-    //   if (state.attempts.find((a) => a.id === action.payload.quizId)) return; // TODO consider resetting existing quiz attempt instead of just returning here
-    //   const newQuizAttempt = {
-    //     id: action.payload.quizId,
-    //     sections: action.payload.sections.map((sec) => ({ ...sec, score: 0 })),
-    //     totalScore: 0,
-    //   };
-    //   state.attempts.push(newQuizAttempt);
-    // },
+    addNewQuizAttempt: (state, action: PayloadAction<{ id: string; questions: Question[] }>) => {
+      // if (state.attempts.find((a) => a.id === action.payload.quizId)) return; // TODO consider resetting existing quiz attempt instead of just returning here
+      const newQuizAttempt: QuizAttempt = {
+        id: action.payload.id,
+        questions: action.payload.questions,
+        totalScore: 0,
+      };
+      state.attempts.push(newQuizAttempt);
+    },
+    updateQuizAttempt: (
+      state,
+      action: PayloadAction<{ quizId: string; questionIndex: number; selectedChoiceIndex: number; isCorrect: boolean }>
+    ) => {
+      const index = state.attempts.findIndex((a) => a.id === action.payload.quizId)!;
+      state.attempts[index].questions[action.payload.questionIndex].selectedChoiceIndex = action.payload.selectedChoiceIndex;
+      state.attempts[index].totalScore += action.payload.isCorrect ? 1 : 0;
+    },
     // // Called at end of each section
     // setSectionScoreForQuizAttempt: (state, action: PayloadAction<{ quizId: string; sectionIndex: number; score: number }>) => {
     //   const index = state.attempts.findIndex((a) => a.id === action.payload.quizId)!;
@@ -41,7 +50,7 @@ export const quizSlice = createSlice({
   },
 });
 
-export const {} = quizSlice.actions;
+export const { addNewQuizAttempt, updateQuizAttempt } = quizSlice.actions;
 
 export const selectCount = (state: RootState) => state.counter.value;
 

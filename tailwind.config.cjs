@@ -9,6 +9,8 @@ module.exports = {
       primary: "#0B1927",
       secondary: "#00C6B7",
       cream: "#FFF7D6",
+      correct: "#15803D",
+      incorrect: "#B91C1C",
     },
     fontFamily: {
       inter: ["Inter"],
