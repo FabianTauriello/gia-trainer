@@ -15,7 +15,7 @@ export type Question = {
   question?: string;
   choices: string[];
   correctChoiceIndex: number;
-  // selectedChoiceIndex: number; // extract into AnsweredQuestion?? // use this here and give each question a default value of -1?
+  selectedChoiceIndex: number; // extract into AnsweredQuestion?? // use this here and give each question a default value of -1?
 };
 
 export type User = {
