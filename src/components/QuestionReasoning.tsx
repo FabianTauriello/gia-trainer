@@ -21,8 +21,8 @@ export function QuestionReasoning({}: {}) {
   function handleAnswerClick(num: number) {
     if (inReview) return;
 
-    setQuestionIndex((prev) => prev + 1);
     setHideChoices(true);
+    setQuestionIndex((prev) => prev + 1);
   }
 
   function getTextToDisplay() {

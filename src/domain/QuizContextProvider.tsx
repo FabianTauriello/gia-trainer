@@ -1,5 +1,5 @@
-import { ReactNode, createContext, useEffect, useState } from "react";
-import { Question, QuizContextType } from "./Types";
+import { ReactNode, createContext, useEffect, useMemo, useState } from "react";
+import { Question, QuizAttempt, QuizContextType } from "./Types";
 import { useNavigate } from "react-router-dom";
 
 export const QuizContext = createContext({} as QuizContextType);
@@ -19,7 +19,19 @@ function QuizContextProvider({
   const [questionIndex, setQuestionIndex] = useState<number>(startingQuestionIndex);
   const [categoriesStarted, setCategoriesStarted] = useState<string[]>([]);
 
+  // const attempt: QuizAttempt = useMemo(() => {
+  //   return {
+  //     id: "",
+  //     questions: allQuestions,
+  //     totalScore: 0,
+  //   };
+  // }, []);
+
   const currentQuestion = allQuestions[questionIndex];
+
+  // function addAttemeptToQuizSlice() => {
+
+  // }
 
   const value = {
     questionIndex,
