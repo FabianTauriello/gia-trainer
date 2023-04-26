@@ -1,5 +1,5 @@
 import { QuestionModal } from "components/QuestionModal";
-import { ModalDetails, QuizAttempt, Section } from "domain/Types";
+import { ModalDetails, QuizAttempt, Category } from "domain/Types";
 import { useAppDispatch } from "hooks/useAppSelector";
 import { useAppSelector } from "hooks/useAppSelector";
 import { useState } from "react";
@@ -15,32 +15,32 @@ export function QuizReview() {
   const dispatch = useAppDispatch();
   const quiz = useAppSelector((state) => state.quiz);
   const quizAttempt = Utils.getQuizAttemptById(quiz.attempts, params.quizId!);
-  const sections = splitQuestionsIntoSections();
+  const categories = splitQuestionsIntoCategories();
 
   const [modalDetails, setModalDetails] = useState<ModalDetails>({ chosenQuestionIndex: 0, show: false });
 
-  function splitQuestionsIntoSections() {
-    const sections: Section[] = [];
+  function splitQuestionsIntoCategories() {
+    const categories: Category[] = [];
     quizAttempt.questions.forEach((q) => {
-      const index = sections.findIndex((s) => s.title === q.section);
+      const index = categories.findIndex((s) => s.title === q.category);
       if (index === -1) {
-        sections.push({ title: q.section, questions: [q] });
+        categories.push({ title: q.category, questions: [q] });
       } else {
-        sections[index].questions.push(q);
+        categories[index].questions.push(q);
       }
     });
 
-    return sections;
+    return categories;
   }
 
   return (
     <div>
       <h1>Total Score: {quizAttempt.totalScore}</h1>
-      {sections.map((section, index) => (
+      {categories.map((cat, index) => (
         <div key={index}>
-          <h1>{section.title}</h1>
-          <h3>section score: {0}</h3>
-          {section.questions.map((q, i) => {
+          <h1>{cat.title}</h1>
+          <h3>Category score: {0}</h3>
+          {cat.questions.map((q, i) => {
             return (
               <div
                 key={i}

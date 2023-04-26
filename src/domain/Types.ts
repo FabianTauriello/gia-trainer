@@ -1,14 +1,14 @@
-export type Section = {
+export type Category = {
   title: string;
   questions: Question[];
 };
 
 import { Dispatch } from "react";
 
-// TODO use generics here to support different sections or use more specific types?
+// TODO use generics here to support different categories or use more specific types?
 export type Question = {
   number: number;
-  section: string;
+  category: string;
   pairs?: string[][];
   letters?: Letter[][];
   statement?: string;
@@ -49,12 +49,12 @@ export type QuizContextType = {
 
 export type QuizContextData = {
   questionIndex: number;
-  sectionsStarted: string[];
+  categoriesStarted: string[];
 };
 
 export type ActiveQuizAttempt = QuizAttempt & {
   currentQuestionIndex: number;
-  currentSectionNumber: number;
+  currentCategoryNumber: number;
 };
 
 // OR use different question types...

@@ -4,7 +4,7 @@ import { Question, QuizAttempt } from "domain/Types";
 const questions = [
   {
     number: 1,
-    section: "Reasoning",
+    category: "Reasoning",
     statement: "Rebecca is louder than Kate",
     question: "Who is less loud?",
     choices: ["Rebecca", "Kate"],
@@ -12,7 +12,7 @@ const questions = [
   },
   {
     number: 2,
-    section: "Reasoning",
+    category: "Reasoning",
     statement: "Tracy has more money than Stephen",
     question: "Who is poorer?",
     choices: ["Tracy", "Stephen"],
@@ -20,7 +20,7 @@ const questions = [
   },
   {
     number: 3,
-    section: "Reasoning",
+    category: "Reasoning",
     statement: "Stewart is stronger than Joe",
     question: "Who is stronger?",
     choices: ["Stewart", "Joe"],
@@ -28,7 +28,7 @@ const questions = [
   },
   {
     number: 4,
-    section: "Reasoning",
+    category: "Reasoning",
     statement: "Joshua is not as flexible as Chris",
     question: "Who is less adaptable?",
     choices: ["Joshua", "Chris"],
@@ -36,7 +36,7 @@ const questions = [
   },
   {
     number: 5,
-    section: "Reasoning",
+    category: "Reasoning",
     statement: "Bob is not as happy as Paul",
     question: "Who is sadder?",
     choices: ["Bob", "Paul"],
@@ -44,7 +44,7 @@ const questions = [
   },
   {
     number: 6,
-    section: "Perceptual Speed",
+    category: "Perceptual Speed",
     pairs: [
       ["f", "F"],
       ["d", "D"],
@@ -56,49 +56,49 @@ const questions = [
   },
   {
     number: 7,
-    section: "Number Speed and Accuracy",
+    category: "Number Speed and Accuracy",
     choices: ["4", "2", "8"],
     correctChoiceIndex: 2,
   },
   {
     number: 8,
-    section: "Number Speed and Accuracy",
+    category: "Number Speed and Accuracy",
     choices: ["12", "3", "5"],
     correctChoiceIndex: 0,
   },
   {
     number: 9,
-    section: "Number Speed and Accuracy",
+    category: "Number Speed and Accuracy",
     choices: ["10", "7", "5"],
     correctChoiceIndex: 0,
   },
   {
     number: 10,
-    section: "Number Speed and Accuracy",
+    category: "Number Speed and Accuracy",
     choices: ["11", "13", "16"],
     correctChoiceIndex: 2,
   },
   {
     number: 11,
-    section: "Word Meaning",
+    category: "Word Meaning",
     choices: ["halt", "cold", "stop"],
     correctChoiceIndex: 1,
   },
   {
     number: 12,
-    section: "Word Meaning",
+    category: "Word Meaning",
     choices: ["up", "down", "street"],
     correctChoiceIndex: 2,
   },
   {
     number: 13,
-    section: "Word Meaning",
+    category: "Word Meaning",
     choices: ["below", "under", "letter"],
     correctChoiceIndex: 2,
   },
   {
     number: 14,
-    section: "Spatial Visualisation",
+    category: "Spatial Visualisation",
     letters: [
       [
         {

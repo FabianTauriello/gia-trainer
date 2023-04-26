@@ -19,7 +19,7 @@ function QuizContextProvider({
   // TODO separate i reckon. only combine when you need to update multiple state variables at once and they are logically similar
   const [quizContext, setQuizContext] = useState<QuizContextData>({
     questionIndex: startingQuestionIndex,
-    sectionsStarted: [],
+    categoriesStarted: [],
   });
 
   const currentQuestion = allQuestions[quizContext.questionIndex];

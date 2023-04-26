@@ -4,11 +4,11 @@ import { Question } from "domain/Types";
 import { useContext } from "react";
 import { QuizContext } from "domain/QuizContextProvider";
 
-export function SectionIntro({}: {}) {
+export function CategoryIntro({}: {}) {
   const { currentQuestion, quizContext, setQuizContext } = useContext(QuizContext);
 
-  function getSectionDescription() {
-    switch (currentQuestion.section) {
+  function getCategoryDescription() {
+    switch (currentQuestion.category) {
       case "Reasoning":
         return (
           <p>
@@ -55,23 +55,23 @@ export function SectionIntro({}: {}) {
           </>
         );
       default:
-        throw new Error(`There is no description for section ${currentQuestion.section}.`);
+        throw new Error(`There is no description for category ${currentQuestion.category}.`);
     }
   }
 
-  function handleStartSection() {
-    setQuizContext((prev) => ({ ...prev, sectionsStarted: [...prev.sectionsStarted, currentQuestion.section] }));
+  function handleStartCategory() {
+    setQuizContext((prev) => ({ ...prev, categoriesStarted: [...prev.categoriesStarted, currentQuestion.category] }));
   }
 
   return (
     <div>
       <div className="py-8 px-8 bg-secondary">
         <h1 className="text-4xl font-extrabold">
-          Section {quizContext.sectionsStarted.length + 1}: {currentQuestion.section}
+          Category {quizContext.categoriesStarted.length + 1}: {currentQuestion.category}
         </h1>
       </div>
-      <div className="py-8 px-8">{getSectionDescription()}</div>
-      <Btn3 text="Start Section" handleClick={handleStartSection} customCss="ml-8" />
+      <div className="py-8 px-8">{getCategoryDescription()}</div>
+      <Btn3 text="Start" handleClick={handleStartCategory} customCss="ml-8" />
     </div>
   );
 }

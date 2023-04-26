@@ -1,4 +1,3 @@
-import useSection from "hooks/useSection";
 import { Choices } from "./Choices";
 import { QuestionContainer } from "./QuestionContainer";
 

@@ -11,7 +11,7 @@ export function QuestionReasoning({}: {}) {
 
   const [hideChoices, setHideChoices] = useState(true); // Toggle visibility of the answer choices
 
-  function handleSectionContainerClick(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
+  function handleCategoryContainerClick(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
     e.stopPropagation();
     if (hideChoices) {
       setHideChoices(false);
@@ -38,7 +38,7 @@ export function QuestionReasoning({}: {}) {
   }
 
   return (
-    <QuestionContainer onClickCapture={(e) => (hideChoices ? handleSectionContainerClick(e) : undefined)}>
+    <QuestionContainer onClickCapture={(e) => (hideChoices ? handleCategoryContainerClick(e) : undefined)}>
       <div className="bg-cream text-black mx-14 p-10 rounded-lg text-lg text-center mb-6">{getTextToDisplay()}</div>
       {<Choices hideChoices={hideChoices} customAnswerHandler={(i) => handleAnswerClick(i)} />}
     </QuestionContainer>

@@ -68,7 +68,7 @@ export function Landing() {
         </p>
         <p>The test has 5 sections, each taking 2-3 minutes:</p>
         <div className="gutter-sm" />
-        <h2 className="text-xl">Sections:</h2>
+        <h2 className="text-xl">Categories:</h2>
         <ol>
           <li>1. Reasoning</li>
           <li>2. Perceptual Speed</li>

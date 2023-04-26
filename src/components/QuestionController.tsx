@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import {} from "domain/slices/quizSlice";
-import { SectionIntro } from "components/SectionIntro";
+import { CategoryIntro } from "components/CategoryIntro";
 import { QuizContext } from "domain/QuizContextProvider";
 import { QuestionReasoning } from "./QuestionReasoning";
 import { QuestionPerceptualSpeed } from "./QuestionPerceptualSpeed";
@@ -17,7 +17,7 @@ export function QuestionController() {
   const { currentQuestion, quizContext, inReview } = useContext(QuizContext);
 
   function getQuestionType() {
-    switch (currentQuestion.section) {
+    switch (currentQuestion.category) {
       case "Reasoning":
         return <QuestionReasoning />;
       case "Perceptual Speed":
@@ -29,12 +29,12 @@ export function QuestionController() {
       case "Spatial Visualisation":
         return <QuestionSpatialVisualisation />;
       default:
-        throw new Error(`A component for a ${currentQuestion.section} question does not exist.`);
+        throw new Error(`A component for a ${currentQuestion.category} question does not exist.`);
     }
   }
 
-  if (!inReview && !quizContext.sectionsStarted.includes(currentQuestion.section)) {
-    return <SectionIntro />;
+  if (!inReview && !quizContext.categoriesStarted.includes(currentQuestion.category)) {
+    return <CategoryIntro />;
   }
 
   return getQuestionType();

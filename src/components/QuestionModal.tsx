@@ -80,7 +80,7 @@ export function QuestionModal({ questionIndex, show, onClose }: { questionIndex:
                 </Swiper>
                 <div className="mt-4 flex justify-between">
                   <Btn3 customCss="prev" text="Previous" handleClick={() => swiper?.slidePrev()} />
-                  <span className="flex flex-col justify-center">{`Section: ${activeQuestion.section}`}</span>
+                  <span className="flex flex-col justify-center">{`Category: ${activeQuestion.category}`}</span>
                   <Btn3 customCss="next" text="Next" handleClick={() => swiper?.slideNext()} />
                 </div>
               </Dialog.Panel>

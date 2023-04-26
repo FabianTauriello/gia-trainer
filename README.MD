@@ -17,7 +17,7 @@
 - Testing library (e.g. Jest, Cypress)?
 - Add friends and compare scores against them
 
-### Quiz Sections:
+### Quiz Categories:
 
 1. Reasoning
 2. Perceptual Speed
@@ -45,7 +45,7 @@
 - [x] rename project to gia-trainer
 - [x] change components to use named export instead of default
 - [x] rename pages folder to routes?
-- [ ] rename section references to "category"?
+- [x] rename section references to "category"?
 - [ ] add confetti gun animation for when a user gets a new pb
 - [ ] add dashboard page for logged in users
 - [ ] add ability to review previous quiz attempts? (e.g. /quiz-review/id)
