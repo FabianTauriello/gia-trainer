@@ -14,17 +14,26 @@ import { useParams } from "react-router-dom";
 // import "swiper/css/pagination";
 // import "swiper/css/scrollbar";
 
-export function QuestionModal({ questionIndex, show, onClose }: { questionIndex: number; show: boolean; onClose: () => void }) {
-  console.log("rendering modal");
+export function QuestionModal({
+  initialQuestionIndex,
+  show,
+  onClose,
+}: {
+  initialQuestionIndex: number;
+  show: boolean;
+  onClose: () => void;
+}) {
   const params = useParams<{ quizId: string }>();
 
   const quiz = useAppSelector((state) => state.quiz);
   const quizAttempt = Utils.getQuizAttemptById(quiz.attempts, params.quizId!);
 
   const [swiper, setSwiper] = useState<SwiperCore | null>(null);
-  const [activeIndex, setActiveIndex] = useState(questionIndex);
+  const [activeIndex, setActiveIndex] = useState(initialQuestionIndex);
 
   const activeQuestion = quizAttempt.questions[activeIndex];
+  const showPrevBtn = quizAttempt.questions[activeIndex - 1]; // TODO not a boolean value but i'm using it as one
+  const showNextBtn = quizAttempt.questions[activeIndex + 1]; // TODO not a boolean value but i'm using it as one
 
   return (
     <Transition appear show={show} as={Fragment}>
@@ -62,7 +71,7 @@ export function QuestionModal({ questionIndex, show, onClose }: { questionIndex:
                   modules={[Navigation]}
                   navigation={{ nextEl: ".next", prevEl: ".prev" }}
                   // slidesPerView={1}
-                  initialSlide={questionIndex}
+                  initialSlide={initialQuestionIndex}
                   // onActiveIndexChange={}
                   onSlideChange={(swiper) => {
                     console.log("slide change");
@@ -79,9 +88,9 @@ export function QuestionModal({ questionIndex, show, onClose }: { questionIndex:
                   ))}
                 </Swiper>
                 <div className="mt-4 flex justify-between">
-                  <Btn3 customCss="prev" text="Previous" handleClick={() => swiper?.slidePrev()} />
+                  <Btn3 customCss={showPrevBtn ? "visible" : "invisible"} text="Previous" handleClick={() => swiper?.slidePrev()} />
                   <span className="flex flex-col justify-center">{`Category: ${activeQuestion.category}`}</span>
-                  <Btn3 customCss="next" text="Next" handleClick={() => swiper?.slideNext()} />
+                  <Btn3 customCss={showNextBtn ? "visible" : "invisible"} text="Next" handleClick={() => swiper?.slideNext()} />
                 </div>
               </Dialog.Panel>
             </Transition.Child>

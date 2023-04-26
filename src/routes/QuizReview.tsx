@@ -55,7 +55,7 @@ export function QuizReview() {
         </div>
       ))}
       <QuestionModal
-        questionIndex={modalDetails.chosenQuestionIndex}
+        initialQuestionIndex={modalDetails.chosenQuestionIndex}
         show={modalDetails.show}
         onClose={() => setModalDetails((prev) => ({ ...prev, show: false }))}
       />
