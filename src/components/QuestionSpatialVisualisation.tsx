@@ -4,7 +4,7 @@ import { QuestionContainer } from "./QuestionContainer";
 import { QuizContext } from "domain/QuizContextProvider";
 
 export function QuestionSpatialVisualisation({}: {}) {
-  const { currentQuestion, quizContext, setQuizContext, inReview } = useContext(QuizContext);
+  const { currentQuestion, inReview } = useContext(QuizContext);
 
   return (
     <QuestionContainer>

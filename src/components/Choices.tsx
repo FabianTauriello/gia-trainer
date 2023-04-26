@@ -13,17 +13,17 @@ export function Choices({
 }) {
   const navigate = useNavigate();
 
-  const { currentQuestion, quizContext, setQuizContext, inReview, allQuestions } = useContext(QuizContext);
+  const { currentQuestion, questionIndex, setQuestionIndex, inReview, allQuestions } = useContext(QuizContext);
 
   // TODO not great that I'm duplicating code here and in choices component
   function handleAnswerClick(num: number) {
     if (inReview) return;
-    if (quizContext.questionIndex === allQuestions.length - 1) {
+    if (questionIndex === allQuestions.length - 1) {
       const loggedIn = false;
       navigate(loggedIn ? `dashboard/quiz/someId/review` : `/quiz/visitor/review`);
     }
 
-    setQuizContext((prev) => ({ ...prev, questionIndex: prev.questionIndex + 1 }));
+    setQuestionIndex((prev) => prev + 1);
   }
 
   return (

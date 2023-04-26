@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { QuizContext } from "domain/QuizContextProvider";
 
 export function QuestionPerceptualSpeed({}: {}) {
-  const { currentQuestion, quizContext, setQuizContext, inReview } = useContext(QuizContext);
+  const { currentQuestion, inReview } = useContext(QuizContext);
 
   return (
     <QuestionContainer>

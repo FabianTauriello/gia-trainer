@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { QuizContext } from "domain/QuizContextProvider";
 
 export function CategoryIntro({}: {}) {
-  const { currentQuestion, quizContext, setQuizContext } = useContext(QuizContext);
+  const { currentQuestion, categoriesStarted, setCategoriesStarted } = useContext(QuizContext);
 
   function getCategoryDescription() {
     switch (currentQuestion.category) {
@@ -60,14 +60,14 @@ export function CategoryIntro({}: {}) {
   }
 
   function handleStartCategory() {
-    setQuizContext((prev) => ({ ...prev, categoriesStarted: [...prev.categoriesStarted, currentQuestion.category] }));
+    setCategoriesStarted((prev) => [...prev, currentQuestion.category]);
   }
 
   return (
     <div>
       <div className="py-8 px-8 bg-secondary">
         <h1 className="text-4xl font-extrabold">
-          Category {quizContext.categoriesStarted.length + 1}: {currentQuestion.category}
+          Category {categoriesStarted.length + 1}: {currentQuestion.category}
         </h1>
       </div>
       <div className="py-8 px-8">{getCategoryDescription()}</div>

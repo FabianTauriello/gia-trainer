@@ -40,16 +40,13 @@ export type QuizAttempt = {
 };
 
 export type QuizContextType = {
-  quizContext: QuizContextData;
-  setQuizContext: Dispatch<React.SetStateAction<QuizContextData>>;
+  questionIndex: number;
+  setQuestionIndex: Dispatch<React.SetStateAction<number>>;
+  categoriesStarted: string[];
+  setCategoriesStarted: Dispatch<React.SetStateAction<string[]>>;
   currentQuestion: Question;
   inReview: boolean;
   allQuestions: Question[];
-};
-
-export type QuizContextData = {
-  questionIndex: number;
-  categoriesStarted: string[];
 };
 
 export type ActiveQuizAttempt = QuizAttempt & {

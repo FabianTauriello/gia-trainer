@@ -1,5 +1,5 @@
 import { ReactNode, createContext, useEffect, useState } from "react";
-import { Question, QuizContextData, QuizContextType } from "./Types";
+import { Question, QuizContextType } from "./Types";
 import { useNavigate } from "react-router-dom";
 
 export const QuizContext = createContext({} as QuizContextType);
@@ -17,16 +17,16 @@ function QuizContextProvider({
   inReview?: boolean;
 }) {
   // TODO separate i reckon. only combine when you need to update multiple state variables at once and they are logically similar
-  const [quizContext, setQuizContext] = useState<QuizContextData>({
-    questionIndex: startingQuestionIndex,
-    categoriesStarted: [],
-  });
+  const [questionIndex, setQuestionIndex] = useState<number>(startingQuestionIndex);
+  const [categoriesStarted, setCategoriesStarted] = useState<string[]>([]);
 
-  const currentQuestion = allQuestions[quizContext.questionIndex];
+  const currentQuestion = allQuestions[questionIndex];
 
   const value = {
-    quizContext,
-    setQuizContext,
+    questionIndex,
+    setQuestionIndex,
+    categoriesStarted,
+    setCategoriesStarted,
     currentQuestion,
     inReview,
     allQuestions,

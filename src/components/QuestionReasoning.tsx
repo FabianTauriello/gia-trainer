@@ -7,7 +7,7 @@ import { QuestionContainer } from "./QuestionContainer";
 export function QuestionReasoning({}: {}) {
   const navigate = useNavigate();
 
-  const { currentQuestion, quizContext, setQuizContext, inReview, allQuestions } = useContext(QuizContext);
+  const { currentQuestion, setQuestionIndex, inReview } = useContext(QuizContext);
 
   const [hideChoices, setHideChoices] = useState(true); // Toggle visibility of the answer choices
 
@@ -21,7 +21,7 @@ export function QuestionReasoning({}: {}) {
   function handleAnswerClick(num: number) {
     if (inReview) return;
 
-    setQuizContext((prev) => ({ ...prev, questionIndex: prev.questionIndex + 1 }));
+    setQuestionIndex((prev) => prev + 1);
     setHideChoices(true);
   }
 

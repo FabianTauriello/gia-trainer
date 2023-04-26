@@ -14,7 +14,7 @@ export function QuestionController() {
   const params = useParams<{ quizId: string }>();
   const navigate = useNavigate();
 
-  const { currentQuestion, quizContext, inReview } = useContext(QuizContext);
+  const { currentQuestion, categoriesStarted, inReview } = useContext(QuizContext);
 
   function getQuestionType() {
     switch (currentQuestion.category) {
@@ -33,7 +33,7 @@ export function QuestionController() {
     }
   }
 
-  if (!inReview && !quizContext.categoriesStarted.includes(currentQuestion.category)) {
+  if (!inReview && !categoriesStarted.includes(currentQuestion.category)) {
     return <CategoryIntro />;
   }
 
