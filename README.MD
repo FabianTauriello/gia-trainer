@@ -50,7 +50,7 @@
 - [ ] add dashboard page for logged in users
 - [ ] add ability to review previous quiz attempts? (e.g. /quiz-review/id)
 - [ ] add sign-in and user authentication
-- [ ] determine how selected choices will be recorded for questions - selectedChoiceIndex prop in Question type?
+- [x] determine how selected choices will be recorded for questions - selectedChoiceIndex prop in Question type?
 - [ ] make use of the timer
 - [x] pull quiz data from server at beginning of quiz - use RTK Query
 - [x] change data.json to hold questions only, and just render description, title etc as regular html?

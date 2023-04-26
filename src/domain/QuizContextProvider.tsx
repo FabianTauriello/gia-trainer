@@ -16,7 +16,6 @@ function QuizContextProvider({
   startingQuestionIndex?: number;
   inReview?: boolean;
 }) {
-  // TODO separate i reckon. only combine when you need to update multiple state variables at once and they are logically similar
   const [questionIndex, setQuestionIndex] = useState<number>(startingQuestionIndex);
   const [categoriesStarted, setCategoriesStarted] = useState<string[]>([]);
 
