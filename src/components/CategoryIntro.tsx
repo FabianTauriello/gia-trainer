@@ -3,6 +3,7 @@ import { Btn3 } from "./Btn3";
 import { Question } from "domain/Types";
 import { useContext } from "react";
 import { QuizContext } from "domain/QuizContextProvider";
+import { Banner } from "./Banner";
 
 export function CategoryIntro({}: {}) {
   const { currentQuestion, categoriesStarted, setCategoriesStarted } = useContext(QuizContext);
@@ -65,13 +66,9 @@ export function CategoryIntro({}: {}) {
 
   return (
     <div>
-      <div className="py-8 px-8 bg-secondary">
-        <h1 className="text-4xl font-extrabold">
-          Category {categoriesStarted.length + 1}: {currentQuestion.category}
-        </h1>
-      </div>
+      <Banner title={`Category ${categoriesStarted.length + 1}: ${currentQuestion.category}`} />
       <div className="py-8 px-8">{getCategoryDescription()}</div>
-      <Btn3 text="Start" handleClick={handleStartCategory} customCss="ml-8" />
+      <Btn3 text="Start Test" handleClick={handleStartCategory} customCss="ml-8" />
     </div>
   );
 }

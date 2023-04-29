@@ -1,6 +1,7 @@
 export type Category = {
   title: string;
   questions: Question[];
+  score: number;
 };
 
 import { Dispatch } from "react";

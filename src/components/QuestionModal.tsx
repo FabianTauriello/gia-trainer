@@ -32,8 +32,8 @@ export function QuestionModal({
   const [activeIndex, setActiveIndex] = useState(initialQuestionIndex);
 
   const activeQuestion = quizAttempt.questions[activeIndex];
-  const showPrevBtn = quizAttempt.questions[activeIndex - 1]; // TODO not a boolean value but i'm using it as one
-  const showNextBtn = quizAttempt.questions[activeIndex + 1]; // TODO not a boolean value but i'm using it as one
+  const prevQuestion = quizAttempt.questions[activeIndex - 1];
+  const nextQuestion = quizAttempt.questions[activeIndex + 1];
 
   return (
     <Transition appear show={show} as={Fragment}>
@@ -88,9 +88,9 @@ export function QuestionModal({
                   ))}
                 </Swiper>
                 <div className="mt-4 flex justify-between">
-                  <Btn3 customCss={showPrevBtn ? "visible" : "invisible"} text="Previous" handleClick={() => swiper?.slidePrev()} />
+                  <Btn3 customCss={prevQuestion ? "visible" : "invisible"} text="Previous" handleClick={() => swiper?.slidePrev()} />
                   <span className="flex flex-col justify-center">{`Category: ${activeQuestion.category}`}</span>
-                  <Btn3 customCss={showNextBtn ? "visible" : "invisible"} text="Next" handleClick={() => swiper?.slideNext()} />
+                  <Btn3 customCss={nextQuestion ? "visible" : "invisible"} text="Next" handleClick={() => swiper?.slideNext()} />
                 </div>
               </Dialog.Panel>
             </Transition.Child>

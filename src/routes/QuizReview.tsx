@@ -1,11 +1,14 @@
+import { Banner } from "components/Banner";
 import { QuestionModal } from "components/QuestionModal";
-import { ModalDetails, QuizAttempt, Category } from "domain/Types";
+import { ScoreCard } from "components/ScoreCard";
+import { ModalDetails, Category, Question } from "domain/Types";
 import { useAppDispatch } from "hooks/useAppSelector";
 import { useAppSelector } from "hooks/useAppSelector";
 import { useState } from "react";
-import { FaCheck } from "react-icons/fa";
+import { ImCheckmark, ImCross } from "react-icons/im";
 import { useNavigate, useParams } from "react-router-dom";
 import { Utils } from "utils/Utils";
+import resolveConfig from "tailwindcss/resolveConfig";
 
 // This component must display quiz scores for users who are not logged in, and users HAVE logged in and just want to review their old quiz attempts
 export function QuizReview() {
@@ -21,37 +24,55 @@ export function QuizReview() {
 
   function splitQuestionsIntoCategories() {
     const categories: Category[] = [];
+
+    // Split questions into separate categories
     quizAttempt.questions.forEach((q) => {
       const index = categories.findIndex((s) => s.title === q.category);
       if (index === -1) {
-        categories.push({ title: q.category, questions: [q] });
+        categories.push({ title: q.category, questions: [q], score: 0 });
       } else {
         categories[index].questions.push(q);
       }
+    });
+    // Calculate subtotals for each category
+    categories.forEach((cat) => {
+      const correctAnswers = cat.questions.filter((q) => isQuestionCorrect(q));
+      const score = correctAnswers ? correctAnswers.length : 0;
+      cat.score = score;
     });
 
     return categories;
   }
 
+  function isQuestionCorrect(question: Question) {
+    return question.selectedChoiceIndex === question.correctChoiceIndex;
+  }
+
   return (
-    <div>
-      <h1>Total Score: {quizAttempt.totalScore}</h1>
+    <div className="">
+      <Banner title="Quiz Review" />
+      <ScoreCard categories={categories} />
       {categories.map((cat, index) => (
         <div key={index}>
           <h1>{cat.title}</h1>
-          <h3>Category score: {0}</h3>
-          {cat.questions.map((q, i) => {
-            return (
-              <div
-                key={i}
-                onClick={() => setModalDetails({ chosenQuestionIndex: q.number! - 1, show: true })}
-                className="bg-cream w-8 border inline-flex flex-col items-center"
-              >
-                <FaCheck color="green" />
-                {q.number}
-              </div>
-            );
-          })}
+          <div className="flex gap-4">
+            {cat.questions.map((q, i) => {
+              return (
+                <div className="border hover:scale-105 transition-transform cursor-pointer">
+                  <div
+                    key={i}
+                    onClick={() => setModalDetails({ chosenQuestionIndex: q.number! - 1, show: true })}
+                    className="bg-white inline-flex flex-col items-center p-4"
+                  >
+                    {/* TODO don't harcode these colors */}
+                    {isQuestionCorrect(q) ? <ImCheckmark color="#15803D" /> : <ImCross color="#B91C1C" />}
+                    {q.number}
+                  </div>
+                  <div style={{ background: "red", height: "10px", border: "" }} />
+                </div>
+              );
+            })}
+          </div>
         </div>
       ))}
       <QuestionModal
