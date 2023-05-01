@@ -1,32 +1,34 @@
 import { Category } from "domain/Types";
 
 export function ScoreCard({ categories }: { categories: Category[] }) {
-  const total = categories.reduce((prev, current) => prev + current.score, 0);
+  const totalScore = categories.reduce((prev, current) => prev + current.score, 0);
+  const maxScore = categories.reduce((prev, current) => prev + current.questions.length, 0);
+
   return (
-    <div className="">
-      <div className="rounded-xl p-4">
-        <h1>Scorecard</h1>
-        <table className="w-full">
-          <thead>
-            <tr className="text-left">
-              <th className="p-3">Category</th>
-              <th className="p-3">Score</th>
+    <div className="overflow-x-auto">
+      <h1 className="mb-3 text-xl">Scorecard</h1>
+      <table className="w-full border border-gray-300 bg-gray-100">
+        <thead>
+          <tr className="border-b border-b-gray-400 bg-gray-300 text-left">
+            <th className="p-3 text-lg font-medium">Category</th>
+            <th className="p-3 text-lg font-medium">Score</th>
+          </tr>
+        </thead>
+        <tbody>
+          {categories.map((cat, i) => (
+            <tr key={i} className="odd:bg-white">
+              <td className="p-3">{cat.title}</td>
+              <td className="p-3">{cat.score}</td>
             </tr>
-          </thead>
-          <tbody>
-            {categories.map((cat, i) => (
-              <tr key={i} className="">
-                <td className="p-3">{cat.title}</td>
-                <td className="p-3">{cat.score}</td>
-              </tr>
-            ))}
-            <tr className="">
-              <td />
-              <td className="p-3">{total}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+          ))}
+          <tr className="">
+            <td />
+            <td className="p-3 font-medium">
+              {totalScore} / {maxScore}
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   );
 }

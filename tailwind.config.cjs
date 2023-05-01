@@ -20,11 +20,10 @@ module.exports = {
         correct: "#15803D",
         incorrect: "#B91C1C",
         // misc
-        card: "#f9fafb",
+        // bgCard: "#f9fafb",
         // background: "#f9fafb",
-        item: {
-          hover: "#ebeced",
-        },
+        // darkGray: "#ebeced",
+        // gray "#d1d5db"
       },
     },
   },

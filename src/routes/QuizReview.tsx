@@ -1,5 +1,6 @@
 import { Banner } from "components/Banner";
 import { QuestionModal } from "components/QuestionModal";
+import { ScoreCard } from "components/ScoreCard";
 import { ModalDetails, Category, Question } from "domain/Types";
 import { useAppDispatch } from "hooks/useAppSelector";
 import { useAppSelector } from "hooks/useAppSelector";
@@ -65,14 +66,15 @@ export function QuizReview() {
 
   return (
     <div className="">
-      <Banner title="Review" />
-      <section className="mx-4 lg:mx-28 mt-4 flex flex-col gap-4">
-        {/* <ScoreCard categories={categories} /> */}
+      <Banner title="Quiz Results" />
+      <section className="my-5 flex flex-col gap-4 px-4 lg:px-28">
+        <ScoreCard categories={categories} />
         {categories.map((cat, index) => (
-          <div key={index} className="rounded bg-card border border-gray-300">
-            <div className="bg-item-hover border-b border-b-gray-300 p-3">
+          // Category card
+          <div key={index} className="rounded border border-gray-300 bg-gray-100">
+            <div className="border-b border-b-gray-400 bg-gray-300 p-3">
               <div className="flex justify-between align-middle ">
-                <h1 className="text-lg mr-1 font-medium">{cat.title}</h1>
+                <h1 className="mr-1 text-lg font-medium">{cat.title}</h1>
                 <h3 className="text-lg">
                   {cat.score} / {cat.questions.length}
                 </h3>
@@ -80,21 +82,21 @@ export function QuizReview() {
               <p className="mt-2">{getCategoryGuide(cat)}</p>
             </div>
             {/* TODO change flow of questions to flow vertically */}
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-2 p-3">
+            <div className="grid gap-2 p-3 md:grid-cols-2 lg:grid-cols-3">
               {cat.questions.map((q, i) => {
                 return (
                   <div
                     key={i}
                     onClick={() => setModalDetails({ chosenQuestionIndex: q.number! - 1, show: true })}
-                    className={`cursor-pointer flex hover:bg-item-hover border bg-white justify-between`}
+                    className={`flex cursor-pointer justify-between border bg-white hover:bg-gray-200`}
                   >
-                    {/* q number and mark */}
+                    {/* Q number and mark */}
                     <div className="flex">
-                      <div className={`${isQuestionCorrect(q) ? "bg-correct" : "bg-incorrect"} w-2.5 mr-2`} />
-                      <div className="text-xl my-2">Question {q.number}</div>
+                      <div className={`${isQuestionCorrect(q) ? "bg-correct" : "bg-incorrect"} mr-2 w-2.5`} />
+                      <div className="my-2 text-xl">Question {q.number}</div>
                     </div>
-                    {/* tick / cross */}
-                    <div className="flex flex-col justify-center mr-2">
+                    {/* Tick / cross */}
+                    <div className="mr-2 flex flex-col justify-center">
                       {isQuestionCorrect(q) ? <ImCheckmark color="#15803D" size={20} /> : <ImCross color="#B91C1C" size={20} />}
                     </div>
                   </div>
