@@ -1,3 +1,4 @@
+import { Disclosure, Transition } from "@headlessui/react";
 import { Banner } from "components/Banner";
 import { QuestionModal } from "components/QuestionModal";
 import { ScoreCard } from "components/ScoreCard";
@@ -6,6 +7,7 @@ import { useAppDispatch } from "hooks/useAppSelector";
 import { useAppSelector } from "hooks/useAppSelector";
 import { useState } from "react";
 import { ImCheckmark, ImCross } from "react-icons/im";
+import { RxCaretDown } from "react-icons/rx";
 import { useNavigate, useParams } from "react-router-dom";
 import { Utils } from "utils/Utils";
 
@@ -71,39 +73,47 @@ export function QuizReview() {
         <ScoreCard categories={categories} />
         {categories.map((cat, index) => (
           // Category card
-          <div key={index} className="rounded border border-gray-300 bg-gray-100">
-            <div className="border-b border-b-gray-400 bg-gray-300 p-3">
-              <div className="flex justify-between align-middle ">
-                <h1 className="mr-1 text-lg font-medium">{cat.title}</h1>
-                <h3 className="text-lg">
-                  {cat.score} / {cat.questions.length}
-                </h3>
-              </div>
-              <p className="mt-2">{getCategoryGuide(cat)}</p>
-            </div>
-            {/* TODO change flow of questions to flow vertically */}
-            <div className="grid gap-2 p-3 md:grid-cols-2 lg:grid-cols-3">
-              {cat.questions.map((q, i) => {
-                return (
-                  <div
-                    key={i}
-                    onClick={() => setModalDetails({ chosenQuestionIndex: q.number! - 1, show: true })}
-                    className={`flex cursor-pointer justify-between border bg-white hover:bg-gray-200`}
-                  >
-                    {/* Q number and mark */}
-                    <div className="flex">
-                      <div className={`${isQuestionCorrect(q) ? "bg-correct" : "bg-incorrect"} mr-2 w-2.5`} />
-                      <div className="my-2 text-xl">Question {q.number}</div>
-                    </div>
-                    {/* Tick / cross */}
-                    <div className="mr-2 flex flex-col justify-center">
-                      {isQuestionCorrect(q) ? <ImCheckmark color="#15803D" size={20} /> : <ImCross color="#B91C1C" size={20} />}
-                    </div>
+          <Disclosure>
+            <div className="rounded border border-gray-300 bg-gray-100">
+              <Disclosure.Button className="w-full">
+                <div className="border-b border-b-gray-400 bg-gray-300 p-3">
+                  <div className="flex justify-between align-middle ">
+                    <h1 className="mr-1 text-lg font-medium">{cat.title}</h1>
+                    <h3 className="text-lg">
+                      {cat.score} / {cat.questions.length}
+                    </h3>
                   </div>
-                );
-              })}
+                  <div className="flex justify-between align-middle">
+                    <p className="mt-2">{getCategoryGuide(cat)}</p>
+                    <RxCaretDown size={40} className="ui-open:rotate-180 ui-open:transform" />
+                  </div>
+                </div>
+              </Disclosure.Button>
+              <Disclosure.Panel>
+                <div className="grid gap-2 p-3 md:grid-cols-2 lg:grid-cols-3">
+                  {cat.questions.map((q, i) => {
+                    return (
+                      <div
+                        key={i}
+                        onClick={() => setModalDetails({ chosenQuestionIndex: q.number! - 1, show: true })}
+                        className={`flex cursor-pointer justify-between border bg-white hover:bg-gray-200`}
+                      >
+                        {/* Q number and mark */}
+                        <div className="flex">
+                          <div className={`${isQuestionCorrect(q) ? "bg-correct" : "bg-incorrect"} mr-2 w-2.5`} />
+                          <div className="my-2 text-xl">Question {q.number}</div>
+                        </div>
+                        {/* Tick / cross */}
+                        <div className="mr-2 flex flex-col justify-center">
+                          {isQuestionCorrect(q) ? <ImCheckmark color="#15803D" size={20} /> : <ImCross color="#B91C1C" size={20} />}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </Disclosure.Panel>
             </div>
-          </div>
+          </Disclosure>
         ))}
       </section>
       <QuestionModal
@@ -115,4 +125,5 @@ export function QuizReview() {
   );
 }
 
-// /* TODO don't harcode these colors */
+// TODO don't harcode these colors
+// TODO change flow of questions to flow vertically
