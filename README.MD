@@ -43,9 +43,11 @@
 
 - [ ] implement and build a library to share a single source of declared data types between frontend and backend (yay for type safety!)
 - [x] rename project to gia-trainer
+- [ ] add ability to practice categories separately
 - [x] change components to use named export instead of default
 - [x] rename pages folder to routes?
-- [x] rename section references to "category"?
+- [x] rename section reference
+- s to "category"?
 - [ ] add confetti gun animation for when a user gets a new pb
 - [ ] add dashboard page for logged in users
 - [ ] add ability to review previous quiz attempts? (e.g. /quiz-review/id)

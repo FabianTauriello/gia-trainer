@@ -1,5 +1,5 @@
 export type Category = {
-  title: string;
+  title: CategoryTitle;
   questions: Question[];
   score: number;
 };
