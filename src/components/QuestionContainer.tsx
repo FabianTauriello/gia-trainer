@@ -11,7 +11,7 @@ export function QuestionContainer({
   const { inReview } = useContext(QuizContext);
   return (
     <div
-      className={`bg-primary flex flex-col justify-center align-middle ${inReview ? "h-full" : "h-screen"}`}
+      className={`flex flex-col justify-center bg-primary-500 p-4 align-middle ${inReview ? "h-full" : "h-screen"}`}
       onClickCapture={onClickCapture}
     >
       {children}

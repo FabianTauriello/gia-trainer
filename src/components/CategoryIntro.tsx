@@ -1,5 +1,4 @@
-import { Link } from "react-router-dom";
-import { Btn3 } from "./Btn3";
+import { CustomButton } from "./CustomButton";
 import { Question } from "domain/Types";
 import { useContext } from "react";
 import { QuizContext } from "domain/QuizContextProvider";
@@ -67,8 +66,10 @@ export function CategoryIntro({}: {}) {
   return (
     <div className="h-screen">
       <Banner title={`Category ${categoriesStarted.length + 1}: ${currentQuestion.category}`} />
-      <div className="py-8 px-8">{getCategoryDescription()}</div>
-      <Btn3 text="Start Test" handleClick={handleStartCategory} customCss="ml-8" />
+      <div className="px-4 md:px-0 lg:mx-28">
+        <div className="py-8">{getCategoryDescription()}</div>
+        <CustomButton text="Start Test" handleClick={handleStartCategory} customCss="bg-primary-500 hover:bg-primary-400" />
+      </div>
     </div>
   );
 }

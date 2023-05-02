@@ -1,6 +1,5 @@
 import { useContext, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import {} from "domain/slices/quizSlice";
+import { useParams } from "react-router-dom";
 import { CategoryIntro } from "components/CategoryIntro";
 import { QuizContext } from "domain/QuizContextProvider";
 import { QuestionReasoning } from "./QuestionReasoning";
@@ -9,10 +8,8 @@ import { QuestionWordMeaning } from "./QuestionWordMeaning";
 import { QuestionNumberSpeedAndAccuracy } from "./QuestionNumberSpeedAndAccuracy";
 import { QuestionSpatialVisualisation } from "./QuestionSpatialVisualisation";
 
-// TODO possible merge with <QuizWrapper /> OR rename
 export function QuestionController() {
   const params = useParams<{ quizId: string }>();
-  const navigate = useNavigate();
 
   const { currentQuestion, categoriesStarted, inReview } = useContext(QuizContext);
 

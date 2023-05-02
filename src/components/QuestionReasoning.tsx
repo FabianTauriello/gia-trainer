@@ -16,13 +16,6 @@ export function QuestionReasoning({}: {}) {
     }
   }
 
-  // function handleAnswerClick(num: number) {
-  //   if (inReview) return;
-
-  //   setHideChoices(true);
-  //   setQuestionIndex((prev) => prev + 1);
-  // }
-
   function getTextToDisplay() {
     if (inReview)
       return (
@@ -37,8 +30,8 @@ export function QuestionReasoning({}: {}) {
 
   return (
     <QuestionContainer onClickCapture={(e) => (hideChoices ? handleCategoryContainerClick(e) : undefined)}>
-      <div className="bg-cream text-black mx-14 p-10 rounded-lg text-lg text-center mb-6">{getTextToDisplay()}</div>
-      {<Choices />}
+      <div className="mb-6 rounded-lg bg-cream p-4 text-center text-lg text-black md:p-10">{getTextToDisplay()}</div>
+      <Choices />
     </QuestionContainer>
   );
 }

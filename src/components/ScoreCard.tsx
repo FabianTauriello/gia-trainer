@@ -9,7 +9,7 @@ export function ScoreCard({ categories }: { categories: Category[] }) {
       <h1 className="mb-3 text-xl">Scorecard</h1>
       <table className="w-full border border-gray-300 bg-gray-100">
         <thead>
-          <tr className="border-b border-b-gray-400 bg-gray-300 text-left">
+          <tr className="border-b border-b-gray-400 bg-primary-400 text-left text-white">
             <th className="p-3 text-lg font-medium">Category</th>
             <th className="p-3 text-lg font-medium">Score</th>
           </tr>

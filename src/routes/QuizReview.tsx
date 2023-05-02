@@ -73,45 +73,58 @@ export function QuizReview() {
         <ScoreCard categories={categories} />
         {categories.map((cat, index) => (
           // Category card
-          <Disclosure>
+          <Disclosure key={index} defaultOpen>
             <div className="rounded border border-gray-300 bg-gray-100">
-              <Disclosure.Button className="w-full">
-                <div className="border-b border-b-gray-400 bg-gray-300 p-3">
-                  <div className="flex justify-between align-middle ">
-                    <h1 className="mr-1 text-lg font-medium">{cat.title}</h1>
-                    <h3 className="text-lg">
-                      {cat.score} / {cat.questions.length}
-                    </h3>
-                  </div>
-                  <div className="flex justify-between align-middle">
-                    <p className="mt-2">{getCategoryGuide(cat)}</p>
-                    <RxCaretDown size={40} className="ui-open:rotate-180 ui-open:transform" />
-                  </div>
+              <Disclosure.Button className="w-full border-b border-b-gray-400 bg-primary-400 p-3 text-white">
+                <div className="flex justify-between align-middle ">
+                  <h1 className="mr-1 text-lg font-medium">{cat.title}</h1>
+                  <h3 className="text-lg">
+                    {cat.score} / {cat.questions.length}
+                  </h3>
+                </div>
+                <div className="flex justify-between text-left">
+                  <p className="mt-2">{getCategoryGuide(cat)}</p>
+                  <RxCaretDown size={40} className="invisible ui-open:rotate-180 ui-open:transform md:visible" />
                 </div>
               </Disclosure.Button>
-              <Disclosure.Panel>
-                <div className="grid gap-2 p-3 md:grid-cols-2 lg:grid-cols-3">
-                  {cat.questions.map((q, i) => {
-                    return (
-                      <div
-                        key={i}
-                        onClick={() => setModalDetails({ chosenQuestionIndex: q.number! - 1, show: true })}
-                        className={`flex cursor-pointer justify-between border bg-white hover:bg-gray-200`}
-                      >
-                        {/* Q number and mark */}
-                        <div className="flex">
-                          <div className={`${isQuestionCorrect(q) ? "bg-correct" : "bg-incorrect"} mr-2 w-2.5`} />
-                          <div className="my-2 text-xl">Question {q.number}</div>
+              <Transition
+                enter="transition duration-100 ease-out"
+                enterFrom="transform scale-95 opacity-0"
+                enterTo="transform scale-100 opacity-100"
+                leave="transition duration-75 ease-out"
+                leaveFrom="transform scale-100 opacity-100"
+                leaveTo="transform scale-95 opacity-0"
+                // enter="transition-all ease-in-out duration-200"
+                // enterFrom="-translate-y-full opacity-0"
+                // enterTo="translate-y-0 opacity-100"
+                // leave="transition duration-75 ease-out"
+                // leaveFrom="transform opacity-100"
+                // leaveTo="transform opacity-0"
+              >
+                <Disclosure.Panel className="">
+                  <div className="grid gap-2 p-3 md:grid-cols-2 lg:grid-cols-3">
+                    {cat.questions.map((q, i) => {
+                      return (
+                        <div
+                          key={i}
+                          onClick={() => setModalDetails({ chosenQuestionIndex: q.number! - 1, show: true })}
+                          className={`flex cursor-pointer justify-between border bg-white hover:bg-gray-200`}
+                        >
+                          {/* Q number and mark */}
+                          <div className="flex">
+                            <div className={`${isQuestionCorrect(q) ? "bg-correct" : "bg-incorrect"} mr-2 w-2.5`} />
+                            <div className="my-2 text-xl">Question {q.number}</div>
+                          </div>
+                          {/* Tick / cross */}
+                          <div className="mr-2 flex flex-col justify-center">
+                            {isQuestionCorrect(q) ? <ImCheckmark color="#15803D" size={20} /> : <ImCross color="#B91C1C" size={20} />}
+                          </div>
                         </div>
-                        {/* Tick / cross */}
-                        <div className="mr-2 flex flex-col justify-center">
-                          {isQuestionCorrect(q) ? <ImCheckmark color="#15803D" size={20} /> : <ImCross color="#B91C1C" size={20} />}
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              </Disclosure.Panel>
+                      );
+                    })}
+                  </div>
+                </Disclosure.Panel>
+              </Transition>
             </div>
           </Disclosure>
         ))}
@@ -127,3 +140,4 @@ export function QuizReview() {
 
 // TODO don't harcode these colors
 // TODO change flow of questions to flow vertically
+// TODO change name of this component to results??

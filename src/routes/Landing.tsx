@@ -1,8 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "hooks/useAppSelector";
-import { Btn1 } from "components/Btn1";
+import { CustomLink } from "components/CustomLink";
 import mySvg from "assets/svgs/cv.svg";
-import Btn2 from "components/Btn2";
 import { useGetQuizQuestionsQuery } from "domain/slices/apislice";
 
 export function Landing() {
@@ -29,15 +28,15 @@ export function Landing() {
         </div>
         <div className="flex flex-col">
           <main>
-            <section className="text-center intro-section text-white">
-              <h1 className="text-5xl font-extrabold mb-4 mr-8 ml-8">Prepare to ace your next GIA test</h1>
-              <div className="text-2xl font-medium mr-8 ml-8">
+            <section className="intro-section text-center text-white">
+              <h1 className="mb-4 mr-8 ml-8 text-5xl font-extrabold">Prepare to ace your next GIA test</h1>
+              <div className="mr-8 ml-8 text-2xl font-medium">
                 Practice and compete against others in the GIA test. Hone your skills by competing against others or trying to beat
                 your high score.
               </div>
-              <div className="flex justify-center mt-6">
-                <Btn1 text="Sign In" handleClick={() => {}} customCss="mr-6 bg-secondary text-white" />
-                <Btn1 text="Try Now" handleClick={() => {}} customCss="bg-white text-black" />
+              <div className="mt-6 flex justify-center">
+                <CustomLink text="Sign In" customCss="mr-6 bg-secondary text-white" />
+                <CustomLink text="Try Now" customCss="bg-white text-black" />
               </div>
             </section>
             <section>

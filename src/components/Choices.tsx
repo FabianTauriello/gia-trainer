@@ -40,14 +40,14 @@ export function Choices({}: {}) {
   }
 
   return (
-    <div className="flex justify-center gap-3 mx-20">
+    <div className="flex justify-center gap-3 md:mx-44">
       {currentQuestion.choices.map((choice, i) => (
         <button
           key={i}
           disabled={inReview}
           type="button"
           onClick={() => handleAnswerClick(i)}
-          className={`outline-none p-6 bg-secondary rounded-lg flex-1 ${
+          className={`flex-1 rounded-lg bg-secondary p-6 outline-none ${
             (hideChoices && currentQuestion.category === "Reasoning") || inReview ? "cursor-default" : "cursor-pointer"
           } ${getChoiceHighlight(i)}`}
         >

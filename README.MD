@@ -47,6 +47,8 @@
 - [x] change components to use named export instead of default
 - [x] rename pages folder to routes?
 - [x] rename section reference
+- [ ] remove empty classNames (i.e className="")
+- [ ] add testing
 - s to "category"?
 - [ ] add confetti gun animation for when a user gets a new pb
 - [ ] add dashboard page for logged in users
@@ -61,7 +63,7 @@
 - [ ] add preferences/settings section for toggling things like timer visibility and theme
 - [x] create a custom hook for incrementing question index?
 - [x] separate sections into completely different components
-- [ ] consolidate and decide on button types (fix Btn1, CustomButton etc).
+- [x] consolidate and decide on button types (fix Btn1, CustomButton etc).
 - [x] consider adding correctChoiceIndex to a question object to cut down on data (isCorrect will not be needed).
 
 The magic of Redux:
