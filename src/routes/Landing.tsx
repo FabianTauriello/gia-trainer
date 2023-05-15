@@ -35,8 +35,8 @@ export function Landing() {
                 your high score.
               </div>
               <div className="mt-6 flex justify-center">
-                <CustomLink text="Sign In" customCss="mr-6 bg-secondary text-white" />
-                <CustomLink text="Try Now" customCss="bg-white text-black" />
+                <CustomLink text="Sign In" location="/sign-in" customCss="mr-6 bg-secondary text-white" />
+                <CustomLink text="Try Now" location="/quiz/visitor" customCss="bg-white text-black" />
               </div>
             </section>
             <section>

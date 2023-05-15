@@ -25,7 +25,7 @@ export function Counter() {
       </div>
       <div>
         <label>Enter increment amount</label>
-        <input ref={inputRef} className="border mx-2" />
+        <input ref={inputRef} className="mx-2 border" />
         <button type="button" onClick={() => dispatch(incrementByAmount(parseInt(inputRef.current?.value!)))}>
           INCREMENT
         </button>

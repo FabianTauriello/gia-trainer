@@ -4,6 +4,7 @@ import { Landing } from "./routes/Landing";
 import { QuizAttemptWrapper } from "routes/QuizAttemptWrapper";
 import { Counter } from "routes/Counter";
 import { QuizReview } from "routes/QuizReview";
+import { SignIn } from "routes/SignIn";
 
 export function AppRouter() {
   const quiz = useAppSelector((state) => state.quiz);
@@ -13,6 +14,7 @@ export function AppRouter() {
       <>
         <Route path="/" element={<Landing />} />
         <Route path="/counter" element={<Counter />} />
+        <Route path="/sign-in" element={<SignIn />} />
         {/* Private user routes */}
         {/* <Route path="/dashboard/quiz/:quizId" element={<QuizWrapper />} /> */}
         {/* <Route path="/dashboard/quiz/:quizId/review" element={<QuizReview />} /> */}
