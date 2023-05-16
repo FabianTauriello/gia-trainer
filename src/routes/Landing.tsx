@@ -1,7 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "hooks/useAppSelector";
 import { CustomLink } from "components/CustomLink";
-import mySvg from "assets/svgs/cv.svg";
 import { useGetQuizQuestionsQuery } from "domain/slices/apislice";
 
 export function Landing() {
@@ -10,20 +9,14 @@ export function Landing() {
   return (
     <>
       {/* TODO remove later */}
-      <div style={{ position: "fixed", top: 5, right: 5, color: "white", backgroundColor: "red", zIndex: 100 }}>
+      {/* <div style={{ position: "fixed", top: 5, right: 5, color: "white", backgroundColor: "red", zIndex: 100 }}>
         <Link to={"/counter"}>Counter</Link>
-      </div>
-      <header style={{}}>{/* TODO */}</header>
+      </div> */}
+      <header>{/* TODO */}</header>
       <div className="wrapper">
         <div style={{ border: "solid 1px black" }} className="bg">
           <picture>
-            <img
-              style={{ backgroundImage: `url(${mySvg})` }}
-              width={2560}
-              height={2197}
-              src="/assets/images/bg-home-desktop"
-              alt="some alt text"
-            />
+            <img className="bg-dark" width={2560} height={2197} src="/assets/images/bg-home-desktop" alt="some alt text" />
           </picture>
         </div>
         <div className="flex flex-col">
