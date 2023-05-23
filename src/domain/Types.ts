@@ -22,7 +22,10 @@ export type Question = {
 export type CategoryTitle = "Reasoning" | "Perceptual Speed" | "Number Speed and Accuracy" | "Word Meaning" | "Spatial Visualisation";
 
 export type User = {
-  name: string;
+  email: string;
+  password: string;
+  firstName: string;
+  lastName: string;
 };
 
 export type ModalDetails = {
