@@ -7,9 +7,7 @@ export function Timer({ initialSeconds, onCountdownComplete }: { initialSeconds:
 
   const intervalId = useMemo(() => {
     return setInterval(() => {
-      setSeconds((prev) => {
-        return prev - 1;
-      });
+      setSeconds(seconds - 1);
     }, 1000);
   }, []);
 

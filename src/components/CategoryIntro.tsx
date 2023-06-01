@@ -60,7 +60,7 @@ export function CategoryIntro({}: {}) {
   }
 
   function handleStartCategory() {
-    setCategoriesStarted((prev) => [...prev, currentQuestion.category]);
+    setCategoriesStarted([...categoriesStarted, currentQuestion.category]);
   }
 
   return (

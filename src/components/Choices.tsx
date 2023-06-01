@@ -26,7 +26,7 @@ export function Choices({}: {}) {
       const loggedIn = false;
       navigate(loggedIn ? `dashboard/quiz/someId/review` : `/quiz/visitor/review`);
     } else {
-      setQuestionIndex((prev) => prev + 1);
+      setQuestionIndex(questionIndex + 1);
       setHideChoices(true);
     }
   }
