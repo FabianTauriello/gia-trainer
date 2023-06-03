@@ -16,11 +16,8 @@ export const apiSlice = createApi({
       // The URL for the request is 'http://localhost:3001/quizQuestions'
       query: () => "/quizQuestions",
     }),
-    getTestData: builder.query<{ name: string }[], void>({
-      query: () => "/testData",
-    }),
   }),
 });
 
 // Export the auto-generated hook for the 'getQuizQuestions' query endpoint
-export const { useGetQuizQuestionsQuery, useLazyGetQuizQuestionsQuery, useGetTestDataQuery } = apiSlice;
+export const { useGetQuizQuestionsQuery, useLazyGetQuizQuestionsQuery } = apiSlice;

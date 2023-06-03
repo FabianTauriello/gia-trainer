@@ -10,6 +10,23 @@ export function SignIn() {
     // Code to submit the form data to your backend API
   }
 
+  async function handleSignIn() {
+    // change this to use query builder from rtk
+    const res = await fetch("http://localhost:3001/signIn", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        email,
+        password,
+      }),
+    });
+
+    const json = await res.json();
+    console.log("json: ", json);
+  }
+
+  async function handleSignUp() {}
+
   return (
     <section className="bg-dark">
       <div className="mx-auto flex flex-col items-center justify-center px-6 py-8 md:h-screen lg:py-0">
@@ -71,7 +88,7 @@ export function SignIn() {
                 </a>
               </div>
               <button
-                type="submit"
+                onClick={handleSignIn}
                 className="w-full rounded-lg bg-primary-600 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-primary-700 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
               >
                 Sign in

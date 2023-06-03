@@ -1,7 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "hooks/useAppSelector";
 import { CustomLink } from "components/CustomLink";
-import { useGetQuizQuestionsQuery } from "domain/slices/apislice";
 
 export function Landing() {
   const navigate = useNavigate();

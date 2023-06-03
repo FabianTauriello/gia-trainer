@@ -15,10 +15,10 @@ export function AppRouter() {
         <Route path="/" element={<Landing />} />
         <Route path="/counter" element={<Counter />} />
         <Route path="/sign-in" element={<SignIn />} />
-        {/* Private user routes */}
+        {/* private user routes */}
         {/* <Route path="/dashboard/quiz/:quizId" element={<QuizWrapper />} /> */}
         {/* <Route path="/dashboard/quiz/:quizId/review" element={<QuizReview />} /> */}
-        {/* Public visitor routes. 'quizId' should be 'visitor' here */}
+        {/* public visitor routes. 'quizId' should be 'visitor' here */}
         <Route path="/quiz/:quizId" element={<QuizAttemptWrapper />} />
         <Route path="/quiz/:quizId/review" element={quiz.attempts.length ? <QuizReview /> : <Navigate to="/quiz/visitor" />} />
       </>

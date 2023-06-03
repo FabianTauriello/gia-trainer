@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useAppDispatch } from "hooks/useAppSelector";
 import { useGetQuizQuestionsQuery } from "domain/slices/apislice";
 import { QuestionController } from "components/QuestionController";
-import QuizContextProvider, { QuizContext } from "domain/QuizContextProvider";
+import QuizContextProvider from "domain/QuizContextProvider";
 
 export function QuizAttemptWrapper() {
   const dispatch = useAppDispatch();
