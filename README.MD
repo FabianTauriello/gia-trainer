@@ -41,8 +41,10 @@
 
 ### TODOs:
 
+- [ ] persist auth state to local storage
 - [ ] implement and build a library to share a single source of declared data types between frontend and backend (yay for type safety!)
 - [x] rename project to gia-trainer
+- [ ] capitalize comments
 - [ ] add ability to practice categories separately
 - [x] change components to use named export instead of default
 - [x] rename pages folder to routes?

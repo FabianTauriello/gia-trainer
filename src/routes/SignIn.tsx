@@ -1,7 +1,16 @@
-import { User } from "domain/Types";
+import { useSignInMutation } from "domain/slices/apislice";
+import { setCredentials } from "domain/slices/authSlice";
+import { useAppDispatch, useAppSelector } from "hooks/useAppSelector";
 import { FormEventHandler, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export function SignIn() {
+  const auth = useAppSelector((state) => state.auth);
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
+  const [signIn, { isLoading }] = useSignInMutation();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -11,24 +20,25 @@ export function SignIn() {
   }
 
   async function handleSignIn() {
-    // change this to use query builder from rtk
-    const res = await fetch("http://localhost:3001/signIn", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        email,
-        password,
-      }),
-    });
-
-    const json = await res.json();
-    console.log("json: ", json);
+    try {
+      const res = await signIn({ email, password }).unwrap();
+      if (res.data) {
+        console.log("res: ", res);
+        dispatch(setCredentials(res.data));
+        navigate("/dashboard"); // TODO dashboard instead
+      }
+    } catch (error) {
+      // TODO
+    }
   }
 
   async function handleSignUp() {}
 
   return (
     <section className="bg-dark">
+      {/* <div style={{ color: "white" }}>
+        <pre>{JSON.stringify(auth, null, 4)}</pre>
+      </div> */}
       <div className="mx-auto flex flex-col items-center justify-center px-6 py-8 md:h-screen lg:py-0">
         <a href="#" className="mb-6 flex items-center text-2xl font-semibold text-gray-900 dark:text-white">
           {/* TODO put my logo here */}

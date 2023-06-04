@@ -1,10 +1,10 @@
+import { Dispatch } from "react";
+
 export type Category = {
   title: CategoryTitle;
   questions: Question[];
   score: number;
 };
-
-import { Dispatch } from "react";
 
 // TODO use generics here to support different categories or use more specific types?
 export type Question = {
@@ -23,9 +23,13 @@ export type CategoryTitle = "Reasoning" | "Perceptual Speed" | "Number Speed and
 
 export type User = {
   email: string;
-  password: string;
   firstName: string;
   lastName: string;
+};
+
+export type AuthState = {
+  user: User | null;
+  token: string | null;
 };
 
 export type ModalDetails = {
@@ -63,18 +67,14 @@ export type ActiveQuizAttempt = QuizAttempt & {
   currentCategoryNumber: number;
 };
 
-// OR use different question types...
-// export type Q1 = {
-//   statement: string;
-//   question: string;
-//   choices: Choice[];
-// };
+export type LoginRequest = {
+  email: string;
+  password: string;
+};
 
-// export type Q2 = {
-//   img: string;
-//   choices: Choice[];
-// };
-
-// export type Q3 = {
-//   choices: Choice[];
-// };
+export type ApiResponse<T = null> = {
+  success: boolean;
+  data?: T;
+  statusCode: 200 | 201 | 400 | 401 | 409 | 500;
+  message: string;
+};

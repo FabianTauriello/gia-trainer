@@ -7,9 +7,9 @@ export function Landing() {
   return (
     <>
       {/* TODO remove later */}
-      {/* <div style={{ position: "fixed", top: 5, right: 5, color: "white", backgroundColor: "red", zIndex: 100 }}>
+      <div style={{ position: "fixed", top: 5, right: 5, color: "white", backgroundColor: "red", zIndex: 100 }}>
         <Link to={"/counter"}>Counter</Link>
-      </div> */}
+      </div>
       <header>{/* TODO */}</header>
       <div className="wrapper">
         <div style={{ border: "solid 1px black" }} className="bg">

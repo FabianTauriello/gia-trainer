@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "domain/Store";
-import { ActiveQuizAttempt, Question, QuizAttempt } from "domain/Types";
+import { Question, QuizAttempt } from "domain/Types";
 import { testAttempt } from "temp/testData";
 
 type QuizState = {
@@ -51,7 +51,5 @@ export const quizSlice = createSlice({
 });
 
 export const { addNewQuizAttempt, updateQuizAttempt } = quizSlice.actions;
-
-export const selectCount = (state: RootState) => state.counter.value;
 
 export default quizSlice.reducer;
