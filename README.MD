@@ -51,7 +51,6 @@
 - [x] rename section reference
 - [ ] remove empty classNames (i.e className="")
 - [ ] add testing
-- s to "category"?
 - [ ] add confetti gun animation for when a user gets a new pb
 - [ ] add dashboard page for logged in users
 - [ ] add ability to review previous quiz attempts? (e.g. /quiz-review/id)
