@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { RootState } from "domain/Store";
-import { ApiResponse, LoginRequest, Question, User } from "domain/Types";
+import { ApiResponse, LoginCredentials, Question, User } from "domain/Types";
 
 // Define the single API slice object
 export const apiSlice = createApi({
@@ -19,7 +19,7 @@ export const apiSlice = createApi({
   // The "endpoints" represent operations and requests for this server
   endpoints: (builder) => ({
     // types: <UserResponse
-    signIn: builder.mutation<ApiResponse<{ user: User; token: string }>, LoginRequest>({
+    signIn: builder.mutation<ApiResponse<{ user: User; token: string }>, LoginCredentials>({
       query: (credentials) => ({
         url: "signIn",
         method: "POST",

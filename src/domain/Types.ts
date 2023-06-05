@@ -22,7 +22,6 @@ export type Question = {
 export type CategoryTitle = "Reasoning" | "Perceptual Speed" | "Number Speed and Accuracy" | "Word Meaning" | "Spatial Visualisation";
 
 export type User = {
-  email: string;
   firstName: string;
   lastName: string;
 };
@@ -67,7 +66,7 @@ export type ActiveQuizAttempt = QuizAttempt & {
   currentCategoryNumber: number;
 };
 
-export type LoginRequest = {
+export type LoginCredentials = {
   email: string;
   password: string;
 };

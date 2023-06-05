@@ -1,19 +1,40 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { apiSlice } from "domain/slices/apislice";
 import counterReducer from "domain/slices/counterSlice";
 import quizReducer from "domain/slices/quizSlice";
 import authReducer from "domain/slices/authSlice";
+import { persistStore, persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER, createTransform } from "redux-persist";
+import storage from "redux-persist/lib/storage";
+
+const rootReducer = combineReducers({
+  counter: counterReducer,
+  quiz: quizReducer,
+  auth: authReducer,
+  [apiSlice.reducerPath]: apiSlice.reducer,
+});
+
+const persistedReducer = persistReducer(
+  {
+    version: 1,
+    key: "root", // key prefix for the persisted state
+    storage, // storage engine to use (default: localStorage)
+    whitelist: ["auth"],
+
+    // ...configure other options here (e.g. blacklist, whitelist, transforms for manipulating data between hydration/rehydration etc)
+  },
+  rootReducer
+);
 
 export const store = configureStore({
-  reducer: {
-    counter: counterReducer,
-    quiz: quizReducer,
-    auth: authReducer,
-    [apiSlice.reducerPath]: apiSlice.reducer,
-  },
+  reducer: persistedReducer,
   // This middleware manages cache lifetimes and expiration.
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(apiSlice.middleware),
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({ serializableCheck: { ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER] } }).concat(
+      apiSlice.middleware
+    ),
 });
+
+export const persistor = persistStore(store);
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof store.getState>;
