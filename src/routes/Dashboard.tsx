@@ -6,7 +6,7 @@ function Dashboard() {
   const auth = useAppSelector((state) => state.auth);
 
   return (
-    <div>
+    <div style={{ background: "yellow" }}>
       <h1>dash</h1>
       <h2>
         <pre>{JSON.stringify(auth, null, 4)}</pre>
