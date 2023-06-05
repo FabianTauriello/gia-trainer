@@ -41,7 +41,7 @@
 
 ### TODOs:
 
-- [ ] persist auth state to local storage
+- [x] persist auth state to local storage
 - [ ] implement and build a library to share a single source of declared data types between frontend and backend (yay for type safety!)
 - [x] rename project to gia-trainer
 - [ ] capitalize comments
