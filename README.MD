@@ -28,11 +28,11 @@
 ### Notes:
 
 - follow the 60-30-10 rule for using color palette. 60% of the view should be a dominant color, 30% should be the secondary color or texture and the last 10% should be an accent
-- don't forget about generics!
 - make sure elements are semantic
 - review for duplicate questions
-- 'wrapper' components wrap logic around its children. 'containers' simply render its children and contain minimal logic - they are primarily used to prevent code/styling duplication.
 - follow this style guide: https://redux.js.org/style-guide/
+- combine names (first and last), and user id to uniquely identify users in the leaderboard
+- 'wrapper' components wrap logic around its children. 'containers' simply render its children and contain minimal logic - they are primarily used to prevent code/styling duplication. // TODO still true?
 
 ### Git branch naming convention:
 
@@ -42,8 +42,11 @@
 ### TODOs:
 
 - [x] persist auth state to local storage
-- [ ] implement and build a library to share a single source of declared data types between frontend and backend (yay for type safety!)
+- [ ] consider removing headless ui for Flowbite components
+- [ ] add animation between sign-in and sign-up modal states
+- [ ] detect invalid emails in sign up and change error text to "Email is invalid or already taken"
 - [x] rename project to gia-trainer
+- [ ] add setting option to hide first and last name from appearing in the leaderboard (only the user id and score will be shown)
 - [ ] capitalize comments
 - [ ] add ability to practice categories separately
 - [x] change components to use named export instead of default
@@ -53,8 +56,8 @@
 - [ ] add testing
 - [ ] add confetti gun animation for when a user gets a new pb
 - [ ] add dashboard page for logged in users
-- [ ] add ability to review previous quiz attempts? (e.g. /quiz-review/id)
-- [ ] add sign-in and user authentication
+- [x] add ability to review previous quiz attempts? (e.g. /quiz-review/id)
+- [x] add sign-in and user authentication
 - [x] determine how selected choices will be recorded for questions - selectedChoiceIndex prop in Question type?
 - [ ] make use of the timer
 - [ ] replace onClickCapture with e.stopPropogation() logic
@@ -67,6 +70,7 @@
 - [x] separate sections into completely different components
 - [x] consolidate and decide on button types (fix Btn1, CustomButton etc).
 - [x] consider adding correctChoiceIndex to a question object to cut down on data (isCorrect will not be needed).
+- [ ] validate website against w3 standards (https://validator.w3.org/)
 
 The magic of Redux:
 
