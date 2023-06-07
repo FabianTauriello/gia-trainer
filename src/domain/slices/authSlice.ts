@@ -1,9 +1,19 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { AuthState, User } from "domain/Types";
+import { User } from "domain/Types";
+
+type AuthState = {
+  user: User | null;
+  token: string | null;
+};
+
+const initialState: AuthState = {
+  user: null,
+  token: null
+};
 
 const slice = createSlice({
   name: "auth",
-  initialState: { user: null, token: null } as AuthState,
+  initialState: initialState,
   reducers: {
     setCredentials: (state, action: PayloadAction<{ user: User; token: string }>) => {
       state.user = action.payload.user;
