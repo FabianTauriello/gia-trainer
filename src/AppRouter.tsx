@@ -6,8 +6,6 @@ import {
   RouterProvider,
   Navigate,
   redirect,
-  LoaderFunctionArgs,
-  useNavigate,
 } from "react-router-dom";
 import { Landing } from "./routes/Landing";
 import { QuizAttemptWrapper } from "routes/QuizAttemptWrapper";
@@ -17,9 +15,6 @@ import { SignIn } from "routes/SignIn";
 import Dashboard from "routes/Dashboard";
 import { PrivateOutlet } from "routes/PrivateOutlet";
 import { User } from "domain/Types";
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { toggleDarkMode } from "domain/slices/settingsSlice";
 
 export function AppRouter() {
   const { quiz, auth } = useAppSelector((state) => state);

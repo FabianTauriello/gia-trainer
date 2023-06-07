@@ -47,7 +47,8 @@
 - [ ] detect invalid emails in sign up and change error text to "Email is invalid or already taken"
 - [x] rename project to gia-trainer
 - [ ] add setting option to hide first and last name from appearing in the leaderboard (only the user id and score will be shown)
-- [ ] capitalize comments
+- [ ] capitalize commentso about me as the developer
+- [ ] include section/bi
 - [ ] add ability to practice categories separately
 - [x] change components to use named export instead of default
 - [x] rename pages folder to routes?

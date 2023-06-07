@@ -26,11 +26,6 @@ export type User = {
   lastName: string;
 };
 
-export type AuthState = {
-  user: User | null;
-  token: string | null;
-};
-
 export type ModalDetails = {
   chosenQuestionIndex: number;
   show: boolean;
