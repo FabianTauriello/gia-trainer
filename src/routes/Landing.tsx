@@ -17,7 +17,7 @@ export function Landing() {
       <div className="relative w-full overflow-hidden bg-image-light bg-cover bg-center bg-no-repeat dark:bg-image-dark">
         <div className="">
           <main className="">
-            <section className="mt-16 py-20 text-center dark:text-white">
+            <section className="mt-16 py-20 text-center text-black dark:text-white">
               <h1 className="mb-4 mr-8 ml-8 text-5xl font-extrabold">Prepare to ace your next GIA test</h1>
               <div className="mx-8 mt-4 text-2xl font-medium">
                 Practice and compete against others in the GIA test. Hone your skills by competing against others or trying to beat
@@ -30,7 +30,7 @@ export function Landing() {
                 </div>
               )}
             </section>
-            <section className="text-white-100 py-20 dark:text-white">
+            <section className="text-white-100 py-20 text-black dark:text-white">
               Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iure quasi enim fuga corporis fugit rem alias mollitia
               cupiditate sapiente error numquam, doloribus unde quas, in, amet accusamus exercitationem iusto voluptas. Quibusdam esse
               alias temporibus deleniti. Porro numquam tenetur, dolores, doloremque nulla nisi deleniti, incidunt id vel autem quam!
