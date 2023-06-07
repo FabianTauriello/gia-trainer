@@ -1,5 +1,14 @@
 import { useAppSelector } from "hooks/useAppSelector";
-import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider, Navigate, redirect } from "react-router-dom";
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+  RouterProvider,
+  Navigate,
+  redirect,
+  LoaderFunctionArgs,
+  useNavigate,
+} from "react-router-dom";
 import { Landing } from "./routes/Landing";
 import { QuizAttemptWrapper } from "routes/QuizAttemptWrapper";
 import { Counter } from "routes/Counter";
@@ -7,12 +16,13 @@ import { QuizReview } from "routes/QuizReview";
 import { SignIn } from "routes/SignIn";
 import Dashboard from "routes/Dashboard";
 import { PrivateOutlet } from "routes/PrivateOutlet";
-import { useAuth } from "hooks/useAuth";
 import { User } from "domain/Types";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { toggleDarkMode } from "domain/slices/settingsSlice";
 
 export function AppRouter() {
-  const quiz = useAppSelector((state) => state.quiz);
-  const auth = useAuth();
+  const { quiz, auth } = useAppSelector((state) => state);
 
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -24,9 +34,9 @@ export function AppRouter() {
         <Route path="/" element={<PrivateOutlet />}>
           {/* TODO index routes explained here: https://www.youtube.com/watch?v=V6zLjVPKtAo */}
           <Route index path="/dashboard" element={<Dashboard />} />
+          {/* <Route path="/dashboard/quiz/:quizId" element={<QuizWrapper />} /> */}
+          {/* <Route path="/dashboard/quiz/:quizId/review" element={<QuizReview />} /> */}
         </Route>
-        {/* <Route path="/dashboard/quiz/:quizId" element={<QuizWrapper />} /> */}
-        {/* <Route path="/dashboard/quiz/:quizId/review" element={<QuizReview />} /> */}
         {/* public visitor routes. 'quizId' should be 'visitor' here */}
         <Route path="/quiz/:quizId" element={<QuizAttemptWrapper />} />
         <Route path="/quiz/:quizId/review" element={quiz.attempts.length ? <QuizReview /> : <Navigate to="/quiz/visitor" />} />
@@ -38,5 +48,9 @@ export function AppRouter() {
 }
 
 function signInLoader(user: User | null) {
-  if (user) return redirect("/dashboard");
+  if (user) {
+    return redirect("/dashboard");
+  } else {
+    return <SignIn />;
+  }
 }
