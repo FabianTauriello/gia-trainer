@@ -42,6 +42,7 @@
 ### TODOs:
 
 - [x] persist auth state to local storage
+- [ ] make all components use an interface 'Props' to describe the parameters (see CustomButton)
 - [ ] consider removing headless ui for Flowbite components
 - [ ] add animation between sign-in and sign-up modal states
 - [ ] detect invalid emails in sign up and change error text to "Email is invalid or already taken"
