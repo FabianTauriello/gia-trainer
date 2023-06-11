@@ -7,22 +7,17 @@ import { QuestionController } from "./QuestionController";
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from "swiper";
 import { Utils } from "utils/Utils";
 import { useAppSelector } from "hooks/useAppSelector";
-
 import "swiper/css";
 import "swiper/css/navigation";
 import { useParams } from "react-router-dom";
-// import "swiper/css/pagination";
-// import "swiper/css/scrollbar";
 
-export function QuestionModal({
-  initialQuestionIndex,
-  show,
-  onClose,
-}: {
+interface QuestionModalProps {
   initialQuestionIndex: number;
   show: boolean;
   onClose: () => void;
-}) {
+}
+
+export function QuestionModal({ initialQuestionIndex, show, onClose }: QuestionModalProps) {
   const params = useParams<{ quizId: string }>();
 
   const quiz = useAppSelector((state) => state.quiz);

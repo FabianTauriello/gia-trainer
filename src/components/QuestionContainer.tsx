@@ -1,13 +1,12 @@
 import { QuizContext } from "domain/QuizContextProvider";
 import { ReactNode, useContext } from "react";
 
-export function QuestionContainer({
-  onClickCapture,
-  children,
-}: {
+interface QuestionContainerProps {
   onClickCapture?: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
   children: ReactNode;
-}) {
+}
+
+export function QuestionContainer({ onClickCapture, children }: QuestionContainerProps) {
   const { inReview } = useContext(QuizContext);
   return (
     <div

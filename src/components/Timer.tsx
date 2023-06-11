@@ -1,6 +1,11 @@
 import { useEffect, useMemo, useState } from "react";
 
-export function Timer({ initialSeconds, onCountdownComplete }: { initialSeconds: number; onCountdownComplete: () => void }) {
+interface TimerProps {
+  initialSeconds: number;
+  onCountdownComplete: () => void;
+}
+
+export function Timer({ initialSeconds, onCountdownComplete }: TimerProps) {
   const [seconds, setSeconds] = useState(initialSeconds);
 
   const minutes = Math.floor(seconds / 60);

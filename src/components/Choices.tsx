@@ -4,7 +4,7 @@ import { useAppDispatch } from "hooks/useAppSelector";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
-export function Choices({}: {}) {
+export function Choices() {
   const navigate = useNavigate();
 
   const dispatch = useAppDispatch();

@@ -4,7 +4,7 @@ import { useContext } from "react";
 import { QuizContext } from "domain/QuizContextProvider";
 import { Banner } from "./Banner";
 
-export function CategoryIntro({}: {}) {
+export function CategoryIntro() {
   const { currentQuestion, categoriesStarted, setCategoriesStarted } = useContext(QuizContext);
 
   function getCategoryDescription() {

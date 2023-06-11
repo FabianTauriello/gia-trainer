@@ -1,18 +1,14 @@
 import { Link } from "react-router-dom";
 
-export function CustomLink({
-  text,
-  location,
-  cta = false,
-  navLink = false,
-  customCss = "",
-}: {
+interface CustomLinkProps {
   text: string;
   location: string;
   cta?: boolean;
   navLink?: boolean;
   customCss?: string;
-}) {
+}
+
+export function CustomLink({ text, location, cta = false, navLink = false, customCss = "" }: CustomLinkProps) {
   return (
     <Link
       to={location}

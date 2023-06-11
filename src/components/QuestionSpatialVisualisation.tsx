@@ -3,7 +3,7 @@ import { Choices } from "./Choices";
 import { QuestionContainer } from "./QuestionContainer";
 import { QuizContext } from "domain/QuizContextProvider";
 
-export function QuestionSpatialVisualisation({}: {}) {
+export function QuestionSpatialVisualisation() {
   const { currentQuestion, inReview } = useContext(QuizContext);
 
   return (

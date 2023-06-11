@@ -1,6 +1,10 @@
 import { Category } from "domain/Types";
 
-export function ScoreCard({ categories }: { categories: Category[] }) {
+interface ScoreCardProps {
+  categories: Category[];
+}
+
+export function ScoreCard({ categories }: ScoreCardProps) {
   const totalScore = categories.reduce((prev, current) => prev + current.score, 0);
   const maxScore = categories.reduce((prev, current) => prev + current.questions.length, 0);
 

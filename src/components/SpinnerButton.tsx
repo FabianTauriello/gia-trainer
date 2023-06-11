@@ -1,15 +1,13 @@
 import { ReactNode } from "react";
 
-// like Btn1 but it renders children - good for spinners/async logic
-export function SpinnerButton({
-  children,
-  handleClick,
-  customCss,
-}: {
+interface SpinnerButtonProps {
   children: ReactNode;
   handleClick: () => void;
   customCss: string;
-}) {
+}
+
+// like Btn1 but it renders children - good for spinners/async logic
+export function SpinnerButton({ children, handleClick, customCss }: SpinnerButtonProps) {
   return (
     <button
       type="button"

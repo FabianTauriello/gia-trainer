@@ -43,7 +43,7 @@
 
 - [x] persist auth state to local storage
 - [ ] consider using TRPC!!
-- [ ] make all components use an interface '<ComponentName>Props' to describe the parameters (see CustomButton)
+- [x] make all components use an interface '<ComponentName>Props' to describe the parameters (see CustomButton)
 - [ ] consider removing headless ui for Flowbite components
 - [ ] add animation between sign-in and sign-up modal states
 - [x] detect invalid emails in sign up and change error text to "Email is invalid or already taken"

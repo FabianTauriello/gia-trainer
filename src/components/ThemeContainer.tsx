@@ -1,9 +1,13 @@
 import { toggleDarkMode } from "domain/slices/settingsSlice";
-import { useAppDispatch, useAppSelector } from "hooks/useAppSelector";
+import { useAppSelector } from "hooks/useAppSelector";
 import { ReactNode, useEffect } from "react";
 import { useDispatch } from "react-redux";
 
-function ThemeContainer({ children }: { children: ReactNode }) {
+interface ThemeContainerProps {
+  children: ReactNode;
+}
+
+function ThemeContainer({ children }: ThemeContainerProps) {
   const settings = useAppSelector((state) => state.settings);
   const dispatch = useDispatch();
 

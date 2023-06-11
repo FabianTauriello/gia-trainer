@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Choices } from "./Choices";
 import { QuestionContainer } from "./QuestionContainer";
 
-export function QuestionReasoning({}: {}) {
+export function QuestionReasoning() {
   const navigate = useNavigate();
 
   const { currentQuestion, setQuestionIndex, inReview, hideChoices, setHideChoices } = useContext(QuizContext);
