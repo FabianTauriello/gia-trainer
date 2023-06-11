@@ -46,12 +46,12 @@
 - [ ] make all components use an interface '<ComponentName>Props' to describe the parameters (see CustomButton)
 - [ ] consider removing headless ui for Flowbite components
 - [ ] add animation between sign-in and sign-up modal states
-- [ ] detect invalid emails in sign up and change error text to "Email is invalid or already taken"
+- [x] detect invalid emails in sign up and change error text to "Email is invalid or already taken"
 - [x] rename project to gia-trainer
 - [ ] add setting option to hide first and last name from appearing in the leaderboard (only the user id and score will be shown)
-- [ ] capitalize commentso about me as the developer
+- [ ] capitalize comments
+- [ ] add section about me as the developer to landing
 - [ ] implement forgot password to sign in page
-- [ ] include section/bi
 - [ ] add ability to practice categories separately
 - [x] change components to use named export instead of default
 - [x] rename pages folder to routes?
@@ -59,7 +59,7 @@
 - [ ] remove empty classNames (i.e className="")
 - [ ] add testing
 - [ ] add confetti gun animation for when a user gets a new pb
-- [ ] add dashboard page for logged in users
+- [x] add dashboard page for logged in users
 - [x] add ability to review previous quiz attempts? (e.g. /quiz-review/id)
 - [x] add sign-in and user authentication
 - [x] determine how selected choices will be recorded for questions - selectedChoiceIndex prop in Question type?
