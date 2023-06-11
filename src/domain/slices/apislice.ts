@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { RootState } from "domain/Store";
-import { ApiResponse, LoginCredentials, Question, User } from "domain/Types";
+import { ApiResponse, LoginCredentials, NewUser, Question, User } from "domain/Types";
 
 // Define the single API slice object
 export const apiSlice = createApi({
@@ -18,12 +18,20 @@ export const apiSlice = createApi({
   }),
   // The "endpoints" represent operations and requests for this server
   endpoints: (builder) => ({
-    // types: <UserResponse
+    // verifies identity of user on server, returning the new user and a jwt if successful
     signIn: builder.mutation<ApiResponse<{ user: User; token: string }>, LoginCredentials>({
       query: (credentials) => ({
         url: "signIn",
         method: "POST",
         body: credentials,
+      }),
+    }),
+    // creates a user on server, returning the new id if successful
+    signUp: builder.mutation<ApiResponse<string>, NewUser>({
+      query: (newUser) => ({
+        url: "signUp",
+        method: "POST",
+        body: newUser,
       }),
     }),
     // The 'getQuizQuestions' endpoint is a "query" operation that returns data
@@ -35,4 +43,4 @@ export const apiSlice = createApi({
 });
 
 // Export the auto-generated hook for the 'getQuizQuestions' query endpoint
-export const { useGetQuizQuestionsQuery, useLazyGetQuizQuestionsQuery, useSignInMutation } = apiSlice;
+export const { useGetQuizQuestionsQuery, useLazyGetQuizQuestionsQuery, useSignInMutation, useSignUpMutation } = apiSlice;

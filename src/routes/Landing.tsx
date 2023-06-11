@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { CustomLink } from "components/CustomLink";
 import { useAppSelector } from "hooks/useAppSelector";
 import Navbar from "components/Navbar";
+import logo from "../assets/svgs/logo.svg";
 
 export function Landing() {
   const navigate = useNavigate();
@@ -30,7 +31,7 @@ export function Landing() {
                 </div>
               )}
             </section>
-            <section className="text-white-100 py-20 text-black dark:text-white">
+            <section className="py-20 text-slate-100 dark:text-slate-900">
               Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iure quasi enim fuga corporis fugit rem alias mollitia
               cupiditate sapiente error numquam, doloribus unde quas, in, amet accusamus exercitationem iusto voluptas. Quibusdam esse
               alias temporibus deleniti. Porro numquam tenetur, dolores, doloremque nulla nisi deleniti, incidunt id vel autem quam!

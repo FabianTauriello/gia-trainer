@@ -42,13 +42,15 @@
 ### TODOs:
 
 - [x] persist auth state to local storage
-- [ ] make all components use an interface 'Props' to describe the parameters (see CustomButton)
+- [ ] consider using TRPC!!
+- [ ] make all components use an interface '<ComponentName>Props' to describe the parameters (see CustomButton)
 - [ ] consider removing headless ui for Flowbite components
 - [ ] add animation between sign-in and sign-up modal states
 - [ ] detect invalid emails in sign up and change error text to "Email is invalid or already taken"
 - [x] rename project to gia-trainer
 - [ ] add setting option to hide first and last name from appearing in the leaderboard (only the user id and score will be shown)
 - [ ] capitalize commentso about me as the developer
+- [ ] implement forgot password to sign in page
 - [ ] include section/bi
 - [ ] add ability to practice categories separately
 - [x] change components to use named export instead of default

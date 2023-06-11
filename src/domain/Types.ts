@@ -22,9 +22,12 @@ export type Question = {
 export type CategoryTitle = "Reasoning" | "Perceptual Speed" | "Number Speed and Accuracy" | "Word Meaning" | "Spatial Visualisation";
 
 export type User = {
+  id: string;
   firstName: string;
   lastName: string;
 };
+
+export type NewUser = Omit<User, "id"> & LoginCredentials;
 
 export type ModalDetails = {
   chosenQuestionIndex: number;

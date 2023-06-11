@@ -16,8 +16,6 @@ export function QuizAttemptWrapper() {
     if (questions?.length) {
       setInitializingQuizAttempt(false);
     }
-
-    return () => {};
   }, [questions]);
 
   if (initializingQuizAttempt) return <div>loading...</div>;
