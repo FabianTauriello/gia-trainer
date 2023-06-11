@@ -22,7 +22,7 @@ function Navbar() {
           <div className="mr-6">
             <DarkModeSwitch
               checked={!settings.darkMode}
-              onChange={() => dispatch(toggleDarkMode())}
+              onChange={() => dispatch(toggleDarkMode(!settings.darkMode))}
               className=""
               size={30}
               sunColor="white"

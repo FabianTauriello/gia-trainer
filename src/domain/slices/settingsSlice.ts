@@ -13,13 +13,13 @@ const slice = createSlice({
   name: "settings",
   initialState: initialState,
   reducers: {
-    toggleDarkMode: (state) => {
+    toggleDarkMode: (state, action: PayloadAction<boolean>) => {
       // if (state.darkMode) {
       //   document.documentElement.classList.remove("dark");
       // } else {
       //   document.documentElement.classList.add("dark");
       // }
-      state.darkMode = !state.darkMode;
+      state.darkMode = action.payload;
     },
   },
 });

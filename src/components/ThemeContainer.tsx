@@ -8,14 +8,16 @@ function ThemeContainer({ children }: { children: ReactNode }) {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    // Setup listener for changes to system preferences
     const darkModeMediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-    const handleDarkModeChange = () => dispatch(toggleDarkMode());
+    const handleDarkModeChange = () => dispatch(toggleDarkMode(darkModeMediaQuery.matches));
     darkModeMediaQuery.addEventListener("change", handleDarkModeChange);
 
     return () => darkModeMediaQuery.removeEventListener("change", handleDarkModeChange);
   }, []);
 
   useEffect(() => {
+    // Set theme on first mount
     if (settings.darkMode) {
       document.documentElement.classList.add("dark");
     } else {
