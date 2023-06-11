@@ -15,7 +15,7 @@
 - TRPC
 - React Query / Zustand
 - Testing library (e.g. Jest, Cypress)?
-- Add friends and compare scores against them
+- build out feature set (e.g. ability to add friends and compare scores against them)
 
 ### Quiz Categories:
 
