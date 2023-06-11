@@ -83,14 +83,16 @@ export function QuestionModal({ initialQuestionIndex, show, onClose }: QuestionM
                 <div className="mt-4 flex justify-between gap-2">
                   <CustomButton
                     customCss={`${prevQuestion ? "visible" : "invisible"} flex-1 bg-primary-500 hover:bg-primary-400`}
-                    text="Previous"
-                    handleClick={() => swiper?.slidePrev()}
-                  />
+                    onClick={() => swiper?.slidePrev()}
+                  >
+                    Previous
+                  </CustomButton>
                   <CustomButton
                     customCss={`${nextQuestion ? "visible" : "invisible"} flex-1 bg-primary-500 hover:bg-primary-400`}
-                    text="Next"
-                    handleClick={() => swiper?.slideNext()}
-                  />
+                    onClick={() => swiper?.slideNext()}
+                  >
+                    Next
+                  </CustomButton>
                 </div>
               </Dialog.Panel>
             </Transition.Child>
