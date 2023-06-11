@@ -8,17 +8,9 @@ export function QuizAttemptWrapper() {
   const dispatch = useAppDispatch();
 
   // TODO handle error here and maybe use lazy hook version
-  const { data: questions, isSuccess, isError, error } = useGetQuizQuestionsQuery();
+  const { data: questions, isSuccess, isError, error, isLoading, isFetching } = useGetQuizQuestionsQuery();
 
-  const [initializingQuizAttempt, setInitializingQuizAttempt] = useState(true);
-
-  useEffect(() => {
-    if (questions?.length) {
-      setInitializingQuizAttempt(false);
-    }
-  }, [questions]);
-
-  if (initializingQuizAttempt) return <div>loading...</div>;
+  if (isLoading) return <div>loading...</div>;
 
   if (isError) return <div>error retrieving latest quiz questions</div>;
 

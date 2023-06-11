@@ -1,6 +1,5 @@
-import { ReactNode, createContext, useEffect, useMemo, useState } from "react";
-import { Question, QuizAttempt, QuizContextType } from "./Types";
-import { useNavigate } from "react-router-dom";
+import { ReactNode, createContext, useEffect, useState } from "react";
+import { Question, QuizContextType } from "./Types";
 import { useAppDispatch } from "hooks/useAppSelector";
 import { addNewQuizAttempt } from "./slices/quizSlice";
 
