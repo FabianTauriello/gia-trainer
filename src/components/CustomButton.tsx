@@ -1,9 +1,9 @@
 interface CustomButtonProps extends React.ComponentPropsWithoutRef<"button"> {
   customCss?: string;
-  loading: boolean;
+  loading?: boolean;
 }
 
-export function CustomButton({ customCss, loading, children, ...rest }: CustomButtonProps) {
+export function CustomButton({ customCss, loading = false, children, ...rest }: CustomButtonProps) {
   return (
     <button
       {...rest}
