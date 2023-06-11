@@ -110,7 +110,7 @@ export function QuizReview() {
                           onClick={() => setModalDetails({ chosenQuestionIndex: q.number! - 1, show: true })}
                           className={`flex cursor-pointer justify-between border bg-white hover:bg-gray-200`}
                         >
-                          {/* Q number and mark */}
+                          {/* Question number and mark */}
                           <div className="flex">
                             <div className={`${isQuestionCorrect(q) ? "bg-correct" : "bg-incorrect"} mr-2 w-2.5`} />
                             <div className="my-2 text-xl">Question {q.number}</div>
