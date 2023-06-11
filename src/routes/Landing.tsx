@@ -15,7 +15,7 @@ export function Landing() {
         <Link to={"/counter"}>Counter</Link>
       </div> */}
       <Navbar />
-      <div className="relative w-full overflow-hidden bg-image-light bg-cover bg-center bg-no-repeat dark:bg-image-dark">
+      <div className="relative w-full h-screen overflow-hidden bg-image-light bg-cover bg-center bg-no-repeat dark:bg-image-dark">
         <div className="">
           <main className="">
             <section className="mt-16 py-20 text-center text-black dark:text-white">
