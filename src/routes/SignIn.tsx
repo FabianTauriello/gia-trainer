@@ -8,8 +8,6 @@ import logo from "../assets/svgs/logo.svg";
 import { Utils } from "utils/Utils";
 
 export function SignIn() {
-  // console.log("rendering sign in...");
-
   const auth = useAppSelector((state) => state.auth);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
