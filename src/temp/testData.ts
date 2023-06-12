@@ -2,6 +2,7 @@ import { Question, QuizAttempt } from "domain/Types";
 
 // this questions array is similar to one obtained from server
 const questions = [
+  // Reasoning
   {
     number: 1,
     category: "Reasoning" as const,
@@ -47,6 +48,7 @@ const questions = [
     correctChoiceIndex: 0,
     selectedChoiceIndex: 0,
   },
+  // Perceptual Speed
   {
     number: 6,
     category: "Perceptual Speed" as const,
@@ -60,6 +62,7 @@ const questions = [
     correctChoiceIndex: 3,
     selectedChoiceIndex: 3,
   },
+  // Number Speed and Accuracy
   {
     number: 7,
     category: "Number Speed and Accuracy" as const,
@@ -88,6 +91,7 @@ const questions = [
     correctChoiceIndex: 2,
     selectedChoiceIndex: 2,
   },
+  // Word Meaning
   {
     number: 11,
     category: "Word Meaning" as const,
@@ -109,6 +113,7 @@ const questions = [
     correctChoiceIndex: 2,
     selectedChoiceIndex: 0,
   },
+  // Spatial Visualisation
   {
     number: 14,
     category: "Spatial Visualisation" as const,
