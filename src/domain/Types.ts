@@ -16,7 +16,7 @@ export type Question = {
   question?: string;
   choices: string[];
   correctChoiceIndex: number;
-  selectedChoiceIndex: number; // extract into AnsweredQuestion?? // use this here and give each question a default value of -1?
+  selectedChoiceIndex: number; // Each question hasa a default value of -1
 };
 
 export type CategoryTitle = "Reasoning" | "Perceptual Speed" | "Number Speed and Accuracy" | "Word Meaning" | "Spatial Visualisation";

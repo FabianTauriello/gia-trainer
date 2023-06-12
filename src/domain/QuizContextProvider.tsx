@@ -25,14 +25,6 @@ function QuizContextProvider({
 
   const currentQuestion = allQuestions[questionIndex];
 
-  // const attempt: QuizAttempt = useMemo(() => {
-  //   return {
-  //     id: "",
-  //     questions: allQuestions,
-  //     totalScore: 0,
-  //   };
-  // }, []);
-
   useEffect(() => {
     dispatch(
       addNewQuizAttempt({

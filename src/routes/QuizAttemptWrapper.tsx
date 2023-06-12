@@ -8,7 +8,7 @@ export function QuizAttemptWrapper() {
   const dispatch = useAppDispatch();
 
   // TODO handle error here and maybe use lazy hook version
-  const { data: questions, isSuccess, isError, error, isLoading, isFetching } = useGetQuizQuestionsQuery();
+  const { data: questions, isError, error, isLoading, isFetching } = useGetQuizQuestionsQuery();
 
   if (isLoading) return <div>loading...</div>;
 
