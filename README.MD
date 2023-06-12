@@ -42,6 +42,7 @@
 ### TODOs:
 
 - [x] persist auth state to local storage
+- [ ] add admin login for question creation/addition to pool of questions
 - [ ] consider using TRPC!!
 - [x] make all components use an interface '<ComponentName>Props' to describe the parameters (see CustomButton)
 - [ ] consider removing headless ui for Flowbite components
