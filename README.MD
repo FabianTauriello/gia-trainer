@@ -34,6 +34,10 @@
 - combine names (first and last), and user id to uniquely identify users in the leaderboard
 - 'wrapper' components wrap logic around its children. 'containers' simply render its children and contain minimal logic - they are primarily used to prevent code/styling duplication. // TODO still true?
 
+### App Behaviour:
+
+- Quiz attempts are only saved once completed.
+
 ### Git branch naming convention:
 
 - feature/ new feature I'm adding or expaning

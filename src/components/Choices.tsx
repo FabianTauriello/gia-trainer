@@ -12,7 +12,6 @@ export function Choices() {
     useContext(QuizContext);
 
   function handleAnswerClick(choiceIndex: number) {
-    // updateAttempt(choiceIndex, choiceIndex === currentQuestion.correctChoiceIndex);
     dispatch(
       updateQuizAttempt({
         quizId: "visitor",
@@ -23,8 +22,7 @@ export function Choices() {
     );
 
     if (questionIndex === allQuestions.length - 1) {
-      const loggedIn = false;
-      navigate(loggedIn ? `dashboard/quiz/someId/review` : `/quiz/visitor/review`);
+      navigate("/quiz/review");
     } else {
       setQuestionIndex(questionIndex + 1);
       setHideChoices(true);
@@ -32,6 +30,8 @@ export function Choices() {
   }
 
   function getChoiceHighlight(choiceIndex: number) {
+    if (!inReview) return "";
+
     if (choiceIndex === currentQuestion.correctChoiceIndex) {
       return "border-4 border-correct";
     } else if (choiceIndex === currentQuestion.selectedChoiceIndex) {
@@ -47,8 +47,10 @@ export function Choices() {
           disabled={inReview}
           type="button"
           onClick={() => handleAnswerClick(i)}
-          className={`flex-1 rounded-lg bg-secondary p-6 outline-none ${
-            (hideChoices && currentQuestion.category === "Reasoning") || inReview ? "cursor-default" : "cursor-pointer"
+          className={`flex-1 rounded-lg bg-emerald-600 text-white p-6 outline-none ${
+            (hideChoices && currentQuestion.category === "Reasoning") || inReview
+              ? "cursor-default"
+              : "cursor-pointer hover:bg-emerald-500"
           } ${getChoiceHighlight(i)}`}
         >
           <span className={`${inReview || currentQuestion.category !== "Reasoning" || !hideChoices ? "visible" : "invisible"}`}>

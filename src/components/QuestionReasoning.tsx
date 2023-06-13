@@ -30,7 +30,9 @@ export function QuestionReasoning() {
 
   return (
     <QuestionContainer onClickCapture={(e) => (hideChoices ? handleCategoryContainerClick(e) : undefined)}>
-      <div className="mb-6 rounded-lg bg-cream p-4 text-center text-lg text-black md:p-10">{getTextToDisplay()}</div>
+      <div className="mb-6 rounded-lg dark:bg-white text-white bg-slate-900 p-4 text-center dark:text-black text-lg md:p-10">
+        {getTextToDisplay()}
+      </div>
       <Choices />
     </QuestionContainer>
   );

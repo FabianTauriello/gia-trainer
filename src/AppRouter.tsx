@@ -18,9 +18,8 @@ export function AppRouter() {
         <Route path="/" element={<Landing />} />
         <Route path="/counter" element={<Counter />} />
         <Route path="/sign-in" element={auth.user ? <Navigate to={"/dashboard"} replace /> : <SignIn />} />
-        {/* 'quizId' will be 'visitor' for non-users, and an actual quizId for users */}
-        <Route path="/quiz/:quizId" element={<QuizAttemptWrapper />} />
-        <Route path="/quiz/:quizId/review" element={quiz.attempts.length ? <QuizReview /> : <Navigate to="/quiz/visitor" />} />
+        <Route path="/quiz/" element={<QuizAttemptWrapper />} />
+        <Route path="/quiz/review" element={quiz.attempts.length ? <QuizReview /> : <Navigate to="/quiz/visitor" />} />
         {/* private routes */}
         <Route path="/" element={<PrivateOutlet />}>
           {/* TODO index routes explained here: https://www.youtube.com/watch?v=V6zLjVPKtAo */}

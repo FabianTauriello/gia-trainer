@@ -64,11 +64,13 @@ export function CategoryIntro() {
   }
 
   return (
-    <div className="h-screen">
+    <div className="h-screen bg-slate-200 dark:bg-slate-900 dark:text-white">
       <Banner title={`Category ${categoriesStarted.length + 1}: ${currentQuestion.category}`} />
       <div className="px-4 md:px-0 lg:mx-28">
         <div className="py-8">{getCategoryDescription()}</div>
-        <CustomButton text="Start Test" handleClick={handleStartCategory} customCss="bg-primary-500 hover:bg-primary-400" />
+        <CustomButton onClick={handleStartCategory} customCss="">
+          Start Test
+        </CustomButton>
       </div>
     </div>
   );

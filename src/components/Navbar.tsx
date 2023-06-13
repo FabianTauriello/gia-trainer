@@ -32,7 +32,7 @@ function Navbar() {
           {auth.user ? (
             <CustomLink text="Dashboard" location="/dashboard" customCss="mr-6" cta navLink />
           ) : (
-            <CustomLink text="Try Now" location="/quiz/visitor" customCss="" navLink />
+            <CustomLink text="Try Now" location="/quiz" customCss="" navLink />
           )}
           {/* Hamburger menu */}
           {/* <button

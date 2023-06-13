@@ -14,7 +14,7 @@ export function QuestionSpatialVisualisation() {
           const secondLetter = letter[1];
           //   TODO using in-line styling here instead of tailwind :(
           return (
-            <div key={i} className="text-7xl text-black bg-cream p-7 rounded font-medium">
+            <div key={i} className="text-7xl dark:text-white text-black bg-cream p-7 rounded font-medium">
               <div
                 style={{
                   transform: `rotate(${firstLetter.rot}deg) ${firstLetter.flip ? "scale(-1, 1)" : "scale(1, 1)"}`,

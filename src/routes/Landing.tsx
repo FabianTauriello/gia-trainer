@@ -27,7 +27,7 @@ export function Landing() {
               {!auth.user && (
                 <div className="mt-8 flex justify-center">
                   <CustomLink text="Sign In" location="/sign-in" customCss="mr-6" cta />
-                  <CustomLink text="Try Now" location="/quiz/visitor" />
+                  <CustomLink text="Try Now" location="/quiz" />
                 </div>
               )}
             </section>

@@ -12,18 +12,15 @@ module.exports = {
       inter: ["Inter"],
     },
     colors: {
-      // TODO need this because 950 shades not working :(
-      darkSlate: "#020617",
+      darkSlate: "#020617", // slate-950
+      correct: "#16a34a", // green-600
+      incorrect: "#dc2626", // red-600
     },
     extend: {
       backgroundImage: {
         // created with slate 900 and 950
-        // TODO remove old
-        // "image-dark": "url(./src/assets/svgs/bg-image-dark-old.svg)",
         "image-dark": "url(./src/assets/svgs/bg-image-dark.svg)",
         // created with slate 200 and 300
-        // TODO remove old
-        // "image-light": "url(./src/assets/svgs/bg-image-light-old.svg)",
         "image-light": "url(./src/assets/svgs/bg-image-light.svg)",
       },
       colors: {

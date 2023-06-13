@@ -12,8 +12,8 @@ export function QuestionPerceptualSpeed() {
         {currentQuestion.pairs?.map((pair, i) => {
           return (
             <div key={i} className="text-7xl text-cream font-medium">
-              <div className="mb-2">{pair[0]}</div>
-              <div className="mt-2">{pair[1]}</div>
+              <div className="mb-2 dark:text-white">{pair[0]}</div>
+              <div className="mt-2 dark:text-white">{pair[1]}</div>
             </div>
           );
         })}
