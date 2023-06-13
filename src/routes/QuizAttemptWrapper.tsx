@@ -8,9 +8,7 @@ import { Banner } from "components/Banner";
 import { CustomButton } from "components/CustomButton";
 
 export function QuizAttemptWrapper() {
-  const dispatch = useAppDispatch();
-
-  const { data: questions, isError, error, isLoading, isFetching, refetch } = useGetQuizQuestionsQuery();
+  const { data, isError, isLoading, refetch } = useGetQuizQuestionsQuery();
 
   if (isLoading)
     return (
@@ -39,7 +37,7 @@ export function QuizAttemptWrapper() {
         <Banner title="Error" />
         <div className="px-4 md:px-0 lg:mx-28">
           <div className="py-8">
-            <p>There was an error retrieving the latest quiz questions. Please Try again by clicking the button below.</p>
+            <p>There was an unkown error retrieving the latest quiz questions. You can try again by clicking the button below.</p>
           </div>
           <CustomButton onClick={refetch}>Load Questions</CustomButton>
         </div>
@@ -47,7 +45,7 @@ export function QuizAttemptWrapper() {
     );
 
   return (
-    <QuizContextProvider allQuestions={questions!}>
+    <QuizContextProvider allQuestions={data!}>
       <QuestionController />
     </QuizContextProvider>
   );
