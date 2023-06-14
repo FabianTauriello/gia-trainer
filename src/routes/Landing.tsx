@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { CustomLink } from "components/CustomLink";
 import { useAppSelector } from "hooks/useAppSelector";
-import Navbar from "components/Navbar";
+import { Navbar } from "components/Navbar";
 import logo from "../assets/svgs/logo.svg";
 
 export function Landing() {
@@ -26,8 +26,8 @@ export function Landing() {
               </div>
               {!auth.user && (
                 <div className="mt-8 flex justify-center">
-                  <CustomLink text="Sign In" location="/sign-in" customCss="mr-6" cta />
-                  <CustomLink text="Try Now" location="/quiz" />
+                  <CustomLink text="Sign In" to="/sign-in" customCss="mr-6" cta />
+                  <CustomLink text="Try Now" to="/quiz" />
                 </div>
               )}
             </section>

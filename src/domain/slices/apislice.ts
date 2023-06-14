@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { RootState } from "domain/Store";
-import { ApiResponse, LoginCredentials, NewUser, Question, User } from "domain/Types";
+import { ApiResponse, LoginCredentials, NewUser, Question, QuizAttempt, User } from "domain/Types";
 
 // Define the single API slice object
 export const apiSlice = createApi({
@@ -34,10 +34,11 @@ export const apiSlice = createApi({
         body: newUser,
       }),
     }),
-    // The 'getQuizQuestions' endpoint is a "query" operation that returns data
-    getQuizQuestions: builder.query<Question[], void>({
-      // The URL for the request is 'http://localhost:3001/quizQuestions'
+    getQuizQuestions: builder.query<ApiResponse<Question[]>, void>({
       query: () => "/quizQuestions",
+    }),
+    addQuizAttempt: builder.query<ApiResponse<string>, { userId: string; attempt: QuizAttempt }>({
+      query: () => "/addQuizAttempt",
     }),
   }),
 });

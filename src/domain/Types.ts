@@ -59,11 +59,6 @@ export type QuizContextType = {
   updateAttempt: (selectedChoiceIndex: number, isCorrect: boolean) => void;
 };
 
-export type ActiveQuizAttempt = QuizAttempt & {
-  currentQuestionIndex: number;
-  currentCategoryNumber: number;
-};
-
 export type LoginCredentials = {
   email: string;
   password: string;

@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { useParams } from "react-router-dom";
-import { CategoryIntro } from "components/CategoryIntro";
+import { QuizCategoryIntro } from "components/QuizCategoryIntro";
 import { QuizContext } from "domain/QuizContextProvider";
 import { QuestionReasoning } from "./QuestionReasoning";
 import { QuestionPerceptualSpeed } from "./QuestionPerceptualSpeed";
@@ -31,7 +31,7 @@ export function QuestionController() {
   }
 
   if (!inReview && !categoriesStarted.includes(currentQuestion.category)) {
-    return <CategoryIntro />;
+    return <QuizCategoryIntro />;
   }
 
   return getQuestionType();

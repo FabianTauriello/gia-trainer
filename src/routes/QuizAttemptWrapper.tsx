@@ -3,14 +3,14 @@ import { useAppDispatch } from "hooks/useAppSelector";
 import { useGetQuizQuestionsQuery } from "domain/slices/apislice";
 import { QuestionController } from "components/QuestionController";
 import QuizContextProvider from "domain/QuizContextProvider";
-import { CategoryIntro } from "components/CategoryIntro";
+import { QuizCategoryIntro } from "components/QuizCategoryIntro";
 import { Banner } from "components/Banner";
 import { CustomButton } from "components/CustomButton";
 
 export function QuizAttemptWrapper() {
-  const { data, isError, isLoading, refetch } = useGetQuizQuestionsQuery();
+  const { data, isError, isLoading, isFetching, refetch } = useGetQuizQuestionsQuery();
 
-  if (isLoading)
+  if (isLoading || isFetching)
     return (
       <div className="h-screen bg-slate-200 dark:bg-slate-900 dark:text-white">
         <Banner title="...loading your quiz questions" />
@@ -34,7 +34,7 @@ export function QuizAttemptWrapper() {
   if (isError)
     return (
       <div className="h-screen bg-slate-200 dark:bg-slate-900 dark:text-white">
-        <Banner title="Error" />
+        <Banner title="Error occurred!" />
         <div className="px-4 md:px-0 lg:mx-28">
           <div className="py-8">
             <p>There was an unkown error retrieving the latest quiz questions. You can try again by clicking the button below.</p>
@@ -45,7 +45,7 @@ export function QuizAttemptWrapper() {
     );
 
   return (
-    <QuizContextProvider allQuestions={data!}>
+    <QuizContextProvider allQuestions={data?.data!}>
       <QuestionController />
     </QuizContextProvider>
   );

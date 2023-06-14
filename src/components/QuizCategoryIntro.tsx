@@ -1,10 +1,9 @@
 import { CustomButton } from "./CustomButton";
-import { Question } from "domain/Types";
 import { useContext } from "react";
 import { QuizContext } from "domain/QuizContextProvider";
 import { Banner } from "./Banner";
 
-export function CategoryIntro() {
+export function QuizCategoryIntro() {
   const { currentQuestion, categoriesStarted, setCategoriesStarted } = useContext(QuizContext);
 
   function getCategoryDescription() {

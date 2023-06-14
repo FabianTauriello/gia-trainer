@@ -7,7 +7,7 @@ interface ThemeContainerProps {
   children: ReactNode;
 }
 
-function ThemeContainer({ children }: ThemeContainerProps) {
+export function ThemeContainer({ children }: ThemeContainerProps) {
   const settings = useAppSelector((state) => state.settings);
   const dispatch = useDispatch();
 
@@ -31,5 +31,3 @@ function ThemeContainer({ children }: ThemeContainerProps) {
 
   return <>{children}</>;
 }
-
-export default ThemeContainer;

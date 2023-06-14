@@ -13,6 +13,8 @@ import { Utils } from "utils/Utils";
 
 // This component must display quiz scores for users who are not logged in, and users HAVE logged in and just want to review their old quiz attempts
 export function QuizReview() {
+  return <div>s</div>;
+
   const params = useParams<{ quizId: string }>();
   const navigate = useNavigate();
 

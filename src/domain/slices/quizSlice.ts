@@ -1,7 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "domain/Store";
 import { Question, QuizAttempt } from "domain/Types";
-import { testAttempt } from "temp/testData";
 
 type QuizState = {
   attempts: QuizAttempt[];
@@ -9,7 +8,7 @@ type QuizState = {
 
 const initialState: QuizState = {
   // TODO make sure to empty this array when you're happy with the review screen
-  attempts: [testAttempt],
+  attempts: [],
   // attempts: [],
 };
 

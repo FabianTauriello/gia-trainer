@@ -7,7 +7,7 @@ import { toggleDarkMode } from "domain/slices/settingsSlice";
 import { FaSun, FaMoon, FaRegSun } from "react-icons/fa";
 import { IconContext } from "react-icons";
 
-function Navbar() {
+export function Navbar() {
   const { auth, settings } = useAppSelector((state) => state);
   const dispatch = useDispatch();
 
@@ -30,9 +30,9 @@ function Navbar() {
             />
           </div>
           {auth.user ? (
-            <CustomLink text="Dashboard" location="/dashboard" customCss="mr-6" cta navLink />
+            <CustomLink text="Dashboard" to="/dashboard" customCss="mr-6" cta navLink />
           ) : (
-            <CustomLink text="Try Now" location="/quiz" customCss="" navLink />
+            <CustomLink text="Try Now" to="/quiz" customCss="" navLink />
           )}
           {/* Hamburger menu */}
           {/* <button
@@ -68,5 +68,3 @@ function Navbar() {
     </nav>
   );
 }
-
-export default Navbar;
