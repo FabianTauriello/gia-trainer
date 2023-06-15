@@ -10,17 +10,17 @@ export function ScoreCard({ categories }: ScoreCardProps) {
 
   return (
     <div className="overflow-x-auto">
-      <h1 className="mb-3 text-xl">Scorecard</h1>
-      <table className="w-full border border-gray-300 bg-gray-100">
+      <h1 className="mb-3 text-xl dark:text-white">Scorecard</h1>
+      <table className="w-full border dark:border-slate-800 border-slate-300 dark:bg-slate-800 dark:text-white bg-slate-100">
         <thead>
-          <tr className="border-b border-b-gray-400 bg-primary-400 text-left text-white">
+          <tr className="border-b dark:border-b-slate-800 border-b-slate-300 dark:bg-darkSlate bg-slate-800 text-left text-white">
             <th className="p-3 text-lg font-medium">Category</th>
             <th className="p-3 text-lg font-medium">Score</th>
           </tr>
         </thead>
         <tbody>
           {categories.map((cat, i) => (
-            <tr key={i} className="odd:bg-white">
+            <tr key={i} className="dark:odd:bg-slate-900 odd:bg-white">
               <td className="p-3">{cat.title}</td>
               <td className="p-3">{cat.score}</td>
             </tr>

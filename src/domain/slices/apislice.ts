@@ -38,10 +38,14 @@ export const apiSlice = createApi({
       query: () => "/quizQuestions",
     }),
     addQuizAttempt: builder.query<ApiResponse<string>, { userId: string; attempt: QuizAttempt }>({
-      query: () => "/addQuizAttempt",
+      query: (newQuizAttempt) => ({
+        url: "/addQuizAttempt",
+        method: "POST",
+        body: newQuizAttempt,
+      }),
     }),
   }),
 });
 
 // Export the auto-generated hook for the 'getQuizQuestions' query endpoint
-export const { useGetQuizQuestionsQuery, useLazyGetQuizQuestionsQuery, useSignInMutation, useSignUpMutation } = apiSlice;
+export const { useSignInMutation, useSignUpMutation, useGetQuizQuestionsQuery, useAddQuizAttemptQuery } = apiSlice;

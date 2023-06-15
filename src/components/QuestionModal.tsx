@@ -10,18 +10,17 @@ import { useAppSelector } from "hooks/useAppSelector";
 import "swiper/css";
 import "swiper/css/navigation";
 import { useParams } from "react-router-dom";
+import { QuizAttempt } from "domain/Types";
 
 interface QuestionModalProps {
+  quizAttempt: QuizAttempt;
   initialQuestionIndex: number;
   show: boolean;
   onClose: () => void;
 }
 
-export function QuestionModal({ initialQuestionIndex, show, onClose }: QuestionModalProps) {
+export function QuestionModal({ quizAttempt, initialQuestionIndex, show, onClose }: QuestionModalProps) {
   const params = useParams<{ quizId: string }>();
-
-  const quiz = useAppSelector((state) => state.quiz);
-  const quizAttempt = Utils.getQuizAttemptById(quiz.attempts, params.quizId!);
 
   const [swiper, setSwiper] = useState<SwiperCore | null>(null);
   const [activeIndex, setActiveIndex] = useState(initialQuestionIndex);

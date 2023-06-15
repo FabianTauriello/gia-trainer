@@ -3,25 +3,25 @@ import { Banner } from "components/Banner";
 import { QuestionModal } from "components/QuestionModal";
 import { ScoreCard } from "components/ScoreCard";
 import { ModalDetails, Category, Question } from "domain/Types";
+import { useAddQuizAttemptQuery } from "domain/slices/apislice";
 import { useAppDispatch } from "hooks/useAppSelector";
 import { useAppSelector } from "hooks/useAppSelector";
 import { useState } from "react";
 import { ImCheckmark, ImCross } from "react-icons/im";
 import { RxCaretDown } from "react-icons/rx";
 import { useNavigate, useParams } from "react-router-dom";
-import { Utils } from "utils/Utils";
 
-// This component must display quiz scores for users who are not logged in, and users HAVE logged in and just want to review their old quiz attempts
+// TODO handle case for visitors
+// TODO This component must display quiz scores for users who are not logged in, and users HAVE logged in and just want to review their old quiz attempts
 export function QuizReview() {
-  return <div>s</div>;
-
-  const params = useParams<{ quizId: string }>();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const dispatch = useAppDispatch();
-  const quiz = useAppSelector((state) => state.quiz);
-  const quizAttempt = Utils.getQuizAttemptById(quiz.attempts, params.quizId!);
+  const { quiz: quizState, auth } = useAppSelector((state) => state);
+  const quizAttempt = quizState.attempts[quizState.attempts.length - 1];
   const categories = splitQuestionsIntoCategories();
+
+  const { data, isLoading, isError, error } = useAddQuizAttemptQuery({ userId: auth.user?.id!, attempt: quizAttempt });
 
   const [modalDetails, setModalDetails] = useState<ModalDetails>({ chosenQuestionIndex: 0, show: false });
 
@@ -68,16 +68,42 @@ export function QuizReview() {
     }
   }
 
+  // if (isLoading) {
+  //   return (
+  //     <div className="h-screen bg-slate-200 dark:bg-slate-900 dark:text-white">
+  //       <Banner title="...loading your quiz questions" />
+  //       <div className="animate-pulse px-4 py-8 md:px-0 lg:mx-28 grid grid-cols-4 gap-4">
+  //         <div className="h-5 bg-slate-400 dark:bg-slate-700 rounded col-span-3" />
+  //         <div className="h-5 bg-slate-400 dark:bg-slate-700 rounded col-span-1" />
+  //         <div className="h-5 bg-slate-400 dark:bg-slate-700 rounded col-span-2" />
+  //         <div className="h-5 bg-slate-400 dark:bg-slate-700 rounded col-span-2" />
+  //         <div className="h-5 bg-slate-400 dark:bg-slate-700 rounded col-span-1" />
+  //         <div className="h-5 bg-slate-400 dark:bg-slate-700 rounded col-span-3" />
+  //         <div className="h-5 bg-slate-400 dark:bg-slate-700 rounded col-span-4" />
+  //         <div className="h-5 bg-slate-400 dark:bg-slate-700 rounded col-span-1" />
+  //         <div className="h-5 bg-slate-400 dark:bg-slate-700 rounded col-span-2" />
+  //         <div className="h-5 bg-slate-400 dark:bg-slate-700 rounded col-span-1" />
+  //         <div className="h-5 bg-slate-400 dark:bg-slate-700 rounded col-span-2" />
+  //         <div className="h-8 mt-8 bg-slate-400 dark:bg-slate-700 rounded col-span-4" />
+  //       </div>
+  //     </div>
+  //   );
+  // }
+
+  if (isError) {
+    return <div>error occured {JSON.stringify(error)}</div>;
+  }
+
   return (
-    <div className="">
+    <div className="h-screen bg-slate-200 dark:bg-slate-900">
       <Banner title="Quiz Results" />
-      <section className="my-5 flex flex-col gap-4 px-4 lg:px-28">
+      <section className="flex flex-col gap-4 px-4 lg:px-28 bg-slate-200 dark:bg-slate-900 py-5">
         <ScoreCard categories={categories} />
         {categories.map((cat, index) => (
           // Category card
           <Disclosure key={index} defaultOpen>
-            <div className="rounded border border-gray-300 bg-gray-100">
-              <Disclosure.Button className="w-full border-b border-b-gray-400 bg-primary-400 p-3 text-white">
+            <div className="rounded border dark:border-slate-800 border-slate-300">
+              <Disclosure.Button className="w-full dark:border-b-slate-800 border-b-slate-300 dark:bg-darkSlate bg-slate-800 p-3 text-white">
                 <div className="flex justify-between align-middle ">
                   <h1 className="mr-1 text-lg font-medium">{cat.title}</h1>
                   <h3 className="text-lg">
@@ -104,13 +130,13 @@ export function QuizReview() {
                 // leaveTo="transform opacity-0"
               >
                 <Disclosure.Panel className="">
-                  <div className="grid gap-2 p-3 md:grid-cols-2 lg:grid-cols-3">
+                  <div className="grid gap-2 p-3 md:grid-cols-2 lg:grid-cols-3 bg-slate-100 dark:bg-slate-800">
                     {cat.questions.map((q, i) => {
                       return (
                         <div
                           key={i}
                           onClick={() => setModalDetails({ chosenQuestionIndex: q.number! - 1, show: true })}
-                          className={`flex cursor-pointer justify-between border bg-white hover:bg-gray-200`}
+                          className={`flex cursor-pointer justify-between border border-white dark:border-slate-800 bg-white dark:bg-slate-900 dark:text-white hover:bg-gray-200 dark:hover:bg-darkSlate`}
                         >
                           {/* Question number and mark */}
                           <div className="flex">
@@ -132,6 +158,7 @@ export function QuizReview() {
         ))}
       </section>
       <QuestionModal
+        quizAttempt={quizAttempt}
         initialQuestionIndex={modalDetails.chosenQuestionIndex}
         show={modalDetails.show}
         onClose={() => setModalDetails({ ...modalDetails, show: false })}
