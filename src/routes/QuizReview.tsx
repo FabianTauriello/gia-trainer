@@ -167,6 +167,5 @@ export function QuizReview() {
   );
 }
 
-// TODO don't harcode these colors
 // TODO change flow of questions to flow vertically
 // TODO change name of this component to results??
