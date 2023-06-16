@@ -46,6 +46,7 @@
 ### TODOs:
 
 - [x] persist auth state to local storage
+- [ ] add "buy me a coffee" option
 - [ ] add admin login for question creation/addition to pool of questions
 - [ ] consider using TRPC!!
 - [ ] add a "not found" page
