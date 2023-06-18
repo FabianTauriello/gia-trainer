@@ -17,9 +17,9 @@ module.exports = {
     extend: {
       backgroundImage: {
         // Created with slate 900 and 950
-        "image-dark": "url(./src/assets/svgs/bg-image-dark.svg)",
+        "image-dark": "url(./assets/svgs/bg-image-dark.svg)",
         // Created with slate 200 and 300
-        "image-light": "url(./src/assets/svgs/bg-image-light.svg)",
+        "image-light": "url(./assets/svgs/bg-image-light.svg)",
       },
       colors: {
         ...colors,
