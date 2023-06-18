@@ -1,6 +1,6 @@
 ### Access
 
-gia-trainer-blhgti8gj-fabiantauriello.vercel.app
+https://gia-trainer.vercel.app/
 
 ### v1 stack and functionality:
 
