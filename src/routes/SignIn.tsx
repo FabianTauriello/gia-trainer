@@ -106,9 +106,9 @@ export function SignIn() {
           <h1 className="text-xl font-bold leading-tight tracking-tight md:text-2xl">
             {createAccountView ? "Create an account" : "Sign in to your account"}
           </h1>
-          <form className="space-y-4 md:space-y-4" action="#" onSubmit={handleSubmit}>
+          <form className="" action="#" onSubmit={handleSubmit}>
             {createAccountView && (
-              <div className="flex flex-col gap-2 md:flex-row">
+              <div className="flex flex-col md:gap-2 md:flex-row">
                 <div className="flex-1">
                   <label htmlFor="firstName" className="mb-3 block text-sm font-medium">
                     First Name
@@ -125,7 +125,7 @@ export function SignIn() {
                     onChange={(e) => handleInputChange("firstName", e.target.value)}
                   />
                 </div>
-                <div className="flex-1">
+                <div className="flex-1 mt-4 md:mt-0">
                   <label htmlFor="lastName" className="mb-3 block text-sm font-medium">
                     Last Name
                   </label>
@@ -143,7 +143,7 @@ export function SignIn() {
                 </div>
               </div>
             )}
-            <div>
+            <div className="mt-4">
               <label htmlFor="email" className="mb-3 block text-sm font-medium">
                 Email
               </label>
@@ -159,7 +159,7 @@ export function SignIn() {
                 onChange={(e) => handleInputChange("email", e.target.value)}
               />
             </div>
-            <div>
+            <div className="mt-4">
               <label htmlFor="password" className="mb-3 block text-sm font-medium">
                 Password
               </label>

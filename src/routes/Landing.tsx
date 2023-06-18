@@ -16,25 +16,25 @@ export function Landing() {
         <Link to={"/counter"}>Counter</Link>
       </div> */}
       <Navbar landingVersion />
-      <div className="relative w-full h-screen overflow-hidden bg-image-light bg-cover bg-center bg-no-repeat dark:bg-image-dark">
-        <div className="">
-          <main className="">
-            <section className="mt-16 py-20 text-center text-black dark:text-white">
-              <h1 className="mb-4 mr-8 ml-8 text-5xl font-extrabold">Prepare to ace your next GIA test</h1>
-              <div className="mx-8 mt-4 text-2xl font-medium">
-                Practice and compete against others in the GIA test. Hone your skills by competing against others or trying to beat
-                your high score.
+      <div className="relative w-full h-screen overflow-scroll bg-image-light bg-cover bg-center bg-no-repeat dark:bg-image-dark">
+        <main className="">
+          <section className="mt-16 py-20 text-center text-black dark:text-white">
+            <h1 className="mb-4 mr-8 ml-8 text-5xl font-extrabold">Prepare to ace your next GIA test</h1>
+            <div className="mx-8 mt-4 text-2xl font-medium">
+              Practice and compete against others in the GIA test. Hone your skills by competing against others or trying to beat your
+              high score.
+            </div>
+            {!auth.user && (
+              <div className="mt-8 flex justify-center">
+                <CustomLink text="Sign In" to="/sign-in" customCss="mr-6" cta />
+                <CustomLink text="Try Now" to="/quiz" />
               </div>
-              {!auth.user && (
-                <div className="mt-8 flex justify-center">
-                  <CustomLink text="Sign In" to="/sign-in" customCss="mr-6" cta />
-                  <CustomLink text="Try Now" to="/quiz" />
-                </div>
-              )}
-            </section>
-            <section></section>
-          </main>
-        </div>
+            )}
+          </section>
+          <section className="text-center text-red-700">
+            <h1 className="mb-4 mr-8 ml-8 text-4xl font-extrabold">Note that this website is still a work in progress</h1>
+          </section>
+        </main>
       </div>
     </>
   );
