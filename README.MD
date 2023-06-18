@@ -52,6 +52,7 @@
 - [ ] work on navbar button options and responsiveness
 - [ ] add admin login for question creation/addition to pool of questions
 - [ ] consider using TRPC
+- [ ] improve visibilty of correct/incorrect answers in review
 - [ ] set rules on password characters
 - [x] add a "not found" page
 - [ ] add datetime to quiz attempt
