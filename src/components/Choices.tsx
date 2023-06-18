@@ -1,8 +1,8 @@
-import { QuizContext } from "domain/QuizContextProvider";
-import { updateQuizAttempt } from "domain/slices/quizSlice";
+import { updateLatestQuizAttempt } from "domain/slices/quizSlice";
 import { useAppDispatch } from "hooks/useAppSelector";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { QuizContext } from "./QuizContextProvider";
 
 export function Choices() {
   const navigate = useNavigate();
@@ -13,8 +13,7 @@ export function Choices() {
 
   function handleAnswerClick(choiceIndex: number) {
     dispatch(
-      updateQuizAttempt({
-        quizId: "visitor",
+      updateLatestQuizAttempt({
         questionIndex: questionIndex,
         selectedChoiceIndex: choiceIndex,
         isCorrect: choiceIndex === currentQuestion.correctChoiceIndex,

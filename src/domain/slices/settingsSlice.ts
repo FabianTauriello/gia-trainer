@@ -5,7 +5,6 @@ type SettingsState = {
 };
 
 const initialState: SettingsState = {
-  // darkMode: true,
   darkMode: window.matchMedia("(prefers-color-scheme: dark)").matches,
 };
 
@@ -14,11 +13,6 @@ const slice = createSlice({
   initialState: initialState,
   reducers: {
     toggleDarkMode: (state, action: PayloadAction<boolean>) => {
-      // if (state.darkMode) {
-      //   document.documentElement.classList.remove("dark");
-      // } else {
-      //   document.documentElement.classList.add("dark");
-      // }
       state.darkMode = action.payload;
     },
   },

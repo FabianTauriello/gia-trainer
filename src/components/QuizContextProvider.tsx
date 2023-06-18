@@ -1,7 +1,6 @@
 import { ReactNode, createContext, useEffect, useState } from "react";
-import { Question, QuizContextType } from "./Types";
+import { Question, QuizContextType } from "../domain/Types";
 import { useAppDispatch } from "hooks/useAppSelector";
-import { addNewQuizAttempt } from "./slices/quizSlice";
 
 export const QuizContext = createContext({} as QuizContextType);
 
@@ -24,15 +23,6 @@ function QuizContextProvider({
   const [hideChoices, setHideChoices] = useState(true); // Toggle visibility of the answer choices (for reasoning cat only)
 
   const currentQuestion = allQuestions[questionIndex];
-
-  useEffect(() => {
-    dispatch(
-      addNewQuizAttempt({
-        id: "visitor",
-        questions: allQuestions,
-      })
-    );
-  }, []);
 
   function updateAttempt(selectedChoiceIndex: number, isCorrect: boolean) {
     // console.log("updating attempt - before: ", attempt);

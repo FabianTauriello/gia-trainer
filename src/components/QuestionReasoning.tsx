@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { QuizContext } from "domain/QuizContextProvider";
+import { QuizContext } from "components/QuizContextProvider";
 import { useNavigate } from "react-router-dom";
 import { Choices } from "./Choices";
 import { QuestionContainer } from "./QuestionContainer";
@@ -30,7 +30,7 @@ export function QuestionReasoning() {
 
   return (
     <QuestionContainer onClickCapture={(e) => (hideChoices ? handleCategoryContainerClick(e) : undefined)}>
-      <div className="mb-6 rounded-lg dark:bg-white text-white bg-slate-900 p-4 text-center dark:text-black text-lg md:p-10">
+      <div className="mb-6 rounded-lg dark:bg-white select-none text-white bg-slate-900 p-4 text-center dark:text-black text-lg md:p-10">
         {getTextToDisplay()}
       </div>
       <Choices />

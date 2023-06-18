@@ -47,16 +47,20 @@
 
 - [x] persist auth state to local storage
 - [ ] add "buy me a coffee" option
+- [ ] fixed background when scrolled to far (background color is white)
+- [ ] add sign out functionality
+- [ ] work on navbar button options and responsiveness
 - [ ] add admin login for question creation/addition to pool of questions
 - [ ] consider using TRPC!!
+- [ ] set rules on password characters
 - [ ] add a "not found" page
+- [ ] add datetime to quiz attempt
 - [x] make all components use an interface '<ComponentName>Props' to describe the parameters (see CustomButton)
 - [ ] consider removing headless ui for Flowbite components
 - [ ] add animation between sign-in and sign-up modal states
 - [x] detect invalid emails in sign up and change error text to "Email is invalid or already taken"
 - [x] rename project to gia-trainer
 - [ ] add setting option to hide first and last name from appearing in the leaderboard (only the user id and score will be shown)
-- [ ] capitalize comments
 - [ ] add section about me as the developer to landing
 - [ ] implement forgot password to sign in page
 - [ ] add ability to practice categories separately

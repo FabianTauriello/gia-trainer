@@ -1,7 +1,9 @@
 import { CustomButton } from "./CustomButton";
 import { useContext } from "react";
-import { QuizContext } from "domain/QuizContextProvider";
-import { Banner } from "./Banner";
+import { QuizContext } from "components/QuizContextProvider";
+import { CustomLink } from "./CustomLink";
+import { CustomTitle } from "./CustomTitle";
+import { Navbar } from "./Navbar";
 
 export function QuizCategoryIntro() {
   const { currentQuestion, categoriesStarted, setCategoriesStarted } = useContext(QuizContext);
@@ -64,11 +66,12 @@ export function QuizCategoryIntro() {
 
   return (
     <div className="h-screen bg-slate-200 dark:bg-slate-900 dark:text-white">
-      <Banner title={`Category ${categoriesStarted.length + 1}: ${currentQuestion.category}`} />
+      {categoriesStarted.length === 0 && <Navbar />}
+      <CustomTitle title={`Category ${categoriesStarted.length + 1}: ${currentQuestion.category}`} />
       <div className="px-4 md:px-0 lg:mx-28">
-        <div className="py-8">{getCategoryDescription()}</div>
+        <div className="pt-6 pb-8">{getCategoryDescription()}</div>
         <CustomButton onClick={handleStartCategory} customCss="">
-          Start Test
+          {categoriesStarted.length === 0 ? "Start Test" : "Start Category"}
         </CustomButton>
       </div>
     </div>

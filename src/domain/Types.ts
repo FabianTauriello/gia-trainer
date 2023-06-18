@@ -16,7 +16,7 @@ export type Question = {
   question?: string;
   choices: string[];
   correctChoiceIndex: number;
-  selectedChoiceIndex: number; // Each question hasa a default value of -1
+  selectedChoiceIndex: number; // Each question has a default value of -1
 };
 
 export type CategoryTitle = "Reasoning" | "Perceptual Speed" | "Number Speed and Accuracy" | "Word Meaning" | "Spatial Visualisation";
@@ -42,8 +42,8 @@ type Letter = {
 
 export type QuizAttempt = {
   id: string;
-  questions: Question[];
   totalScore: number;
+  questions: Question[];
 };
 
 export type QuizContextType = {

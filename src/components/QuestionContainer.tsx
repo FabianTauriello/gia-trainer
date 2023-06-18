@@ -1,4 +1,4 @@
-import { QuizContext } from "domain/QuizContextProvider";
+import { QuizContext } from "components/QuizContextProvider";
 import { ReactNode, useContext } from "react";
 
 interface QuestionContainerProps {

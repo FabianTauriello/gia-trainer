@@ -8,9 +8,19 @@ import { SignIn } from "routes/SignIn";
 import Dashboard from "routes/Dashboard";
 import { PrivateOutlet } from "routes/PrivateOutlet";
 import { PageNotFound } from "routes/PageNotFound";
+import { QuizReviewAndPost } from "routes/QuizReviewAndPost";
 
 export function AppRouter() {
   const { quiz, auth } = useAppSelector((state) => state);
+
+  // TODO don't separate this function?
+  function determineReviewRoute() {
+    if (auth.user && quiz.latestAttempt && quiz.latestAttempt.id === "") {
+      return <QuizReviewAndPost />;
+    } else {
+      return <QuizReview />;
+    }
+  }
 
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -20,7 +30,7 @@ export function AppRouter() {
         <Route path="/counter" element={<Counter />} />
         <Route path="/sign-in" element={auth.user ? <Navigate to={"/dashboard"} replace /> : <SignIn />} />
         <Route path="/quiz/" element={<QuizAttemptWrapper />} />
-        <Route path="/quiz/review" element={<QuizReview />} />
+        <Route path="/quiz/review" element={determineReviewRoute()} />
         {/* private routes */}
         <Route path="/" element={<PrivateOutlet />}>
           {/* TODO index routes explained here: https://www.youtube.com/watch?v=V6zLjVPKtAo */}

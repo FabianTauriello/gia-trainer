@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { Choices } from "./Choices";
 import { QuestionContainer } from "./QuestionContainer";
-import { QuizContext } from "domain/QuizContextProvider";
+import { QuizContext } from "components/QuizContextProvider";
 
 export function QuestionSpatialVisualisation() {
   const { currentQuestion, inReview } = useContext(QuizContext);
@@ -14,7 +14,7 @@ export function QuestionSpatialVisualisation() {
           const secondLetter = letter[1];
           //   TODO using in-line styling here instead of tailwind :(
           return (
-            <div key={i} className="text-7xl dark:text-white text-black bg-cream p-7 rounded font-medium">
+            <div key={i} className="text-7xl dark:text-white text-black bg-cream p-7 rounded font-medium select-none">
               <div
                 style={{
                   transform: `rotate(${firstLetter.rot}deg) ${firstLetter.flip ? "scale(-1, 1)" : "scale(1, 1)"}`,

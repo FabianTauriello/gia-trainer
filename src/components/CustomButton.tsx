@@ -8,7 +8,7 @@ export function CustomButton({ customCss, loading = false, children, ...rest }: 
     <button
       {...rest}
       disabled={loading}
-      className={`w-full rounded-lg bg-emerald-600 hover:bg-emerald-500 px-5 py-2.5 text-sm font-medium text-white ${customCss}`}
+      className={`w-full select-none rounded-lg bg-emerald-600 hover:bg-emerald-500 px-5 py-2.5 text-sm font-medium text-white ${customCss}`}
     >
       {loading ? <Spinner /> : children}
     </button>

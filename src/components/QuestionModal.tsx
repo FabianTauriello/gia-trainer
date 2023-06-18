@@ -2,7 +2,7 @@ import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { CustomButton } from "./CustomButton";
-import QuizContextProvider from "domain/QuizContextProvider";
+import QuizContextProvider from "components/QuizContextProvider";
 import { QuestionController } from "./QuestionController";
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from "swiper";
 import { Utils } from "utils/Utils";
@@ -19,6 +19,7 @@ interface QuestionModalProps {
   onClose: () => void;
 }
 
+// TODO consider replacing headless ui modal with plain tailwind modal (or something else)
 export function QuestionModal({ quizAttempt, initialQuestionIndex, show, onClose }: QuestionModalProps) {
   const params = useParams<{ quizId: string }>();
 

@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { useParams } from "react-router-dom";
 import { QuizCategoryIntro } from "components/QuizCategoryIntro";
-import { QuizContext } from "domain/QuizContextProvider";
+import { QuizContext } from "components/QuizContextProvider";
 import { QuestionReasoning } from "./QuestionReasoning";
 import { QuestionPerceptualSpeed } from "./QuestionPerceptualSpeed";
 import { QuestionWordMeaning } from "./QuestionWordMeaning";

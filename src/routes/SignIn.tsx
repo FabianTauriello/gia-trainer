@@ -37,7 +37,7 @@ export function SignIn() {
 
   async function handleSignUp() {
     try {
-      const res = await signUp({
+      await signUp({
         email: inputFields.email,
         password: inputFields.password,
         firstName: inputFields.firstName,

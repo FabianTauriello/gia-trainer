@@ -18,7 +18,7 @@ export const apiSlice = createApi({
   }),
   // The "endpoints" represent operations and requests for this server
   endpoints: (builder) => ({
-    // verifies identity of user on server, returning the new user and a jwt if successful
+    // Verifies identity of user on server, returning the new user and a jwt if successful
     signIn: builder.mutation<ApiResponse<{ user: User; token: string }>, LoginCredentials>({
       query: (credentials) => ({
         url: "signIn",
@@ -26,7 +26,7 @@ export const apiSlice = createApi({
         body: credentials,
       }),
     }),
-    // creates a user on server, returning the new id if successful
+    // Creates a user on server, returning the new id if successful
     signUp: builder.mutation<ApiResponse<string>, NewUser>({
       query: (newUser) => ({
         url: "signUp",
@@ -37,7 +37,7 @@ export const apiSlice = createApi({
     getQuizQuestions: builder.query<ApiResponse<Question[]>, void>({
       query: () => "/quizQuestions",
     }),
-    addQuizAttempt: builder.query<ApiResponse<string>, { userId: string; attempt: QuizAttempt }>({
+    addQuizAttempt: builder.mutation<ApiResponse<string>, { userId: string; attempt: QuizAttempt }>({
       query: (newQuizAttempt) => ({
         url: "/addQuizAttempt",
         method: "POST",
@@ -48,4 +48,4 @@ export const apiSlice = createApi({
 });
 
 // Export the auto-generated hook for the 'getQuizQuestions' query endpoint
-export const { useSignInMutation, useSignUpMutation, useGetQuizQuestionsQuery, useAddQuizAttemptQuery } = apiSlice;
+export const { useSignInMutation, useSignUpMutation, useGetQuizQuestionsQuery, useAddQuizAttemptMutation } = apiSlice;

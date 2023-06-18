@@ -3,6 +3,7 @@ import { CustomLink } from "components/CustomLink";
 import { useAppSelector } from "hooks/useAppSelector";
 import { Navbar } from "components/Navbar";
 import logo from "../assets/svgs/logo.svg";
+import { useEffect } from "react";
 
 export function Landing() {
   const navigate = useNavigate();
@@ -14,7 +15,7 @@ export function Landing() {
       {/* <div style={{ position: "fixed", top: 5, right: 5, color: "white", backgroundColor: "red", zIndex: 100 }}>
         <Link to={"/counter"}>Counter</Link>
       </div> */}
-      <Navbar />
+      <Navbar landingVersion />
       <div className="relative w-full h-screen overflow-hidden bg-image-light bg-cover bg-center bg-no-repeat dark:bg-image-dark">
         <div className="">
           <main className="">

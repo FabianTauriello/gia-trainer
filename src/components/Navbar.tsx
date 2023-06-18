@@ -7,14 +7,18 @@ import { toggleDarkMode } from "domain/slices/settingsSlice";
 import { FaSun, FaMoon, FaRegSun } from "react-icons/fa";
 import { IconContext } from "react-icons";
 
-export function Navbar() {
+export function Navbar({ landingVersion = false }: { landingVersion?: boolean }) {
   const { auth, settings } = useAppSelector((state) => state);
   const dispatch = useDispatch();
 
   return (
-    <nav className="fixed top-0 left-0 z-20 w-full border-b border-b-slate-200 bg-slate-100 dark:border-b-slate-900 dark:bg-darkSlate dark:text-white">
+    <nav
+      className={`${
+        landingVersion ? "fixed" : ""
+      } top-0 left-0 z-20 w-full border-b border-b-slate-200 bg-slate-100 dark:border-b-slate-900 dark:bg-darkSlate dark:text-white`}
+    >
       <div className="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between p-4">
-        <a href="#" className="flex items-center">
+        <a href="/" className="flex items-center">
           <img src={logo} className="mr-3 h-10" alt="GIA-Trainer Logo" />
           <span className="self-center whitespace-nowrap text-2xl font-bold">GIA Trainer</span>
         </a>
@@ -31,8 +35,10 @@ export function Navbar() {
           </div>
           {auth.user ? (
             <CustomLink text="Dashboard" to="/dashboard" customCss="mr-6" cta navLink />
-          ) : (
+          ) : landingVersion ? (
             <CustomLink text="Try Now" to="/quiz" customCss="" navLink />
+          ) : (
+            <CustomLink text="Sign In" to="/sign-in" customCss="" navLink cta />
           )}
           {/* Hamburger menu */}
           {/* <button

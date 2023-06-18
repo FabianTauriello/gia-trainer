@@ -20,7 +20,7 @@ const persistedReducer = persistReducer(
     version: 1,
     key: "root", // Key prefix for the persisted state
     storage, // Storage engine to use (default: localStorage)
-    whitelist: ["auth", "settings"],
+    whitelist: ["auth", "settings", "quiz"],
 
     // ...configure other options here (e.g. blacklist, whitelist, state reconciler, transforms for manipulating data between hydration/rehydration etc)
   },
