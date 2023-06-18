@@ -32,7 +32,7 @@ export function QuestionModal({ quizAttempt, initialQuestionIndex, show, onClose
 
   return (
     <Transition appear show={show} as={Fragment}>
-      <Dialog as="div" className="relative" onClose={onClose}>
+      <Dialog as="div" className="relative dark:text-white" onClose={onClose}>
         <Transition.Child
           as={Fragment}
           enter="ease-out duration-300"
@@ -55,8 +55,8 @@ export function QuestionModal({ quizAttempt, initialQuestionIndex, show, onClose
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <Dialog.Panel className="transform overflow-hidden rounded-xl bg-white p-6 text-left shadow-xl transition-all md:w-4/5">
-                <Dialog.Title as="h1" className="mb-2 flex justify-center text-lg font-medium leading-6 text-gray-900">
+              <Dialog.Panel className="transform overflow-hidden rounded-xl bg-white dark:bg-darkSlate border border-slate-300 dark:border-slate-800 p-6 text-left shadow-xl transition-all md:w-4/5">
+                <Dialog.Title as="h1" className="mb-2 flex justify-center text-lg font-medium leading-6">
                   {`Question ${activeIndex + 1}`}
                 </Dialog.Title>
                 <h2 className="mb-2 text-center">{`${activeQuestion.category}`}</h2>
