@@ -82,9 +82,9 @@ export function QuizReview() {
             {categories.map((cat, index) => (
               // Category card
               <Disclosure key={index} defaultOpen>
-                <div className="rounded border dark:border-slate-800 border-slate-300">
-                  <Disclosure.Button className="w-full dark:border-b-slate-800 border-b-slate-300 dark:bg-darkSlate bg-slate-800 p-3 text-white">
-                    <div className="flex justify-between align-middle ">
+                <div className="rounded border dark:border-slate-800 border-slate-300 overflow-hidden bg-slate-100 dark:bg-slate-800">
+                  <Disclosure.Button className="w-full dark:bg-darkSlate bg-white p-3 dark:text-white z-50">
+                    <div className="flex justify-between align-middle">
                       <h1 className="mr-1 text-lg font-medium">{cat.title}</h1>
                       <h3 className="text-lg">
                         {cat.score} / {cat.questions.length}
@@ -95,21 +95,8 @@ export function QuizReview() {
                       <RxCaretDown size={40} className="invisible ui-open:rotate-180 ui-open:transform md:visible" />
                     </div>
                   </Disclosure.Button>
-                  <Transition
-                    enter="transition duration-100 ease-out"
-                    enterFrom="transform scale-95 opacity-0"
-                    enterTo="transform scale-100 opacity-100"
-                    leave="transition duration-75 ease-out"
-                    leaveFrom="transform scale-100 opacity-100"
-                    leaveTo="transform scale-95 opacity-0"
-                    // enter="transition-all ease-in-out duration-200"
-                    // enterFrom="-translate-y-full opacity-0"
-                    // enterTo="translate-y-0 opacity-100"
-                    // leave="transition duration-75 ease-out"
-                    // leaveFrom="transform opacity-100"
-                    // leaveTo="transform opacity-0"
-                  >
-                    <Disclosure.Panel className="">
+                  <Transition enter="transition-all ease-in-out duration-200" enterFrom="translate-y-full" enterTo="translate-y-0">
+                    <Disclosure.Panel className="border-t dark:border-t-slate-800 border-t-slate-300">
                       <div className="grid gap-2 p-3 md:grid-cols-2 lg:grid-cols-3 bg-slate-100 dark:bg-slate-800">
                         {cat.questions.map((q, i) => {
                           return (
@@ -166,3 +153,20 @@ export function QuizReview() {
 // TODO change flow of questions to flow vertically
 
 // see https://tailwind-elements.com/docs/standard/components/collapse/ or https://tailwind-elements.com/docs/standard/components/accordion/
+
+/**
+other animation options
+  enter="transition-all ease-in-out duration-500"
+  enterFrom="-translate-y-full"
+  enterTo="translate-y-0"
+  // leave="transition duration-75 ease-out"
+  // leaveFrom="transform scale-100 opacity-100"
+  // leaveTo="transform scale-95 opacity-0"
+  //
+  // enter="transition-all ease-in-out duration-500"
+  // enterFrom="-translate-y-full"
+  // enterTo="translate-y-0"
+  // leave="transition duration-75 ease-out"
+  // leaveFrom="transform opacity-100"
+  // leaveTo="transform opacity-0"
+ */
