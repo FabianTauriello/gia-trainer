@@ -51,9 +51,9 @@
 - [ ] add sign out functionality
 - [ ] work on navbar button options and responsiveness
 - [ ] add admin login for question creation/addition to pool of questions
-- [ ] consider using TRPC!!
+- [ ] consider using TRPC
 - [ ] set rules on password characters
-- [ ] add a "not found" page
+- [x] add a "not found" page
 - [ ] add datetime to quiz attempt
 - [x] make all components use an interface '<ComponentName>Props' to describe the parameters (see CustomButton)
 - [ ] consider removing headless ui for Flowbite components
@@ -69,7 +69,7 @@
 - [x] rename section reference
 - [ ] remove empty classNames (i.e className="")
 - [ ] add testing
-- [ ] add confetti gun animation for when a user gets a new pb
+- [ ] add confetti gun animation for when a user gets a new personal best
 - [x] add dashboard page for logged in users
 - [x] add ability to review previous quiz attempts? (e.g. /quiz-review/id)
 - [x] add sign-in and user authentication
