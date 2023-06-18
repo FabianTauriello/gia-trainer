@@ -198,9 +198,9 @@ export function SignIn() {
               Sign {createAccountView ? "up" : "in"}
             </CustomButton>
             {/* TODO CHANGE TO BUTTON? */}
-            <p className="cursor-pointer text-sm font-light text-gray-500 dark:text-gray-400">
+            <p className="mt-4 text-sm font-light text-gray-500 dark:text-gray-400">
               {createAccountView ? "Already" : "Don't"} have an account yet?
-              <a onClick={toggleView} className="text-primary-600 ml-2 font-medium hover:underline">
+              <a onClick={toggleView} className="cursor-pointer text-primary-600 ml-2 font-medium hover:underline">
                 {createAccountView ? "Sign In" : "Sign up"}
               </a>
             </p>
