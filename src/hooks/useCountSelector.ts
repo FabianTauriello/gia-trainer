@@ -1,4 +1,4 @@
-import { AppDispatch, RootState } from "domain/Store";
+import { AppDispatch, RootState } from "domain/store";
 import { selectCount } from "domain/slices/counterSlice";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 
