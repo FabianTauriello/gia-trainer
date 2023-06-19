@@ -8,6 +8,7 @@ https://gia-trainer.vercel.app/
 - Tailwind
 - Express js
 - Redux / Redux Toolkit / React-Redux for state management
+- MySQL for DB management. Hosting AWS RDS.
 - RTK Query for data fetching and cache management
 - Font Awesome for icons
 
@@ -19,6 +20,7 @@ https://gia-trainer.vercel.app/
 - TRPC
 - React Query / Zustand
 - Testing library (e.g. Jest, Cypress)?
+- PlanetScale for DB management
 - build out feature set (e.g. ability to add friends and compare scores against them)
 
 ### Quiz Categories:
@@ -68,6 +70,7 @@ https://gia-trainer.vercel.app/
 - [ ] add setting option to hide first and last name from appearing in the leaderboard (only the user id and score will be shown)
 - [ ] add section about me as the developer to landing
 - [ ] implement forgot password to sign in page
+- [ ] fix error message placement on signin screen (give it margin)
 - [ ] add ability to practice categories separately
 - [x] change components to use named export instead of default
 - [x] rename pages folder to routes?
