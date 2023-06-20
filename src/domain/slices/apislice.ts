@@ -21,7 +21,7 @@ export const apiSlice = createApi({
     // Verifies identity of user on server, returning the new user and a jwt if successful
     signIn: builder.mutation<ApiResponse<{ user: User; token: string }>, LoginCredentials>({
       query: (credentials) => ({
-        url: "signIn",
+        url: "/signIn",
         method: "POST",
         body: credentials,
       }),
@@ -29,7 +29,7 @@ export const apiSlice = createApi({
     // Creates a user on server, returning the new id if successful
     signUp: builder.mutation<ApiResponse<string>, NewUser>({
       query: (newUser) => ({
-        url: "signUp",
+        url: "/signUp",
         method: "POST",
         body: newUser,
       }),
