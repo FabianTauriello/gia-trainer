@@ -83,6 +83,7 @@ https://gia-trainer.vercel.app/
 - [x] add sign-in and user authentication
 - [x] determine how selected choices will be recorded for questions - selectedChoiceIndex prop in Question type?
 - [ ] make use of the timer
+- [ ] consider changing selectors to pick individual pieces of state rather than the whole state object? see niv and: https://stackoverflow.com/questions/67319325/is-it-safe-to-use-object-destructuring-to-extract-specific-values-from-redux-sta
 - [ ] replace onClickCapture with e.stopPropogation() logic
 - [x] pull quiz data from server at beginning of quiz - use RTK Query
 - [x] change data.json to hold questions only, and just render description, title etc as regular html?
