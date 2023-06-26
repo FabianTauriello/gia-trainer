@@ -79,6 +79,7 @@ export function SignIn() {
     }
   }
 
+  // relative w-full h-screen overflow-scroll bg-image-light bg-cover bg-center bg-no-repeat dark:bg-image-dark
   return (
     <div className="mx-auto flex h-screen flex-col items-center justify-center bg-image-light bg-cover bg-center bg-no-repeat px-6 py-8 text-black dark:bg-image-dark dark:text-white">
       {false && (
@@ -187,7 +188,7 @@ export function SignIn() {
               </div>
             </div>
             {(isSignUpError || signInError) && (
-              <div className="rounded-lg border border-red-500 p-3 text-sm text-red-500">
+              <div className="rounded-lg border border-red-500 p-3 text-sm text-red-500 mt-4">
                 {Utils.getErrorMessage(createAccountView ? signUpError : signInError)}
               </div>
             )}
