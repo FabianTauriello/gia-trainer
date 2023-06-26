@@ -193,7 +193,7 @@ export function SignIn() {
               </div>
             )}
             {signUpSuccessMessage && (
-              <div className="rounded-lg border border-green-500 p-3 text-sm text-green-500">Successfully created a new user</div>
+              <div className="rounded-lg border border-green-500 p-3 text-sm text-green-500 mt-4">Successfully created a new user</div>
             )}
             <CustomButton loading={isLoadingSignIn || isLoadingSignUp} customCss="mt-4">
               Sign {createAccountView ? "up" : "in"}
