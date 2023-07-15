@@ -23,6 +23,12 @@ https://gia-trainer.vercel.app/
 - PlanetScale for DB management
 - build out feature set (e.g. ability to add friends and compare scores against them)
 
+### Mobile App:
+
+- React Native
+- Expo
+- Styled Components
+
 ### Quiz Categories:
 
 1. Reasoning
@@ -70,6 +76,7 @@ https://gia-trainer.vercel.app/
 - [ ] add setting option to hide first and last name from appearing in the leaderboard (only the user id and score will be shown)
 - [ ] add section about me as the developer to landing
 - [ ] implement forgot password to sign in page
+- [ ] add mobile app preview/advert to landing page
 - [ ] fix error message placement on signin screen (give it margin)
 - [ ] add ability to practice categories separately
 - [x] change components to use named export instead of default
