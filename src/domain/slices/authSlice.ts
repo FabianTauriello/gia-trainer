@@ -3,12 +3,12 @@ import { User } from "domain/Types";
 
 type AuthState = {
   user: User | null;
-  token: string | null;
+  token: string | null; // for JWT
 };
 
 const initialState: AuthState = {
   user: null,
-  token: null
+  token: null,
 };
 
 const slice = createSlice({
@@ -19,9 +19,12 @@ const slice = createSlice({
       state.user = action.payload.user;
       state.token = action.payload.token;
     },
+    clearUser: (state) => {
+      state.user = null;
+    },
   },
 });
 
-export const { setCredentials } = slice.actions;
+export const { setCredentials, clearUser } = slice.actions;
 
 export default slice.reducer;
