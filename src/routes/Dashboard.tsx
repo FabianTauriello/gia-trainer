@@ -7,12 +7,13 @@ function Dashboard() {
   const auth = useAppSelector((state) => state.auth);
 
   return (
-    <div className="flex items-center justify-center border border-black">
+    <>
+      <Navbar />
       <h1>Dashboard is under construction</h1>
       {/* <h2>
         <pre>{JSON.stringify(auth, null, 4)}</pre>
       </h2> */}
-    </div>
+    </>
   );
 }
 

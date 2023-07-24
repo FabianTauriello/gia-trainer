@@ -1,7 +1,6 @@
 import { CustomButton } from "./CustomButton";
 import { useContext } from "react";
 import { QuizContext } from "components/QuizContextProvider";
-import { CustomLink } from "./CustomLink";
 import { CustomTitle } from "./CustomTitle";
 import { Navbar } from "./Navbar";
 

@@ -8,12 +8,15 @@ import { FaSun, FaMoon, FaRegSun } from "react-icons/fa";
 import { IconContext } from "react-icons";
 import { useState } from "react";
 import { clearUser } from "domain/slices/authSlice";
+import img from "../assets/images/profile-pic.jpg";
+import { Menu } from "@headlessui/react";
 
 interface NavbarProps {
   landingVersion?: boolean;
 }
 
 export function Navbar({ landingVersion = false }: NavbarProps) {
+  console.log("navbar rendering...");
   const { auth, settings } = useAppSelector((state) => state);
   const dispatch = useDispatch();
 
@@ -23,9 +26,9 @@ export function Navbar({ landingVersion = false }: NavbarProps) {
     <nav
       className={`${
         landingVersion ? "fixed" : ""
-      } top-0 left-0 z-20 w-full border-b border-b-slate-200 bg-slate-100 dark:border-b-slate-900 dark:bg-darkSlate dark:text-white`}
+      } top-0 left-0 z-20 w-full border-b border-b-slate-200 bg-slate-100 dark:border-b-slate-900 dark:bg-darkSlate dark:text-white page-gutter`}
     >
-      <div className="flex flex-wrap items-center justify-between p-4">
+      <div className="flex flex-wrap items-center justify-between py-4">
         <a href="/" className="flex items-center">
           <img src={logo} className="mr-3 h-10" alt="GIA-Trainer Logo" />
           <span className="self-center whitespace-nowrap text-2xl font-bold">GIA Trainer</span>
@@ -42,22 +45,29 @@ export function Navbar({ landingVersion = false }: NavbarProps) {
             />
           </div>
           {auth.user ? (
-            <div className="">
-              <button type="button" onClick={() => setShowUserDropdown(!showUserDropdown)} className="rounded-full">
-                <img className="w-8 h-8 rounded-full" src="/docs/images/people/profile-picture-3.jpg" alt="user photo" />
-              </button>
+            <div className="flex flex-col justify-center" onMouseLeave={() => setShowUserDropdown(false)}>
+              <img
+                onMouseEnter={() => setShowUserDropdown(true)}
+                className="w-8 h-8 rounded-full cursor-pointer"
+                src={img}
+                alt="user photo"
+              />
               {showUserDropdown && (
-                <div className="z-50 absolute right-2 my-4 list-none divide-y divide-slate-100 rounded-lg shadow bg-red bg-slate-200 dark:bg-slate-900">
-                  <div className="px-4 py-3">
-                    <span className="block text-sm text-slate-900 dark:text-white">{auth.user.firstName}</span>
-                    <span className="block text-sm  text-slate-500 truncate dark:text-slate-400">{auth.user.id}</span>
+                <div className="relative">
+                  {/* Blank div for padding. This way, the dropdown isn't hidden when it loses the mouse focus */}
+                  <div className="absolute right-0 h-3 w-12" />
+                  <div className="z-50 w-64 absolute top-3 right-0 list-none divide-y divide-slate-500 rounded-md shadow bg-red bg-slate-200 dark:bg-slate-800">
+                    <div className="px-4 py-3">
+                      <span className="block text-sm text-slate-900 dark:text-white">{auth.user.firstName}</span>
+                      <span className="block text-sm  text-slate-500 truncate dark:text-slate-400">{auth.user.id}</span>
+                    </div>
+                    <ul className="py-2">
+                      <DropDownItem text="Dashboard" link="#" />
+                      <DropDownItem text="Settings" link="#" />
+                      <DropDownItem text="Leaderboard" link="#" />
+                      <DropDownItem text="Sign out" handleClick={() => dispatch(clearUser())} />
+                    </ul>
                   </div>
-                  <ul className="py-2">
-                    <DropDownItem text="Dashboard" link="#" />
-                    <DropDownItem text="Settings" link="#" />
-                    <DropDownItem text="Leaderboard" link="#" />
-                    <DropDownItem text="Sign out" handleClick={() => dispatch(clearUser())} />
-                  </ul>
                 </div>
               )}
             </div>
@@ -72,13 +82,7 @@ export function Navbar({ landingVersion = false }: NavbarProps) {
   );
 }
 
-interface DropDownItemProps {
-  text: string;
-  link?: string;
-  handleClick?: () => void;
-}
-
-function DropDownItem({ text, link, handleClick }: DropDownItemProps) {
+function DropDownItem({ text, link, handleClick }: { text: string; link?: string; handleClick?: () => void }) {
   return (
     <li>
       {handleClick ? (

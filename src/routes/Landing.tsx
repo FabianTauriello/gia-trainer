@@ -16,7 +16,7 @@ export function Landing() {
         <Link to={"/counter"}>Counter</Link>
       </div> */}
       <Navbar landingVersion />
-      <div className="relative w-screen h-screen overflow-y-scroll overflow-hidden bg-image-light object-cover bg-cover bg-center bg-no-repeat dark:bg-image-dark">
+      <div className="page-gutter relative w-screen h-screen overflow-y-scroll overflow-hidden bg-image-light object-cover bg-cover bg-center bg-no-repeat dark:bg-image-dark">
         <main className="">
           <section className="mt-16 py-20 text-center text-black dark:text-white">
             <h1 className="mb-4 mr-8 ml-8 text-5xl font-extrabold">Prepare to ace your next GIA test</h1>
