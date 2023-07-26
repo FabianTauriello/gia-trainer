@@ -66,12 +66,14 @@ export function QuizCategoryIntro() {
   return (
     <div className="h-screen bg-slate-200 dark:bg-slate-900 dark:text-white">
       {categoriesStarted.length === 0 && <Navbar />}
-      <CustomTitle title={`Category ${categoriesStarted.length + 1}: ${currentQuestion.category}`} />
-      <div className="px-4 md:px-0 lg:mx-28">
-        <div className="pt-6 pb-8">{getCategoryDescription()}</div>
-        <CustomButton onClick={handleStartCategory} customCss="">
-          {categoriesStarted.length === 0 ? "Start Test" : "Start Category"}
-        </CustomButton>
+      <div className="page-gutter">
+        <CustomTitle title={`Category ${categoriesStarted.length + 1}: ${currentQuestion.category}`} />
+        <div className="">
+          <div className="pt-6 pb-8">{getCategoryDescription()}</div>
+          <CustomButton onClick={handleStartCategory} customCss="">
+            {categoriesStarted.length === 0 ? "Start Test" : "Start Category"}
+          </CustomButton>
+        </div>
       </div>
     </div>
   );

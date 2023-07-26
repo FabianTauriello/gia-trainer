@@ -75,9 +75,9 @@ export function QuizReview() {
     <div className="h-screen bg-slate-200 dark:bg-slate-900">
       <Navbar />
       {quiz.latestAttempt ? (
-        <>
+        <div className="page-gutter bg-slate-200 dark:bg-slate-900">
           <CustomTitle title="Quiz Results" />
-          <section className="flex flex-col gap-4 px-4 lg:px-28 bg-slate-200 dark:bg-slate-900 py-5">
+          <section className="flex flex-col gap-4 py-5">
             <ScoreCard categories={categories} />
             {categories.map((cat, index) => (
               // Category card
@@ -134,7 +134,7 @@ export function QuizReview() {
             show={modalDetails.show}
             onClose={() => setModalDetails({ ...modalDetails, show: false })}
           />
-        </>
+        </div>
       ) : (
         // Error message shown if user clears storage (which holds their latest attempt)
         <div className="h-screen bg-slate-200 dark:bg-slate-900 dark:text-white">

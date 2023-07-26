@@ -39,14 +39,14 @@ export function Choices() {
   }
 
   return (
-    <div className="flex justify-center gap-3 md:mx-44">
+    <div className="flex flex-wrap justify-center gap-3 md:mx-44">
       {currentQuestion.choices.map((choice, i) => (
         <button
           key={i}
           disabled={inReview}
           type="button"
           onClick={() => handleAnswerClick(i)}
-          className={`flex-1 rounded-lg bg-emerald-600 text-white p-6 outline-none ${
+          className={`w-44 flex justify-center rounded-lg bg-emerald-600 text-white p-6 outline-none ${
             (hideChoices && currentQuestion.category === "Reasoning") || inReview
               ? "cursor-default"
               : "cursor-pointer hover:bg-emerald-500"
@@ -60,3 +60,6 @@ export function Choices() {
     </div>
   );
 }
+
+// min-w-[200px]
+// flex-grow flex-shrink-0

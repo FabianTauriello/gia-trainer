@@ -4,8 +4,6 @@ import { DarkModeSwitch } from "react-toggle-dark-mode";
 import logo from "assets/svgs/logo.svg";
 import { useDispatch } from "react-redux";
 import { toggleDarkMode } from "domain/slices/settingsSlice";
-import { FaSun, FaMoon, FaRegSun } from "react-icons/fa";
-import { IconContext } from "react-icons";
 import { useState } from "react";
 import { clearUser } from "domain/slices/authSlice";
 import img from "../assets/images/profile-pic.jpg";
@@ -21,6 +19,45 @@ export function Navbar({ landingVersion = false }: NavbarProps) {
   const dispatch = useDispatch();
 
   const [showUserDropdown, setShowUserDropdown] = useState(false);
+
+  function renderNavbarRight() {
+    if (auth.user) {
+      return (
+        <div className="flex flex-col justify-center" onMouseLeave={() => setShowUserDropdown(false)}>
+          <img
+            onMouseEnter={() => setShowUserDropdown(true)}
+            className="w-8 h-8 rounded-full cursor-pointer"
+            src={img}
+            alt="user photo"
+          />
+          {showUserDropdown && (
+            <div className="relative">
+              {/* Blank div for padding. This way, the dropdown isn't hidden when it loses the mouse focus */}
+              <div className="absolute right-0 h-3 w-12" />
+              <div className="z-50 w-64 absolute top-3 right-0 list-none divide-y divide-slate-300 dark:divide-slate-700 rounded-xl shadow bg-red bg-slate-200 dark:bg-slate-800">
+                <div className="px-4 py-3">
+                  <span className="block text-sm text-slate-900 dark:text-white">{auth.user.firstName}</span>
+                  <span className="block text-sm  text-slate-500 truncate dark:text-slate-400">{auth.user.id}</span>
+                </div>
+                <ul className="py-2">
+                  <DropDownItem text="Dashboard" link="#" />
+                  <DropDownItem text="Settings" link="#" />
+                  <DropDownItem text="Leaderboard" link="#" />
+                  <DropDownItem text="Sign out" handleClick={() => dispatch(clearUser())} />
+                </ul>
+              </div>
+            </div>
+          )}
+        </div>
+      );
+    }
+
+    if (landingVersion) {
+      return <CustomLink text="Try Now" to="/quiz" customCss="" navLink />;
+    } else {
+      return <CustomLink text="Sign In" to="/sign-in" customCss="" navLink cta />;
+    }
+  }
 
   return (
     <nav
@@ -44,38 +81,7 @@ export function Navbar({ landingVersion = false }: NavbarProps) {
               moonColor="black"
             />
           </div>
-          {auth.user ? (
-            <div className="flex flex-col justify-center" onMouseLeave={() => setShowUserDropdown(false)}>
-              <img
-                onMouseEnter={() => setShowUserDropdown(true)}
-                className="w-8 h-8 rounded-full cursor-pointer"
-                src={img}
-                alt="user photo"
-              />
-              {showUserDropdown && (
-                <div className="relative">
-                  {/* Blank div for padding. This way, the dropdown isn't hidden when it loses the mouse focus */}
-                  <div className="absolute right-0 h-3 w-12" />
-                  <div className="z-50 w-64 absolute top-3 right-0 list-none divide-y divide-slate-500 rounded-md shadow bg-red bg-slate-200 dark:bg-slate-800">
-                    <div className="px-4 py-3">
-                      <span className="block text-sm text-slate-900 dark:text-white">{auth.user.firstName}</span>
-                      <span className="block text-sm  text-slate-500 truncate dark:text-slate-400">{auth.user.id}</span>
-                    </div>
-                    <ul className="py-2">
-                      <DropDownItem text="Dashboard" link="#" />
-                      <DropDownItem text="Settings" link="#" />
-                      <DropDownItem text="Leaderboard" link="#" />
-                      <DropDownItem text="Sign out" handleClick={() => dispatch(clearUser())} />
-                    </ul>
-                  </div>
-                </div>
-              )}
-            </div>
-          ) : landingVersion ? (
-            <CustomLink text="Try Now" to="/quiz" customCss="" navLink />
-          ) : (
-            <CustomLink text="Sign In" to="/sign-in" customCss="" navLink cta />
-          )}
+          {renderNavbarRight()}
         </div>
       </div>
     </nav>

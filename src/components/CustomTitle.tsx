@@ -6,7 +6,7 @@ interface CustomTitleProps {
 export function CustomTitle({ title, errorTint = false }: CustomTitleProps) {
   return (
     <div
-      className={`px-4 pt-12 pb-4 lg:px-28 border-b border-b-slate-200  dark:border-b-slate-900 ${
+      className={`pt-12 pb-4 border-b border-b-slate-200  dark:border-b-slate-900 ${
         errorTint ? "text-red-600 dark:text-red-500" : "text-black dark:text-white"
       }`}
     >
