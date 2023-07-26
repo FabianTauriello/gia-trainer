@@ -59,7 +59,7 @@ https://gia-trainer.vercel.app/
 
 - [x] persist auth state to local storage
 - [ ] add "buy me a coffee" option
-- [ ] fixed background when scrolled to far (background color is white)
+- [x] fixed background when scrolled to far (background color is white)
 - [ ] add sign out functionality
 - [ ] work on navbar button options and responsiveness
 - [ ] add admin login for question creation/addition to pool of questions

@@ -24,8 +24,10 @@ export function ThemeContainer({ children }: ThemeContainerProps) {
     // Set theme on first mount
     if (settings.darkMode) {
       document.documentElement.classList.add("dark");
+      document.body.style.backgroundColor = "#0f172a";
     } else {
       document.documentElement.classList.remove("dark");
+      document.body.style.backgroundColor = "#e2e8f0";
     }
   }, [settings.darkMode]);
 
