@@ -31,7 +31,7 @@ export function QuizAttemptWrapper() {
 
   if (isLoading || isFetching) {
     return (
-      <div className="h-screen bg-slate-200 dark:bg-slate-900 dark:text-white">
+      <div className="h-screen dark:text-white">
         <Navbar />
         <div className="page-gutter">
           <CustomTitle title="Loading your quiz questions..." />
@@ -56,7 +56,7 @@ export function QuizAttemptWrapper() {
 
   if (isError) {
     return (
-      <div className="h-screen bg-slate-200 dark:bg-slate-900 dark:text-white">
+      <div className="h-screen dark:text-white">
         <Navbar />
         <div className="page-gutter">
           <CustomTitle title="Error occurred!" errorTint />

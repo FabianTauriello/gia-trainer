@@ -72,10 +72,10 @@ export function QuizReview() {
   }
 
   return (
-    <div className="h-screen bg-slate-200 dark:bg-slate-900">
+    <div className="h-screen">
       <Navbar />
       {quiz.latestAttempt ? (
-        <div className="page-gutter bg-slate-200 dark:bg-slate-900">
+        <div className="page-gutter">
           <CustomTitle title="Quiz Results" />
           <section className="flex flex-col gap-4 py-5">
             <ScoreCard categories={categories} />
@@ -103,7 +103,7 @@ export function QuizReview() {
                             <div
                               key={i}
                               onClick={() => setModalDetails({ chosenQuestionIndex: q.number! - 1, show: true })}
-                              className={`flex cursor-pointer justify-between border border-white dark:border-slate-800 bg-white dark:bg-slate-900 dark:text-white hover:bg-gray-200 dark:hover:bg-darkSlate`}
+                              className={`flex cursor-pointer justify-between border border-white dark:border-slate-800 dark:text-white hover:bg-gray-200 dark:hover:bg-darkSlate`}
                             >
                               {/* Question number and mark */}
                               <div className="flex">
@@ -137,7 +137,7 @@ export function QuizReview() {
         </div>
       ) : (
         // Error message shown if user clears storage (which holds their latest attempt)
-        <div className="h-screen bg-slate-200 dark:bg-slate-900 dark:text-white">
+        <div className="h-screen dark:text-white">
           <CustomTitle title="Error occurred!" errorTint />
           <div className="px-4 md:px-0 lg:mx-28">
             <div className="py-8">

@@ -28,7 +28,15 @@ export function Choices() {
     }
   }
 
-  function getChoiceHighlight(choiceIndex: number) {
+  function getCursorStyle() {
+    if ((hideChoices && currentQuestion.category === "Reasoning") || inReview) {
+      return "cursor-default";
+    }
+
+    return "cursor-pointer hover:bg-emerald-500";
+  }
+
+  function getBorderStyle(choiceIndex: number) {
     if (!inReview) return "";
 
     if (choiceIndex === currentQuestion.correctChoiceIndex) {
@@ -46,11 +54,9 @@ export function Choices() {
           disabled={inReview}
           type="button"
           onClick={() => handleAnswerClick(i)}
-          className={`w-44 flex justify-center rounded-lg bg-emerald-600 text-white p-6 outline-none ${
-            (hideChoices && currentQuestion.category === "Reasoning") || inReview
-              ? "cursor-default"
-              : "cursor-pointer hover:bg-emerald-500"
-          } ${getChoiceHighlight(i)}`}
+          className={`w-44 md:w-64 md:h-32 border flex text-xl justify-center items-center rounded-lg bg-emerald-600 text-white p-6 outline-none ${getCursorStyle()} ${getBorderStyle(
+            i
+          )}`}
         >
           <span className={`${inReview || currentQuestion.category !== "Reasoning" || !hideChoices ? "visible" : "invisible"}`}>
             {choice}

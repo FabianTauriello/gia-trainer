@@ -64,13 +64,13 @@ export function QuizCategoryIntro() {
   }
 
   return (
-    <div className="h-screen bg-slate-200 dark:bg-slate-900 dark:text-white">
+    <div className="h-screen dark:text-white">
       {categoriesStarted.length === 0 && <Navbar />}
       <div className="page-gutter">
         <CustomTitle title={`Category ${categoriesStarted.length + 1}: ${currentQuestion.category}`} />
         <div className="">
           <div className="pt-6 pb-8">{getCategoryDescription()}</div>
-          <CustomButton onClick={handleStartCategory} customCss="">
+          <CustomButton onClick={handleStartCategory} customCss="text-lg">
             {categoriesStarted.length === 0 ? "Start Test" : "Start Category"}
           </CustomButton>
         </div>

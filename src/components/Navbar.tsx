@@ -4,17 +4,16 @@ import { DarkModeSwitch } from "react-toggle-dark-mode";
 import logo from "assets/svgs/logo.svg";
 import { useDispatch } from "react-redux";
 import { toggleDarkMode } from "domain/slices/settingsSlice";
-import { useState } from "react";
+import React, { useState, Ref, forwardRef } from "react";
 import { clearUser } from "domain/slices/authSlice";
 import img from "../assets/images/profile-pic.jpg";
 import { Menu } from "@headlessui/react";
 
 interface NavbarProps {
-  landingVersion?: boolean;
+  fixed?: boolean;
 }
 
-export function Navbar({ landingVersion = false }: NavbarProps) {
-  console.log("navbar rendering...");
+export function Navbar({ fixed = false }: NavbarProps) {
   const { auth, settings } = useAppSelector((state) => state);
   const dispatch = useDispatch();
 
@@ -41,8 +40,6 @@ export function Navbar({ landingVersion = false }: NavbarProps) {
                 </div>
                 <ul className="py-2">
                   <DropDownItem text="Dashboard" link="#" />
-                  <DropDownItem text="Settings" link="#" />
-                  <DropDownItem text="Leaderboard" link="#" />
                   <DropDownItem text="Sign out" handleClick={() => dispatch(clearUser())} />
                 </ul>
               </div>
@@ -52,7 +49,7 @@ export function Navbar({ landingVersion = false }: NavbarProps) {
       );
     }
 
-    if (landingVersion) {
+    if (fixed) {
       return <CustomLink text="Try Now" to="/quiz" customCss="" navLink />;
     } else {
       return <CustomLink text="Sign In" to="/sign-in" customCss="" navLink cta />;
@@ -62,10 +59,10 @@ export function Navbar({ landingVersion = false }: NavbarProps) {
   return (
     <nav
       className={`${
-        landingVersion ? "fixed" : ""
-      } top-0 left-0 z-20 w-full border-b border-b-slate-200 bg-slate-100 dark:border-b-slate-900 dark:bg-darkSlate dark:text-white page-gutter`}
+        fixed ? "fixed" : ""
+      } top-0 h-20 left-0 z-20 w-full border-b border-b-slate-200 bg-slate-100 dark:border-b-slate-900 dark:bg-darkSlate dark:text-white page-gutter`}
     >
-      <div className="flex flex-wrap items-center justify-between py-4">
+      <div className="flex flex-wrap h-full items-center justify-between py-4">
         <a href="/" className="flex items-center">
           <img src={logo} className="mr-3 h-10" alt="GIA-Trainer Logo" />
           <span className="self-center whitespace-nowrap text-2xl font-bold">GIA Trainer</span>

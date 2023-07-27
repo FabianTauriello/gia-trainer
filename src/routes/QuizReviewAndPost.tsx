@@ -38,7 +38,7 @@ export function QuizReviewAndPost() {
 
   if (isUninitialized || isLoading) {
     return (
-      <div className="h-screen bg-slate-200 dark:bg-slate-900 dark:text-white">
+      <div className="h-screen dark:text-white">
         <Navbar />
         <CustomTitle title="Saving your attempt..." />
         <div className="animate-pulse px-4 py-8 md:px-0 lg:mx-28 grid grid-cols-4 gap-4">
@@ -52,7 +52,7 @@ export function QuizReviewAndPost() {
 
   if (isError) {
     return (
-      <div className="h-screen bg-slate-200 dark:bg-slate-900 dark:text-white">
+      <div className="h-screen dark:text-white">
         <Navbar />
         <CustomTitle title="Error occurred!" errorTint />
         <div className="px-4 md:px-0 lg:mx-28">

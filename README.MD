@@ -55,13 +55,22 @@ https://gia-trainer.vercel.app/
 - feature/ new feature I'm adding or expaning
 - bug/ fix for a bug
 
+## Dashboard features
+
+- review previous attempts
+- see score of attempts over time, plotted on a line graph. the graph should be capable of showing different time periods (e.g. daily/monthly/yearly/lifetime)
+- show a user's rank among all other users
+- show a user's most recent score
+- settings
+- leaderboard
+
 ### TODOs:
 
 - [x] persist auth state to local storage
 - [ ] add "buy me a coffee" option
 - [x] fixed background when scrolled to far (background color is white)
-- [ ] add sign out functionality
-- [ ] work on navbar button options and responsiveness
+- [x] add sign out functionality
+- [x] work on navbar button options and responsiveness
 - [ ] add admin login for question creation/addition to pool of questions
 - [ ] consider using TRPC
 - [ ] improve visibilty of correct/incorrect answers in review
@@ -69,7 +78,7 @@ https://gia-trainer.vercel.app/
 - [x] add a "not found" page
 - [ ] add datetime to quiz attempt
 - [x] make all components use an interface '<ComponentName>Props' to describe the parameters (see CustomButton)
-- [ ] consider removing headless ui for Flowbite components
+- [ ] consider removing headless ui, and use shadcn instead
 - [ ] add animation between sign-in and sign-up modal states
 - [x] detect invalid emails in sign up and change error text to "Email is invalid or already taken"
 - [x] rename project to gia-trainer

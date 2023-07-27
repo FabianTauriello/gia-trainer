@@ -15,7 +15,7 @@ export function Landing() {
       {/* <div style={{ position: "fixed", top: 5, right: 5, color: "white", backgroundColor: "red", zIndex: 100 }}>
         <Link to={"/counter"}>Counter</Link>
       </div> */}
-      <Navbar landingVersion />
+      <Navbar fixed />
       <div className="page-gutter relative w-screen h-screen overflow-y-scroll overflow-hidden bg-image-light object-cover bg-cover bg-center bg-no-repeat dark:bg-image-dark">
         <main className="">
           <section className="mt-16 py-20 text-center text-black dark:text-white">
