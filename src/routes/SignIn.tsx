@@ -4,8 +4,9 @@ import { useAppDispatch, useAppSelector } from "hooks/useAppSelector";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { CustomButton } from "components/CustomButton";
-import logo from "../assets/svgs/logo.svg";
+import { HiEye, HiEyeSlash } from "react-icons/hi2";
 import { Utils } from "utils/Utils";
+import logo from "../assets/svgs/logo.svg";
 
 export function SignIn() {
   const auth = useAppSelector((state) => state.auth);
@@ -183,7 +184,7 @@ export function SignIn() {
                   onClick={() => setShowPassword(!showPassword)}
                   className="tooltip absolute inset-y-0 right-4 flex items-center pl-3"
                 >
-                  <i className={showPassword ? "fa fa-eye-slash" : "fa fa-eye"} />
+                  {showPassword ? <HiEyeSlash /> : <HiEye />}
                 </button>
               </div>
             </div>
