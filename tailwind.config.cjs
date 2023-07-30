@@ -10,9 +10,15 @@ module.exports = {
   darkMode: "class",
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    container: {},
     fontFamily: {
       inter: ["Inter"],
+    },
+    container: {
+      center: true,
+      padding: "2rem",
+      screens: {
+        "2xl": "1400px",
+      },
     },
     colors: {
       darkSlate: "#020617", // slate-950
@@ -31,7 +37,7 @@ module.exports = {
       },
     },
   },
-  plugins: [require("@headlessui/tailwindcss")({ prefix: "ui" })],
+  plugins: [require("@headlessui/tailwindcss")({ prefix: "ui" }), require("tailwindcss-animate")],
 };
 
 // TODO: PENDING DESIGN RULES

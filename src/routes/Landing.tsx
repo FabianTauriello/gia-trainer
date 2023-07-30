@@ -32,7 +32,7 @@ export function Landing() {
             )}
           </section>
           <section className="text-center text-red-700">
-            <h1 className="mb-4 mr-8 ml-8 text-4xl font-extrabold">Note that this website is still a work in progress</h1>
+            <h1 className="mb-4 mr-8 ml-8 text-4xl font-extrabold">This website is still a work in progress</h1>
           </section>
           <section className="dark:text-white my-10">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. At corrupti veritatis, officia quia ad molestiae sed dolores est

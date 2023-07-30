@@ -61,8 +61,10 @@ https://gia-trainer.vercel.app/
 - see score of attempts over time, plotted on a line graph. the graph should be capable of showing different time periods (e.g. daily/monthly/yearly/lifetime)
 - show a user's rank among all other users
 - show a user's most recent score
+- show a breakdown for each category
 - settings
 - leaderboard
+- see dashboard overview component for performance metrics
 
 ### TODOs:
 
@@ -73,6 +75,7 @@ https://gia-trainer.vercel.app/
 - [x] work on navbar button options and responsiveness
 - [ ] add admin login for question creation/addition to pool of questions
 - [ ] consider using TRPC
+- [ ] add floating button to dashboard for beginning a new quiz attempt
 - [ ] improve visibilty of correct/incorrect answers in review
 - [ ] set rules on password characters
 - [x] add a "not found" page

@@ -39,7 +39,7 @@ export function Navbar({ fixed = false }: NavbarProps) {
                   <span className="block text-sm  text-slate-500 truncate dark:text-slate-400">{auth.user.id}</span>
                 </div>
                 <ul className="py-2">
-                  <DropDownItem text="Dashboard" link="#" />
+                  <DropDownItem text="Dashboard" link="/dashboard" />
                   <DropDownItem text="Sign out" handleClick={() => dispatch(clearUser())} />
                 </ul>
               </div>
@@ -60,7 +60,7 @@ export function Navbar({ fixed = false }: NavbarProps) {
     <nav
       className={`${
         fixed ? "fixed" : ""
-      } top-0 h-20 left-0 z-20 w-full border-b border-b-slate-200 bg-slate-100 dark:border-b-slate-900 dark:bg-darkSlate dark:text-white page-gutter`}
+      } top-0 h-20 left-0 z-20 w-full border-b border-b-slate-300 drop-shadow-md bg-slate-100 dark:border-b-slate-900 dark:bg-darkSlate dark:text-white page-gutter`}
     >
       <div className="flex flex-wrap h-full items-center justify-between py-4">
         <a href="/" className="flex items-center">
