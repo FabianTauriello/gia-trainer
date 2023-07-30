@@ -21,7 +21,7 @@ export function Dashboard() {
           <li className="flex w-full mt-8">
             <Link
               onClick={() => setActiveLink("Overview")}
-              className={`text-center text-lg flex items-center gap-6 flex-1 p-4 dark:hover:bg-slate-900 hover:bg-slate-200 rounded-xl m-2 ${
+              className={`text-center text-lg flex items-center gap-6 flex-1 p-4 dark:hover:bg-slate-900 transition duration-0 hover:duration-150 hover:bg-slate-200 rounded-xl m-2 ${
                 activeLink === "Overview" ? "dark:bg-slate-900 bg-slate-200" : ""
               }`}
               to="/dashboard"
@@ -33,7 +33,7 @@ export function Dashboard() {
           <li className="flex w-full">
             <Link
               onClick={() => setActiveLink("Attempts")}
-              className={`text-center text-lg flex items-center gap-6 flex-1 p-4 dark:hover:bg-slate-900 hover:bg-slate-200 rounded-xl m-2 ${
+              className={`text-center text-lg flex items-center gap-6 flex-1 p-4 dark:hover:bg-slate-900 transition duration-0 hover:duration-150 hover:bg-slate-200 rounded-xl m-2 ${
                 activeLink === "Attempts" ? "dark:bg-slate-900 bg-slate-200" : ""
               }`}
               to="/dashboard/attempts"
@@ -45,7 +45,7 @@ export function Dashboard() {
           <li className="flex w-full">
             <Link
               onClick={() => setActiveLink("Leaderboard")}
-              className={`text-center text-lg flex items-center gap-6 flex-1 p-4 dark:hover:bg-slate-900 hover:bg-slate-200 rounded-xl m-2 ${
+              className={`text-center text-lg flex items-center gap-6 flex-1 p-4 dark:hover:bg-slate-900 transition duration-0 hover:duration-150 hover:bg-slate-200 rounded-xl m-2 ${
                 activeLink === "Leaderboard" ? "dark:bg-slate-900 bg-slate-200" : ""
               }`}
               to="/dashboard/leaderboard"
@@ -57,7 +57,7 @@ export function Dashboard() {
           <li className="flex w-full mt-auto mb-8">
             <Link
               onClick={() => setActiveLink("Settings")}
-              className={`text-center text-lg flex items-center gap-6 flex-1 p-4 dark:hover:bg-slate-900 hover:bg-slate-200 rounded-xl m-2 ${
+              className={`text-center text-lg flex items-center gap-6 flex-1 p-4 dark:hover:bg-slate-900 transition duration-0 hover:duration-150 hover:bg-slate-200 rounded-xl m-2 ${
                 activeLink === "Settings" ? "dark:bg-slate-900 bg-slate-200" : ""
               }`}
               to="/dashboard/settings"
