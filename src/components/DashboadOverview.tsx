@@ -31,13 +31,28 @@ export function DashboardOverview() {
         </div>
       </div>
       <div className="ml-4 bg-slate-100 dark:bg-slate-800 drop-shadow-md p-6 flex flex-col rounded-xl border border-slate-300 dark:border-slate-700">
-        <h1 className="">Rank by Categories</h1>
+        <h1 className="text-lg border-b border-white pb-4">Rank by Category</h1>
         <ul>
-          <li>Reasoning</li>
-          <li>Perceptual Speed</li>
-          <li>Number Speed and Accuracy</li>
-          <li>Word Meaning</li>
-          <li>Spatial Visualisation</li>
+          <li className="mt-4 flex justify-between">
+            <div>Reasoning</div>
+            <div className="ml-10">1</div>
+          </li>
+          <li className="mt-4 flex justify-between">
+            <div>Perceptual Speed</div>
+            <div className="ml-10">1</div>
+          </li>
+          <li className="mt-4 flex justify-between">
+            <div>Number Speed and Accuracy</div>
+            <div className="ml-10">1</div>
+          </li>
+          <li className="mt-4 flex justify-between">
+            <div>Word Meaning</div>
+            <div className="ml-10">1</div>
+          </li>
+          <li className="mt-4 flex justify-between">
+            <div>Spatial Visualisation</div>
+            <div className="ml-10">1</div>
+          </li>
         </ul>
       </div>
     </div>
