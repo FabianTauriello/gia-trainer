@@ -18,6 +18,7 @@ export namespace Utils {
   export function getErrorMessage(error: FetchBaseQueryError | SerializedError | undefined) {
     if (Utils.isFetchBaseQueryError(error)) {
       const data = error.data as ApiResponse;
+      console.log("data: ", data);
       return "fail";
       return data.message;
     }

@@ -57,7 +57,6 @@ export function SignIn() {
       dispatch(setCredentials(res.data!));
       navigate("/dashboard");
     } catch (error) {
-      // TODO add sign in error message to UI!!
       console.log("Failed to sign in");
     }
   }
