@@ -198,9 +198,11 @@ export function SignIn() {
               <div className="rounded-lg border border-green-500 p-3 text-sm text-green-500 mt-4">Successfully created a new user</div>
             )}
             {/* TODO remove when app is in better condition and password requirments are stronger */}
-            <div className="text-red-800 mt-4">
-              Our apologies, but creating an account is disabled at the moment! We are working hard to restore this functionality.
-            </div>
+            {createAccountView && (
+              <div className="text-red-800 mt-4">
+                Our apologies, but creating an account is disabled at the moment! We are working hard to restore this functionality.
+              </div>
+            )}
             <CustomButton loading={isLoadingSignIn || isLoadingSignUp} customCss="mt-4">
               Sign {createAccountView ? "up" : "in"}
             </CustomButton>
