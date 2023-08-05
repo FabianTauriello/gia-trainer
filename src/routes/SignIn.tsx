@@ -108,7 +108,8 @@ export function SignIn() {
           <h1 className="text-xl font-bold leading-tight tracking-tight md:text-2xl">
             {createAccountView ? "Create an account" : "Sign in to your account"}
           </h1>
-          <form className="" action="#" onSubmit={handleSubmit}>
+          {/* TODO remove empty handler when app condition and password requirments are stronger. should just be handleSubmit */}
+          <form className="" action="#" onSubmit={createAccountView ? () => {} : handleSubmit}>
             {createAccountView && (
               <div className="flex flex-col md:gap-2 md:flex-row">
                 <div className="flex-1">
@@ -196,6 +197,10 @@ export function SignIn() {
             {signUpSuccessMessage && (
               <div className="rounded-lg border border-green-500 p-3 text-sm text-green-500 mt-4">Successfully created a new user</div>
             )}
+            {/* TODO remove when app is in better condition and password requirments are stronger */}
+            <div className="text-red-800 mt-4">
+              Our apologies, but creating an account is disabled at the moment! We are working hard to restore this functionality.
+            </div>
             <CustomButton loading={isLoadingSignIn || isLoadingSignUp} customCss="mt-4">
               Sign {createAccountView ? "up" : "in"}
             </CustomButton>
