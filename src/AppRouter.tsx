@@ -8,11 +8,11 @@ import { SignIn } from "routes/SignIn";
 import { PrivateOutlet } from "routes/PrivateOutlet";
 import { PageNotFound } from "routes/PageNotFound";
 import { QuizReviewAndPost } from "routes/QuizReviewAndPost";
-import { Settings } from "components/Settings";
 import { DashboardOverview } from "components/DashboadOverview";
-import { Leaderboard } from "components/Leaderboard";
 import { Dashboard } from "routes/Dashboard";
-import { Attempts } from "components/Attempts";
+import { DashboardSettings } from "components/DashboardSettings";
+import { DashboardAttempts } from "components/DashboardAttempts";
+import { DashboardLeaderboard } from "components/DashboardLeaderboard";
 
 export function AppRouter() {
   const { quiz, auth } = useAppSelector((state) => state);
@@ -40,9 +40,9 @@ export function AppRouter() {
           {/* TODO index routes explained here: https://www.youtube.com/watch?v=V6zLjVPKtAo */}
           <Route path="/dashboard" element={<Dashboard />}>
             <Route index path="/dashboard" element={<DashboardOverview />} />
-            <Route path="/dashboard/settings" element={<Settings />} />
-            <Route path="/dashboard/attempts" element={<Attempts />} />
-            <Route path="/dashboard/leaderboard" element={<Leaderboard />} />
+            <Route path="/dashboard/settings" element={<DashboardSettings />} />
+            <Route path="/dashboard/attempts" element={<DashboardAttempts />} />
+            <Route path="/dashboard/leaderboard" element={<DashboardLeaderboard />} />
           </Route>
           {/* <Route path="/dashboard/quiz/:quizId" element={<QuizWrapper />} /> */}
           {/* <Route path="/dashboard/quiz/:quizId/review" element={<QuizReview />} /> */}

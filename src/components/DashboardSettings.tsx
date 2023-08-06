@@ -1,6 +1,6 @@
-interface SettingsProps {}
+interface DashboardSettingsProps {}
 
-export function Settings({}: SettingsProps) {
+export function DashboardSettings({}: DashboardSettingsProps) {
   return (
     <>
       <h1>Settings</h1>

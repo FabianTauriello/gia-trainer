@@ -97,13 +97,13 @@ export function QuizReview() {
                   </Disclosure.Button>
                   <Transition enter="transition-all ease-in-out duration-200" enterFrom="translate-y-full" enterTo="translate-y-0">
                     <Disclosure.Panel className="border-t dark:border-t-slate-800 border-t-slate-300">
-                      <div className="grid gap-2 p-3 md:grid-cols-2 lg:grid-cols-3 bg-slate-100 dark:bg-slate-800">
+                      <div className="grid gap-2 p-3 md:grid-cols-3 bg-slate-100 dark:bg-slate-800">
                         {cat.questions.map((q, i) => {
                           return (
                             <div
                               key={i}
                               onClick={() => setModalDetails({ chosenQuestionIndex: q.number! - 1, show: true })}
-                              className={`flex cursor-pointer justify-between border border-white dark:border-slate-800 dark:text-white hover:bg-gray-200 dark:hover:bg-darkSlate`}
+                              className={`flex cursor-pointer justify-between border border-white dark:border-slate-800 bg-white dark:bg-slate-900 dark:text-white hover:bg-gray-200 dark:hover:bg-darkSlate`}
                             >
                               {/* Question number and mark */}
                               <div className="flex">
@@ -139,7 +139,7 @@ export function QuizReview() {
         // Error message shown if user clears storage (which holds their latest attempt)
         <div className="h-screen dark:text-white">
           <CustomTitle title="Error occurred!" errorTint />
-          <div className="px-4 md:px-0 lg:mx-28">
+          <div className="px-4 md:px-0">
             <div className="py-8">
               <p>Your quiz attempt cannot be found.</p>
             </div>

@@ -4,7 +4,7 @@ import { Navbar } from "components/Navbar";
 import { useAddQuizAttemptMutation } from "domain/slices/apislice";
 import { setLatestAttemptId } from "domain/slices/quizSlice";
 import { useAppDispatch, useAppSelector } from "hooks/useAppSelector";
-import { useEffect } from "react";
+import { Fragment, useEffect } from "react";
 import { Utils } from "utils/Utils";
 
 export function QuizReviewAndPost() {
@@ -40,11 +40,13 @@ export function QuizReviewAndPost() {
     return (
       <div className="h-screen dark:text-white">
         <Navbar />
-        <CustomTitle title="Saving your attempt..." />
-        <div className="animate-pulse px-4 py-8 md:px-0 lg:mx-28 grid grid-cols-4 gap-4">
-          <div className="h-5 bg-slate-400 dark:bg-slate-700 rounded col-span-3" />
-          <div className="h-5 bg-slate-400 dark:bg-slate-700 rounded col-span-1" />
-          <div className="h-5 bg-slate-400 dark:bg-slate-700 rounded col-span-2" />
+        <div className="page-gutter">
+          <CustomTitle title="Saving your attempt..." />
+          <div className="animate-pulse py-8 grid grid-cols-4 gap-4">
+            <div className="h-5 bg-slate-400 dark:bg-slate-700 rounded col-span-3" />
+            <div className="h-5 bg-slate-400 dark:bg-slate-700 rounded col-span-1" />
+            <div className="h-5 bg-slate-400 dark:bg-slate-700 rounded col-span-2" />
+          </div>
         </div>
       </div>
     );
@@ -54,8 +56,8 @@ export function QuizReviewAndPost() {
     return (
       <div className="h-screen dark:text-white">
         <Navbar />
-        <CustomTitle title="Error occurred!" errorTint />
-        <div className="px-4 md:px-0 lg:mx-28">
+        <div className="page-gutter">
+          <CustomTitle title="Error occurred!" errorTint />
           <div className="py-8">
             <p>{`There was an error saving your attempt: ${Utils.getErrorMessage(error)}`}</p>
           </div>

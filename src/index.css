@@ -9,7 +9,7 @@
 }
 
 .page-gutter {
-  @apply px-6 sm:px-24 md:px-28;
+  @apply px-6 md:px-28;
 }
 
 /* SHADCN STYLING */
