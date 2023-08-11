@@ -39,7 +39,3 @@ module.exports = {
   },
   plugins: [require("@headlessui/tailwindcss")({ prefix: "ui" }), require("tailwindcss-animate")],
 };
-
-// TODO: PENDING DESIGN RULES
-// SLATE SHADES FOR PRIMARY COLORS
-// EMERALD SHADES FOR ACCENTS

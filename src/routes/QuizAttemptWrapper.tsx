@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "hooks/useAppSelector";
-import { useAddQuizAttemptMutation, useGetQuizQuestionsQuery } from "domain/slices/apislice";
+import { useGetQuizQuestionsQuery } from "domain/slices/apislice";
 import { QuestionController } from "components/QuestionController";
 import QuizContextProvider from "components/QuizContextProvider";
 import { QuizCategoryIntro } from "components/QuizCategoryIntro";
@@ -14,6 +14,21 @@ import { Navbar } from "components/Navbar";
 export function QuizAttemptWrapper() {
   const dispatch = useAppDispatch();
   const { quiz, auth } = useAppSelector((state) => state);
+
+  // useEffect(() => {
+  //   const doIt = async () => {
+  //     try {
+  //       const res = await fetch("http://localhost:3001/quizQuestions");
+  //       if (res.ok) {
+  //         const js = res.json();
+  //         console.log("js: ", js);
+  //       }
+  //     } catch (error) {
+  //       console.log("failed manual fetch: ", error);
+  //     }
+  //   };
+  //   doIt();
+  // }, []);
 
   const { data, isError, isLoading, isFetching, refetch, isSuccess } = useGetQuizQuestionsQuery();
 

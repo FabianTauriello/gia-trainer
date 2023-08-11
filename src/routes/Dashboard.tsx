@@ -6,6 +6,7 @@ import { GoHome } from "react-icons/go";
 import { FiSettings } from "react-icons/fi";
 import { MdOutlineLeaderboard } from "react-icons/md";
 import { GiArrowhead, GiStrikingArrows } from "react-icons/gi";
+import { CustomLink } from "components/CustomLink";
 
 export function Dashboard() {
   const navigate = useNavigate();
@@ -17,7 +18,7 @@ export function Dashboard() {
     <div className="h-screen">
       <Navbar fixed />
       <aside className="fixed left-0 bottom-0 top-20 w-20 md:w-72 dark:bg-slate-800 bg-slate-300 text-black dark:text-white">
-        <ul className="border-r border-slate-400 dark:border-slate-600 flex flex-col items-center h-full p-3">
+        <ul className="border-r border-slate-400 dark:border-slate-600 flex flex-col items-center h-full py-3 px-2 md:px-3">
           <li className="flex w-full">
             <Link
               onClick={() => setActiveLink("Overview")}
@@ -26,7 +27,7 @@ export function Dashboard() {
               }`}
               to="/dashboard"
             >
-              <GoHome />
+              <GoHome className="ml-0 md:ml-2" />
               <span className="hidden md:block">Overview</span>
             </Link>
           </li>
@@ -38,7 +39,7 @@ export function Dashboard() {
               }`}
               to="/dashboard/attempts"
             >
-              <GiStrikingArrows />
+              <GiStrikingArrows className="ml-0 md:ml-2" />
               <span className="hidden md:block">Attempts</span>
             </Link>
           </li>
@@ -50,7 +51,7 @@ export function Dashboard() {
               }`}
               to="/dashboard/leaderboard"
             >
-              <MdOutlineLeaderboard />
+              <MdOutlineLeaderboard className="ml-0 md:ml-2" />
               <span className="hidden md:block">Leaderboard</span>
             </Link>
           </li>
@@ -62,14 +63,14 @@ export function Dashboard() {
               }`}
               to="/dashboard/settings"
             >
-              <FiSettings />
+              <FiSettings className="ml-0 md:ml-2" />
               <span className="hidden md:block">Settings</span>
             </Link>
           </li>
         </ul>
       </aside>
       <main className="ml-20 md:ml-72 pt-20 text-black dark:text-white">
-        <div className="p-6">
+        <div className="py-3 px-4 md:px-5">
           <Outlet />
         </div>
       </main>

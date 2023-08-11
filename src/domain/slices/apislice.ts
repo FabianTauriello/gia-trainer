@@ -9,8 +9,9 @@ export const apiSlice = createApi({
   // All of the requests will have URLs starting with '/'
   baseQuery: fetchBaseQuery({
     baseUrl: import.meta.env.VITE_WEB_SERVER_BASE_URL,
+    // credentials:
     prepareHeaders: (headers, { getState }) => {
-      // By default, if we have a token in the store, let's use that for authenticated requests
+      // By default, if there is a token in the store, use that for authenticated requests
       const token = (getState() as RootState).auth.token;
       if (token) headers.set("authorization", `Bearer ${token}`);
       return headers;

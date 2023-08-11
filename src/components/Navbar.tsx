@@ -65,7 +65,7 @@ export function Navbar({ fixed = false }: NavbarProps) {
       <div className="flex flex-wrap h-full items-center justify-between py-4">
         <a href="/" className="flex items-center">
           <img src={logo} className="mr-3 h-10" alt="GIA-Trainer Logo" />
-          <span className="self-center whitespace-nowrap text-2xl font-bold">GIA Trainer</span>
+          <span className="self-center whitespace-nowrap text-lg md:text-2xl font-bold">GIA Trainer</span>
         </a>
         <div className="flex items-center md:order-2">
           <div className="mr-6">

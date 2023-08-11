@@ -45,6 +45,9 @@ https://gia-trainer.vercel.app/
 - follow this style guide: https://redux.js.org/style-guide/
 - combine names (first and last), and user id to uniquely identify users in the leaderboard
 - 'wrapper' components wrap logic around its children. 'containers' simply render its children and contain minimal logic - they are primarily used to prevent code/styling duplication. // TODO still true?
+- styling philosophy:
+  - slate shades for primary colours
+  - emerald shades for accents
 
 ### App Behaviour:
 
