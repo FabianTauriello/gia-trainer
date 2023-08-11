@@ -16,6 +16,12 @@ const slice = createSlice({
   initialState: initialState,
   reducers: {
     setCredentials: (state, action: PayloadAction<{ user: User; token: string }>) => {
+      // state.user = {
+      //   id: action.payload.userId,
+      //   firstName: action.payload.firstName,
+      //   lastName: action.payload.lastName,
+      //   email: action.payload.email,
+      // };
       state.user = action.payload.user;
       state.token = action.payload.token;
     },

@@ -54,7 +54,12 @@ export function SignIn() {
   async function handleSignIn() {
     try {
       const res = await signIn({ email: inputFields.email, password: inputFields.password }).unwrap();
-      dispatch(setCredentials(res.data!));
+      dispatch(
+        setCredentials({
+          user: res.data!.user,
+          token: res.data!.token,
+        })
+      );
       navigate("/dashboard");
     } catch (error) {
       console.log("Failed to sign in");

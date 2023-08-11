@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { toggleDarkMode } from "domain/slices/settingsSlice";
 import React, { useState, Ref, forwardRef } from "react";
 import { clearUser } from "domain/slices/authSlice";
-import img from "../assets/images/profile-pic.jpg";
+import userIcon from "../assets/svgs/user-temp-icon.svg";
 import { Menu } from "@headlessui/react";
 
 interface NavbarProps {
@@ -25,8 +25,9 @@ export function Navbar({ fixed = false }: NavbarProps) {
         <div className="flex flex-col justify-center" onMouseLeave={() => setShowUserDropdown(false)}>
           <img
             onMouseEnter={() => setShowUserDropdown(true)}
-            className="w-8 h-8 rounded-full cursor-pointer"
-            src={img}
+            // TODO don't need white bg on profile image once i have actual icons for profile pic
+            className="w-8 h-8 rounded-full cursor-pointer mr-2 bg-white"
+            src={userIcon}
             alt="user photo"
           />
           {showUserDropdown && (
@@ -71,7 +72,7 @@ export function Navbar({ fixed = false }: NavbarProps) {
           <div className="mr-6">
             <DarkModeSwitch
               checked={!settings.darkMode}
-              onChange={() => dispatch(toggleDarkMode(!settings.darkMode))}
+              onChange={() => dispatch(toggleDarkMode())}
               className=""
               size={30}
               sunColor="white"

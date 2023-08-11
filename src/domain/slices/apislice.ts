@@ -19,7 +19,7 @@ export const apiSlice = createApi({
   }),
   // The "endpoints" represent operations and requests for this server
   endpoints: (builder) => ({
-    // Verifies identity of user on server, returning the new user and a jwt if successful
+    // Verifies identity of user on server, returning the user and a jwt if successful
     signIn: builder.mutation<ApiResponse<{ user: User; token: string }>, LoginCredentials>({
       query: (credentials) => ({
         url: "/signIn",

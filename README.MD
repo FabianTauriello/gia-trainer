@@ -93,7 +93,7 @@ https://gia-trainer.vercel.app/
 - [ ] implement forgot password to sign in page
 - [ ] add profile image options (should be a set of selectable silly profile icons)
 - [ ] add mobile app preview/advert to landing page
-- [ ] fix error message placement on signin screen (give it margin)
+- [x] fix error message placement on signin screen (give it margin)
 - [ ] add ability to practice categories separately
 - [x] change components to use named export instead of default
 - [x] rename pages folder to routes?

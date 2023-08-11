@@ -11,15 +11,11 @@ export function DashboardOverview() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4">
       <div className="grid gap-2 md:gap-4 col-span-1 md:col-span-2">
-        <div className=" bg-slate-100 dark:bg-slate-800 drop-shadow-md p-6 flex flex-col rounded-lg border border-slate-300 dark:border-slate-700">
-          line graph showing all scores over various times
-        </div>
-        <div className=" bg-slate-100 dark:bg-slate-800 drop-shadow-md p-6 flex flex-col rounded-lg border border-slate-300 dark:border-slate-700">
-          line graph showing rank over various times
-        </div>
+        <div className="p-6 flex flex-col rounded-lg card">line graph showing all scores over various times</div>
+        <div className="p-6 flex flex-col rounded-lg card">line graph showing rank over various times</div>
       </div>
       <div className="grid gap-2 md:gap-4 col-span-1 md:col-span-1">
-        <div className="bg-slate-100 dark:bg-slate-800 drop-shadow-md p-6 flex flex-col gap-6 rounded-lg border border-slate-300 dark:border-slate-700">
+        <div className="p-6 flex flex-col gap-6">
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-5">
             <DashValue tooltipText="Date Joined" value="Jun 14, 2020" icon={<MdDateRange size={30} />} />
             <DashValue tooltipText="Current Rank" value="4th" icon={<IoPodiumOutline size={30} />} />
@@ -29,7 +25,7 @@ export function DashboardOverview() {
             <DashValue tooltipText="Number of Attempts" value="152" icon={<GiStrikingArrows size={30} />} />
           </div>
         </div>
-        <div className="bg-slate-100 dark:bg-slate-800 drop-shadow-md p-6 flex flex-col rounded-lg border border-slate-300 dark:border-slate-700">
+        <div className="p-6 flex flex-col rounded-lg card">
           <h1 className="text-lg border-b border-white pb-4">Rank by Category</h1>
           <ul>
             <li className="mt-4 flex justify-between">
