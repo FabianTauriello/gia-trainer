@@ -79,6 +79,7 @@ export function QuizReview() {
           <CustomTitle title="Quiz Results" />
           <section className="flex flex-col gap-4 py-5">
             <ScoreCard categories={categories} />
+            <h1 className="text-xl bg-emerald-600 text-white p-4">Breakdown</h1>
             {categories.map((cat, index) => (
               // Category card
               <Disclosure key={index} defaultOpen>

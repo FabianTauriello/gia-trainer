@@ -10,7 +10,7 @@ export function ScoreCard({ categories }: ScoreCardProps) {
 
   return (
     <div className="overflow-x-auto">
-      <h1 className="mb-3 text-xl dark:text-white">Scorecard</h1>
+      <h1 className="mb-3 text-xl bg-emerald-600 text-white p-4">Scorecard</h1>
       <table className="w-full border dark:border-slate-800 border-slate-300 dark:bg-slate-800 dark:text-white bg-slate-100">
         <thead>
           <tr className="border-b dark:border-b-slate-800 border-b-slate-300 dark:bg-darkSlate bg-white text-left dark:text-white">
