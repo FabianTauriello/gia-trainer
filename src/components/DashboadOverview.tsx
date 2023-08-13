@@ -15,7 +15,7 @@ export function DashboardOverview() {
         <div className="p-6 flex flex-col rounded-lg card">line graph showing rank over various times</div>
       </div>
       <div className="grid gap-2 md:gap-4 col-span-1 md:col-span-1">
-        <div className="p-6 flex flex-col gap-6">
+        <div className="p-6 flex flex-col gap-6 card">
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-5">
             <DashValue tooltipText="Date Joined" value="Jun 14, 2020" icon={<MdDateRange size={30} />} />
             <DashValue tooltipText="Current Rank" value="4th" icon={<IoPodiumOutline size={30} />} />
