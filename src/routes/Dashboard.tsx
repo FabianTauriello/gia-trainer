@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import { GoHome } from "react-icons/go";
 import { FiSettings } from "react-icons/fi";
+import { BsPlusSquare } from "react-icons/bs";
 import { MdOutlineLeaderboard } from "react-icons/md";
 import { GiArrowhead, GiStrikingArrows } from "react-icons/gi";
 import { CustomLink } from "components/CustomLink";
@@ -22,7 +23,7 @@ export function Dashboard() {
           <li className="flex w-full">
             <Link
               onClick={() => setActiveLink("Overview")}
-              className={`text-center justify-center md:justify-start text-lg flex items-center gap-6 flex-1 p-4 dark:hover:bg-slate-900 transition duration-0 hover:duration-150 hover:bg-slate-200 rounded-xl ${
+              className={`text-center justify-center md:justify-start text-lg flex items-center gap-4 flex-1 p-4 dark:hover:bg-slate-900 transition duration-0 hover:duration-150 hover:bg-slate-200 rounded-xl ${
                 activeLink === "Overview" ? "dark:bg-slate-900 bg-slate-200" : ""
               }`}
               to="/dashboard"
@@ -34,7 +35,7 @@ export function Dashboard() {
           <li className="flex w-full">
             <Link
               onClick={() => setActiveLink("Attempts")}
-              className={`text-center justify-center md:justify-start text-lg flex items-center gap-6 flex-1 p-4 dark:hover:bg-slate-900 transition duration-0 hover:duration-150 hover:bg-slate-200 rounded-xl mt-2 ${
+              className={`text-center justify-center md:justify-start text-lg flex items-center gap-4 flex-1 p-4 dark:hover:bg-slate-900 transition duration-0 hover:duration-150 hover:bg-slate-200 rounded-xl mt-2 ${
                 activeLink === "Attempts" ? "dark:bg-slate-900 bg-slate-200" : ""
               }`}
               to="/dashboard/attempts"
@@ -46,7 +47,7 @@ export function Dashboard() {
           <li className="flex w-full">
             <Link
               onClick={() => setActiveLink("Leaderboard")}
-              className={`text-center justify-center md:justify-start text-lg flex items-center gap-6 flex-1 p-4 dark:hover:bg-slate-900 transition duration-0 hover:duration-150 hover:bg-slate-200 rounded-xl mt-2 ${
+              className={`text-center justify-center md:justify-start text-lg flex items-center gap-4 flex-1 p-4 dark:hover:bg-slate-900 transition duration-0 hover:duration-150 hover:bg-slate-200 rounded-xl mt-2 ${
                 activeLink === "Leaderboard" ? "dark:bg-slate-900 bg-slate-200" : ""
               }`}
               to="/dashboard/leaderboard"
@@ -58,13 +59,23 @@ export function Dashboard() {
           <li className="flex w-full mt-auto">
             <Link
               onClick={() => setActiveLink("Settings")}
-              className={`text-center justify-center md:justify-start text-lg flex items-center gap-6 flex-1 p-4 dark:hover:bg-slate-900 transition duration-0 hover:duration-150 hover:bg-slate-200 rounded-xl ${
+              className={`text-center justify-center md:justify-start text-lg flex items-center gap-4 flex-1 p-4 dark:hover:bg-slate-900 transition duration-0 hover:duration-150 hover:bg-slate-200 rounded-xl ${
                 activeLink === "Settings" ? "dark:bg-slate-900 bg-slate-200" : ""
               }`}
               to="/dashboard/settings"
             >
               <FiSettings className="ml-0 md:ml-2" />
               <span className="hidden md:block">Settings</span>
+            </Link>
+          </li>
+          <li className="flex w-full">
+            <Link
+              onClick={() => setActiveLink("Settings")}
+              className={`text-center justify-center md:justify-start text-lg flex items-center gap-4 flex-1 p-4 transition duration-0 hover:duration-150 hover:bg-emerald-500 bg-emerald-600 text-white rounded-xl mt-2`}
+              to="/quiz"
+            >
+              <BsPlusSquare className="ml-0 md:ml-2" />
+              <span className="hidden md:block">Start New Attempt</span>
             </Link>
           </li>
         </ul>
