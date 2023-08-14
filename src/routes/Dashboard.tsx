@@ -6,8 +6,7 @@ import { GoHome } from "react-icons/go";
 import { FiSettings } from "react-icons/fi";
 import { BsPlusSquare } from "react-icons/bs";
 import { MdOutlineLeaderboard } from "react-icons/md";
-import { GiArrowhead, GiStrikingArrows } from "react-icons/gi";
-import { CustomLink } from "components/CustomLink";
+import { GiStrikingArrows } from "react-icons/gi";
 
 export function Dashboard() {
   const navigate = useNavigate();
@@ -88,10 +87,4 @@ export function Dashboard() {
       <button onClick={() => console.log("starting new attempt...")}>New Attempt</button>
     </div>
   );
-}
-
-{
-  /* <h2>
-        <pre>{JSON.stringify(auth, null, 4)}</pre>
-      </h2> */
 }

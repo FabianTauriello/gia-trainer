@@ -2,7 +2,7 @@
 
 https://gia-trainer.vercel.app/
 
-### Stack and functionality
+### Stack
 
 - React
 - Tailwind
@@ -12,6 +12,7 @@ https://gia-trainer.vercel.app/
 - RTK Query for data fetching and cache management
 - React Icons
 - TODO testing?
+- [IconGeneratorAI](https://www.icongeneratorai.com/generate) for profile icons
 
 ### Future Improvements
 

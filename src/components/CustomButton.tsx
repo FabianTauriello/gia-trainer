@@ -3,6 +3,7 @@ interface CustomButtonProps extends React.ComponentPropsWithoutRef<"button"> {
   loading?: boolean;
 }
 
+// TODO consider the reduction in usage of this component as is, and just use regular button tags with tailwind styling. only keep for spinner use cases
 export function CustomButton({ customCss, loading = false, children, ...rest }: CustomButtonProps) {
   return (
     <button
