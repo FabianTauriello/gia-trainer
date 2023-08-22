@@ -55,6 +55,7 @@ export function DashboardOverview() {
   );
 }
 
+// TODO replace tooltip for actual text for mobile devices because they won't work there!
 function DashValue({ tooltipText, value, icon }: { tooltipText: string; value: string; icon: ReactElement }) {
   return (
     <div className="text-center">

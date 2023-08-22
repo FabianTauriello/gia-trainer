@@ -1,4 +1,4 @@
-import { useSignInMutation, useSignUpMutation } from "domain/slices/apislice";
+import { useGetUserSettingsQuery, useLazyGetUserSettingsQuery, useSignInMutation, useSignUpMutation } from "domain/slices/apislice";
 import { setCredentials } from "domain/slices/authSlice";
 import { useAppDispatch, useAppSelector } from "hooks/useAppSelector";
 import { useState } from "react";
@@ -7,6 +7,7 @@ import { CustomButton } from "components/CustomButton";
 import { HiOutlineEye, HiOutlineEyeOff } from "react-icons/hi";
 import { Utils } from "utils/Utils";
 import logo from "../assets/svgs/logo.svg";
+import { setAllSettings } from "domain/slices/settingsSlice";
 
 export function SignIn() {
   const auth = useAppSelector((state) => state.auth);
@@ -15,6 +16,9 @@ export function SignIn() {
 
   const [signIn, { isLoading: isLoadingSignIn, isError: isSignInError, error: signInError, reset: resetSignIn }] = useSignInMutation();
   const [signUp, { isLoading: isLoadingSignUp, isError: isSignUpError, error: signUpError, reset: resetSignUp }] = useSignUpMutation();
+  const [getUserSettings] = useLazyGetUserSettingsQuery();
+
+  const isLoading = isLoadingSignIn || isLoadingSignUp; // TODO use this
 
   const [inputFields, setInputFields] = useState({
     email: "",
@@ -60,6 +64,10 @@ export function SignIn() {
           token: res.data!.token,
         })
       );
+      const settingsRes = await getUserSettings(res.data?.user.id!);
+      if (settingsRes.isSuccess) {
+        dispatch(setAllSettings(settingsRes.data.data!));
+      }
       navigate("/dashboard");
     } catch (error) {
       console.log("Failed to sign in");

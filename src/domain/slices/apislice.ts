@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { RootState } from "domain/store";
-import { ApiResponse, LoginCredentials, NewUser, Question, QuizAttempt, User } from "domain/Types";
+import { ApiResponse, LoginCredentials, NewUser, Question, QuizAttempt, Settings, User } from "domain/Types";
 
 // Define the single API slice object
 export const apiSlice = createApi({
@@ -35,9 +35,6 @@ export const apiSlice = createApi({
         body: newUser,
       }),
     }),
-    getQuizQuestions: builder.query<ApiResponse<Question[]>, void>({
-      query: () => "/quizQuestions",
-    }),
     addQuizAttempt: builder.mutation<ApiResponse<string>, { userId: string; attempt: QuizAttempt }>({
       query: (newQuizAttempt) => ({
         url: "/addQuizAttempt",
@@ -45,8 +42,21 @@ export const apiSlice = createApi({
         body: newQuizAttempt,
       }),
     }),
+    getQuizQuestions: builder.query<ApiResponse<Question[]>, void>({
+      query: () => "/quizQuestions",
+    }),
+    getUserSettings: builder.query<ApiResponse<Settings>, string>({
+      query: (userId) => `/getUserSettings/${userId}}`,
+    }),
   }),
 });
 
 // Export the auto-generated hook for the 'getQuizQuestions' query endpoint
-export const { useSignInMutation, useSignUpMutation, useGetQuizQuestionsQuery, useAddQuizAttemptMutation } = apiSlice;
+export const {
+  useSignInMutation,
+  useSignUpMutation,
+  useGetQuizQuestionsQuery,
+  useAddQuizAttemptMutation,
+  useGetUserSettingsQuery,
+  useLazyGetUserSettingsQuery,
+} = apiSlice;

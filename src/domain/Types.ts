@@ -28,6 +28,14 @@ export type User = {
   email: string;
 };
 
+export type Settings = {
+  darkMode: boolean;
+  exposeName: boolean;
+  showQuizTimer: boolean;
+  profileImgId: string;
+  profileImgColour: String;
+};
+
 export type NewUser = Omit<User, "id"> & LoginCredentials;
 
 export type ModalDetails = {

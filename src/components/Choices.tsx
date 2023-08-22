@@ -33,7 +33,7 @@ export function Choices() {
       return "cursor-default";
     }
 
-    return "cursor-pointer hover:bg-emerald-500";
+    return "cursor-pointer hover:bg-emerald-700";
   }
 
   function getBorderStyle(choiceIndex: number) {

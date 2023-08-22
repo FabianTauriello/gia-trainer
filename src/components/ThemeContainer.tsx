@@ -31,5 +31,5 @@ export function ThemeContainer({ children }: ThemeContainerProps) {
     }
   }, [settings.darkMode]);
 
-  return <>{children}</>;
+  return children;
 }

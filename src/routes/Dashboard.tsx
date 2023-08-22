@@ -55,10 +55,10 @@ export function Dashboard() {
               <span className="hidden md:block">Leaderboard</span>
             </Link>
           </li>
-          <li className="flex w-full mt-auto">
+          <li className="flex w-full">
             <Link
               onClick={() => setActiveLink("Settings")}
-              className={`text-center justify-center md:justify-start text-lg flex items-center gap-4 flex-1 p-4 dark:hover:bg-slate-900 transition duration-0 hover:duration-150 hover:bg-slate-200 rounded-xl ${
+              className={`text-center justify-center md:justify-start text-lg flex items-center gap-4 flex-1 p-4 dark:hover:bg-slate-900 transition duration-0 hover:duration-150 hover:bg-slate-200 rounded-xl mt-2 ${
                 activeLink === "Settings" ? "dark:bg-slate-900 bg-slate-200" : ""
               }`}
               to="/dashboard/settings"
@@ -67,10 +67,10 @@ export function Dashboard() {
               <span className="hidden md:block">Settings</span>
             </Link>
           </li>
-          <li className="flex w-full">
+          <li className="flex w-full mt-auto">
             <Link
               onClick={() => setActiveLink("Settings")}
-              className={`text-center justify-center md:justify-start text-lg flex items-center gap-4 flex-1 p-4 transition duration-0 hover:duration-150 hover:bg-emerald-500 bg-emerald-600 text-white rounded-xl mt-2`}
+              className={`text-center justify-center md:justify-start text-lg flex items-center gap-4 flex-1 p-4 transition duration-0 hover:duration-150 hover:bg-emerald-700 bg-emerald-600 text-white rounded-xl mt-2`}
               to="/quiz"
             >
               <BsPlusSquare className="ml-0 md:ml-2" />
