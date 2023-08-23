@@ -13,17 +13,29 @@ export function ProfileEditor({ handleCancel }: ProfileEditorProps) {
   const { auth, settings } = useAppSelector((state) => state);
   const user = auth.user!;
 
+  const userImage = getUserImage();
+
+  function getUserImage() {
+    const image = profileImages.find((image) => {
+      const imageFileParts = image.split("/");
+      const imageSuffix = imageFileParts[imageFileParts.length - 1];
+      return imageSuffix == `img-${settings.profileImgId}.png`;
+    });
+
+    return image ?? profileImages[0]; // Nullish coalescing
+  }
+
   return (
     <section className="card grid grid-cols-1 md:grid-cols-2 p-10 gap-6">
       <div className="">
-        <img className="w-48 h-48 rounded-full bg-red-400 mx-auto" src={pImg1} alt="user photo" />
+        <img className="w-48 h-48 rounded-full bg-red-400 mx-auto" src={userImage} alt="user's photo" />
         <ScrollArea className="h-[200px] border border-slate-700 rounded-lg p-6 mt-6 justify-items-center gap-4">
           <div className="grid grid-cols-4">
-            {profileImages.map((src) => (
+            {profileImages.map((src, i) => (
               <img
                 className="cursor-pointer hover:bg-slate-500 rounded-2xl p-2 duration-0 hover:duration-150"
                 onClick={() => {}}
-                key={"index"}
+                key={i}
                 width={80}
                 height={80}
                 src={src}
@@ -45,7 +57,7 @@ export function ProfileEditor({ handleCancel }: ProfileEditorProps) {
             value={user.firstName}
             required
             className={`block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 dark:border-gray-600 dark:bg-gray-700 dark:placeholder-gray-400 sm:text-sm`}
-            // onChange={(e) => handleInputChange("firstName", e.target.value)}
+            onChange={(e) => {}} // handleInputChange("firstName", e.target.value)
           />
           <label htmlFor="lastName" className="mb-3 mt-4 block text-sm font-medium">
             Last Name
@@ -57,7 +69,7 @@ export function ProfileEditor({ handleCancel }: ProfileEditorProps) {
             value={user.lastName}
             required
             className={`block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 dark:border-gray-600 dark:bg-gray-700 dark:placeholder-gray-400 sm:text-sm`}
-            // onChange={(e) => handleInputChange("lastName", e.target.value)}
+            onChange={(e) => {}} // handleInputChange("lastName", e.target.value)
           />
         </form>
         <div className="flex mt-6 gap-3">
