@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { RootState } from "domain/store";
-import { ApiResponse, LoginCredentials, NewUser, Question, QuizAttempt, Settings, User } from "domain/Types";
+import { ApiResponse, LoginCredentials, NewUser, Profile, Question, QuizAttempt, Settings, User } from "domain/Types";
 
 // Define the single API slice object
 export const apiSlice = createApi({
@@ -48,6 +48,13 @@ export const apiSlice = createApi({
     getUserSettings: builder.query<ApiResponse<Settings>, string>({
       query: (userId) => `/getUserSettings/${userId}}`,
     }),
+    updateUser: builder.mutation<ApiResponse<string>, { newProfile: Profile; userId: string }>({
+      query: (data) => ({
+        url: `/updateUser/${data.userId}`,
+        method: "POST",
+        body: data.newProfile,
+      }),
+    }),
   }),
 });
 
@@ -59,4 +66,5 @@ export const {
   useAddQuizAttemptMutation,
   useGetUserSettingsQuery,
   useLazyGetUserSettingsQuery,
+  useUpdateUserMutation,
 } = apiSlice;

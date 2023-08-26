@@ -26,17 +26,19 @@ export type User = {
   firstName: string;
   lastName: string;
   email: string;
+  profileImgId: string;
+  profileImgColor: string;
 };
 
 export type Settings = {
   darkMode: boolean;
   exposeName: boolean;
   showQuizTimer: boolean;
-  profileImgId: string;
-  profileImgColour: String;
 };
 
-export type NewUser = Omit<User, "id"> & LoginCredentials;
+export type NewUser = Omit<User, "id"> & { password: string };
+
+export type Profile = Omit<User, "id" | "email">;
 
 export type ModalDetails = {
   chosenQuestionIndex: number;

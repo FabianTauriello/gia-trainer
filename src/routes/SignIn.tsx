@@ -47,6 +47,8 @@ export function SignIn() {
         password: inputFields.password,
         firstName: inputFields.firstName,
         lastName: inputFields.lastName,
+        profileImgId: "1",
+        profileImgColor: "#FFFFFF",
       }).unwrap();
       toggleView();
       setSignUpSuccessMessage(true);

@@ -18,14 +18,14 @@ export function DashboardSettings({}: DashboardSettingsProps) {
 
   return (
     <>
-      <div>{JSON.stringify(user)}</div>
-      <div>{JSON.stringify(settings)}</div>
-      <div>{JSON.stringify(editMode)}</div>
+      {/* <div>{JSON.stringify(user, null, 2)}</div> */}
+      {/* <div>{JSON.stringify(settings, null, 2)}</div> */}
+      {/* <div>{JSON.stringify(editMode, null, 2)}</div> */}
       {editMode ? (
         <ProfileEditor handleCancel={() => setEditMode(false)} />
       ) : (
         <section className="flex flex-col card items-center py-10">
-          <img className="w-48 h-48 rounded-full bg-red-400" src={profileImages[2]} alt="user photo" />
+          <img className="w-48 h-48 rounded-full bg-red-400" src={profileImages[2].source} alt="user photo" />
           <p className="mt-6 font-bold text-xl dark:text-slate-300 text-slate-600">{`${user.firstName} ${user.lastName}`}</p>
           <span className="mt-2 text-lg dark:text-slate-300 text-slate-600">{user.email}</span>
           <CustomButton onClick={() => setEditMode(true)} customCss="w-40 text-base mt-4">

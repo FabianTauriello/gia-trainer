@@ -1,5 +1,5 @@
 interface CustomButtonProps extends React.ComponentPropsWithoutRef<"button"> {
-  customCss?: string;
+  customCss?: string; // TODO don't need this? ...just use className prop?
   loading?: boolean;
 }
 
