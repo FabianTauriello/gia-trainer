@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { User } from "domain/Types";
+import { Profile, User } from "domain/Types";
 
 type AuthState = {
   user: User | null;
@@ -19,12 +19,18 @@ const slice = createSlice({
       state.user = action.payload.user;
       state.token = action.payload.token;
     },
+    updateUserProfile: (state, action: PayloadAction<Profile>) => {
+      state.user!.firstName = action.payload.firstName;
+      state.user!.lastName = action.payload.lastName;
+      state.user!.profileImgId = action.payload.profileImgId;
+      state.user!.profileImgColor = action.payload.profileImgColor;
+    },
     clearUser: (state) => {
       state.user = null;
     },
   },
 });
 
-export const { setCredentials, clearUser } = slice.actions;
+export const { setCredentials, updateUserProfile, clearUser } = slice.actions;
 
 export default slice.reducer;

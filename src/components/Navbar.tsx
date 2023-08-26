@@ -8,6 +8,7 @@ import React, { useState, Ref, forwardRef } from "react";
 import { clearUser } from "domain/slices/authSlice";
 import userIcon from "../assets/svgs/user-temp-icon.svg";
 import { Menu } from "@headlessui/react";
+import { Utils } from "utils/Utils";
 
 interface NavbarProps {
   fixed?: boolean;
@@ -19,15 +20,18 @@ export function Navbar({ fixed = false }: NavbarProps) {
 
   const [showUserDropdown, setShowUserDropdown] = useState(false);
 
+  const userImage = Utils.getUserImage(auth.user!.profileImgId);
+
   function renderNavbarRight() {
     if (auth.user) {
       return (
         <div className="flex flex-col justify-center" onMouseLeave={() => setShowUserDropdown(false)}>
           <img
+            style={{ backgroundColor: auth.user!.profileImgColor }}
             onMouseEnter={() => setShowUserDropdown(true)}
             // TODO don't need white bg on profile image once i have actual icons for profile pic
-            className="w-8 h-8 rounded-full cursor-pointer mr-2 bg-white"
-            src={userIcon}
+            className="w-8 h-8 rounded-full cursor-pointer mr-2"
+            src={userImage.source}
             alt="user photo"
           />
           {showUserDropdown && (

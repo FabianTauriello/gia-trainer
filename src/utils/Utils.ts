@@ -1,6 +1,7 @@
 import { SerializedError } from "@reduxjs/toolkit";
 import { FetchBaseQueryError } from "@reduxjs/toolkit/dist/query";
 import { ApiResponse, QuizAttempt } from "domain/Types";
+import { profileImages } from "./ProfileImages";
 
 export namespace Utils {
   export function getQuizAttemptById(attempts: QuizAttempt[], id: string) {
@@ -22,5 +23,10 @@ export namespace Utils {
     }
 
     return "Request failed";
+  }
+
+  export function getUserImage(id: string) {
+    const image = profileImages.find((image) => image.id === id);
+    return image ?? profileImages[0]; // Nullish coalescing
   }
 }

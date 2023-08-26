@@ -7,6 +7,8 @@ import { HexColorPicker } from "react-colorful";
 import { Profile } from "domain/Types";
 import { useUpdateUserMutation } from "domain/slices/apislice";
 import { CustomButton } from "./CustomButton";
+import { updateUserProfile } from "domain/slices/authSlice";
+import { Utils } from "utils/Utils";
 
 interface ProfileEditorProps {
   handleCancel: () => void;
@@ -17,7 +19,7 @@ export function ProfileEditor({ handleCancel, showToast }: ProfileEditorProps) {
   const dispatch = useDispatch();
   const { auth, settings } = useAppSelector((state) => state);
 
-  const [updateUser, { isLoading, isError, error, reset }] = useUpdateUserMutation();
+  const [mutateUser, { isLoading, isError, error, reset }] = useUpdateUserMutation();
 
   const [profile, setProfile] = useState<Profile>({
     firstName: auth.user!.firstName,
@@ -26,21 +28,19 @@ export function ProfileEditor({ handleCancel, showToast }: ProfileEditorProps) {
     profileImgId: auth.user!.profileImgId,
   });
 
-  const userImage = getUserImage();
-
-  function getUserImage() {
-    const image = profileImages.find((image) => image.id === profile.profileImgId);
-    return image ?? profileImages[0]; // Nullish coalescing
-  }
+  const userImage = Utils.getUserImage(profile.profileImgId);
 
   function handleInputChange(e: ChangeEvent<HTMLInputElement>) {
     setProfile({ ...profile, [e.target.name]: e.target.value });
   }
 
-  async function updateUserProfile() {
+  async function updateUser() {
     try {
-      const res = await updateUser({ newProfile: profile, userId: auth.user!.id }).unwrap();
+      const res = await mutateUser({ newProfile: profile, userId: auth.user!.id }).unwrap();
       showToast("Profile changed successfully!", null, "default");
+      if (res.success) {
+        dispatch(updateUserProfile(profile));
+      }
     } catch (error) {
       console.log("Failed to update user profile");
       showToast("Profile could not be saved!", "There was a problem with your request. Try again later.", "destructive");
@@ -117,9 +117,10 @@ export function ProfileEditor({ handleCancel, showToast }: ProfileEditorProps) {
               className="bg-red-600 hover:bg-red-500 px-5 py-2.5 text-sm font-medium text-white rounded-lg select-none"
               onClick={handleCancel}
             >
+              {/* TODO is 'cancel' best options here? maybe close button instead? */}
               Cancel
             </button>
-            <CustomButton className="w-1/2" loading={isLoading} onClick={() => updateUserProfile()}>
+            <CustomButton className="w-1/2" loading={isLoading} onClick={() => updateUser()}>
               Save
             </CustomButton>
           </div>

@@ -8,6 +8,7 @@ import { ProfileEditor } from "./ProfileEditor";
 import { profileImages } from "utils/ProfileImages";
 import { Toaster } from "@/components/ui/toaster";
 import { useToast } from "@/components/ui/use-toast";
+import { Utils } from "utils/Utils";
 
 interface DashboardSettingsProps {}
 
@@ -18,6 +19,8 @@ export function DashboardSettings({}: DashboardSettingsProps) {
   const { toast } = useToast();
 
   const [editMode, setEditMode] = useState(false);
+
+  const userImage = Utils.getUserImage(auth.user!.profileImgId);
 
   return (
     <>
@@ -31,7 +34,12 @@ export function DashboardSettings({}: DashboardSettingsProps) {
         />
       ) : (
         <section className="flex flex-col card items-center py-10">
-          <img className="w-48 h-48 rounded-full bg-red-400" src={profileImages[2].source} alt="user photo" />
+          <img
+            style={{ backgroundColor: auth.user!.profileImgColor }}
+            className="w-48 h-48 rounded-full"
+            src={userImage.source}
+            alt="user photo"
+          />
           <p className="mt-6 font-bold text-xl dark:text-slate-300 text-slate-600">{`${auth.user!.firstName} ${
             auth.user!.lastName
           }`}</p>
