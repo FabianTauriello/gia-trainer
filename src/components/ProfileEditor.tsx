@@ -10,9 +10,10 @@ import { CustomButton } from "./CustomButton";
 
 interface ProfileEditorProps {
   handleCancel: () => void;
+  showToast: (title: string, description: string | null, variant: "default" | "destructive") => void;
 }
 
-export function ProfileEditor({ handleCancel }: ProfileEditorProps) {
+export function ProfileEditor({ handleCancel, showToast }: ProfileEditorProps) {
   const dispatch = useDispatch();
   const { auth, settings } = useAppSelector((state) => state);
 
@@ -39,8 +40,10 @@ export function ProfileEditor({ handleCancel }: ProfileEditorProps) {
   async function updateUserProfile() {
     try {
       const res = await updateUser({ newProfile: profile, userId: auth.user!.id }).unwrap();
+      showToast("Profile changed successfully!", null, "default");
     } catch (error) {
       console.log("Failed to update user profile");
+      showToast("Profile could not be saved!", "There was a problem with your request. Try again later.", "destructive");
     }
   }
 
