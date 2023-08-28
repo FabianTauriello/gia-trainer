@@ -41,6 +41,13 @@ export function SignIn() {
   }
 
   async function handleSignUp() {
+    {
+      /* TODO remove this check when app condition and password requirments are stronger */
+    }
+    if (inputFields.email !== "fabian-prod@mail.com" || inputFields.password !== "password1") {
+      return;
+    }
+
     try {
       await signUp({
         email: inputFields.email,
@@ -123,9 +130,7 @@ export function SignIn() {
           <h1 className="text-xl font-bold leading-tight tracking-tight md:text-2xl">
             {createAccountView ? "Create an account" : "Sign in to your account"}
           </h1>
-          {/* TODO remove empty handler when app condition and password requirments are stronger. should just be handleSubmit */}
-          {/* <form className="" action="#" onSubmit={handleSubmit}> */}
-          <form className="" action="#" onSubmit={createAccountView ? () => {} : handleSubmit}>
+          <form className="" action="#" onSubmit={handleSubmit}>
             {createAccountView && (
               <div className="flex flex-col md:gap-2 md:flex-row">
                 <div className="flex-1">
