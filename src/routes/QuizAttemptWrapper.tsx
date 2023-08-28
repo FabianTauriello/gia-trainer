@@ -15,30 +15,16 @@ export function QuizAttemptWrapper() {
   const dispatch = useAppDispatch();
   const { quiz, auth } = useAppSelector((state) => state);
 
-  // useEffect(() => {
-  //   const doIt = async () => {
-  //     try {
-  //       const res = await fetch("http://localhost:3001/quizQuestions");
-  //       if (res.ok) {
-  //         const js = res.json();
-  //         console.log("js: ", js);
-  //       }
-  //     } catch (error) {
-  //       console.log("failed manual fetch: ", error);
-  //     }
-  //   };
-  //   doIt();
-  // }, []);
-
   const { data, isError, isLoading, isFetching, refetch, isSuccess } = useGetQuizQuestionsQuery();
 
   useEffect(() => {
     if (isSuccess) {
       dispatch(
         setLatestQuizAttempt({
-          id: "",
+          id: -1,
           totalScore: 0,
           questions: data.data!,
+          timestamp: "",
         })
       );
     }

@@ -35,7 +35,7 @@ export const quizSlice = createSlice({
       state.latestAttempt!.questions[action.payload.questionIndex].selectedChoiceIndex = action.payload.selectedChoiceIndex;
       state.latestAttempt!.totalScore += action.payload.isCorrect ? 1 : 0;
     },
-    setLatestAttemptId: (state, action: PayloadAction<string>) => {
+    setLatestAttemptId: (state, action: PayloadAction<number>) => {
       state.latestAttempt!.id = action.payload;
     },
     // toggleIsPostedForLatestAttempt: (state) => {

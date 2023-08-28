@@ -22,7 +22,7 @@ export type Question = {
 export type CategoryTitle = "Reasoning" | "Perceptual Speed" | "Number Speed and Accuracy" | "Word Meaning" | "Spatial Visualisation";
 
 export type User = {
-  id: string;
+  id: number;
   firstName: string;
   lastName: string;
   email: string;
@@ -52,9 +52,10 @@ type Letter = {
 };
 
 export type QuizAttempt = {
-  id: string;
+  id: number; // Initially this will be -1
   totalScore: number;
   questions: Question[];
+  timestamp: string;
 };
 
 export type QuizContextType = {

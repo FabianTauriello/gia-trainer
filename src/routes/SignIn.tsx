@@ -1,4 +1,4 @@
-import { useGetUserSettingsQuery, useLazyGetUserSettingsQuery, useSignInMutation, useSignUpMutation } from "domain/slices/apislice";
+import { useLazyGetUserSettingsQuery, useSignInMutation, useSignUpMutation } from "domain/slices/apislice";
 import { setCredentials } from "domain/slices/authSlice";
 import { useAppDispatch, useAppSelector } from "hooks/useAppSelector";
 import { useState } from "react";
@@ -124,6 +124,7 @@ export function SignIn() {
             {createAccountView ? "Create an account" : "Sign in to your account"}
           </h1>
           {/* TODO remove empty handler when app condition and password requirments are stronger. should just be handleSubmit */}
+          {/* <form className="" action="#" onSubmit={handleSubmit}> */}
           <form className="" action="#" onSubmit={createAccountView ? () => {} : handleSubmit}>
             {createAccountView && (
               <div className="flex flex-col md:gap-2 md:flex-row">

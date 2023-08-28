@@ -150,7 +150,8 @@ const questions = [
 ];
 
 export const testAttempt: QuizAttempt = {
-  id: "visitor",
+  id: -1,
   questions: questions,
   totalScore: 0,
+  timestamp: "",
 };

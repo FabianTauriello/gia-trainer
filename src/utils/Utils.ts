@@ -4,7 +4,7 @@ import { ApiResponse, QuizAttempt } from "domain/Types";
 import { profileImages } from "./ProfileImages";
 
 export namespace Utils {
-  export function getQuizAttemptById(attempts: QuizAttempt[], id: string) {
+  export function getQuizAttemptById(attempts: QuizAttempt[], id: number) {
     const i = attempts.findIndex((attempts) => attempts.id === id);
     return attempts[i];
   }

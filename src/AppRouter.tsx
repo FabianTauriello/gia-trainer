@@ -19,7 +19,7 @@ export function AppRouter() {
 
   // TODO don't separate this function?
   function determineReviewRoute() {
-    if (auth.user && quiz.latestAttempt && quiz.latestAttempt.id === "") {
+    if (auth.user && quiz.latestAttempt && quiz.latestAttempt.id === -1) {
       return <QuizReviewAndPost />;
     } else {
       return <QuizReview />;

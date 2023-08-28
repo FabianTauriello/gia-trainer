@@ -35,20 +35,23 @@ export const apiSlice = createApi({
         body: newUser,
       }),
     }),
-    addQuizAttempt: builder.mutation<ApiResponse<string>, { userId: string; attempt: QuizAttempt }>({
+    addQuizAttempt: builder.mutation<ApiResponse<number>, { userId: number; attempt: QuizAttempt }>({
       query: (newQuizAttempt) => ({
         url: "/addQuizAttempt",
         method: "POST",
         body: newQuizAttempt,
       }),
     }),
+    getQuizAttempts: builder.query<ApiResponse<QuizAttempt[]>, number>({
+      query: (userId) => `/getQuizAttempts/${userId}`,
+    }),
     getQuizQuestions: builder.query<ApiResponse<Question[]>, void>({
       query: () => "/quizQuestions",
     }),
-    getUserSettings: builder.query<ApiResponse<Settings>, string>({
+    getUserSettings: builder.query<ApiResponse<Settings>, number>({
       query: (userId) => `/getUserSettings/${userId}}`,
     }),
-    updateUser: builder.mutation<ApiResponse<string>, { newProfile: Profile; userId: string }>({
+    updateUser: builder.mutation<ApiResponse<string>, { newProfile: Profile; userId: number }>({
       query: (data) => ({
         url: `/updateUser/${data.userId}`,
         method: "POST",
@@ -67,4 +70,5 @@ export const {
   useGetUserSettingsQuery,
   useLazyGetUserSettingsQuery,
   useUpdateUserMutation,
+  useGetQuizAttemptsQuery,
 } = apiSlice;

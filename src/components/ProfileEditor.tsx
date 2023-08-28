@@ -19,7 +19,7 @@ export function ProfileEditor({ handleCancel, showToast }: ProfileEditorProps) {
   const dispatch = useDispatch();
   const { auth, settings } = useAppSelector((state) => state);
 
-  const [mutateUser, { isLoading, isError, error, reset }] = useUpdateUserMutation();
+  const [postUpdatedUserProfile, { isLoading, isError, error, reset }] = useUpdateUserMutation();
 
   const [profile, setProfile] = useState<Profile>({
     firstName: auth.user!.firstName,
@@ -36,7 +36,7 @@ export function ProfileEditor({ handleCancel, showToast }: ProfileEditorProps) {
 
   async function updateUser() {
     try {
-      const res = await mutateUser({ newProfile: profile, userId: auth.user!.id }).unwrap();
+      const res = await postUpdatedUserProfile({ newProfile: profile, userId: auth.user!.id }).unwrap();
       showToast("Profile changed successfully!", null, "default");
       if (res.success) {
         dispatch(updateUserProfile(profile));
@@ -52,13 +52,13 @@ export function ProfileEditor({ handleCancel, showToast }: ProfileEditorProps) {
       <div className="flex flex-col">
         <label className="mb-3 block text-sm font-medium">Profile Icon</label>
         <ScrollArea className="h-[240px] border dark:border-slate-700 border-slate-300 rounded-md px-4 justify-items-center gap-4">
-          <div className="grid grid-cols-4 justify-center">
+          <div className="grid grid-cols-4 gap-4 justify-center">
             {profileImages.map((image, i) => (
               <img
                 loading="lazy"
                 // min-w-[80px] min-h-[80px]
                 key={i}
-                className="cursor-pointer hover:scale-125 transition-transform rounded-2xl p-2 mx-auto"
+                className={`cursor-pointer hover:scale-125 transition-transform rounded-md p-2 mx-auto`}
                 onClick={() => setProfile({ ...profile, profileImgId: image.id })}
                 width={80}
                 height={80}
