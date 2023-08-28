@@ -8,6 +8,7 @@ import { HiOutlineEye, HiOutlineEyeOff } from "react-icons/hi";
 import { Utils } from "utils/Utils";
 import logo from "../assets/svgs/logo.svg";
 import { setAllSettings } from "domain/slices/settingsSlice";
+import { DEFAULT_PROFILE_IMG_COLOR, DEFAULT_PROFILE_IMG_ID } from "utils/Constants";
 
 export function SignIn() {
   const auth = useAppSelector((state) => state.auth);
@@ -54,8 +55,8 @@ export function SignIn() {
         password: inputFields.password,
         firstName: inputFields.firstName,
         lastName: inputFields.lastName,
-        profileImgId: "1",
-        profileImgColor: "#FFFFFF",
+        profileImgId: DEFAULT_PROFILE_IMG_ID,
+        profileImgColor: DEFAULT_PROFILE_IMG_COLOR,
       }).unwrap();
       toggleView();
       setSignUpSuccessMessage(true);

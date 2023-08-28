@@ -21,10 +21,13 @@
 } */
 
 .reduceColorPickerBorderRadius .react-colorful,
-/* .reduceColorPickerBorderRadius .react-colorful__saturation, */
-/* .reduceColorPickerBorderRadius .react-colorful__hue, */
+.reduceColorPickerBorderRadius .react-colorful__saturation,
 .reduceColorPickerBorderRadius .react-colorful__hue-pointer {
   border-radius: 0.375rem;
+}
+
+.reduceColorPickerBorderRadius .react-colorful__hue {
+  border-radius: 0 0 0.375rem 0.375rem;
 }
 
 /* .cancel-button {

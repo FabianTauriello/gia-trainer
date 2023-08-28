@@ -1,1 +1,2 @@
-export {};
+export const DEFAULT_PROFILE_IMG_ID = "1";
+export const DEFAULT_PROFILE_IMG_COLOR = "#C91493";

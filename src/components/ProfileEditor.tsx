@@ -9,13 +9,14 @@ import { useUpdateUserMutation } from "domain/slices/apislice";
 import { CustomButton } from "./CustomButton";
 import { updateUserProfile } from "domain/slices/authSlice";
 import { Utils } from "utils/Utils";
+import { AiOutlineCloseCircle, AiFillCloseCircle } from "react-icons/ai";
+import { DialogDescription, DialogHeader, DialogTitle, DialogContent } from "@/components/ui/dialog";
 
 interface ProfileEditorProps {
-  handleCancel: () => void;
   showToast: (title: string, description: string | null, variant: "default" | "destructive") => void;
 }
 
-export function ProfileEditor({ handleCancel, showToast }: ProfileEditorProps) {
+export function ProfileEditor({ showToast }: ProfileEditorProps) {
   const dispatch = useDispatch();
   const { auth, settings } = useAppSelector((state) => state);
 
@@ -48,11 +49,56 @@ export function ProfileEditor({ handleCancel, showToast }: ProfileEditorProps) {
   }
 
   return (
-    <section className="card grid grid-cols-1 lg:grid-cols-2 p-10 gap-8">
+    <DialogContent
+      onOpenAutoFocus={(e) => e.preventDefault()}
+      className="p-6 md:p-10 bg-slate-100 dark:bg-slate-800 border-slate-300 dark:border-slate-700 overflow-y-scroll lg:max-w-screen-lg max-h-screen mb-10 grid grid-cols-1 md:grid-cols-2 gap-0 md:gap-8"
+    >
+      <div className="flex flex-col justify-between">
+        <div className="flex-1 flex justify-center items-center relative">
+          <img
+            style={{ backgroundColor: profile.profileImgColor }}
+            className={`w-48 h-48 rounded-full mx-auto border-black border-4`}
+            src={userImage.source}
+            alt="user's photo"
+          />
+        </div>
+        <div>
+          <form>
+            <label htmlFor="firstName" className="mb-3 mt-4 block text-sm font-medium text-black dark:text-white">
+              First Name
+            </label>
+            <input
+              type="text"
+              name="firstName"
+              id="firstName"
+              value={profile.firstName}
+              required
+              className={`dark:text-white block w-full rounded-md border border-gray-300 bg-gray-50 p-2.5 dark:border-gray-600 dark:bg-gray-700 dark:placeholder-gray-400 sm:text-sm`}
+              onChange={(e) => handleInputChange(e)}
+            />
+            <label htmlFor="lastName" className="mb-3 mt-4 block text-sm font-medium text-black dark:text-white">
+              Last Name
+            </label>
+            <input
+              type="text"
+              name="lastName"
+              id="lastName"
+              value={profile.lastName}
+              required
+              className={`dark:text-white block w-full rounded-md border border-gray-300 bg-gray-50 p-2.5 dark:border-gray-600 dark:bg-gray-700 dark:placeholder-gray-400 sm:text-sm`}
+              onChange={(e) => handleInputChange(e)}
+            />
+          </form>
+          {/* TODO move this inside form? */}
+          <CustomButton customCss="mt-6 hidden md:block" loading={isLoading} onClick={() => updateUser()}>
+            Save
+          </CustomButton>
+        </div>
+      </div>
       <div className="flex flex-col">
-        <label className="mb-3 block text-sm font-medium">Profile Icon</label>
-        <ScrollArea className="h-[240px] border dark:border-slate-700 border-slate-300 rounded-md px-4 justify-items-center gap-4">
-          <div className="grid grid-cols-4 gap-4 justify-center">
+        {/* <label className="mb-3 block text-sm font-medium text-black dark:text-white mt-4 md:mt-0">Icon</label> */}
+        <ScrollArea className="h-[240px] border dark:border-slate-700 border-slate-300 rounded-md px-4 justify-items-center gap-4 mt-4 md:mt-0">
+          <div className="grid grid-cols-3 gap-4 justify-center">
             {profileImages.map((image, i) => (
               <img
                 loading="lazy"
@@ -68,64 +114,16 @@ export function ProfileEditor({ handleCancel, showToast }: ProfileEditorProps) {
             ))}
           </div>
         </ScrollArea>
-        <label className="mb-3 mt-4 block text-sm font-medium">Profile Icon Background Color</label>
+        {/* <label className="mb-3 mt-4 block text-sm font-medium text-black dark:text-white">Background Color</label> */}
         <HexColorPicker
-          className="reduceColorPickerBorderRadius w-full"
+          className="reduceColorPickerBorderRadius w-full mt-4"
           color={profile.profileImgColor}
           onChange={(color) => setProfile({ ...profile, profileImgColor: color })}
         />
       </div>
-      <div className="flex flex-col justify-between">
-        {/* <div>{JSON.stringify(profile)}</div> */}
-        <div className="flex-1 flex justify-center items-center">
-          <img
-            style={{ backgroundColor: profile.profileImgColor }}
-            className={`w-48 h-48 rounded-full mx-auto border-black border-4`}
-            src={userImage.source}
-            alt="user's photo"
-          />
-        </div>
-        <div>
-          <form>
-            <label htmlFor="firstName" className="mb-3 mt-4 block text-sm font-medium">
-              First Name
-            </label>
-            <input
-              type="text"
-              name="firstName"
-              id="firstName"
-              value={profile.firstName}
-              required
-              className={`block w-full rounded-md border border-gray-300 bg-gray-50 p-2.5 dark:border-gray-600 dark:bg-gray-700 dark:placeholder-gray-400 sm:text-sm`}
-              onChange={(e) => handleInputChange(e)}
-            />
-            <label htmlFor="lastName" className="mb-3 mt-4 block text-sm font-medium">
-              Last Name
-            </label>
-            <input
-              type="text"
-              name="lastName"
-              id="lastName"
-              value={profile.lastName}
-              required
-              className={`block w-full rounded-md border border-gray-300 bg-gray-50 p-2.5 dark:border-gray-600 dark:bg-gray-700 dark:placeholder-gray-400 sm:text-sm`}
-              onChange={(e) => handleInputChange(e)}
-            />
-          </form>
-          <div className="flex flex-col mt-6 gap-3">
-            <button
-              className="bg-red-600 hover:bg-red-500 px-5 py-2.5 text-sm font-medium text-white rounded-lg select-none"
-              onClick={handleCancel}
-            >
-              {/* TODO is 'cancel' best options here? maybe close button instead? */}
-              Cancel
-            </button>
-            <CustomButton className="w-1/2" loading={isLoading} onClick={() => updateUser()}>
-              Save
-            </CustomButton>
-          </div>
-        </div>
-      </div>
-    </section>
+      <CustomButton customCss="mt-6 block md:hidden" loading={isLoading} onClick={() => updateUser()}>
+        Save
+      </CustomButton>
+    </DialogContent>
   );
 }
