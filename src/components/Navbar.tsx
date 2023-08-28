@@ -27,8 +27,7 @@ export function Navbar({ fixed = false }: NavbarProps) {
           <img
             style={{ backgroundColor: auth.user!.profileImgColor }}
             onMouseEnter={() => setShowUserDropdown(true)}
-            // TODO don't need white bg on profile image once i have actual icons for profile pic
-            className="w-8 h-8 rounded-full cursor-pointer mr-2"
+            className="w-8 h-8 rounded-full border-black border-[0.5px] cursor-pointer mr-2"
             src={Utils.getUserImage(auth.user?.profileImgId).source}
             alt="user photo"
           />
