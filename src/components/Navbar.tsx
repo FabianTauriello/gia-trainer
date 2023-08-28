@@ -39,7 +39,7 @@ export function Navbar({ fixed = false }: NavbarProps) {
               <div className="z-50 w-64 absolute top-3 right-0 list-none divide-y divide-slate-300 dark:divide-slate-700 rounded-xl shadow bg-red bg-slate-200 dark:bg-slate-800">
                 <div className="px-4 py-3">
                   <span className="block text-sm text-slate-900 dark:text-white">{auth.user.firstName}</span>
-                  <span className="block text-sm  text-slate-500 truncate dark:text-slate-400">{auth.user.id}</span>
+                  <span className="block text-sm text-slate-500 truncate dark:text-slate-400">{auth.user.email}</span>
                 </div>
                 <ul className="py-2">
                   <DropDownItem text="Dashboard" link="/dashboard" />
