@@ -1,6 +1,8 @@
 import img_1 from "../assets/profile-pics/img-1.png";
 import img_2 from "../assets/profile-pics/img-2.png";
 import img_3 from "../assets/profile-pics/img-3.png";
+import img_4 from "../assets/profile-pics/img-4.png";
+import img_5 from "../assets/profile-pics/img-5.png";
 import img_6 from "../assets/profile-pics/img-6.png";
 import img_7 from "../assets/profile-pics/img-7.png";
 import img_8 from "../assets/profile-pics/img-8.png";
@@ -9,16 +11,13 @@ import img_10 from "../assets/profile-pics/img-10.png";
 import img_11 from "../assets/profile-pics/img-11.png";
 import img_12 from "../assets/profile-pics/img-12.png";
 import img_13 from "../assets/profile-pics/img-13.png";
+import img_14 from "../assets/profile-pics/img-14.png";
 import img_15 from "../assets/profile-pics/img-15.png";
 import img_16 from "../assets/profile-pics/img-16.png";
 import img_17 from "../assets/profile-pics/img-17.png";
 import img_18 from "../assets/profile-pics/img-18.png";
 import img_19 from "../assets/profile-pics/img-19.png";
 import img_20 from "../assets/profile-pics/img-20.png";
-import img_22 from "../assets/profile-pics/img-22.png";
-import img_23 from "../assets/profile-pics/img-23.png";
-import img_24 from "../assets/profile-pics/img-24.png";
-import img_25 from "../assets/profile-pics/img-25.png";
 
 export const profileImages = [
   {
@@ -32,6 +31,14 @@ export const profileImages = [
   {
     id: "3",
     source: img_3,
+  },
+  {
+    id: "4",
+    source: img_4,
+  },
+  {
+    id: "5",
+    source: img_5,
   },
   {
     id: "6",
@@ -66,6 +73,10 @@ export const profileImages = [
     source: img_13,
   },
   {
+    id: "14",
+    source: img_14,
+  },
+  {
     id: "15",
     source: img_15,
   },
@@ -88,21 +99,5 @@ export const profileImages = [
   {
     id: "20",
     source: img_20,
-  },
-  {
-    id: "22",
-    source: img_22,
-  },
-  {
-    id: "23",
-    source: img_23,
-  },
-  {
-    id: "24",
-    source: img_24,
-  },
-  {
-    id: "25",
-    source: img_25,
   },
 ];
