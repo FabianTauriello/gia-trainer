@@ -51,11 +51,18 @@ export const apiSlice = createApi({
     getUserSettings: builder.query<ApiResponse<Settings>, number>({
       query: (userId) => `/getUserSettings/${userId}}`,
     }),
-    updateUser: builder.mutation<ApiResponse<string>, { newProfile: Profile; userId: number }>({
-      query: (data) => ({
-        url: `/updateUser/${data.userId}`,
+    updateUserSettings: builder.mutation<ApiResponse<string>, { newSettings: Settings; userId: number }>({
+      query: (requestData) => ({
+        url: `/updateUserSettings/${requestData.userId}`,
         method: "POST",
-        body: data.newProfile,
+        body: requestData.newSettings,
+      }),
+    }),
+    updateUser: builder.mutation<ApiResponse<string>, { newProfile: Profile; userId: number }>({
+      query: (requestData) => ({
+        url: `/updateUser/${requestData.userId}`,
+        method: "POST",
+        body: requestData.newProfile,
       }),
     }),
   }),
@@ -71,4 +78,5 @@ export const {
   useLazyGetUserSettingsQuery,
   useUpdateUserMutation,
   useGetQuizAttemptsQuery,
+  useUpdateUserSettingsMutation,
 } = apiSlice;

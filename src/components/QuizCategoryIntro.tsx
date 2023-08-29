@@ -70,7 +70,7 @@ export function QuizCategoryIntro() {
         <CustomTitle title={`Category ${categoriesStarted.length + 1}: ${currentQuestion.category}`} />
         <div className="">
           <div className="pt-6 pb-8">{getCategoryDescription()}</div>
-          <CustomButton onClick={handleStartCategory} customCss="text-lg">
+          <CustomButton onClick={handleStartCategory} customCss="text-lg w-full">
             {categoriesStarted.length === 0 ? "Start Test" : "Start Category"}
           </CustomButton>
         </div>

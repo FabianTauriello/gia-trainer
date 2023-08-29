@@ -82,13 +82,13 @@ export function QuestionModal({ quizAttempt, initialQuestionIndex, show, onClose
                 </Swiper>
                 <div className="mt-4 flex justify-between gap-2">
                   <CustomButton
-                    customCss={`${prevQuestion ? "visible" : "invisible"} flex-1 bg-primary-500 hover:bg-primary-400`}
+                    customCss={`${prevQuestion ? "visible" : "invisible"} w-full flex-1 bg-primary-500 hover:bg-primary-400`}
                     onClick={() => swiper?.slidePrev()}
                   >
                     Previous
                   </CustomButton>
                   <CustomButton
-                    customCss={`${nextQuestion ? "visible" : "invisible"} flex-1 bg-primary-500 hover:bg-primary-400`}
+                    customCss={`${nextQuestion ? "visible" : "invisible"} w-full flex-1 bg-primary-500 hover:bg-primary-400`}
                     onClick={() => swiper?.slideNext()}
                   >
                     Next

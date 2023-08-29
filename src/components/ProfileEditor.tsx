@@ -16,6 +16,7 @@ interface ProfileEditorProps {
   showToast: (title: string, description: string | null, variant: "default" | "destructive") => void;
 }
 
+// TODO add proper dialog components?
 export function ProfileEditor({ showToast }: ProfileEditorProps) {
   const dispatch = useDispatch();
   const { auth, settings } = useAppSelector((state) => state);
@@ -38,8 +39,8 @@ export function ProfileEditor({ showToast }: ProfileEditorProps) {
   async function updateUser() {
     try {
       const res = await postUpdatedUserProfile({ newProfile: profile, userId: auth.user!.id }).unwrap();
-      showToast("Profile changed successfully!", null, "default");
       if (res.success) {
+        showToast("Profile changed successfully!", null, "default");
         dispatch(updateUserProfile(profile));
       }
     } catch (error) {
@@ -57,7 +58,7 @@ export function ProfileEditor({ showToast }: ProfileEditorProps) {
         <div className="flex-1 flex justify-center items-center relative">
           <img
             style={{ backgroundColor: profile.profileImgColor }}
-            className={`w-48 h-48 rounded-full mx-auto border-black border-4`}
+            className={`w-48 h-48 rounded-full border-black border-2`}
             src={userImage.source}
             alt="user's photo"
           />
@@ -90,7 +91,7 @@ export function ProfileEditor({ showToast }: ProfileEditorProps) {
             />
           </form>
           {/* TODO move this inside form? */}
-          <CustomButton customCss="mt-6 hidden md:block" loading={isLoading} onClick={() => updateUser()}>
+          <CustomButton customCss="w-full mt-6 hidden md:block" loading={isLoading} onClick={() => updateUser()}>
             Save
           </CustomButton>
         </div>
@@ -104,7 +105,7 @@ export function ProfileEditor({ showToast }: ProfileEditorProps) {
                 loading="lazy"
                 // min-w-[80px] min-h-[80px]
                 key={i}
-                className={`cursor-pointer hover:scale-125 transition-transform rounded-md p-2 mx-auto`}
+                className={`cursor-pointer hover:scale-125 transition-transform rounded-md p-2 mx-auto object-cover`}
                 onClick={() => setProfile({ ...profile, profileImgId: image.id })}
                 width={80}
                 height={80}

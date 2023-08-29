@@ -13,7 +13,7 @@ export function DashboardAttempts() {
   }
 
   return (
-    <>
+    <div className="dashContentContainer">
       <h1>Attempts list</h1>
       <pre>
         {data?.data
@@ -22,6 +22,6 @@ export function DashboardAttempts() {
             })
           : null}
       </pre>
-    </>
+    </div>
   );
 }

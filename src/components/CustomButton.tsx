@@ -9,7 +9,7 @@ export function CustomButton({ customCss, loading = false, children, ...rest }: 
     <button
       {...rest}
       disabled={loading}
-      className={`w-full select-none rounded-lg bg-emerald-600 hover:bg-emerald-700 px-5 py-2.5 text-sm font-medium text-white ${customCss}`}
+      className={`select-none rounded-lg bg-emerald-600 hover:bg-emerald-700 px-5 py-2.5 text-sm font-medium text-white ${customCss}`}
     >
       {loading ? <Spinner /> : children}
     </button>

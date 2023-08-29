@@ -65,7 +65,9 @@ export function QuizAttemptWrapper() {
             <div className="py-8">
               <p>There was an unkown error retrieving the latest quiz questions. You can try again by clicking the button below.</p>
             </div>
-            <CustomButton onClick={refetch}>Load Questions</CustomButton>
+            <CustomButton customCss="w-full" onClick={refetch}>
+              Load Questions
+            </CustomButton>
           </div>
         </div>
       </div>

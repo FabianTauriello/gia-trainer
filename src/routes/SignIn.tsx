@@ -225,7 +225,7 @@ export function SignIn() {
                 Our apologies, but creating an account is disabled at the moment! We are working hard to restore this functionality.
               </div>
             )}
-            <CustomButton loading={isLoadingSignIn || isLoadingSignUp} customCss="mt-4">
+            <CustomButton loading={isLoadingSignIn || isLoadingSignUp} customCss="mt-4 w-full">
               Sign {createAccountView ? "up" : "in"}
             </CustomButton>
             {/* TODO CHANGE TO BUTTON? */}

@@ -74,12 +74,9 @@ export function Dashboard() {
           </li>
         </ul>
       </aside>
-      <main className="ml-20 md:ml-72 pt-20 text-black dark:text-white">
-        <div className="py-3 px-4 md:px-5">
-          <Outlet />
-        </div>
+      <main className="ml-20 md:ml-72 pt-20 text-black dark:text-white h-full">
+        <Outlet />
       </main>
-      <button onClick={() => console.log("starting new attempt...")}>New Attempt</button>
     </div>
   );
 }
