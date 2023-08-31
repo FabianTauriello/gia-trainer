@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { RootState } from "domain/store";
-import { ApiResponse, LoginCredentials, NewUser, Profile, Question, QuizAttempt, Settings, User } from "domain/Types";
+import { ApiResponse, LoginCredentials, NewUser, PageInfo, Profile, Question, QuizAttempt, Settings, User } from "domain/Types";
 
 // Define the single API slice object
 export const apiSlice = createApi({
@@ -42,8 +42,17 @@ export const apiSlice = createApi({
         body: newQuizAttempt,
       }),
     }),
-    getQuizAttempts: builder.query<ApiResponse<QuizAttempt[]>, number>({
-      query: (userId) => `/getQuizAttempts/${userId}`,
+    getAllQuizAttempts: builder.query<ApiResponse<QuizAttempt[]>, number>({
+      query: (userId) => `/getAllQuizAttempts/${userId}`,
+    }),
+    getQuizAttempts: builder.query<
+      ApiResponse<{ attempts: QuizAttempt[]; totalPages: number }>,
+      { userId: number; pageInfo: PageInfo }
+    >({
+      query: (requestData) => ({
+        url: `/getQuizAttempts/${requestData.userId}?page=${requestData.pageInfo.page}&limit=${requestData.pageInfo.limit}`,
+        method: "GET", // TODO need to specify this??
+      }),
     }),
     getQuizQuestions: builder.query<ApiResponse<Question[]>, void>({
       query: () => "/quizQuestions",
@@ -51,14 +60,14 @@ export const apiSlice = createApi({
     getUserSettings: builder.query<ApiResponse<Settings>, number>({
       query: (userId) => `/getUserSettings/${userId}}`,
     }),
-    updateUserSettings: builder.mutation<ApiResponse<string>, { newSettings: Settings; userId: number }>({
+    updateUserSettings: builder.mutation<ApiResponse<string>, { userId: number; newSettings: Settings }>({
       query: (requestData) => ({
         url: `/updateUserSettings/${requestData.userId}`,
         method: "POST",
         body: requestData.newSettings,
       }),
     }),
-    updateUser: builder.mutation<ApiResponse<string>, { newProfile: Profile; userId: number }>({
+    updateUser: builder.mutation<ApiResponse<string>, { userId: number; newProfile: Profile }>({
       query: (requestData) => ({
         url: `/updateUser/${requestData.userId}`,
         method: "POST",
