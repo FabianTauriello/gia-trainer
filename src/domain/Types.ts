@@ -71,6 +71,11 @@ export type QuizContextType = {
   updateAttempt: (selectedChoiceIndex: number, isCorrect: boolean) => void;
 };
 
+export type PageInfo = {
+  page: number;
+  limit: number;
+};
+
 export type LoginCredentials = {
   email: string;
   password: string;

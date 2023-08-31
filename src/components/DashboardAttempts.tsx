@@ -4,59 +4,41 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { DataTable } from "./DataTable";
 import { ColumnDef } from "@tanstack/react-table";
+import { QuizAttempt } from "domain/Types";
 
-export const columns: ColumnDef<{
-  userId: number;
-  id: number;
-  title: string;
-  completed: boolean;
-}>[] = [
+export const columns: ColumnDef<QuizAttempt>[] = [
   {
     accessorKey: "id",
     header: "Id",
   },
   {
-    accessorKey: "title",
-    header: "Title",
+    accessorKey: "timestamp",
+    header: "Timestamp",
   },
   {
-    accessorKey: "completed",
-    header: "Completed",
+    accessorKey: "totalScore",
+    header: "Total Score",
   },
 ];
 
 export function DashboardAttempts() {
   const { quiz, auth } = useAppSelector((state) => state);
 
-  const { data, isError, isLoading, isFetching, refetch, isSuccess } = useGetQuizAttemptsQuery(auth.user!.id);
+  const {
+    data: response,
+    isError,
+    isLoading,
+    isFetching,
+    refetch,
+    isSuccess,
+  } = useGetQuizAttemptsQuery({ userId: auth.user!.id, pageInfo: { page: 1, limit: 20 } });
 
-  const [postData, setPostData] = useState<Post[]>([]);
-
-  useEffect(() => {
-    getData();
-  }, []);
-
-  async function getData() {
-    try {
-      const res = await fetch("https://jsonplaceholder.typicode.com/posts");
-      console.log("res: ", res);
-      if (res.ok) {
-        const json = await res.json();
-        setPostData(json);
-      }
-    } catch (error) {
-      console.log("Failed to get post data");
-    }
-  }
-
-  function getTime(time: string) {
-    return new Date(time).toLocaleString();
-  }
+  // console.log("data: ", attempts?.data);
 
   return (
     <div className="dashContentContainer">
-      <h1>Attempts list</h1>
-      {postData ? <DataTable columns={columns} data={postData} /> : null}
+      <h1>Attempts</h1>
+      <DataTable columns={columns} data={response?.data?.attempts ?? []} />
     </div>
   );
 }

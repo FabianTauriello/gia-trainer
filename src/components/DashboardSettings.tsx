@@ -35,7 +35,7 @@ export function DashboardSettings({}: DashboardSettingsProps) {
 
   async function updateSettings() {
     try {
-      await postUpdatedUserSettings({ newSettings: settings, userId: auth.user!.id });
+      await postUpdatedUserSettings({ userId: auth.user!.id, newSettings: settings });
     } catch (error) {
       console.log("Failed to update user's settings");
     }
