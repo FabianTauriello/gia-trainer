@@ -38,7 +38,7 @@ export function ProfileEditor({ showToast }: ProfileEditorProps) {
 
   async function updateUser() {
     try {
-      const res = await postUpdatedUserProfile({ newProfile: profile, userId: auth.user!.id }).unwrap();
+      const res = await postUpdatedUserProfile({ userId: auth.user!.id, newProfile: profile }).unwrap();
       if (res.success) {
         showToast("Profile changed successfully!", null, "default");
         dispatch(updateUserProfile(profile));
