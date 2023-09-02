@@ -29,4 +29,8 @@ export namespace Utils {
     const image = profileImages.find((image) => image.id === id);
     return image ?? profileImages[0]; // Nullish coalescing
   }
+
+  export function formatTimestamp(timestamp: string) {
+    return new Date(timestamp).toLocaleString();
+  }
 }

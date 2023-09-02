@@ -46,7 +46,7 @@ export const apiSlice = createApi({
       query: (userId) => `/getAllQuizAttempts/${userId}`,
     }),
     getQuizAttempts: builder.query<
-      ApiResponse<{ attempts: QuizAttempt[]; totalPages: number }>,
+      ApiResponse<{ attempts: QuizAttempt[]; totalPages: number; totalAttemptsCount: number }>,
       { userId: number; pageInfo: PageInfo }
     >({
       query: (requestData) => ({
