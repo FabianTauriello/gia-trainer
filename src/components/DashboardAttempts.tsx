@@ -2,7 +2,6 @@ import { useGetQuizAttemptsQuery } from "domain/slices/apislice";
 import { useAppSelector } from "hooks/useAppSelector";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { DataTable } from "./DataTable";
 import { ColumnDef } from "@tanstack/react-table";
 import { QuizAttempt } from "domain/Types";
 import { CustomTable } from "./CustomTable";
