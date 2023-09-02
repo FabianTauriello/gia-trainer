@@ -41,7 +41,6 @@ export function DashboardAttempts() {
 
   return (
     <div className="dashContentContainer">
-      <DataTable columns={columns} data={attemptsResponse?.data?.attempts ?? []} />
       <div className="card p-4">
         <div className="flex justify-between items-center">
           <h1 className="">Attempts</h1>
