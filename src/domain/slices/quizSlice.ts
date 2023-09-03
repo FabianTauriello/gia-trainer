@@ -11,7 +11,6 @@ const initialState: QuizState = {
   latestAttempt: null,
 };
 
-// Holds/manages all quiz attempts for current user
 export const quizSlice = createSlice({
   name: "quiz",
   initialState,
