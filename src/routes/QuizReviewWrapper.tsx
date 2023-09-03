@@ -1,5 +1,4 @@
 import { CustomButton } from "components/CustomButton";
-import { CustomTitle } from "components/CustomTitle";
 import { Navbar } from "components/Navbar";
 import { QuizReview } from "components/QuizReview";
 import { useAddQuizAttemptMutation } from "domain/slices/apislice";

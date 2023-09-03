@@ -3,7 +3,6 @@ import { Disclosure, Transition } from "@headlessui/react";
 import { ImCheckmark, ImCross } from "react-icons/im";
 import { QuestionModal } from "./QuestionModal";
 import { RxCaretDown } from "react-icons/rx";
-import { CustomTitle } from "./CustomTitle";
 import { ScoreCard } from "./ScoreCard";
 import { Navbar } from "./Navbar";
 import { useState } from "react";
