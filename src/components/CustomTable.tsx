@@ -1,14 +1,16 @@
 import { ColumnDef, flexRender, getCoreRowModel, useReactTable, SortingState, getSortedRowModel } from "@tanstack/react-table";
+import { QuizAttempt } from "domain/Types";
 import { useState } from "react";
 import { BiSolidCaretUpSquare, BiSolidCaretDownSquare } from "react-icons/bi";
 
 type CustomTableProps<TData, TValue> = {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
-  handleRowClick: () => void;
+  handleRowClick: (row: TData) => void;
+  fetchingData: boolean;
 };
 
-export function CustomTable<TData, TValue>({ columns, data, handleRowClick }: CustomTableProps<TData, TValue>) {
+export function CustomTable<TData, TValue>({ columns, data, handleRowClick, fetchingData }: CustomTableProps<TData, TValue>) {
   const [sorting, setSorting] = useState<SortingState>([]);
   const table = useReactTable({
     data,
@@ -17,15 +19,15 @@ export function CustomTable<TData, TValue>({ columns, data, handleRowClick }: Cu
     onSortingChange: setSorting,
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),
-    manualPagination: true,
-    pageCount: -1,
+    // manualPagination: true,
+    // pageCount: -1,
   });
 
   return (
-    <table className="w-full border-2 border-slate-200 dark:border-slate-700">
+    <table className="w-full border-2 border-slate-300 dark:border-slate-700 bg-slate-100 dark:bg-slate-800">
       <thead className="bg-white dark:bg-darkSlate">
         {table.getHeaderGroups().map((headerGroup) => (
-          <tr key={headerGroup.id} className="border-2 border-b-slate-200 dark:border-slate-700 border-t-0 border-x-0">
+          <tr key={headerGroup.id} className="border-2 border-b-slate-300 dark:border-slate-700 border-t-0 border-x-0">
             {headerGroup.headers.map((header) => (
               <th key={header.id} className="text-left p-3 border border-l-slate-200 dark:border-slate-700 border-r-0 border-y-0">
                 {header.isPlaceholder ? null : (
@@ -56,11 +58,17 @@ export function CustomTable<TData, TValue>({ columns, data, handleRowClick }: Cu
               <tr
                 key={row.id}
                 className="dark:even:bg-slate-900 even:bg-white hover:dark:bg-slate-700 hover:bg-slate-200 cursor-pointer"
-                onClick={handleRowClick}
+                onClick={() => handleRowClick(row.original)}
               >
                 {row.getVisibleCells().map((cell) => (
                   <td key={cell.id} className="p-3 border border-l-slate-200 dark:border-l-slate-700 border-r-0 border-y-0">
-                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                    {fetchingData ? (
+                      <div className="animate-pulse">
+                        <div className="h-6 bg-slate-400 dark:bg-slate-700" />
+                      </div>
+                    ) : (
+                      flexRender(cell.column.columnDef.cell, cell.getContext())
+                    )}
                   </td>
                 ))}
               </tr>

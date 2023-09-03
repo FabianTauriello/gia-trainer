@@ -16,10 +16,6 @@
   @apply rounded-lg border border-slate-300 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 drop-shadow-md;
 }
 
-.dashContentContainer {
-  @apply py-3 px-4 md:px-5 flex flex-col;
-}
-
 /* .primary-button {
   @apply bg-emerald-600 hover:bg-emerald-500 px-5 py-2.5 text-sm font-medium text-white rounded-md select-none;
 } */

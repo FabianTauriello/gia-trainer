@@ -7,16 +7,19 @@ import { CustomTitle } from "./CustomTitle";
 import { ScoreCard } from "./ScoreCard";
 import { Navbar } from "./Navbar";
 import { useState } from "react";
+import { PiCaretCircleLeft } from "react-icons/pi";
 
 interface QuizReviewProps {
   attempt: QuizAttempt;
+  embedWithinDash?: boolean;
+  handleBackButton?: () => void;
 }
 
 // This component can appear in 3 places:
 // 1. after of a visitor attempt
 // 2. after of a user attempt
 // 3. when user clicks on an attempt row from the dashboard.
-export function QuizReview({ attempt }: QuizReviewProps) {
+export function QuizReview({ attempt, embedWithinDash = false, handleBackButton }: QuizReviewProps) {
   const [modalDetails, setModalDetails] = useState<ModalDetails>({ chosenQuestionIndex: 0, show: false });
 
   const categories = splitQuestionsIntoCategories();
@@ -65,10 +68,20 @@ export function QuizReview({ attempt }: QuizReviewProps) {
   }
 
   return (
-    <div className="h-screen">
-      <Navbar />
-      <div className="page-gutter">
-        <CustomTitle title="Quiz Review" />
+    <div className="">
+      {!embedWithinDash && <Navbar />}
+      <div className={embedWithinDash ? "" : "page-gutter"}>
+        <div className="flex justify-between items-center">
+          <div className="flex">
+            {embedWithinDash && (
+              <button className="mr-4" onClick={handleBackButton}>
+                <PiCaretCircleLeft size={40} />
+              </button>
+            )}
+            <CustomTitle title={`Quiz Review`} />
+          </div>
+          <h2 className="text-2xl">Id: {attempt.id}</h2>
+        </div>
         <section className="flex flex-col gap-4 py-5">
           <ScoreCard categories={categories} />
           <h1 className="text-xl bg-emerald-600 text-white p-4">Breakdown</h1>

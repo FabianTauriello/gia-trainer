@@ -42,7 +42,7 @@ export function DashboardSettings({}: DashboardSettingsProps) {
   }
 
   return (
-    <div className="dashContentContainer">
+    <div className="py-3 px-4 md:px-5 flex flex-col">
       {/* <div>{JSON.stringify(user, null, 2)}</div> */}
       {/* <div>{JSON.stringify(settings, null, 2)}</div> */}
       {/* <div>{JSON.stringify(editMode, null, 2)}</div> */}

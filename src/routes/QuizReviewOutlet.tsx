@@ -5,5 +5,7 @@ export function QuizReviewOutlet() {
   const latestAttempt = useAppSelector((state) => state.latestAttempt);
   const location = useLocation();
 
+  console.log("location: ", location);
+
   return latestAttempt.value ? <Outlet /> : <Navigate to="/quiz" state={{ from: location }} />;
 }

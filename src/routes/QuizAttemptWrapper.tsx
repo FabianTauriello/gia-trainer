@@ -13,7 +13,7 @@ import { Navbar } from "components/Navbar";
 // Fetches latest quiz questions from server, adds an attempt (if a user exists), and initializes the quiz attempt
 export function QuizAttemptWrapper() {
   const dispatch = useAppDispatch();
-  const { quiz, auth } = useAppSelector((state) => state);
+  const { auth } = useAppSelector((state) => state);
 
   const { data, isError, isLoading, isFetching, refetch, isSuccess } = useGetQuizQuestionsQuery();
 

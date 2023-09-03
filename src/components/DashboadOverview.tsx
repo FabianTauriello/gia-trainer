@@ -9,7 +9,7 @@ import { ReactElement } from "react";
 
 export function DashboardOverview() {
   return (
-    <div className="dashContentContainer grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4">
+    <div className="py-3 px-4 md:px-5 grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4">
       <div className="grid gap-2 md:gap-4 col-span-1 md:col-span-2">
         <div className="p-6 flex flex-col rounded-lg card">line graph showing all scores over various times</div>
         <div className="p-6 flex flex-col rounded-lg card">line graph showing rank over various times</div>
