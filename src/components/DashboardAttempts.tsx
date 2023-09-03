@@ -1,19 +1,19 @@
 import { useGetQuizAttemptsQuery } from "domain/slices/apislice";
 import { useAppSelector } from "hooks/useAppSelector";
-import { useState } from "react";
-import { QuizAttempt } from "domain/Types";
+import { useContext, useState } from "react";
 import { CustomTable } from "./CustomTable";
 import { PiCaretRightBold, PiCaretLeftBold } from "react-icons/pi";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { QuizReview } from "./QuizReview";
 import { attemptsColumns } from "utils/Columns";
+import { DashboardContext } from "./DashboardContextProvider";
 
 // TODO prevent layout shift by making card fill 100% of height (see what happens when you reach last page)
 export function DashboardAttempts() {
+  const { activeAttempt, setActiveAttempt } = useContext(DashboardContext);
   const { auth } = useAppSelector((state) => state);
 
   const [page, setPage] = useState(1);
-  const [activeAttempt, setActiveAttempt] = useState<QuizAttempt | null>(null);
 
   const {
     data: attemptsResponse,
@@ -73,7 +73,10 @@ export function DashboardAttempts() {
           <CustomTable
             columns={attemptsColumns}
             data={attemptsResponse?.data?.attempts ?? Array(20).fill("")}
-            handleRowClick={(attempt) => setActiveAttempt(attempt)}
+            handleRowClick={(attempt) => {
+              window.scrollTo(0, 0);
+              setActiveAttempt(attempt);
+            }}
             fetchingData={isFetching}
           />
           {/* {attemptsResponse?.data?.attempts.map(a: QuizAttempt) => (

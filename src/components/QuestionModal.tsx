@@ -2,15 +2,13 @@ import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { CustomButton } from "./CustomButton";
-import QuizContextProvider from "components/QuizContextProvider";
 import { QuestionController } from "./QuestionController";
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from "swiper";
-import { Utils } from "utils/Utils";
-import { useAppSelector } from "hooks/useAppSelector";
 import "swiper/css";
 import "swiper/css/navigation";
 import { useParams } from "react-router-dom";
 import { QuizAttempt } from "domain/Types";
+import { QuizContextProvider } from "./QuizContextProvider";
 
 interface QuestionModalProps {
   quizAttempt: QuizAttempt;

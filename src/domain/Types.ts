@@ -1,5 +1,3 @@
-import { Dispatch } from "react";
-
 export type Category = {
   title: CategoryTitle;
   questions: Question[];
@@ -56,19 +54,6 @@ export type QuizAttempt = {
   totalScore: number;
   questions: Question[];
   timestamp: string;
-};
-
-export type QuizContextType = {
-  questionIndex: number;
-  setQuestionIndex: Dispatch<React.SetStateAction<number>>;
-  categoriesStarted: string[];
-  setCategoriesStarted: Dispatch<React.SetStateAction<string[]>>;
-  currentQuestion: Question;
-  inReview: boolean;
-  allQuestions: Question[];
-  hideChoices: boolean;
-  setHideChoices: Dispatch<React.SetStateAction<boolean>>;
-  updateAttempt: (selectedChoiceIndex: number, isCorrect: boolean) => void;
 };
 
 export type PageInfo = {

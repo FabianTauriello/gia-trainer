@@ -8,6 +8,7 @@ import { BsPlusSquare } from "react-icons/bs";
 import { MdOutlineLeaderboard } from "react-icons/md";
 import { GiStrikingArrows } from "react-icons/gi";
 import { useLocation } from "react-router-dom";
+import { DashboardContextProvider } from "components/DashboardContextProvider";
 
 export function Dashboard() {
   const location = useLocation();
@@ -75,7 +76,9 @@ export function Dashboard() {
         </ul>
       </aside>
       <main className="ml-16 md:ml-72 pt-20 text-black dark:text-white h-full">
-        <Outlet />
+        <DashboardContextProvider>
+          <Outlet />
+        </DashboardContextProvider>
       </main>
     </div>
   );

@@ -1,11 +1,24 @@
-import { ReactNode, createContext, useEffect, useState } from "react";
-import { Question, QuizContextType } from "../domain/Types";
+import { Dispatch, ReactNode, createContext, useEffect, useState } from "react";
+import { Question } from "../domain/Types";
 import { useAppDispatch } from "hooks/useAppSelector";
+
+export type QuizContextType = {
+  questionIndex: number;
+  setQuestionIndex: Dispatch<React.SetStateAction<number>>;
+  categoriesStarted: string[];
+  setCategoriesStarted: Dispatch<React.SetStateAction<string[]>>;
+  currentQuestion: Question;
+  inReview: boolean;
+  allQuestions: Question[];
+  hideChoices: boolean;
+  setHideChoices: Dispatch<React.SetStateAction<boolean>>;
+  updateAttempt: (selectedChoiceIndex: number, isCorrect: boolean) => void;
+};
 
 export const QuizContext = createContext({} as QuizContextType);
 
 // TODO FIX?? reinitialize quizContext.questionIndex when startingIndex changes
-function QuizContextProvider({
+export function QuizContextProvider({
   children,
   allQuestions,
   startingQuestionIndex = 0,
@@ -46,5 +59,3 @@ function QuizContextProvider({
 
   return <QuizContext.Provider value={value}>{children}</QuizContext.Provider>;
 }
-
-export default QuizContextProvider;
