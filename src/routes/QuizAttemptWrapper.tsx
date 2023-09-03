@@ -7,7 +7,7 @@ import { QuizCategoryIntro } from "components/QuizCategoryIntro";
 import { CustomTitle } from "components/CustomTitle";
 import { CustomButton } from "components/CustomButton";
 import { QuizAttempt } from "domain/Types";
-import { setLatestQuizAttempt } from "domain/slices/quizSlice";
+import { setLatestQuizAttempt } from "domain/slices/latestAttemptSlice";
 import { Navbar } from "components/Navbar";
 
 // Fetches latest quiz questions from server, adds an attempt (if a user exists), and initializes the quiz attempt

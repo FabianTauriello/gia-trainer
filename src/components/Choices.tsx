@@ -1,4 +1,4 @@
-import { updateLatestQuizAttempt } from "domain/slices/quizSlice";
+import { updateLatestQuizAttempt } from "domain/slices/latestAttemptSlice";
 import { useAppDispatch } from "hooks/useAppSelector";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";

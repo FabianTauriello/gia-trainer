@@ -25,8 +25,9 @@ export const columns: ColumnDef<QuizAttempt>[] = [
   },
 ];
 
+// TODO prevent layout shift by making card fill 100% of height (see what happens when you reach last page)
 export function DashboardAttempts() {
-  const { quiz, auth } = useAppSelector((state) => state);
+  const { auth } = useAppSelector((state) => state);
 
   const [page, setPage] = useState(1);
 
