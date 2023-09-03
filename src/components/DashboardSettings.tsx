@@ -42,11 +42,11 @@ export function DashboardSettings({}: DashboardSettingsProps) {
   }
 
   return (
-    <div className="py-3 px-4 md:px-5 flex flex-col">
+    <div className="p-3 md:p-8 flex flex-col">
       {/* <div>{JSON.stringify(user, null, 2)}</div> */}
       {/* <div>{JSON.stringify(settings, null, 2)}</div> */}
       {/* <div>{JSON.stringify(editMode, null, 2)}</div> */}
-      <section className="flex flex-col card items-center py-10">
+      <section className="flex flex-col card items-center py-4 md:py-10">
         <img
           style={{ backgroundColor: auth.user!.profileImgColor }}
           className="w-44 h-44 rounded-full border-black border-2"

@@ -27,12 +27,12 @@ export function DashboardAttempts() {
   const dataFound = attemptsResponse?.data?.attempts?.length;
 
   return (
-    <div className="p-8">
+    <div className="p-3 md:p-8">
       {activeAttempt ? (
         <QuizReview attempt={activeAttempt} embedWithinDash handleBackButton={() => setActiveAttempt(null)} />
       ) : (
         <>
-          <div className="flex justify-between flex-wrap">
+          <div className="flex justify-between flex-wrap mb-4 md:mb-2">
             <Select defaultValue="all attempts">
               <SelectTrigger className="w-[180px] dark:bg-slate-700">
                 <SelectValue className="" />
@@ -47,8 +47,8 @@ export function DashboardAttempts() {
                 {/* <SelectItem value="spatial visualisation">Spatial Visualisation</SelectItem> */}
               </SelectContent>
             </Select>
-            <div className="flex flex-col items-end">
-              <div className="flex items-center">
+            <div className="flex-col items-end">
+              <div className="flex items-center mt-4 md:m-0">
                 {dataFound && <span className="text-sm mr-2">{`Page ${page} of ${attemptsResponse?.data?.totalPages}`}</span>}
                 <button
                   className="bg-slate-300 dark:bg-slate-900 rounded-md p-1 disabled:opacity-50 border border-slate-200 dark:border-slate-700"
@@ -65,18 +65,22 @@ export function DashboardAttempts() {
                   <PiCaretRightBold size={18} />
                 </button>
               </div>
-              <span className="text-xs my-1 text-slate-500 dark:text-slate-400">
+              <span className="text-xs my-2 text-slate-500 dark:text-slate-400">
                 {attemptsResponse?.data?.totalAttemptsCount ?? 0} results
               </span>
             </div>
           </div>
           <CustomTable
-            // columns={isFetching ? attemptsColumnsFetching : attemptsColumns}
             columns={attemptsColumns}
             data={attemptsResponse?.data?.attempts ?? Array(20).fill("")}
             handleRowClick={(attempt) => setActiveAttempt(attempt)}
             fetchingData={isFetching}
           />
+          {/* {attemptsResponse?.data?.attempts.map(a: QuizAttempt) => (
+            <button>
+              {a.id}
+            </button>
+          )} */}
         </>
       )}
     </div>

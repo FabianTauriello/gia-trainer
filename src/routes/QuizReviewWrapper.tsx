@@ -35,7 +35,7 @@ export function QuizReviewWrapper() {
         <div className="h-screen dark:text-white">
           <Navbar />
           <div className="page-gutter">
-            <CustomTitle title="Saving your attempt..." />
+            <h1 className="pb-4 pt-8 text-4xl font-extrabold">Saving your attempt...</h1>
             <div className="animate-pulse py-8 grid grid-cols-4 gap-4">
               <div className="h-5 bg-slate-400 dark:bg-slate-700 rounded col-span-3" />
               <div className="h-5 bg-slate-400 dark:bg-slate-700 rounded col-span-1" />
@@ -51,9 +51,9 @@ export function QuizReviewWrapper() {
         <div className="h-screen dark:text-white">
           <Navbar />
           <div className="page-gutter">
-            <CustomTitle title="Error occurred!" errorTint />
-            <div className="py-8">
-              <p>{`There was an error saving your attempt: ${Utils.getErrorMessage(error)}`}</p>
+            <h1 className="pb-4 pt-8 text-4xl font-extrabold text-red-600 dark:text-red-500">Error occurred!</h1>
+            <div className="pb-8">
+              <p>{`There was an error saving your attempt.`}</p>
             </div>
             <CustomButton onClick={postAttempt}>Try Again</CustomButton>
           </div>

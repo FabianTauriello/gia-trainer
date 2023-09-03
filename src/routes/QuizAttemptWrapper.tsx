@@ -35,8 +35,8 @@ export function QuizAttemptWrapper() {
       <div className="h-screen dark:text-white">
         <Navbar />
         <div className="page-gutter">
-          <CustomTitle title="Loading your quiz questions..." />
-          <div className="animate-pulse py-8 grid grid-cols-4 gap-4">
+          <h1 className="text-4xl font-extrabold pt-10 pb-8">Loading your quiz questions...</h1>
+          <div className="animate-pulse grid grid-cols-4 gap-4">
             <div className="h-5 bg-slate-400 dark:bg-slate-700 rounded col-span-3" />
             <div className="h-5 bg-slate-400 dark:bg-slate-700 rounded col-span-1" />
             <div className="h-5 bg-slate-400 dark:bg-slate-700 rounded col-span-2" />
@@ -60,15 +60,13 @@ export function QuizAttemptWrapper() {
       <div className="h-screen dark:text-white">
         <Navbar />
         <div className="page-gutter">
-          <CustomTitle title="Error occurred!" errorTint />
-          <div className="">
-            <div className="py-8">
-              <p>There was an unkown error retrieving the latest quiz questions. You can try again by clicking the button below.</p>
-            </div>
-            <CustomButton customCss="w-full" onClick={refetch}>
-              Load Questions
-            </CustomButton>
+          <h1 className="text-4xl font-extrabold pt-10 pb-8 text-red-600 dark:text-red-500">Error occurred!</h1>
+          <div className="pb-8">
+            <p>There was an unkown error retrieving the latest quiz questions. You can try again by clicking the button below.</p>
           </div>
+          <CustomButton customCss="w-full" onClick={refetch}>
+            Load Questions
+          </CustomButton>
         </div>
       </div>
     );
