@@ -25,7 +25,6 @@ export const columns: ColumnDef<QuizAttempt>[] = [
   },
 ];
 
-// TODO add loading indicator for pagination
 export function DashboardAttempts() {
   const { quiz, auth } = useAppSelector((state) => state);
 
@@ -40,7 +39,7 @@ export function DashboardAttempts() {
     isSuccess,
   } = useGetQuizAttemptsQuery({ userId: auth.user!.id, pageInfo: { page: page, limit: 20 } });
 
-  const dataFound = attemptsResponse?.data?.attempts.length;
+  const dataFound = attemptsResponse?.data?.attempts?.length;
 
   return (
     <div className="dashContentContainer">
