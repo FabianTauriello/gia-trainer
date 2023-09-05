@@ -1,7 +1,7 @@
 import { useGetQuizAttemptsQuery } from "domain/slices/apislice";
 import { useAppSelector } from "hooks/useAppSelector";
 import { useContext, useState } from "react";
-import { CustomTable } from "./CustomTable";
+import { DataTable } from "./DataTable";
 import { PiCaretRightBold, PiCaretLeftBold } from "react-icons/pi";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { QuizReview } from "./QuizReview";
@@ -70,7 +70,7 @@ export function DashboardAttempts() {
               </span>
             </div>
           </div>
-          <CustomTable
+          <DataTable
             columns={attemptsColumns}
             data={attemptsResponse?.data?.attempts ?? Array(20).fill("")}
             handleRowClick={(attempt) => {

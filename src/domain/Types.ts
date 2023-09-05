@@ -1,3 +1,5 @@
+import { z, ZodObject, ZodString } from "zod";
+
 export type Category = {
   title: CategoryTitle;
   questions: Question[];
@@ -48,6 +50,27 @@ type Letter = {
   rot: number;
   flip: boolean;
 };
+
+export type PasswordConstraints = {
+  lowercaseLetter: boolean;
+  uppercaseLetter: boolean;
+  minLength: boolean;
+  containsNumber: boolean;
+  containsSpecialCharacter: boolean;
+};
+
+// export type AuthInputFields ={
+//   email: InputField;
+//   password: InputField;
+//   firstName: InputField;
+//   lastName: InputField;
+// }
+
+// type Validator = ZodObject<{}>
+// type InputField = {
+//   value: string;
+//   validator?: ZodString
+// }
 
 export type QuizAttempt = {
   id: number; // Initially this will be -1

@@ -6,10 +6,27 @@ import { useNavigate } from "react-router-dom";
 import { CustomButton } from "components/CustomButton";
 import { HiOutlineEye, HiOutlineEyeOff } from "react-icons/hi";
 import { Utils } from "utils/Utils";
-import logo from "../assets/svgs/logo.svg";
 import { setAllSettings } from "domain/slices/settingsSlice";
 import { DEFAULT_PROFILE_IMG_COLOR, DEFAULT_PROFILE_IMG_ID } from "utils/Constants";
+import { RiErrorWarningLine, RiErrorWarningFill } from "react-icons/ri";
+import { z, ZodError } from "zod";
+import logo from "../assets/svgs/logo.svg";
 
+const passwordSchema = z
+  .string()
+  .min(8, "Password must be at least 8 characters long")
+  .max(30, "Password is too long")
+  .refine((value) => /[a-z]/.test(value), {
+    message: "Password must contain at least one lowercase letter",
+  })
+  .refine((value) => /[A-Z]/.test(value), {
+    message: "Password must contain at least one uppercase letter",
+  })
+  .refine((value) => /\d/.test(value), {
+    message: "Password must contain at least one number",
+  });
+
+// TODO check why pressing sign up button when password is invalid (and submit is not exectuded on form) still prompts bitwarden to save password
 export function SignIn() {
   const auth = useAppSelector((state) => state.auth);
   const dispatch = useAppDispatch();
@@ -18,9 +35,6 @@ export function SignIn() {
   const [signIn, { isLoading: isLoadingSignIn, isError: isSignInError, error: signInError, reset: resetSignIn }] = useSignInMutation();
   const [signUp, { isLoading: isLoadingSignUp, isError: isSignUpError, error: signUpError, reset: resetSignUp }] = useSignUpMutation();
   const [getUserSettings] = useLazyGetUserSettingsQuery();
-
-  const isLoading = isLoadingSignIn || isLoadingSignUp; // TODO use this
-
   const [inputFields, setInputFields] = useState({
     email: "",
     password: "",
@@ -30,6 +44,7 @@ export function SignIn() {
   const [showPassword, setShowPassword] = useState(false);
   const [createAccountView, setCreateAccountView] = useState(false);
   const [signUpSuccessMessage, setSignUpSuccessMessage] = useState(false);
+  const [passwordErrors, setPasswordErrors] = useState<string[]>([]);
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -41,7 +56,28 @@ export function SignIn() {
     }
   }
 
+  function validatePassword() {
+    let errors: string[] = [];
+
+    try {
+      passwordSchema.parse(inputFields.password);
+    } catch (error) {
+      if (error instanceof ZodError) {
+        // setPasswordErrors(error.issues.map((e) => e.message));
+        errors = error.issues.map((issue) => issue.message);
+      }
+    }
+
+    return errors;
+  }
+
   async function handleSignUp() {
+    const errors = validatePassword();
+    if (errors.length) {
+      setPasswordErrors(errors);
+      return;
+    }
+
     {
       /* TODO remove this check when app condition and password requirments are stronger */
     }
@@ -103,7 +139,6 @@ export function SignIn() {
     }
   }
 
-  // relative w-full h-screen overflow-scroll bg-image-light bg-cover bg-center bg-no-repeat dark:bg-image-dark
   return (
     <div className="mx-auto flex h-screen flex-col items-center justify-center bg-image-light bg-cover bg-center bg-no-repeat px-6 py-8 text-black dark:bg-image-dark dark:text-white">
       {false && (
@@ -118,8 +153,6 @@ export function SignIn() {
           <div>isLoadingSignUp: {isLoadingSignUp.toString()}</div>
           <div>isSignUpError: {isSignUpError.toString()}</div>
           <div>signUpError: {JSON.stringify(signUpError)}</div>
-          {/* <div>isFetchBaseQueryError: {JSON.stringify(isFetchBaseQueryError(error))}</div> */}
-          {/* <div>isErrorWithMessage: {JSON.stringify(isErrorWithMessage(error))}</div> */}
         </div>
       )}
       <div className="mb-6 flex items-center text-2xl font-semibold">
@@ -200,6 +233,7 @@ export function SignIn() {
                     isLoadingSignIn || isLoadingSignUp ? "opacity-50" : "opacity-100"
                   }`}
                   onChange={(e) => handleInputChange("password", e.target.value)}
+                  onFocus={() => setPasswordErrors([])}
                 />
                 {/* TODO fix mobile button press hightlight (highlight box doesn't seem right) */}
                 <button
@@ -219,6 +253,17 @@ export function SignIn() {
             {signUpSuccessMessage && (
               <div className="rounded-lg border border-green-500 p-3 text-sm text-green-500 mt-4">Successfully created a new user</div>
             )}
+            {passwordErrors.length > 0 && (
+              <div className="border border-red-400 bg-red-600 bg-opacity-20 dark:bg-opacity-30 mt-4 p-2 flex flex-col gap-2 rounded">
+                {passwordErrors.map((err) => (
+                  <div key={err} className="flex">
+                    <RiErrorWarningLine className="inline" size={18} />
+                    <div className="ml-2 text-sm">{err}</div>
+                  </div>
+                ))}
+              </div>
+            )}
+            {/* {true && <pre>{JSON.stringify(passwordErrors, null, 2)}</pre>} */}
             {/* TODO remove when app is in better condition and password requirments are stronger */}
             {createAccountView && (
               <div className="text-red-800 mt-4">

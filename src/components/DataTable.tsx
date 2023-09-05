@@ -3,14 +3,14 @@ import { QuizAttempt } from "domain/Types";
 import { useState } from "react";
 import { BiSolidCaretUpSquare, BiSolidCaretDownSquare } from "react-icons/bi";
 
-type CustomTableProps<TData, TValue> = {
+type DataTableProps<TData, TValue> = {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
   handleRowClick: (row: TData) => void;
   fetchingData: boolean;
 };
 
-export function CustomTable<TData, TValue>({ columns, data, handleRowClick, fetchingData }: CustomTableProps<TData, TValue>) {
+export function DataTable<TData, TValue>({ columns, data, handleRowClick, fetchingData }: DataTableProps<TData, TValue>) {
   const [sorting, setSorting] = useState<SortingState>([]);
   const table = useReactTable({
     data,
