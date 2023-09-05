@@ -79,7 +79,7 @@ export function QuizReview({ attempt, embedWithinDash = false, handleBackButton 
             )}
             <h1 className={`text-4xl font-extrabold text-black dark:text-white ${embedWithinDash ? "" : "pb-4 pt-8"}`}>Quiz Review</h1>
           </div>
-          <h2 className="text-2xl dark:text-white text-black">Id: {attempt.id}</h2>
+          {embedWithinDash && <h2 className="text-2xl dark:text-white text-black">Id: {attempt.id}</h2>}
         </div>
         <section className="flex flex-col gap-4 py-5">
           <ScoreCard categories={categories} />

@@ -79,11 +79,6 @@ export function DashboardAttempts() {
             }}
             fetchingData={isFetching}
           />
-          {/* {attemptsResponse?.data?.attempts.map(a: QuizAttempt) => (
-            <button>
-              {a.id}
-            </button>
-          )} */}
         </>
       )}
     </div>
