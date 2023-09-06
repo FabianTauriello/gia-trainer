@@ -63,7 +63,6 @@ export function SignIn() {
       passwordSchema.parse(inputFields.password);
     } catch (error) {
       if (error instanceof ZodError) {
-        // setPasswordErrors(error.issues.map((e) => e.message));
         errors = error.issues.map((issue) => issue.message);
       }
     }
@@ -131,6 +130,7 @@ export function SignIn() {
   function toggleView() {
     setCreateAccountView(!createAccountView);
     setInputFields({ ...inputFields, password: "" });
+    setPasswordErrors([]);
     setSignUpSuccessMessage(false);
     if (createAccountView) {
       resetSignUp();
