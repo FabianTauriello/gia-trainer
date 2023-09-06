@@ -14,16 +14,16 @@ import logo from "../assets/svgs/logo.svg";
 
 const passwordSchema = z
   .string()
-  .min(8, "Password must be at least 8 characters long")
+  .min(8, "be at least 8 characters long")
   .max(30, "Password is too long")
   .refine((value) => /[a-z]/.test(value), {
-    message: "Password must contain at least one lowercase letter",
+    message: "contain at least one lowercase letter",
   })
   .refine((value) => /[A-Z]/.test(value), {
-    message: "Password must contain at least one uppercase letter",
+    message: "contain at least one uppercase letter",
   })
   .refine((value) => /\d/.test(value), {
-    message: "Password must contain at least one number",
+    message: "contain at least one number",
   });
 
 // TODO check why pressing sign up button when password is invalid (and submit is not exectuded on form) still prompts bitwarden to save password
@@ -255,8 +255,9 @@ export function SignIn() {
             )}
             {passwordErrors.length > 0 && (
               <div className="border border-red-400 bg-red-600 bg-opacity-20 dark:bg-opacity-30 mt-4 p-2 flex flex-col gap-2 rounded">
+                <span className="text-sm">Your password must</span>
                 {passwordErrors.map((err) => (
-                  <div key={err} className="flex">
+                  <div key={err} className="flex items-center">
                     <RiErrorWarningLine className="inline" size={18} />
                     <div className="ml-2 text-sm">{err}</div>
                   </div>
