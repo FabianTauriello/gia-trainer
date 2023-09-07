@@ -59,19 +59,6 @@ export type PasswordConstraints = {
   containsSpecialCharacter: boolean;
 };
 
-// export type AuthInputFields ={
-//   email: InputField;
-//   password: InputField;
-//   firstName: InputField;
-//   lastName: InputField;
-// }
-
-// type Validator = ZodObject<{}>
-// type InputField = {
-//   value: string;
-//   validator?: ZodString
-// }
-
 export type QuizAttempt = {
   id: number; // Initially this will be -1
   totalScore: number;
