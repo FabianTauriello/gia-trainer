@@ -12,20 +12,6 @@ import { RiErrorWarningLine, RiErrorWarningFill } from "react-icons/ri";
 import { z, ZodError } from "zod";
 import logo from "../assets/svgs/logo.svg";
 
-const passwordSchema = z
-  .string()
-  .min(8, "be at least 8 characters long")
-  .max(30, "Password is too long")
-  .refine((value) => /[a-z]/.test(value), {
-    message: "contain at least one lowercase letter",
-  })
-  .refine((value) => /[A-Z]/.test(value), {
-    message: "contain at least one uppercase letter",
-  })
-  .refine((value) => /\d/.test(value), {
-    message: "contain at least one number",
-  });
-
 // TODO check why pressing sign up button when password is invalid (and submit is not exectuded on form) still prompts bitwarden to save password
 export function SignIn() {
   const auth = useAppSelector((state) => state.auth);
@@ -60,6 +46,20 @@ export function SignIn() {
     let errors: string[] = [];
 
     try {
+      const passwordSchema = z
+        .string()
+        .min(8, "be at least 8 characters long")
+        .max(30, "Password is too long")
+        .refine((value) => /[a-z]/.test(value), {
+          message: "contain at least one lowercase letter",
+        })
+        .refine((value) => /[A-Z]/.test(value), {
+          message: "contain at least one uppercase letter",
+        })
+        .refine((value) => /\d/.test(value), {
+          message: "contain at least one number",
+        })
+        .parse(inputFields.password);
       passwordSchema.parse(inputFields.password);
     } catch (error) {
       if (error instanceof ZodError) {
