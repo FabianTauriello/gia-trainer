@@ -58,8 +58,7 @@ export function SignIn() {
         })
         .refine((value) => /\d/.test(value), {
           message: "contain at least one number",
-        })
-        .parse(inputFields.password);
+        });
       passwordSchema.parse(inputFields.password);
     } catch (error) {
       if (error instanceof ZodError) {

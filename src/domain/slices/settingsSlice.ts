@@ -12,7 +12,6 @@ const slice = createSlice({
   initialState: initialState,
   reducers: {
     setAllSettings: (state, action: PayloadAction<Settings>) => {
-      console.log("setting: ", action.payload);
       // state = action.payload;
       state.darkMode = action.payload.darkMode;
       state.exposeName = action.payload.exposeName;

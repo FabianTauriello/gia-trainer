@@ -11,7 +11,9 @@ https://gia-trainer.vercel.app/
 - MySQL for DB management. Hosting AWS RDS.
 - RTK Query for data fetching and cache management
 - React Icons
-- TODO testing?
+- Testing:
+  - Vitest
+  - React Testing Library
 - [IconGeneratorAI](https://www.icongeneratorai.com/generate) for profile icons
 
 ### Future Improvements
