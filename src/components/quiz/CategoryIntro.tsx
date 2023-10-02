@@ -1,9 +1,9 @@
-import { CustomButton } from "./CustomButton";
 import { useContext } from "react";
-import { QuizContext } from "components/QuizContextProvider";
-import { Navbar } from "./Navbar";
+import { Navbar } from "components/common/Navbar";
+import { QuizContext } from "./QuizContextProvider";
+import { CustomButton } from "components/common/CustomButton";
 
-export function QuizCategoryIntro() {
+export function CategoryIntro() {
   const { currentQuestion, categoriesStarted, setCategoriesStarted } = useContext(QuizContext);
 
   function getCategoryDescription() {

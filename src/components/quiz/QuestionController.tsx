@@ -1,12 +1,12 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { useParams } from "react-router-dom";
-import { QuizCategoryIntro } from "components/QuizCategoryIntro";
-import { QuizContext } from "components/QuizContextProvider";
 import { QuestionReasoning } from "./QuestionReasoning";
 import { QuestionPerceptualSpeed } from "./QuestionPerceptualSpeed";
 import { QuestionWordMeaning } from "./QuestionWordMeaning";
 import { QuestionNumberSpeedAndAccuracy } from "./QuestionNumberSpeedAndAccuracy";
 import { QuestionSpatialVisualisation } from "./QuestionSpatialVisualisation";
+import { QuizContext } from "./QuizContextProvider";
+import { CategoryIntro } from "./CategoryIntro";
 
 export function QuestionController() {
   const params = useParams<{ quizId: string }>();
@@ -31,7 +31,7 @@ export function QuestionController() {
   }
 
   if (!inReview && !categoriesStarted.includes(currentQuestion.category)) {
-    return <QuizCategoryIntro />;
+    return <CategoryIntro />;
   }
 
   return getQuestionType();

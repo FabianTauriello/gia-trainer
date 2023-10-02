@@ -1,7 +1,7 @@
 import { Choices } from "./Choices";
 import { QuestionContainer } from "./QuestionContainer";
 import { useContext } from "react";
-import { QuizContext } from "components/QuizContextProvider";
+import { QuizContext } from "./QuizContextProvider";
 
 export function QuestionPerceptualSpeed() {
   const { currentQuestion, inReview } = useContext(QuizContext);

@@ -1,5 +1,5 @@
+import { QuizAttempt } from "domain/types";
 import { Dispatch, ReactNode, createContext, useState } from "react";
-import { QuizAttempt } from "../domain/Types";
 
 type DashboardContextType = {
   activeAttempt: QuizAttempt | null;

@@ -1,4 +1,4 @@
-import { CustomLink } from "components/CustomLink";
+import { CustomLink } from "components/common/CustomLink";
 import logo from "../assets/svgs/logo.svg";
 
 export function PageNotFound() {

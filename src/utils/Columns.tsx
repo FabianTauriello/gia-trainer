@@ -1,5 +1,5 @@
 import { ColumnDef } from "@tanstack/react-table";
-import { QuizAttempt } from "domain/Types";
+import { QuizAttempt } from "domain/types";
 import { Utils } from "./Utils";
 
 export const attemptsColumns: ColumnDef<QuizAttempt>[] = [

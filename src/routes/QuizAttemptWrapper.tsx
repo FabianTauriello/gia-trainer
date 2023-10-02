@@ -1,13 +1,11 @@
 import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "hooks/useAppSelector";
 import { useGetQuizQuestionsQuery } from "domain/slices/apislice";
-import { QuestionController } from "components/QuestionController";
-import { QuizCategoryIntro } from "components/QuizCategoryIntro";
-import { CustomButton } from "components/CustomButton";
-import { QuizAttempt } from "domain/Types";
+import { CustomButton } from "components/common/CustomButton";
 import { setLatestQuizAttempt } from "domain/slices/latestAttemptSlice";
-import { Navbar } from "components/Navbar";
-import { QuizContextProvider } from "components/QuizContextProvider";
+import { Navbar } from "components/common/Navbar";
+import { QuizContextProvider } from "components/quiz/QuizContextProvider";
+import { QuestionController } from "components/quiz/QuestionController";
 
 // Fetches latest quiz questions from server, adds an attempt (if a user exists), and initializes the quiz attempt
 export function QuizAttemptWrapper() {

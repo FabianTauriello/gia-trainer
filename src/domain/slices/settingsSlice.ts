@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { Settings } from "domain/Types";
+import { Settings } from "domain/types";
 
 const initialState: Settings = {
   darkMode: window.matchMedia("(prefers-color-scheme: dark)").matches,

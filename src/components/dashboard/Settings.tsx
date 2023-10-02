@@ -1,5 +1,4 @@
 import { useAppSelector } from "hooks/useAppSelector";
-import { CustomButton } from "./CustomButton";
 import { Switch } from "@/components/ui/switch";
 import { useDispatch } from "react-redux";
 import { toggleDarkMode, toggleExposeName, toggleShowQuizTimer } from "domain/slices/settingsSlice";
@@ -11,10 +10,11 @@ import { useToast } from "@/components/ui/use-toast";
 import { Utils } from "utils/Utils";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { useUpdateUserSettingsMutation } from "domain/slices/apislice";
+import { CustomButton } from "components/common/CustomButton";
 
-interface DashboardSettingsProps {}
+interface SettingsProps {}
 
-export function DashboardSettings({}: DashboardSettingsProps) {
+export function Settings({}: SettingsProps) {
   const dispatch = useDispatch();
   const { auth, settings } = useAppSelector((state) => state);
   const { toast } = useToast();

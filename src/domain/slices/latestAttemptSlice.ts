@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "domain/store";
-import { Question, QuizAttempt } from "domain/Types";
+import { Question, QuizAttempt } from "domain/types";
 
 type LatestAttempt = {
   value: QuizAttempt | null;

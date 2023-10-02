@@ -7,7 +7,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/comp
 import { IconType } from "react-icons";
 import { ReactElement } from "react";
 
-export function DashboardOverview() {
+export function Overview() {
   return (
     <div className="p-3 md:p-8 grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4">
       <div className="grid gap-2 md:gap-4 col-span-1 md:col-span-2">

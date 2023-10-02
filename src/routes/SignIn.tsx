@@ -3,7 +3,7 @@ import { setCredentials } from "domain/slices/authSlice";
 import { useAppDispatch, useAppSelector } from "hooks/useAppSelector";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { CustomButton } from "components/CustomButton";
+import { CustomButton } from "components/common/CustomButton";
 import { HiOutlineEye, HiOutlineEyeOff } from "react-icons/hi";
 import { Utils } from "utils/Utils";
 import { setAllSettings } from "domain/slices/settingsSlice";

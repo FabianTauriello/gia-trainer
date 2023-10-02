@@ -1,6 +1,6 @@
 import { SerializedError } from "@reduxjs/toolkit";
 import { FetchBaseQueryError } from "@reduxjs/toolkit/dist/query";
-import { ApiResponse, QuizAttempt } from "domain/Types";
+import { ApiResponse, QuizAttempt } from "domain/types";
 import { profileImages } from "./ProfileImages";
 
 export namespace Utils {

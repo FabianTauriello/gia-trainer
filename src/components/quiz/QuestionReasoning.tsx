@@ -1,8 +1,8 @@
 import { useContext, useState } from "react";
-import { QuizContext } from "components/QuizContextProvider";
 import { useNavigate } from "react-router-dom";
-import { Choices } from "./Choices";
 import { QuestionContainer } from "./QuestionContainer";
+import { QuizContext } from "./QuizContextProvider";
+import { Choices } from "./Choices";
 
 export function QuestionReasoning() {
   const navigate = useNavigate();

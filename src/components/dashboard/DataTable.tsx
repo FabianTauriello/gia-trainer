@@ -1,5 +1,5 @@
 import { ColumnDef, flexRender, getCoreRowModel, useReactTable, SortingState, getSortedRowModel } from "@tanstack/react-table";
-import { QuizAttempt } from "domain/Types";
+import { QuizAttempt } from "domain/types";
 import { useState } from "react";
 import { BiSolidCaretUpSquare, BiSolidCaretDownSquare } from "react-icons/bi";
 

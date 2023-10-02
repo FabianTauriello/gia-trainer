@@ -1,6 +1,5 @@
-import { Navbar } from "components/Navbar";
+import { Navbar } from "components/common/Navbar";
 import { useAppSelector } from "hooks/useAppSelector";
-import { useState } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import { GoHome } from "react-icons/go";
 import { FiSettings } from "react-icons/fi";
@@ -8,7 +7,7 @@ import { BsPlusSquare } from "react-icons/bs";
 import { MdOutlineLeaderboard } from "react-icons/md";
 import { GiStrikingArrows } from "react-icons/gi";
 import { useLocation } from "react-router-dom";
-import { DashboardContextProvider } from "components/DashboardContextProvider";
+import { DashboardContextProvider } from "components/dashboard/DashboardContextProvider";
 
 export function Dashboard() {
   const location = useLocation();

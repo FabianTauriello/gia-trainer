@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
-import { CustomLink } from "components/CustomLink";
+import { CustomLink } from "components/common/CustomLink";
 import { useAppSelector } from "hooks/useAppSelector";
-import { Navbar } from "components/Navbar";
+import { Navbar } from "components/common/Navbar";
 
 export function Landing() {
   const navigate = useNavigate();

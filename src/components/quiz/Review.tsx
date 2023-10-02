@@ -1,14 +1,14 @@
-import { Category, ModalDetails, Question, QuizAttempt } from "domain/Types";
+import { Category, ModalDetails, Question, QuizAttempt } from "domain/types";
 import { Disclosure, Transition } from "@headlessui/react";
 import { ImCheckmark, ImCross } from "react-icons/im";
 import { QuestionModal } from "./QuestionModal";
 import { RxCaretDown } from "react-icons/rx";
 import { ScoreCard } from "./ScoreCard";
-import { Navbar } from "./Navbar";
+import { Navbar } from "../common/Navbar";
 import { useState } from "react";
 import { PiCaretCircleLeft } from "react-icons/pi";
 
-interface QuizReviewProps {
+interface ReviewProps {
   attempt: QuizAttempt;
   embedWithinDash?: boolean;
   handleBackButton?: () => void;
@@ -18,7 +18,7 @@ interface QuizReviewProps {
 // 1. after of a visitor attempt
 // 2. after of a user attempt
 // 3. when user clicks on an attempt row from the dashboard.
-export function QuizReview({ attempt, embedWithinDash = false, handleBackButton }: QuizReviewProps) {
+export function Review({ attempt, embedWithinDash = false, handleBackButton }: ReviewProps) {
   const [modalDetails, setModalDetails] = useState<ModalDetails>({ chosenQuestionIndex: 0, show: false });
 
   const categories = splitQuestionsIntoCategories();

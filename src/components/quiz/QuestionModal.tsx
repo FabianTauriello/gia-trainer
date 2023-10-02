@@ -1,14 +1,14 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useRef, useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { CustomButton } from "./CustomButton";
+import { useParams } from "react-router-dom";
+import { QuizAttempt } from "domain/types";
+import { QuizContextProvider } from "./QuizContextProvider";
 import { QuestionController } from "./QuestionController";
+import { CustomButton } from "components/common/CustomButton";
+import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
-import { useParams } from "react-router-dom";
-import { QuizAttempt } from "domain/Types";
-import { QuizContextProvider } from "./QuizContextProvider";
 
 interface QuestionModalProps {
   quizAttempt: QuizAttempt;

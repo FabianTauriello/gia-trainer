@@ -1,4 +1,4 @@
-import { Category } from "domain/Types";
+import { Category } from "domain/types";
 
 interface ScoreCardProps {
   categories: Category[];

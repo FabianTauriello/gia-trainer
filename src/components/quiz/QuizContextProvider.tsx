@@ -1,6 +1,6 @@
 import { Dispatch, ReactNode, createContext, useEffect, useState } from "react";
-import { Question } from "../domain/Types";
 import { useAppDispatch } from "hooks/useAppSelector";
+import { Question } from "domain/types";
 
 export type QuizContextType = {
   questionIndex: number;

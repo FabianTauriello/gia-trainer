@@ -1,5 +1,5 @@
-import { QuizContext } from "components/QuizContextProvider";
 import { ReactNode, useContext } from "react";
+import { QuizContext } from "./QuizContextProvider";
 
 interface QuestionContainerProps {
   onClickCapture?: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;

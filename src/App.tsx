@@ -3,7 +3,7 @@ import { AppRouter } from "AppRouter";
 import { Provider } from "react-redux";
 import { persistor, store } from "domain/store";
 import { PersistGate } from "redux-persist/integration/react";
-import { ThemeContainer } from "components/ThemeContainer";
+import { ThemeContainer } from "components/common/ThemeContainer";
 import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(

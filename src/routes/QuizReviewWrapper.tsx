@@ -1,6 +1,6 @@
-import { CustomButton } from "components/CustomButton";
-import { Navbar } from "components/Navbar";
-import { QuizReview } from "components/QuizReview";
+import { CustomButton } from "components/common/CustomButton";
+import { Navbar } from "components/common/Navbar";
+import { Review } from "components/quiz/Review";
 import { useAddQuizAttemptMutation } from "domain/slices/apislice";
 import { setLatestAttemptId, updateLatestQuizAttempt } from "domain/slices/latestAttemptSlice";
 import { useAppDispatch, useAppSelector } from "hooks/useAppSelector";
@@ -61,5 +61,5 @@ export function QuizReviewWrapper() {
     }
   }
 
-  return <QuizReview attempt={latestAttempt.value!} />;
+  return <Review attempt={latestAttempt.value!} />;
 }

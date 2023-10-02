@@ -4,12 +4,12 @@ import { useContext, useState } from "react";
 import { DataTable } from "./DataTable";
 import { PiCaretRightBold, PiCaretLeftBold } from "react-icons/pi";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { QuizReview } from "./QuizReview";
 import { attemptsColumns } from "utils/Columns";
 import { DashboardContext } from "./DashboardContextProvider";
+import { Review } from "components/quiz/Review";
 
 // TODO prevent layout shift by making card fill 100% of height (see what happens when you reach last page)
-export function DashboardAttempts() {
+export function Attempts() {
   const { activeAttempt, setActiveAttempt } = useContext(DashboardContext);
   const { auth } = useAppSelector((state) => state);
 
@@ -29,7 +29,7 @@ export function DashboardAttempts() {
   return (
     <div className="p-3 md:p-8">
       {activeAttempt ? (
-        <QuizReview attempt={activeAttempt} embedWithinDash handleBackButton={() => setActiveAttempt(null)} />
+        <Review attempt={activeAttempt} embedWithinDash handleBackButton={() => setActiveAttempt(null)} />
       ) : (
         <>
           <div className="flex justify-between flex-wrap mb-4 md:mb-2">
