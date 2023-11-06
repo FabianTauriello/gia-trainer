@@ -14,6 +14,8 @@ https://gia-trainer.vercel.app/
 - Testing:
   - Vitest
   - React Testing Library
+  - MSW for mocking network requests
+  - JSDom to provide a mock DOM environment
 - [IconGeneratorAI](https://www.icongeneratorai.com/generate) for profile icons
 
 ### Future Improvements

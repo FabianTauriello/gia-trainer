@@ -1,8 +1,21 @@
 import "@testing-library/jest-dom";
-// import matchers from "@testing-library/jest-dom/matchers";
-// import { expect } from "vitest";
+import "whatwg-fetch";
+import { server } from "../mocks/server";
 
-// expect.extend(matchers);
+// Perform pre-test configuration for each test file
+beforeAll(() => {
+  server.listen();
+});
+
+// Perform pre-test configuration for each test
+beforeEach(() => {
+  server.resetHandlers();
+});
+
+// Clean up after all tests are finished for each test file
+afterAll(() => {
+  server.close();
+});
 
 Object.defineProperty(window, "matchMedia", {
   writable: true,

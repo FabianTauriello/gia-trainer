@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import { describe, it } from "vitest";
+import { describe } from "vitest";
 import { TestComponent } from "./TestComponent";
 import user from "@testing-library/user-event";
 
