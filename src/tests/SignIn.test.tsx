@@ -3,7 +3,6 @@ import user from "@testing-library/user-event";
 import { SignIn } from "routes/SignIn";
 import { customRender } from "./test-utils";
 import { describe } from "vitest";
-import { Landing } from "routes/Landing";
 
 describe("SignIn", () => {
   test("Email input receives focus", async () => {
