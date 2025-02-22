@@ -57,7 +57,7 @@ function HighestScoreGraph() {
   const [timeRange, setTimeRange] = useState<TimeRange>(timeRanges[0]);
   const [options, setOptions] = useState<ChartOptions<"scatter">>(generateChartOptions(timeRange));
 
-  const scatterData = useMemo(() => filterAttempts(quizAttempts?.data || [], timeRange), [quizAttempts, timeRange]);
+  const scatterData = useMemo(() => generateScatterData(quizAttempts?.data || [], timeRange), [quizAttempts, timeRange]);
 
   useEffect(() => {
     setOptions(generateChartOptions(timeRange));
@@ -95,7 +95,7 @@ function HighestScoreGraph() {
   );
 }
 
-function filterAttempts(attempts: QuizAttempt[], timeRange: TimeRange): DataPoint[] {
+function generateScatterData(attempts: QuizAttempt[], timeRange: TimeRange): DataPoint[] {
   const scoresMap: { [date: string]: number } = {};
 
   attempts.forEach((attempt) => {
