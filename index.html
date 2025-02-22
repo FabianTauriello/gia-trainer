@@ -12,6 +12,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GIA Trainer</title>
     <!-- <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-element-bundle.min.js"></script> -->
+
+    <!-- 🌙 Theme script runs early to prevent flicker -->
+    <script>
+      if (localStorage.theme === "dark" || (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>
