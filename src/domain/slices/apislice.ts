@@ -86,6 +86,7 @@ export const {
   useGetUserSettingsQuery,
   useLazyGetUserSettingsQuery,
   useUpdateUserMutation,
+  useGetAllQuizAttemptsQuery,
   useGetQuizAttemptsQuery,
   useUpdateUserSettingsMutation,
 } = apiSlice;

@@ -15,3 +15,5 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
     </PersistGate>
   </Provider>
 );
+
+// TODO add error-boundary

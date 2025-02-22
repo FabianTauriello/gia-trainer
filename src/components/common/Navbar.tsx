@@ -61,7 +61,7 @@ export function Navbar({ fixed = false }: NavbarProps) {
   return (
     <nav
       className={`${
-        fixed ? "fixed" : ""
+        fixed && "fixed"
       } top-0 h-20 left-0 z-20 w-full border-b border-b-slate-300 drop-shadow-md bg-slate-100 dark:border-b-slate-900 dark:bg-darkSlate dark:text-white page-gutter`}
     >
       <div className="flex flex-wrap h-full items-center justify-between py-4">

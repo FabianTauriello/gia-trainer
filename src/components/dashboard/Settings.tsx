@@ -58,6 +58,7 @@ export function Settings({}: SettingsProps) {
         <Dialog>
           <DialogTrigger className="w-full md:w-auto px-4">
             <CustomButton customCss="text mt-4 w-full md:w-auto">Edit Profile</CustomButton>
+            {/* TODO put spinner for icon loading */}
           </DialogTrigger>
           <ProfileEditor showToast={(title, description, variant) => toast({ title, description, variant })} />
         </Dialog>
