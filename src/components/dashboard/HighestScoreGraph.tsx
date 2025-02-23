@@ -1,133 +1,85 @@
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import {
-  CategoryScale,
-  Chart as ChartJS,
-  ChartOptions,
-  Legend,
-  LinearScale,
-  LineElement,
-  PointElement,
-  TimeScale,
-  Title,
-  Tooltip,
-  LogarithmicScale,
-  TimeSeriesScale,
-} from "chart.js";
+import { ChartOptions } from "chart.js";
 import "chartjs-adapter-date-fns"; // TODO need this?
-import { isAfter, startOfDay, subDays } from "date-fns";
+import { isAfter, startOfDay, subDays, format } from "date-fns";
 import { useGetAllQuizAttemptsQuery } from "domain/slices/apislice";
-import { QuizAttempt, TimeRange } from "domain/types";
+import { DataPoint, QuizAttempt, TimeRange } from "domain/types";
 import { useAppSelector } from "hooks/useAppSelector";
 import { useEffect, useMemo, useState } from "react";
 import { Scatter } from "react-chartjs-2";
-
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend,
-  TimeScale,
-  LogarithmicScale,
-  TimeSeriesScale
-);
-
-type TimeRange = {
-  label: string;
-  value: number;
-};
-
-type DataPoint = {
-  x: Date;
-  y: number;
-};
-
-const timeRanges: TimeRange[] = [
-  { label: "Last 30 Days", value: 30 },
-  { label: "Last 90 Days", value: 90 },
-  { label: "All Time", value: Infinity },
-];
+import TimeRangeTabs from "./TimeRangeTabs";
+import { Utils } from "utils/Utils";
 
 function HighestScoreGraph() {
   const { auth } = useAppSelector((state) => state);
-  const { data: quizAttempts, isError, isLoading, isFetching, refetch, isSuccess } = useGetAllQuizAttemptsQuery(auth.user!.id);
+  const { data: quizAttempts, isError } = useGetAllQuizAttemptsQuery(auth.user!.id);
 
-  const [timeRange, setTimeRange] = useState<TimeRange>(timeRanges[0]);
+  const [timeRange, setTimeRange] = useState<TimeRange>({ label: "Last 30 Days", value: 30 });
   const [options, setOptions] = useState<ChartOptions<"scatter">>(generateChartOptions(timeRange));
 
-  const scatterData = useMemo(() => generateScatterData(quizAttempts?.data || [], timeRange), [quizAttempts, timeRange]);
+  const scatterData = useMemo(() => generateData(quizAttempts?.data || [], timeRange), [quizAttempts, timeRange]);
 
   useEffect(() => {
     setOptions(generateChartOptions(timeRange));
   }, [timeRange]);
 
-  function handleTimeRangeChange(value: string) {
-    const timeRangeFound = timeRanges.find((range) => range.label === value)!;
-    setTimeRange(timeRangeFound);
-  }
-
   return (
     <div>
-      <Tabs defaultValue={timeRanges[0].label} className="mb-4" onValueChange={(value) => handleTimeRangeChange(value)}>
-        <TabsList className="w-full">
-          {timeRanges.map((timeRange) => (
-            <TabsTrigger key={timeRange.label} className="flex-1" value={timeRange.label}>
-              {timeRange.label}
-            </TabsTrigger>
-          ))}
-        </TabsList>
-      </Tabs>
-      <Scatter
-        options={options}
-        data={{
-          datasets: [
-            {
-              label: "Highest Score",
-              data: scatterData,
-              backgroundColor: "rgba(255, 99, 132, 1)",
-            },
-          ],
-        }}
-      />
+      <TimeRangeTabs handleChange={(newTimeRange) => setTimeRange(newTimeRange)} />
+      <div className="relative">
+        {isError && (
+          <div className="absolute inset-0 rounded-md bg-opacity-50 bg-red-800 text-white flex items-center justify-center z-10">
+            <div className="text-center">
+              <div>Error fetching this data.</div>
+              <div>Please try again later.</div>
+            </div>
+          </div>
+        )}
+        <Scatter
+          className="rounded-md border border-slate-300 dark:border-slate-700 px-2 pb-2"
+          options={options}
+          data={{
+            datasets: [
+              {
+                label: "Highest Score",
+                data: scatterData,
+                backgroundColor: "rgba(255, 99, 132, 1)",
+              },
+            ],
+          }}
+        ></Scatter>
+      </div>
     </div>
   );
 }
 
-function generateScatterData(attempts: QuizAttempt[], timeRange: TimeRange): DataPoint[] {
+function generateData(attempts: QuizAttempt[], timeRange: TimeRange): DataPoint[] {
   const scoresMap: { [date: string]: number } = {};
 
   attempts.forEach((attempt) => {
     const attemptDate = new Date(attempt.timestamp);
 
     // ignore dates outside of set time range
-    if (timeRange.value === 30 && !isWithinPeriod(attemptDate, 30)) return;
-    if (timeRange.value === 90 && !isWithinPeriod(attemptDate, 90)) return;
+    if (timeRange.value === 30 && !Utils.isWithinPeriod(attemptDate, 30)) return;
+    if (timeRange.value === 90 && !Utils.isWithinPeriod(attemptDate, 90)) return;
 
-    const dateKey = attemptDate.toISOString().split("T")[0]; // format as YYYY-MM-DD
+    const dateKey = attemptDate.toISOString().split("T")[0];
 
     if (!scoresMap[dateKey] || scoresMap[dateKey] < attempt.totalScore) {
       scoresMap[dateKey] = attempt.totalScore;
     }
   });
 
+  // Convert to chart-friendly format
   return Object.keys(scoresMap).map((dateKey) => ({
     x: new Date(dateKey),
     y: scoresMap[dateKey],
   }));
 }
 
-function isWithinPeriod(date: Date, dayCount: number): boolean {
-  const today = new Date();
-  const thirtyDaysAgo = subDays(today, dayCount);
-  return isAfter(startOfDay(date), startOfDay(thirtyDaysAgo));
-}
-
 function generateChartOptions(timeRange: TimeRange): ChartOptions<"scatter"> {
   return {
     responsive: true,
-    maintainAspectRatio: true,
     animations: {
       y: {
         from: (ctx) => ctx.chart.scales.y.getPixelForValue(0), // Start from the bottom y-value
@@ -148,53 +100,34 @@ function generateChartOptions(timeRange: TimeRange): ChartOptions<"scatter"> {
       },
     },
     plugins: {
-      legend: {
-        display: false,
-        position: "top",
-      },
       title: {
         display: true,
-        text: "Highest Scores per Day",
-        position: "bottom",
+        text: "Highest Score Per Day",
+        position: "top",
       },
       tooltip: {
         callbacks: {
           label: (context) => {
             const pointData = context.raw as DataPoint;
-            return `Score: ${pointData.y}`;
+            return `Score: ${pointData.y}, Date: ${format(pointData.x, "d MMM yyyy")}`;
           },
         },
       },
     },
     scales: {
       x: {
-        position: "bottom",
         type: timeRange.value === 30 ? "time" : "timeseries",
-        // time: {
-        //   unit: timeRange.value === 30 ? "day" : "year",
-        //   displayFormats: {
-        //     day: "MMM dd",
-        //     month: "yyyy-MM", // Show year and month
-        //     year: "yyyy",
-        //   },
-        // },
         title: {
           display: true,
           text: "Date",
         },
-        // ticks: {
-        //   source: "auto",
-        //   maxRotation: 50,
-        //   autoSkip: true,
-        //   stepSize: 1,
-        // },
       },
       y: {
+        min: 0,
         title: {
           display: true,
           text: "Score",
         },
-        min: 0,
         ticks: {
           stepSize: 1,
         },

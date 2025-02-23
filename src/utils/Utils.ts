@@ -2,6 +2,7 @@ import { SerializedError } from "@reduxjs/toolkit";
 import { FetchBaseQueryError } from "@reduxjs/toolkit/dist/query";
 import { ApiResponse, QuizAttempt } from "domain/types";
 import { profileImages } from "./ProfileImages";
+import { isAfter, startOfDay, subDays } from "date-fns";
 
 export namespace Utils {
   export function getQuizAttemptById(attempts: QuizAttempt[], id: number) {
@@ -32,5 +33,11 @@ export namespace Utils {
 
   export function formatTimestamp(timestamp: string) {
     return new Date(timestamp).toLocaleString();
+  }
+
+  export function isWithinPeriod(date: Date, dayCount: number): boolean {
+    const today = new Date();
+    const thirtyDaysAgo = subDays(today, dayCount);
+    return isAfter(startOfDay(date), startOfDay(thirtyDaysAgo));
   }
 }
