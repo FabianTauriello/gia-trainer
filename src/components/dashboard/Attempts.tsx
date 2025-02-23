@@ -8,6 +8,7 @@ import { attemptsColumns } from "utils/Columns";
 import { DashboardContext } from "./DashboardContextProvider";
 import { Review } from "components/quiz/Review";
 
+// TODO fix issue where question answer modal/popup is covered partially by nav bar
 // TODO prevent layout shift by making card fill 100% of height (see what happens when you reach last page)
 export function Attempts() {
   const { activeAttempt, setActiveAttempt } = useContext(DashboardContext);
@@ -48,7 +49,7 @@ export function Attempts() {
               </SelectContent>
             </Select>
             <div className="flex-col items-end">
-              <div className="flex items-center mt-4 md:m-0">
+              <div className="flex items-center mt-4 md:m-0 gap-2">
                 {dataFound && <span className="text-sm mr-2">{`Page ${page} of ${attemptsResponse?.data?.totalPages}`}</span>}
                 <button
                   className="bg-slate-300 dark:bg-slate-900 rounded-md p-1 disabled:opacity-50 border border-slate-200 dark:border-slate-700"
@@ -58,7 +59,7 @@ export function Attempts() {
                   <PiCaretLeftBold size={18} />
                 </button>
                 <button
-                  className="bg-slate-300 dark:bg-slate-900 rounded-md p-1 disabled:opacity-50 border border-slate-200 dark:border-slate-700"
+                  className="bg-slate-300 dark:bg-slate-900 rounded-md p-1 disabled:opacity-20 border border-slate-200 dark:border-slate-700"
                   disabled={page === attemptsResponse?.data?.totalPages}
                   onClick={() => setPage(page + 1)}
                 >
