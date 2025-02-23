@@ -33,7 +33,7 @@ function SummaryCard() {
 function DashValue({ tooltipText, value, icon }: { tooltipText: string; value: string | number; icon: ReactElement }) {
   return (
     <div className="flex justify-center items-center flex-col shadow-md rounded-md">
-      <TooltipProvider>
+      <TooltipProvider delayDuration={100}>
         <Tooltip>
           <TooltipTrigger>{icon}</TooltipTrigger>
           <TooltipContent>
