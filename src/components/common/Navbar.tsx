@@ -40,7 +40,7 @@ export function Navbar({ fixed = false }: NavbarProps) {
                   <span className="block text-sm text-slate-900 dark:text-white">{auth.user.firstName}</span>
                   <span className="block text-sm text-slate-500 truncate dark:text-slate-400">{auth.user.email}</span>
                 </div>
-                <ul className="py-2">
+                <ul className="py-2 bg-slate-100 dark:bg-slate-700 rounded-b-xl">
                   <DropDownItem text="Dashboard" link="/dashboard" />
                   <DropDownItem text="Sign out" handleClick={() => dispatch(clearUser())} />
                 </ul>
