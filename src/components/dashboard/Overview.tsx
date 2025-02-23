@@ -4,9 +4,35 @@ import HighestScoreGraph from "./HighestScoreGraph";
 import RankCard from "./RankCard";
 import AchievementsCard from "./AchievementsCard";
 import AttemptsGraph from "./AttemptsGraph";
+import {
+  CategoryScale,
+  Chart as ChartJS,
+  LinearScale,
+  LineElement,
+  PointElement,
+  LogarithmicScale,
+  TimeSeriesScale,
+  TimeScale,
+  Tooltip as ChartTooltip,
+  Title,
+} from "chart.js";
+import QuizScoreDistribution from "./QuizScoreDistribution";
+import AverageScoreGraph from "./AverageScoreGraph";
 
-// gap-2 md:gap-4
-// grid gap-2 md:gap-4 col-span-1 md:col-span-1
+// setup for different charts
+ChartJS.register(
+  // Legend,
+  Title,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  ChartTooltip,
+  TimeScale,
+  LogarithmicScale,
+  TimeSeriesScale
+);
+
 export function Overview() {
   return (
     <div className="flex gap-2 md:gap-4 flex-col p-3 md:p-8">
@@ -14,12 +40,12 @@ export function Overview() {
         <AchievementsCard />
         <RankCard />
       </div>
-      <div className="card grid grid-cols-1 lg:grid-cols-2 p-3 md:p-8">
-        {/* <AttemptsGraph /> */}
+      <div className="card grid grid-cols-1 lg:grid-cols-2 p-3 md:p-8 gap-2 md:gap-4">
         <HighestScoreGraph />
+        <AverageScoreGraph />
         {/* TODO add average score over time */}
-        {/* TODO show distribution of scores, average of scores as well */}
-        {/* <div className="p-6 flex flex-col rounded-lg card">line graph showing rank over various times</div> */}
+        {/* TODO show distribution of scores */}
+        {/* TODO line graph showing rank over various times */}
       </div>
     </div>
   );
