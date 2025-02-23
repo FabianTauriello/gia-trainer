@@ -71,15 +71,17 @@ export function Review({ attempt, embedWithinDash = false, handleBackButton }: R
       {!embedWithinDash && <Navbar />}
       <div className={embedWithinDash ? "" : "page-gutter"}>
         <div className="flex justify-between items-center">
-          <div className="flex">
+          <div className="flex items-center">
             {embedWithinDash && (
               <button className="mr-4" onClick={handleBackButton}>
                 <PiCaretCircleLeft size={40} />
               </button>
             )}
-            <h1 className={`text-4xl font-extrabold text-black dark:text-white ${embedWithinDash ? "" : "pb-4 pt-8"}`}>Quiz Review</h1>
+            <h1 className={`text-lg md:text-4xl font-extrabold text-black dark:text-white ${embedWithinDash ? "" : "pb-4 pt-8"}`}>
+              Quiz Review
+            </h1>
           </div>
-          {embedWithinDash && <h2 className="text-2xl dark:text-white text-black">Id: {attempt.id}</h2>}
+          {embedWithinDash && <h2 className="text-sm md:text-2xl dark:text-white text-black">Id: {attempt.id}</h2>}
         </div>
         <section className="flex flex-col gap-4 py-5">
           <ScoreCard categories={categories} />
