@@ -25,6 +25,7 @@ export type User = {
   id: number;
   firstName: string;
   lastName: string;
+  signUpTimestamp?: string;
   email: string;
   profileImgId: string;
   profileImgColor: string;
@@ -60,7 +61,7 @@ export type PasswordConstraints = {
 };
 
 export type QuizAttempt = {
-  id: number; // Initially this will be -1
+  id: number; // Initially this will be -1, and later set on server
   totalScore: number;
   questions: Question[];
   timestamp: string;

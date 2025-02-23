@@ -2,7 +2,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/comp
 import { ReactElement } from "react";
 import HighestScoreGraph from "./HighestScoreGraph";
 import RankCard from "./RankCard";
-import AchievementsCard from "./AchievementsCard";
+import SummaryCard from "./SummaryCard";
 import AttemptsGraph from "./AttemptsGraph";
 import {
   CategoryScale,
@@ -37,7 +37,7 @@ export function Overview() {
   return (
     <div className="flex gap-2 md:gap-4 flex-col p-3 md:p-8">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-4">
-        <AchievementsCard />
+        <SummaryCard />
         <RankCard />
       </div>
       <div className="card grid grid-cols-1 lg:grid-cols-2 p-3 md:p-8 gap-2 md:gap-4">
