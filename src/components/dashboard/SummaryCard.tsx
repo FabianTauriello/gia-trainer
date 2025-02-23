@@ -6,12 +6,14 @@ import { SlTrophy } from "react-icons/sl";
 import { MdDateRange } from "react-icons/md";
 import { useAppSelector } from "hooks/useAppSelector";
 import { format } from "date-fns";
+import { useGetAllQuizAttemptsQuery } from "domain/slices/apislice";
 
 function SummaryCard() {
   const { auth } = useAppSelector((state) => state);
-  console.log("auth.user?.signUpTimestamp", auth.user?.signUpTimestamp);
+
+  const { data: quizAttempts, isError } = useGetAllQuizAttemptsQuery(auth.user!.id);
+
   return (
-    // <div className="">
     <div className="grid grid-cols-2 sm:grid-cols-3 gap-5 p-6 card">
       <DashValue
         tooltipText="Date Joined"
@@ -22,14 +24,13 @@ function SummaryCard() {
       <DashValue tooltipText="Best Rank" value="1st" icon={<SlTrophy size={30} />} />
       <DashValue tooltipText="Latest Attempt" value="70%" icon={<GiArrowhead size={30} />} />
       <DashValue tooltipText="Best Attempt" value="100%" icon={<TbTargetArrow size={30} />} />
-      <DashValue tooltipText="Number of Attempts" value="152" icon={<GiStrikingArrows size={30} />} />
+      <DashValue tooltipText="Number of Attempts" value={quizAttempts?.data?.length ?? "?"} icon={<GiStrikingArrows size={30} />} />
     </div>
-    // </div>
   );
 }
 
 // TODO replace tooltip for actual text for mobile devices because they won't work there!
-function DashValue({ tooltipText, value, icon }: { tooltipText: string; value: string; icon: ReactElement }) {
+function DashValue({ tooltipText, value, icon }: { tooltipText: string; value: string | number; icon: ReactElement }) {
   return (
     <div className="flex justify-center items-center flex-col shadow-md rounded-md">
       <TooltipProvider>
