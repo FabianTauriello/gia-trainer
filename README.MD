@@ -1,4 +1,4 @@
-### Production Site Location
+### Production Site
 
 https://gia-trainer.vercel.app/
 
