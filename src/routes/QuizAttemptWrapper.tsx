@@ -20,6 +20,8 @@ export function QuizAttemptWrapper() {
         setLatestQuizAttempt({
           id: -1,
           totalScore: 0,
+          overallAccuracy: 0,
+          categoryAccuracies: [],
           questions: data.data!,
           timestamp: "",
         })

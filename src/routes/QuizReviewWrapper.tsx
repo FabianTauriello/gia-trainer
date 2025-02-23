@@ -2,10 +2,10 @@ import { CustomButton } from "components/common/CustomButton";
 import { Navbar } from "components/common/Navbar";
 import { Review } from "components/quiz/Review";
 import { useAddQuizAttemptMutation } from "domain/slices/apislice";
-import { setLatestAttemptId, updateLatestQuizAttempt } from "domain/slices/latestAttemptSlice";
+import { setOverallAccuracy, setLatestAttemptId, setCategoryAccuracies } from "domain/slices/latestAttemptSlice";
+import { CategoryAccuracy, Question, QuizAttempt } from "domain/types";
 import { useAppDispatch, useAppSelector } from "hooks/useAppSelector";
 import { useEffect, useState } from "react";
-import { Utils } from "utils/Utils";
 
 export function QuizReviewWrapper() {
   const dispatch = useAppDispatch();
@@ -21,11 +21,19 @@ export function QuizReviewWrapper() {
   }, []);
 
   async function postAttempt() {
+    const overallAccuracy = calculateOverallAccuracy(latestAttempt.value!);
+    const categoryAccuracies = calculateCategoryAccuracies(latestAttempt.value!);
+
+    // post attempt
     const res = await postQuizAttempt({
       userId: auth.user?.id!,
-      attempt: latestAttempt.value!,
+      attempt: { ...latestAttempt.value!, overallAccuracy: overallAccuracy, categoryAccuracies: categoryAccuracies },
     }).unwrap();
+
+    // update latest attempt in store
     dispatch(setLatestAttemptId(res.data!));
+    dispatch(setOverallAccuracy(overallAccuracy));
+    dispatch(setCategoryAccuracies(categoryAccuracies));
   }
 
   if (latestAttemptRequiresPosting) {
@@ -62,4 +70,42 @@ export function QuizReviewWrapper() {
   }
 
   return <Review attempt={latestAttempt.value!} />;
+}
+
+function calculateOverallAccuracy(attempt: QuizAttempt) {
+  const questionCount = attempt.questions.length;
+  const correctCount = attempt.questions.reduce((acc, question) => {
+    if (question.selectedChoiceIndex === question.correctChoiceIndex) {
+      acc += 1;
+    }
+    return acc;
+  }, 0);
+
+  return correctCount / questionCount;
+}
+
+// group questions by category to calculate accuracy of each category
+function calculateCategoryAccuracies(attempt: QuizAttempt): CategoryAccuracy[] {
+  const questionsGroupedByCategory = attempt.questions.reduce((acc, question) => {
+    const cat = question.category;
+    if (!acc[cat]) {
+      acc[cat] = [];
+    }
+    acc[cat].push(question);
+
+    return acc;
+  }, {} as { [category: string]: Question[] });
+
+  const result: CategoryAccuracy[] = [];
+  Object.entries(questionsGroupedByCategory).forEach(([key, value]) => {
+    const questionCount = value.length;
+    let correctCount = 0;
+    value.forEach((q) => {
+      if (q.selectedChoiceIndex === q.correctChoiceIndex) correctCount += 1;
+    });
+
+    result.push({ category: key, accuracy: correctCount / questionCount });
+  });
+
+  return result;
 }

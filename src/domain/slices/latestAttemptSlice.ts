@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "domain/store";
-import { Question, QuizAttempt } from "domain/types";
+import { CategoryAccuracy, Question, QuizAttempt } from "domain/types";
 
 type LatestAttempt = {
   value: QuizAttempt | null;
@@ -27,9 +27,16 @@ export const latestAttemptSlice = createSlice({
     setLatestAttemptId: (state, action: PayloadAction<number>) => {
       state.value!.id = action.payload;
     },
+    setOverallAccuracy: (state, action: PayloadAction<number>) => {
+      state.value!.overallAccuracy = action.payload;
+    },
+    setCategoryAccuracies: (state, action: PayloadAction<CategoryAccuracy[]>) => {
+      state.value!.categoryAccuracies = action.payload;
+    },
   },
 });
 
-export const { setLatestQuizAttempt, updateLatestQuizAttempt, setLatestAttemptId } = latestAttemptSlice.actions;
+export const { setLatestQuizAttempt, updateLatestQuizAttempt, setLatestAttemptId, setOverallAccuracy, setCategoryAccuracies } =
+  latestAttemptSlice.actions;
 
 export default latestAttemptSlice.reducer;

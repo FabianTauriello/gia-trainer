@@ -2,11 +2,14 @@ import { Category } from "domain/types";
 
 interface ScoreCardProps {
   categories: Category[];
+  accuracy: number;
 }
 
-export function ScoreCard({ categories }: ScoreCardProps) {
+export function ScoreCard({ categories, accuracy }: ScoreCardProps) {
   const totalScore = categories.reduce((prev, current) => prev + current.score, 0);
   const maxScore = categories.reduce((prev, current) => prev + current.questions.length, 0);
+  // const overallAccuracy = Number(accuracy.toFixed(2)) * 100;
+  const overallAccuracy = accuracy * 100;
 
   return (
     <div className="overflow-x-auto">
@@ -28,7 +31,7 @@ export function ScoreCard({ categories }: ScoreCardProps) {
           <tr className="dark:bg-darkSlate bg-white text-left dark:text-white">
             <td />
             <td className="p-3 font-medium">
-              {totalScore} / {maxScore}
+              {totalScore} / {maxScore} ({overallAccuracy.toFixed(0)}%)
             </td>
           </tr>
         </tbody>

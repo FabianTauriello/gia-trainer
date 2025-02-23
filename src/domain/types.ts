@@ -63,8 +63,15 @@ export type PasswordConstraints = {
 export type QuizAttempt = {
   id: number; // Initially this will be -1, and later set on server
   totalScore: number;
+  overallAccuracy: number;
+  categoryAccuracies: CategoryAccuracy[];
   questions: Question[];
   timestamp: string;
+};
+
+export type CategoryAccuracy = {
+  category: string;
+  accuracy: number;
 };
 
 export type PageInfo = {
@@ -91,5 +98,5 @@ export type TimeRange = {
 
 export type DataPoint = {
   x: Date;
-  y: number;
+  y: string;
 };

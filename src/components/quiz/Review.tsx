@@ -67,7 +67,7 @@ export function Review({ attempt, embedWithinDash = false, handleBackButton }: R
   }
 
   return (
-    <div className="">
+    <div>
       {!embedWithinDash && <Navbar />}
       <div className={embedWithinDash ? "" : "page-gutter"}>
         <div className="flex justify-between items-center">
@@ -84,56 +84,59 @@ export function Review({ attempt, embedWithinDash = false, handleBackButton }: R
           {embedWithinDash && <h2 className="text-sm md:text-2xl dark:text-white text-black">Id: {attempt.id}</h2>}
         </div>
         <section className="flex flex-col gap-4 py-5">
-          <ScoreCard categories={categories} />
+          <ScoreCard categories={categories} accuracy={attempt.overallAccuracy} />
           <h1 className="text-xl bg-emerald-600 text-white p-4">Breakdown</h1>
-          {categories.map((cat, index) => (
-            // Category card
-            <Disclosure key={index} defaultOpen>
-              <div className="rounded border dark:border-slate-800 border-slate-300 overflow-hidden bg-slate-100 dark:bg-slate-800">
-                <Disclosure.Button className="w-full dark:bg-darkSlate bg-white p-3 dark:text-white z-50">
-                  <div className="flex justify-between align-middle">
-                    <h1 className="mr-1 text-lg font-medium">{cat.title}</h1>
-                    <h3 className="text-lg">
-                      {cat.score} / {cat.questions.length}
-                    </h3>
-                  </div>
-                  <div className="flex justify-between text-left">
-                    <p className="mt-2">{getCategoryGuide(cat)}</p>
-                    <RxCaretDown size={40} className="invisible ui-open:rotate-180 ui-open:transform md:visible" />
-                  </div>
-                </Disclosure.Button>
-                <Transition enter="transition-all ease-in-out duration-200" enterFrom="translate-y-full" enterTo="translate-y-0">
-                  <Disclosure.Panel className="border-t dark:border-t-slate-800 border-t-slate-300">
-                    <div className="grid gap-2 p-3 md:grid-cols-3 bg-slate-100 dark:bg-slate-800">
-                      {cat.questions.map((q, i) => {
-                        return (
-                          <div
-                            key={i}
-                            onClick={() => setModalDetails({ chosenQuestionIndex: q.number! - 1, show: true })}
-                            className={`flex cursor-pointer justify-between border border-white dark:border-slate-800 bg-white dark:bg-slate-900 dark:text-white hover:bg-gray-200 dark:hover:bg-darkSlate`}
-                          >
-                            {/* Question number and mark */}
-                            <div className="flex">
-                              <div className={`${isQuestionCorrect(q) ? "bg-correct" : "bg-incorrect"} mr-2 w-2.5`} />
-                              <div className="my-2 text-xl">Question {q.number}</div>
-                            </div>
-                            {/* Tick / cross */}
-                            <div className="mr-2 flex flex-col justify-center">
-                              {isQuestionCorrect(q) ? (
-                                <ImCheckmark color="#15803D" size={20} />
-                              ) : (
-                                <ImCross color="#B91C1C" size={20} />
-                              )}
-                            </div>
-                          </div>
-                        );
-                      })}
+          {categories.map((cat, index) => {
+            const catAccuracy = Number(cat.score / cat.questions.length).toFixed(2);
+            return (
+              // Category card
+              <Disclosure key={index} defaultOpen>
+                <div className="rounded border dark:border-slate-800 border-slate-300 overflow-hidden bg-slate-100 dark:bg-slate-800">
+                  <Disclosure.Button className="w-full dark:bg-darkSlate bg-white p-3 dark:text-white z-50">
+                    <div className="flex justify-between align-middle">
+                      <h1 className="mr-1 text-lg font-medium">{cat.title}</h1>
+                      <h3 className="text-lg">
+                        {cat.score} / {cat.questions.length} ({Number(catAccuracy) * 100}%)
+                      </h3>
                     </div>
-                  </Disclosure.Panel>
-                </Transition>
-              </div>
-            </Disclosure>
-          ))}
+                    <div className="flex justify-between text-left">
+                      <p className="mt-2">{getCategoryGuide(cat)}</p>
+                      <RxCaretDown size={40} className="invisible ui-open:rotate-180 ui-open:transform md:visible" />
+                    </div>
+                  </Disclosure.Button>
+                  <Transition enter="transition-all ease-in-out duration-200" enterFrom="translate-y-full" enterTo="translate-y-0">
+                    <Disclosure.Panel className="border-t dark:border-t-slate-800 border-t-slate-300">
+                      <div className="grid gap-2 p-3 md:grid-cols-3 bg-slate-100 dark:bg-slate-800">
+                        {cat.questions.map((q, i) => {
+                          return (
+                            <div
+                              key={i}
+                              onClick={() => setModalDetails({ chosenQuestionIndex: q.number! - 1, show: true })}
+                              className={`flex cursor-pointer justify-between border border-white dark:border-slate-800 bg-white dark:bg-slate-900 dark:text-white hover:bg-gray-200 dark:hover:bg-darkSlate`}
+                            >
+                              {/* Question number and mark */}
+                              <div className="flex">
+                                <div className={`${isQuestionCorrect(q) ? "bg-correct" : "bg-incorrect"} mr-2 w-2.5`} />
+                                <div className="my-2 text-xl">Question {q.number}</div>
+                              </div>
+                              {/* Tick / cross */}
+                              <div className="mr-2 flex flex-col justify-center">
+                                {isQuestionCorrect(q) ? (
+                                  <ImCheckmark color="#15803D" size={20} />
+                                ) : (
+                                  <ImCross color="#B91C1C" size={20} />
+                                )}
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </Disclosure.Panel>
+                  </Transition>
+                </div>
+              </Disclosure>
+            );
+          })}
         </section>
         <QuestionModal
           quizAttempt={attempt}
