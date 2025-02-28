@@ -18,6 +18,7 @@ import { useAppSelector } from "hooks/useAppSelector";
 import { DataPoint, QuizAttempt, TimeRange } from "domain/types";
 import TimeRangeTabs from "./TimeRangeTabs";
 import { Utils } from "utils/Utils";
+import { format } from "date-fns";
 
 const timeRanges: TimeRange[] = [
   { label: "Last 30 Days", value: 30 },
@@ -55,12 +56,11 @@ function AverageScoreGraph() {
           data={{
             datasets: [
               {
-                label: "Average Score",
                 data: dailyAverages,
                 borderColor: "rgba(75, 192, 192, 1)",
                 backgroundColor: "rgba(75, 192, 192, 0.2)",
                 tension: 0.3, // Smooth curve
-                fill: true, // Fill area under the line
+                fill: true,
               },
             ],
           }}
@@ -90,13 +90,11 @@ function generateData(attempts: QuizAttempt[], timeRange: TimeRange): DataPoint[
     scoresMap[dateKey].count += 1;
   });
 
-  console.log("scoresMap after calc", scoresMap);
-
   // Convert to chart-friendly format
   return Object.keys(scoresMap)
     .map((date) => ({
       x: new Date(date),
-      y: scoresMap[date].totalScore / scoresMap[date].count, // calculate average score for day
+      y: (scoresMap[date].totalScore / scoresMap[date].count).toFixed(2), // calculate average score for day
     }))
     .sort((a, b) => a.x.getTime() - b.x.getTime());
 }
@@ -109,11 +107,32 @@ function generateChartOptions(timeRange: TimeRange): ChartOptions<"line"> {
         display: true,
         text: "Average Quiz Score",
         position: "top",
+        padding: {
+          top: 14,
+          bottom: 14,
+        },
+      },
+      tooltip: {
+        callbacks: {
+          label: (context) => {
+            const pointData = context.raw as DataPoint;
+            return `Score: ${pointData.y}, Date: ${format(pointData.x, "d MMM yyyy")}`;
+          },
+          title: () => {
+            return "Average score for day";
+          },
+        },
       },
     },
     scales: {
       x: {
         type: timeRange.value === 30 ? "time" : "timeseries",
+        time: {
+          unit: "day",
+          displayFormats: {
+            day: "MMM d",
+          },
+        },
         title: {
           display: true,
           text: "Date",

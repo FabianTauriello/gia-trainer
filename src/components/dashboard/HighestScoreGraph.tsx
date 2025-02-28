@@ -73,7 +73,7 @@ function generateData(attempts: QuizAttempt[], timeRange: TimeRange): DataPoint[
   // Convert to chart-friendly format
   return Object.keys(scoresMap).map((dateKey) => ({
     x: new Date(dateKey),
-    y: scoresMap[dateKey],
+    y: scoresMap[dateKey].toString(),
   }));
 }
 
@@ -104,6 +104,10 @@ function generateChartOptions(timeRange: TimeRange): ChartOptions<"scatter"> {
         display: true,
         text: "Highest Score Per Day",
         position: "top",
+        padding: {
+          top: 14,
+          bottom: 14,
+        },
       },
       tooltip: {
         callbacks: {
@@ -117,6 +121,12 @@ function generateChartOptions(timeRange: TimeRange): ChartOptions<"scatter"> {
     scales: {
       x: {
         type: timeRange.value === 30 ? "time" : "timeseries",
+        time: {
+          unit: "day",
+          displayFormats: {
+            day: "MMM d",
+          },
+        },
         title: {
           display: true,
           text: "Date",
