@@ -16,14 +16,10 @@ export function Attempts() {
 
   const [page, setPage] = useState(1);
 
-  const {
-    data: attemptsResponse,
-    isError,
-    isLoading,
-    isFetching,
-    refetch,
-    isSuccess,
-  } = useGetQuizAttemptsQuery({ userId: auth.user!.id, pageInfo: { page: page, limit: 20 } });
+  const { data: attemptsResponse, isFetching } = useGetQuizAttemptsQuery({
+    userId: auth.user!.id,
+    pageInfo: { page: page, limit: 20 },
+  });
 
   const dataFound = attemptsResponse?.data?.attempts?.length;
 
