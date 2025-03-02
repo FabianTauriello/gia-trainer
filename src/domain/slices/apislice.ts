@@ -74,7 +74,7 @@ export const apiSlice = createApi({
         method: "GET",
       }),
     }),
-    getCategoryRankings: builder.query<ApiResponse<{ [cat: string]: string }[]>, number>({
+    getCategoryRankings: builder.query<ApiResponse<{ category: string; ranking: number }[]>, number>({
       query: (userId) => ({
         url: `/getCategoryRankings/${userId}`,
         method: "GET",

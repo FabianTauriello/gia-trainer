@@ -51,23 +51,6 @@ export function Overview() {
   );
 }
 
-// TODO replace tooltip for actual text for mobile devices because they won't work there!
-function DashValue({ tooltipText, value, icon }: { tooltipText: string; value: string; icon: ReactElement }) {
-  return (
-    <div className="text-center">
-      <TooltipProvider>
-        <Tooltip>
-          <TooltipTrigger>{icon}</TooltipTrigger>
-          <TooltipContent>
-            <p className="">{tooltipText}</p>
-          </TooltipContent>
-        </Tooltip>
-      </TooltipProvider>
-      <div className="mt-1 text-xs md:text-sm">{value}</div>
-    </div>
-  );
-}
-
 // performance metrics:
 
 // The General Intelligence Assessment (GIA) test is designed to measure a user's general intelligence or cognitive abilities. To evaluate a user's performance on the GIA test, you can use various performance metrics. Here are some common metrics used in cognitive testing:
