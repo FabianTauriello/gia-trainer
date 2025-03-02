@@ -6,7 +6,7 @@ import { SlTrophy } from "react-icons/sl";
 import { MdDateRange } from "react-icons/md";
 import { useAppSelector } from "hooks/useAppSelector";
 import { format } from "date-fns";
-import { useGetAllQuizAttemptsQuery, useGetRankingHistoryQuery } from "domain/slices/apislice";
+import { useGetAllQuizAttemptsQuery, useGetOverallRankingQuery, useGetRankingHistoryQuery } from "domain/slices/apislice";
 import { ReactElement } from "react";
 import { Ranking } from "domain/types";
 
@@ -15,6 +15,7 @@ function SummaryCard() {
 
   const { data: quizAttempts } = useGetAllQuizAttemptsQuery(auth.user!.id);
   const { data: rankings } = useGetRankingHistoryQuery(auth.user!.id);
+  const { data: overallRanking } = useGetOverallRankingQuery(auth.user!.id);
 
   const bestAttempt = quizAttempts?.data?.reduce((acc, attempt) => {
     return attempt.totalScore > acc.totalScore ? attempt : acc;
@@ -26,6 +27,7 @@ function SummaryCard() {
     ? `${latestAttempt.totalScore} (${(latestAttempt.overallAccuracy * 100).toFixed(0)}%)`
     : "_";
   const bestRank = getBestRank(rankings?.data);
+  const currentRank = overallRanking?.data;
 
   return (
     <div className="grid grid-cols-2 lg:grid-cols-3 gap-5 p-6 card">
@@ -34,7 +36,7 @@ function SummaryCard() {
         value={format(new Date(auth.user?.signUpTimestamp!), "MMM dd, yyyy")}
         icon={<MdDateRange size={30} />}
       />
-      <DashValue tooltipText="Current Overall Rank" value="_" icon={<IoPodiumOutline size={30} />} />
+      <DashValue tooltipText="Current Overall Rank" value={currentRank ?? "_"} icon={<IoPodiumOutline size={30} />} />
       <DashValue tooltipText="Best Overall Rank" value={bestRank} icon={<SlTrophy size={30} />} />
       <DashValue tooltipText="Latest Attempt" value={latestAttemptLabel} icon={<GiArrowhead size={30} />} />
       <DashValue tooltipText="Best Attempt" value={bestAttemptTooltipLabel} icon={<TbTargetArrow size={30} />} />

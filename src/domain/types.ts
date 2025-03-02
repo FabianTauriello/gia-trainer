@@ -90,13 +90,6 @@ export type LoginCredentials = {
   password: string;
 };
 
-export type ApiResponse<T = null> = {
-  success: boolean;
-  data?: T;
-  statusCode: 200 | 201 | 400 | 401 | 409 | 500;
-  message: string;
-};
-
 export type TimeRange = {
   label: string;
   value: number;
@@ -105,4 +98,11 @@ export type TimeRange = {
 export type DataPoint = {
   x: Date;
   y: string;
+};
+
+export type ApiResponse<T = null> = {
+  success: boolean;
+  data?: T;
+  statusCode: 200 | 201 | 400 | 401 | 409 | 500;
+  message: string;
 };

@@ -68,6 +68,18 @@ export const apiSlice = createApi({
     getQuizQuestions: builder.query<ApiResponse<Question[]>, void>({
       query: () => "/quizQuestions",
     }),
+    getOverallRanking: builder.query<ApiResponse<number>, number>({
+      query: (userId) => ({
+        url: `/getOverallRanking/${userId}`,
+        method: "GET",
+      }),
+    }),
+    getCategoryRankings: builder.query<ApiResponse<{ [cat: string]: string }[]>, number>({
+      query: (userId) => ({
+        url: `/getCategoryRankings/${userId}`,
+        method: "GET",
+      }),
+    }),
     getRankingHistory: builder.query<ApiResponse<Ranking[]>, number>({
       query: (userId) => ({
         url: `/getRankingHistory/${userId}`,
@@ -108,4 +120,8 @@ export const {
   useUpdateUserSettingsMutation,
   useGetRankingHistoryQuery,
   useLazyGetRankingHistoryQuery,
+  useGetOverallRankingQuery,
+  useLazyGetOverallRankingQuery,
+  useGetCategoryRankingsQuery,
+  useLazyGetCategoryRankingsQuery,
 } = apiSlice;
