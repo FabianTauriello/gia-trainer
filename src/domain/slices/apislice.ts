@@ -1,6 +1,17 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { RootState } from "domain/store";
-import { ApiResponse, LoginCredentials, NewUser, PageInfo, Profile, Question, QuizAttempt, Settings, User } from "domain/types";
+import {
+  ApiResponse,
+  LoginCredentials,
+  NewUser,
+  PageInfo,
+  Profile,
+  Question,
+  QuizAttempt,
+  Ranking,
+  Settings,
+  User,
+} from "domain/types";
 
 // Define the single API slice object
 export const apiSlice = createApi({
@@ -57,6 +68,12 @@ export const apiSlice = createApi({
     getQuizQuestions: builder.query<ApiResponse<Question[]>, void>({
       query: () => "/quizQuestions",
     }),
+    getRankingHistory: builder.query<ApiResponse<Ranking[]>, number>({
+      query: (userId) => ({
+        url: `/getRankingHistory/${userId}`,
+        method: "GET",
+      }),
+    }),
     getUserSettings: builder.query<ApiResponse<Settings>, number>({
       query: (userId) => `/getUserSettings/${userId}}`,
     }),
@@ -89,4 +106,6 @@ export const {
   useGetAllQuizAttemptsQuery,
   useGetQuizAttemptsQuery,
   useUpdateUserSettingsMutation,
+  useGetRankingHistoryQuery,
+  useLazyGetRankingHistoryQuery,
 } = apiSlice;

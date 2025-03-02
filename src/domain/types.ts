@@ -74,6 +74,12 @@ export type CategoryAccuracy = {
   accuracy: number;
 };
 
+export type Ranking = {
+  category: string | null;
+  position: number;
+  recordedAt: string;
+};
+
 export type PageInfo = {
   page: number;
   limit: number;
