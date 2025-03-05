@@ -9,12 +9,15 @@ import { clearUser } from "domain/slices/authSlice";
 import userIcon from "../assets/svgs/user-temp-icon.svg";
 import { Menu } from "@headlessui/react";
 import { Utils } from "utils/Utils";
+import { useNavigate } from "react-router-dom";
 
 interface NavbarProps {
   fixed?: boolean;
 }
 
 export function Navbar({ fixed = false }: NavbarProps) {
+  const navigate = useNavigate();
+
   const { auth, settings } = useAppSelector((state) => state);
   const dispatch = useDispatch();
 
@@ -42,7 +45,13 @@ export function Navbar({ fixed = false }: NavbarProps) {
                 </div>
                 <ul className="py-2 bg-slate-100 dark:bg-slate-700 rounded-b-xl">
                   <DropDownItem text="Dashboard" link="/dashboard" />
-                  <DropDownItem text="Sign out" handleClick={() => dispatch(clearUser())} />
+                  <DropDownItem
+                    text="Sign out"
+                    handleClick={() => {
+                      dispatch(clearUser());
+                      navigate("/");
+                    }}
+                  />
                 </ul>
               </div>
             </div>
