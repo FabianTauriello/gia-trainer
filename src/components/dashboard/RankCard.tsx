@@ -15,7 +15,7 @@ function RankCard() {
             {categoryRankings?.data?.map((item, i) => {
               const even = i % 2 === 0;
               return (
-                <li className={`p-3 flex justify-between ${even && "bg-slate-200 dark:bg-slate-700"}`}>
+                <li key={item.category} className={`p-3 flex justify-between ${even && "bg-slate-200 dark:bg-slate-700"}`}>
                   <div>{item.category}</div>
                   <div className="ml-10">{item.ranking}</div>
                 </li>
