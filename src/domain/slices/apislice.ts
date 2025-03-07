@@ -2,6 +2,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { RootState } from "domain/store";
 import {
   ApiResponse,
+  OverallLeaderboardRecord,
   LoginCredentials,
   NewUser,
   PageInfo,
@@ -11,6 +12,7 @@ import {
   Ranking,
   Settings,
   User,
+  CategoryLeaderboardRecord,
 } from "domain/types";
 
 // Define the single API slice object
@@ -47,10 +49,10 @@ export const apiSlice = createApi({
       }),
     }),
     addQuizAttempt: builder.mutation<ApiResponse<number>, { userId: number; attempt: QuizAttempt }>({
-      query: (newQuizAttempt) => ({
+      query: (reqBody) => ({
         url: "/addQuizAttempt",
         method: "POST",
-        body: newQuizAttempt,
+        body: reqBody,
       }),
     }),
     getAllQuizAttempts: builder.query<ApiResponse<QuizAttempt[]>, number>({
@@ -83,6 +85,15 @@ export const apiSlice = createApi({
     getRankingHistory: builder.query<ApiResponse<Ranking[]>, number>({
       query: (userId) => ({
         url: `/getRankingHistory/${userId}`,
+        method: "GET",
+      }),
+    }),
+    getLeaderboard: builder.query<
+      ApiResponse<{ records: CategoryLeaderboardRecord[] | OverallLeaderboardRecord[]; totalPages: number; totalRecords: number }>,
+      { pageInfo: PageInfo; category: string }
+    >({
+      query: (requestData) => ({
+        url: `/getLeaderboard/?page=${requestData.pageInfo.page}&limit=${requestData.pageInfo.limit}&category=${requestData.category}`,
         method: "GET",
       }),
     }),
@@ -124,4 +135,6 @@ export const {
   useLazyGetOverallRankingQuery,
   useGetCategoryRankingsQuery,
   useLazyGetCategoryRankingsQuery,
+  useGetLeaderboardQuery,
+  useLazyGetLeaderboardQuery,
 } = apiSlice;

@@ -46,6 +46,25 @@ export type ModalDetails = {
   show: boolean;
 };
 
+export type OverallLeaderboardRecord = {
+  userId: string;
+  firstName: string;
+  lastName: string;
+  exposeName: boolean;
+  position: number;
+  averageScore: number;
+  averageAccuracy: number;
+};
+
+export type CategoryLeaderboardRecord = {
+  userId: string;
+  firstName: string;
+  lastName: string;
+  exposeName: boolean;
+  position: number;
+  averageAccuracy: number;
+};
+
 type Letter = {
   char: string;
   rot: number;
