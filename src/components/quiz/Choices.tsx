@@ -66,6 +66,3 @@ export function Choices() {
     </div>
   );
 }
-
-// min-w-[200px]
-// flex-grow flex-shrink-0

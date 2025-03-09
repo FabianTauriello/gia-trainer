@@ -1,4 +1,5 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { RootState } from "domain/store";
 import { Settings } from "domain/types";
 
 const initialState: Settings = {
@@ -33,5 +34,6 @@ const slice = createSlice({
 });
 
 export const { setAllSettings, setDarkMode, toggleDarkMode, toggleExposeName, toggleShowQuizTimer } = slice.actions;
+export const selectSettings = (state: RootState) => state.settings;
 
 export default slice.reducer;

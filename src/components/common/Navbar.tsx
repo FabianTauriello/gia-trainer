@@ -3,9 +3,9 @@ import { CustomLink } from "./CustomLink";
 import { DarkModeSwitch } from "react-toggle-dark-mode";
 import logo from "assets/svgs/logo.svg";
 import { useDispatch } from "react-redux";
-import { toggleDarkMode } from "domain/slices/settingsSlice";
+import { selectSettings, toggleDarkMode } from "domain/slices/settingsSlice";
 import React, { useState, Ref, forwardRef } from "react";
-import { clearUser } from "domain/slices/authSlice";
+import { clearUser, selectAuth } from "domain/slices/authSlice";
 import userIcon from "../assets/svgs/user-temp-icon.svg";
 import { Menu } from "@headlessui/react";
 import { Utils } from "utils/Utils";
@@ -18,7 +18,8 @@ interface NavbarProps {
 export function Navbar({ fixed = false }: NavbarProps) {
   const navigate = useNavigate();
 
-  const { auth, settings } = useAppSelector((state) => state);
+  const auth = useAppSelector(selectAuth);
+  const settings = useAppSelector(selectSettings);
   const dispatch = useDispatch();
 
   const [showUserDropdown, setShowUserDropdown] = useState(false);

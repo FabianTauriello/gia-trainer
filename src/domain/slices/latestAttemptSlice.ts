@@ -38,5 +38,6 @@ export const latestAttemptSlice = createSlice({
 
 export const { setLatestQuizAttempt, updateLatestQuizAttempt, setLatestAttemptId, setOverallAccuracy, setCategoryAccuracies } =
   latestAttemptSlice.actions;
+export const selectLatestAttempt = (state: RootState) => state.latestAttempt;
 
 export default latestAttemptSlice.reducer;

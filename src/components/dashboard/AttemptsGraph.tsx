@@ -18,8 +18,6 @@ const options: ChartOptions<"line"> = {
 };
 
 function AttemptsGraph() {
-  const { auth } = useAppSelector((state) => state);
-
   return (
     <div>
       <Line

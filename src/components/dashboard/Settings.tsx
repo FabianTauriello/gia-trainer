@@ -1,7 +1,7 @@
 import { useAppSelector } from "hooks/useAppSelector";
 import { Switch } from "@/components/ui/switch";
 import { useDispatch } from "react-redux";
-import { toggleDarkMode, toggleExposeName, toggleShowQuizTimer } from "domain/slices/settingsSlice";
+import { selectSettings, toggleDarkMode, toggleExposeName, toggleShowQuizTimer } from "domain/slices/settingsSlice";
 import React, { useEffect, useRef, useState } from "react";
 import { ProfileEditor } from "./ProfileEditor";
 import { profileImages } from "utils/ProfileImages";
@@ -11,12 +11,14 @@ import { Utils } from "utils/Utils";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { useUpdateUserSettingsMutation } from "domain/slices/apislice";
 import { CustomButton } from "components/common/CustomButton";
+import { selectAuth } from "domain/slices/authSlice";
 
 interface SettingsProps {}
 
 export function Settings({}: SettingsProps) {
   const dispatch = useDispatch();
-  const { auth, settings } = useAppSelector((state) => state);
+  const auth = useAppSelector(selectAuth);
+  const settings = useAppSelector(selectSettings);
   const { toast } = useToast();
 
   const [postUpdatedUserSettings, { isLoading, isError, error, reset }] = useUpdateUserSettingsMutation();

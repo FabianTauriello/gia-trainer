@@ -2,10 +2,10 @@ import { useNavigate } from "react-router-dom";
 import { CustomLink } from "components/common/CustomLink";
 import { useAppSelector } from "hooks/useAppSelector";
 import { Navbar } from "components/common/Navbar";
+import { selectAuth } from "domain/slices/authSlice";
 
 export function Landing() {
-  const navigate = useNavigate();
-  const { auth } = useAppSelector((state) => state);
+  const auth = useAppSelector(selectAuth);
 
   return (
     <>

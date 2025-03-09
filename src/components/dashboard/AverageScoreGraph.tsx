@@ -19,15 +19,10 @@ import { DataPoint, QuizAttempt, TimeRange } from "domain/types";
 import TimeRangeTabs from "./TimeRangeTabs";
 import { Utils } from "utils/Utils";
 import { format } from "date-fns";
-
-const timeRanges: TimeRange[] = [
-  { label: "Last 30 Days", value: 30 },
-  { label: "Last 90 Days", value: 90 },
-  { label: "All Time", value: Infinity },
-];
+import { selectAuth } from "domain/slices/authSlice";
 
 function AverageScoreGraph() {
-  const { auth } = useAppSelector((state) => state);
+  const auth = useAppSelector(selectAuth);
   const { data: quizAttempts, isError } = useGetAllQuizAttemptsQuery(auth.user!.id);
 
   const [timeRange, setTimeRange] = useState<TimeRange>({ label: "Last 30 Days", value: 30 });
@@ -151,4 +146,5 @@ function generateChartOptions(timeRange: TimeRange): ChartOptions<"line"> {
     },
   };
 }
+
 export default AverageScoreGraph;

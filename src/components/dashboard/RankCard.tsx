@@ -1,8 +1,9 @@
 import { useGetCategoryRankingsQuery } from "domain/slices/apislice";
+import { selectAuth } from "domain/slices/authSlice";
 import { useAppSelector } from "hooks/useAppSelector";
 
 function RankCard() {
-  const { auth } = useAppSelector((state) => state);
+  const auth = useAppSelector(selectAuth);
 
   const { data: categoryRankings } = useGetCategoryRankingsQuery(auth.user!.id);
 

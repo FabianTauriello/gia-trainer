@@ -2,14 +2,18 @@ import { CustomButton } from "components/common/CustomButton";
 import { Navbar } from "components/common/Navbar";
 import { Review } from "components/quiz/Review";
 import { useAddQuizAttemptMutation } from "domain/slices/apislice";
-import { setOverallAccuracy, setLatestAttemptId, setCategoryAccuracies } from "domain/slices/latestAttemptSlice";
+import { selectAuth } from "domain/slices/authSlice";
+import { setOverallAccuracy, setLatestAttemptId, setCategoryAccuracies, selectLatestAttempt } from "domain/slices/latestAttemptSlice";
+import { selectSettings } from "domain/slices/settingsSlice";
 import { CategoryAccuracy, Question, QuizAttempt } from "domain/types";
 import { useAppDispatch, useAppSelector } from "hooks/useAppSelector";
 import { useEffect, useState } from "react";
 
 export function QuizReviewWrapper() {
   const dispatch = useAppDispatch();
-  const { latestAttempt, auth } = useAppSelector((state) => state);
+  const latestAttempt = useAppSelector(selectLatestAttempt);
+  const auth = useAppSelector(selectAuth);
+  const settings = useAppSelector(selectSettings);
   const [postQuizAttempt, { data, isError, isLoading, error, isUninitialized }] = useAddQuizAttemptMutation();
 
   const latestAttemptRequiresPosting = auth.user && latestAttempt.value?.id === -1;

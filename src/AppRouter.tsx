@@ -13,9 +13,10 @@ import { Attempts } from "components/dashboard/Attempts";
 import { Leaderboard } from "components/dashboard/Leaderboard";
 import { QuizReviewOutlet } from "routes/QuizReviewOutlet";
 import { QuizReviewWrapper } from "routes/QuizReviewWrapper";
+import { selectAuth } from "domain/slices/authSlice";
 
 export function AppRouter() {
-  const { auth } = useAppSelector((state) => state);
+  const auth = useAppSelector(selectAuth);
 
   const router = createBrowserRouter(
     createRoutesFromElements(

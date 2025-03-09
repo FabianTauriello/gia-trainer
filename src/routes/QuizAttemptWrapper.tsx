@@ -6,11 +6,11 @@ import { setLatestQuizAttempt } from "domain/slices/latestAttemptSlice";
 import { Navbar } from "components/common/Navbar";
 import { QuizContextProvider } from "components/quiz/QuizContextProvider";
 import { QuestionController } from "components/quiz/QuestionController";
+import { useNavigationBlocker } from "hooks/useNavigationBlocker";
 
 // Fetches latest quiz questions from server, adds an attempt (if a user exists), and initializes the quiz attempt
 export function QuizAttemptWrapper() {
   const dispatch = useAppDispatch();
-  const { auth } = useAppSelector((state) => state);
 
   const { data, isError, isLoading, isFetching, refetch, isSuccess } = useGetQuizQuestionsQuery();
 

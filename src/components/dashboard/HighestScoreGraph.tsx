@@ -9,9 +9,10 @@ import { useEffect, useMemo, useState } from "react";
 import { Scatter } from "react-chartjs-2";
 import TimeRangeTabs from "./TimeRangeTabs";
 import { Utils } from "utils/Utils";
+import { selectAuth } from "domain/slices/authSlice";
 
 function HighestScoreGraph() {
-  const { auth } = useAppSelector((state) => state);
+  const auth = useAppSelector(selectAuth);
   const { data: quizAttempts, isError } = useGetAllQuizAttemptsQuery(auth.user!.id);
 
   const [timeRange, setTimeRange] = useState<TimeRange>({ label: "Last 30 Days", value: 30 });

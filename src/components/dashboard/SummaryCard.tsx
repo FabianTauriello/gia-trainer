@@ -14,9 +14,10 @@ import {
 } from "domain/slices/apislice";
 import { ReactElement } from "react";
 import { Ranking } from "domain/types";
+import { selectAuth } from "domain/slices/authSlice";
 
 function SummaryCard() {
-  const { auth } = useAppSelector((state) => state);
+  const auth = useAppSelector(selectAuth);
 
   const { data: quizAttempts } = useGetAllQuizAttemptsQuery(auth.user!.id);
   const { data: rankings } = useGetRankingHistoryQuery(auth.user!.id);

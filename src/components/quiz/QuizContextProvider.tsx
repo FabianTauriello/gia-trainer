@@ -1,6 +1,5 @@
-import { Dispatch, ReactNode, createContext, useEffect, useState } from "react";
-import { useAppDispatch } from "hooks/useAppSelector";
 import { Question } from "domain/types";
+import { Dispatch, ReactNode, createContext, useState } from "react";
 
 export type QuizContextType = {
   questionIndex: number;
@@ -29,14 +28,13 @@ export function QuizContextProvider({
   startingQuestionIndex?: number;
   inReview?: boolean;
 }) {
-  const dispatch = useAppDispatch();
-
   const [questionIndex, setQuestionIndex] = useState<number>(startingQuestionIndex);
   const [categoriesStarted, setCategoriesStarted] = useState<string[]>([]);
   const [hideChoices, setHideChoices] = useState(true); // Toggle visibility of the answer choices (for reasoning cat only)
 
   const currentQuestion = allQuestions[questionIndex];
 
+  // TODO remove
   function updateAttempt(selectedChoiceIndex: number, isCorrect: boolean) {
     // console.log("updating attempt - before: ", attempt);
     // attempt.questions[questionIndex].selectedChoiceIndex = selectedChoiceIndex;

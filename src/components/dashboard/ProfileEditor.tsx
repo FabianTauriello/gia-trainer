@@ -7,7 +7,7 @@ import { HexColorPicker } from "react-colorful";
 import { Profile } from "domain/types";
 import { useUpdateUserMutation } from "domain/slices/apislice";
 import { CustomButton } from "../common/CustomButton";
-import { updateUserProfile } from "domain/slices/authSlice";
+import { selectAuth, updateUserProfile } from "domain/slices/authSlice";
 import { Utils } from "utils/Utils";
 import { AiOutlineCloseCircle, AiFillCloseCircle } from "react-icons/ai";
 import { DialogDescription, DialogHeader, DialogTitle, DialogContent } from "@/components/ui/dialog";
@@ -19,7 +19,7 @@ interface ProfileEditorProps {
 // TODO add proper dialog components?
 export function ProfileEditor({ showToast }: ProfileEditorProps) {
   const dispatch = useDispatch();
-  const { auth, settings } = useAppSelector((state) => state);
+  const auth = useAppSelector(selectAuth);
 
   const [postUpdatedUserProfile, { isLoading, isError, error, reset }] = useUpdateUserMutation();
 
