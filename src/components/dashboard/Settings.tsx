@@ -51,7 +51,7 @@ export function Settings({}: SettingsProps) {
       <section className="flex flex-col card items-center py-4 md:py-10">
         <img
           style={{ backgroundColor: auth.user!.profileImgColor }}
-          className="w-44 h-44 rounded-full border-black border-2"
+          className="w-28 h-28 md:w-44 md:h-44 rounded-full border-black border-2"
           src={userImage.source}
           alt="user photo"
         />
